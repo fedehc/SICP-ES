@@ -1,0 +1,15 @@
+## Prefacio a la segunda edición
+
+> ¿Es posible que el software no sea como cualquier otra cosa, que esté destinado a ser desechado: que el propósito es siempre verlo como una burbuja de jabón?
+>
+> **Alan J. Perlis**
+
+El material de este libro ha sido la base de la asignatura básica de ciencias de la computación del MIT desde 1980. Llevábamos cuatro años enseñando este material cuando la primera edición fue publicada, y han pasado doce años más hasta la aparición de esta segunda edición. Nos complace que nuestro trabajo haya sido ampliamente adoptado e incorporado a otros textos. Hemos visto a nuestros estudiantes tomar las ideas y programas de este libro y convertirlos en el núcleo de los nuevos sistemas informáticos y lenguajes. En la realización literal de un antiguo juego de palabras Talmúdico, nuestros estudiantes se han convertido en nuestros constructores. Tenemos suerte de tener estudiantes tan capaces y constructores tan destacados.
+
+En la preparación de esta edición, hemos incorporado cientos de aclaraciones sugeridas por nuestra propia experiencia docente y los comentarios de colegas del MIT y de otros lugares. Hemos rediseñado gran parte de los principales sistemas de programación en el libro, incluyendo el sistema de aritmética genérica, los intérpretes, el simulador de máquina de registro y el compilador; y hemos reescrito todos los ejemplos de programas para asegurar que cualquier implementación de Scheme que se ajuste a la norma IEEE Scheme standard (IEEE 1990) sea capaz de correr el código.
+
+Esta edición hace énfasis en varios temas nuevos. El más importante de ellos es el rol central que juegan las diferentes aproximaciones al tratamiento del tiempo en los modelos computacionales: objetos con estado, programación concurrente, programación funcional, evaluación perezosa y programación no determinista. Hemos incluido nuevas secciones sobre la concurrencia y el no determinismo, y hemos tratado de integrar este tema a lo largo del libro.
+
+La primera edición del libro siguió de muy de cerca el programa de estudios de nuestra asignatura de un semestre del MIT. Con todo el nuevo material de la segunda edición, no será posible cubrirlo todo en un solo semestre, por lo que el instructor deberá elegir. En nuestra propia enseñanza, a veces nos saltamos la sección sobre programación lógica (sección 4.4), hacemos que los estudiantes usen el simulador de máquina de registro, pero no cubrimos su implementación (sección 5.2), y sólo damos una visión general superficial del compilador (sección 5.5). Aún así, sigue siendo un curso intenso. Algunos instructores pueden querer cubrir solamente los primeros tres o cuatro capítulos, dejando el otro material para los cursos posteriores.
+
+El sitio web World-Wide-Web *www-mitpress.mit.edu/sicp* ofrece soporte a los usuarios de este libro. Esto incluye programas del libro, ejemplos de ejercicios de programación, materiales suplementarios e implementaciones descargables del dialecto Scheme de Lisp.
