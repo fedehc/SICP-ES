@@ -1,7 +1,7 @@
 # SICP en español
 
-Traducción al español del archiconocido libro "Structure and Interpretation
-of Computer Programs" (SICP, 2° edición).
+Traducción al español de la 2° edición del libro "Structure and Interpretation
+of Computer Programs" (SICP).
 
 ![Imagen](/imagenes/SICP-traducido.png)
 
@@ -32,7 +32,3 @@ Debo comentar que no soy traductor profesional, ni programador con muchos años 
 ## Aclaración
 
 No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos que se señalan en la sección de [licencia](#licencia).
-
-
-
-*FedeHC*
