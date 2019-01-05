@@ -14,8 +14,8 @@ El libro está licenciado bajo [licencia internacional Creative Commons Atribuci
 
 Todo el material que iré traduciendo se realizará a partir de esta fuente, en la medida que vaya avanzando en la lectura y disponga de tiempo y voluntad para traducirlo.
 
-Mi propósito general, o *altruista*, no es más que facilitar el acceso al libro a todos aquellos que no sepan el idioma inglés pero que aún así conservan el interés por leerlo.
+Mi propósito general es el de facilitar el acceso al libro a todos aquellos que no manejen el idioma inglés pero que conservan el interés por leerlo.
 
-También tengo un propósito particular, o *egoista*: dado que al momento de crear este repositorio aún continuo por el 1° capítulo, mi interés en la traducción radica en mantener la voluntad de terminar todo el libro. Más precisamente, la traducción párrafo a párrafo del mismo me obliga también a repasar más detenidamente el contenido, que desde el vamos no es imposible ni mucho menos pero que sin duda requiere de cierto grado de atención y paciencia.
+También tengo un propósito particular (o *egoista*): dado que al momento de crear este repositorio aún continuo recién por el 1° capítulo del libro, mi interés en la traducción radica en mantener la voluntad de completar todos los capítulos. Más precisamente, la traducción párrafo a párrafo me obliga a su vez de repasar más detenidamente el contenido de cada párrafo, que desde el vamos no es de lectura imposible ni mucho menos pero que requiere sin duda cierto grado de atención, algunos conocimientos de matemática y por sobre todo mucha paciencia.
 
-Por último: no busco particularmente reconocimiento alguno (aunque desde ya serán bienvenidas ;). Y menos aún, no busco ningún provecho comercial a partir de las traducciones -parciales o totales- que realice. Y tampoco me haré responsable bajo ningún término por cualquier uso indebido que se haga del material presente en este repositorio y que viole los términos de la licencia anteriormente mencionada.
+Por último: no busco reconocimientos o sacar provecho comercial alguno a partir de las traducciones parciales o totales que realice. Y tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material que se encuentre al presente en este repositorio y que viole los términos de la licencia arriba mencionada.
