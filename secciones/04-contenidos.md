@@ -9,8 +9,8 @@
 * Agradecimientos
 
 * **[1. Construyendo Abstracciones con Procedimientos](./09-capitulo-1.md#%20Capítulo%201)**
-  * 1.1. *[Los Elementos de la Programación](./09-capitulo-1.md#11-procedimientos-y-los-procesos-que-generan)*
-    * 1.1.1. [Expresiones](./09-capitulo-1.md#11-los-elementos-de-la-programaci%C3%B3n)
+  * 1.1. *[Los Elementos de la Programación](./09-capitulo-1.md#11-los-elementos-de-la-programaci%C3%B3n)*
+    * 1.1.1. [Expresiones](./09-capitulo-1.md#111-expresiones)
     * 1.1.2. Nombrado y el Entorno
     * 1.1.3. Evaluando Combinaciones
     * 1.1.4. Procedimientos Compuestos
