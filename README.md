@@ -13,11 +13,17 @@ of Computer Programs" (SICP).
 ## Licencia 
 
 El libro está licenciado bajo [licencia internacional Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.es) por el MIT Press.
+
 ![Imagen CC](https://licensebuttons.net/l/by-sa/4.0/88x31.png)
 
 ## Fuente
 
 Todo el material que iré traduciendo se realizará a partir de la versión online del [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html), dispuesto voluntariamente por sus autores.
+
+
+## Objetivo final
+
+Lograr traducir el libro completo para que pueda ser leído online o descargado en formato pdf, epub, mobi o cualquier otro.
 
 
 ## Motivos para la traducción
