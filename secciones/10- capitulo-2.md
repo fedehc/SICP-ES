@@ -6,4 +6,16 @@
 >
 > **Hermann Weyl**, *The Mathematical Way of Thinking*
 
-### ---Traducción pendiente---
+
+### 2.1 Introducción a la Abstracción de Datos
+
+### 2.2 Datos Jerárquicos y la Propiedad de Clausura
+
+### 2.3 Datos Simbólicos
+
+### 2.4 Múltiples Representaciones para Datos Abstractos
+
+### 2.5 Sistemas con Operaciones Genéricas
+
+
+## ---Traducción pendiente---

@@ -7,4 +7,4 @@
 >
 > **John Barth**, *Chimera*
 
-### ---Traducción pendiente---
+## ---Traducción pendiente---

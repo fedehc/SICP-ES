@@ -6,4 +6,5 @@
 >
 > **Johannes Kepler** (carta a Herwart von Hohenburg, 1605)
 
-### ---Traducción pendiente---
+
+## ---Traducción pendiente---

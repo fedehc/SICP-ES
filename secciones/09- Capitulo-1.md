@@ -18,6 +18,7 @@ Afortunadamente, aprender a programar es considerablemente menos peligroso que a
 
 Los expertos en ingeniería de software tienen la capacidad de organizar programas de manera que modo que puedan estar razonablemente seguros de que los procesos resultantes realizarán las tareas previstas. Pueden visualizar el comportamiento de sus sistemas por adelantado. Saben cómo estructurar los programas para que los problemas imprevistos no tengan consecuencias catastróficas, y cuando surgen problemas, pueden depurar sus programas. Los sistemas computacionales bien diseñados, como los automóviles o los reactores nucleares bien diseñados, se diseñan de manera modular, de modo que las partes puedan ser construidas, reemplazadas y depuradas por separado.
 
+
 ### Programando en Lisp
 
 Necesitamos un lenguaje apropiado para describir los procesos, y para ello utilizaremos el lenguaje de programación Lisp. Así como nuestros pensamientos cotidianos se expresan normalmente en nuestro lenguaje natural (como el español, el inglés, el francés o el japonés), y las descripciones de los fenómenos cuantitativos se expresan con notaciones matemáticas, nuestros pensamientos procedurales los expresaremos en Lisp. Lisp fue inventado a fines de la década de 1950 como un formalismo para razonar sobre el uso de ciertos tipos de expresiones lógicas, llamadas ecuaciones de recursión, como modelo para la computación. El lenguaje fue concebido por John McCarthy y se basa en su trabajo *"Recursive Functions of Symbolic Expressions and Their Computation by Machine"* (en español: *Funciones Recursivas de las Expresiones Simbólicas y su Cálculo por Máquina*, McCarthy 1960).
@@ -29,6 +30,32 @@ Lisp no fue el producto de un esfuerzo de diseño concertado. Al contrario, evol
 Debido a su carácter experimental y su énfasis en la manipulación de simbóloca, Lisp fue al principio muy ineficiente para los cálculos numéricos, al menos en comparación con Fortran. A lo largo de los años, sin embargo, los compiladores Lisp se han desarrollado para traducir programas a código de máquina que pueden realizar cálculos numéricos de forma razonablemente eficiente. Y para aplicaciones especiales, Lisp ha sido usado con gran efectividad.[^3] Aunque Lisp aún no ha superado su antigua reputación de ser ineficiente, Lisp se usa ahora en muchas aplicaciones donde la eficiencia no es la preocupación central. Por ejemplo, Lisp se ha convertido en el lenguaje preferido para los lenguajes de shell del sistemas operativos y para los lenguajes de extensión de los editores y para los sistemas de diseño asistido por computadora.
 
 Si Lisp no es un lenguaje convencional, ¿por qué lo usamos como marco para nuestra discusión de la programación? Porque el lenguaje posee características únicas que lo convierten en un excelente medio para estudiar importantes constructos de programación y estructuras de datos y para relacionarlos con las características lingüísticas que los soportan. El más significativo de estos rasgos es el hecho de que las descripciones de los procesos de Lisp, llamados procedimientos, pueden ser representadas y manipuladas como datos de Lisp. La importancia de esto es que existen poderosas técnicas de diseño de programas que se basan en la habilidad de desdibujar la distinción tradicional entre datos "pasivos" y procesos "activos". Como descubriremos, la flexibilidad de Lisp en el manejo de procedimientos como datos lo convierte en uno de los lenguajes más convenientes en existencia para explorar estas técnicas. La capacidad de representar procedimientos como datos también hace de Lisp un excelente lenguaje para escribir programas que deben manipular otros programas como datos, como los intérpretes y compiladores que soportan lenguajes de programación. Más allá de estas consideraciones, programar en Lisp es muy divertido.
+
+
+### 1.1 Los Elementos de la Programación
+
+Un poderoso lenguaje de programación es más que un medio para instruir a una computadora para que realice tareas. El lenguaje también sirve como marco dentro del cual organizamos nuestras ideas acerca de los procesos. Por lo tanto, cuando describimos un lenguaje, debemos prestar especial atención a los medios que el lenguaje proporciona para combinar ideas simples para formar ideas más complejas. Cada lenguaje poderoso tiene tres mecanismos para lograr esto:
+
+* **expresiones primitivas**, que representan las entidades más simples que conciernen al lenguaje,
+
+* **modos de combinación**, mediante los cuales los elementos compuestos se construyen a partir de los más sencillos, y
+
+* **medios de abstracción**, por el cual los elementos compuestos pueden ser nombrados y manipulados como unidades.
+
+En programación, nosotros lidiamos con dos tipos de elementos: procedimientos y datos. (más adelante descubriremos que realmente no son tan distintos.) Informalmente, los datos son "cosas" que queremos manipular, y los procedimientos son descripciones de las reglas para manipular los datos. Por lo tanto, cualquier lenguaje de programación poderoso debe ser capaz de describir datos primitivos y procedimientos primitivos y debe tener métodos para combinar y abstraer procedimientos y datos.
+
+En este capítulo sólo trataremos con datos numéricos simples para que podamos concentrarnos en las reglas para la construcción de procedimientos.[^4] En capítulos posteriores veremos que estas mismas reglas nos permiten construir procedimientos para manipular datos compuestos también.
+
+
+#### 1.1.1  Expresiones
+
+### 1.2 Procedimientos y los Procesos que Generan
+
+### 1.3 Formulación de Abstracciones con Procedimientos de Orden Superior
+
+
+## ---Traducción pendiente---
+
 
 [^1]: El Manual del programador de Lisp 1 apareció en 1960, y el Manual del programador de Lisp 1.5 (McCarthy 1965) se publicó en 1962. La primera etapa de Lisp es descrito en McCarthy 1978.
 
