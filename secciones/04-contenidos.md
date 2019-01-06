@@ -9,8 +9,8 @@
 * Agradecimientos
 
 * **[1. Construyendo Abstracciones con Procedimientos](./09-capitulo-1.md#%20Capítulo%201)**
-  * 1.1. *[Los Elementos de la Programación](./09-capitulo-1.md#12-procedimientos-y-los-procesos-que-generan)*
-    * 1.1.1. [Expresiones](./09-capitulo-1.md#111-expresiones)
+  * 1.1. *[Los Elementos de la Programación](./09-capitulo-1.md#11-procedimientos-y-los-procesos-que-generan)*
+    * 1.1.1. [Expresiones](./09-capitulo-1.md#11-los-elementos-de-la-programaci%C3%B3n)
     * 1.1.2. Nombrado y el Entorno
     * 1.1.3. Evaluando Combinaciones
     * 1.1.4. Procedimientos Compuestos
@@ -18,14 +18,14 @@
     * 1.1.6. Expresiones Condicionales y Predicados
     * 1.1.7. Ejemplo: Raíces Cuadradas por el Método de Newton
     * 1.1.8. Procedimientos como Abstracciones de Caja Negra
-  * 1.2. *[Procedimientos y los Procesos que Generan](./09-capitulo-1.md###1.2%20Procedimientos%20y%20los%20Procesos%20que%20Generan)*
+  * 1.2. *[Procedimientos y los Procesos que Generan](./09-capitulo-1.md#12-procedimientos-y-los-procesos-que-generan)*
     * 1.2.1. Recursión e Iteración Lineales
     * 1.2.2. Recursión de Arbol
     * 1.2.3. Ordenes de Crecimiento
     * 1.2.4. Exponenciación
     * 1.2.5. Máximos Comunes Divisores
     * 1.2.6. Ejemplo: Evaluando por Primalidad
-  * 1.3. *[Formulación de Abstracciones con Procedimientos de Orden Superior](./09-capitulo-1.md###1.3%20Formulación%20de%20Abstracciones%20con%20Procedimientos%20de%20Orden%20Superior)*
+  * 1.3. *[Formulación de Abstracciones con Procedimientos de Orden Superior](./09-capitulo-1.md#13-formulaci%C3%B3n-de-abstracciones-con-procedimientos-de-orden-superior)*
     * 1.3.1. Procedimientos como Argumentos
     * 1.3.2. Construcción de Procedimientos usando Lambda
     * 1.3.3. Procedimientos como Métodos Generales
