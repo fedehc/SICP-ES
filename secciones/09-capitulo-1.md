@@ -6,7 +6,7 @@
 >
 > **John Locke**, *Un ensayo sobre la comprensión humana* (1690)
 
-Estamos a punto de estudiar la idea de un proceso computacional. Los Procesos Computacionales son seres abstractos que habitan en las computadoras. A medida que evolucionan, los procesos manipulan otras cosas abstractas llamadas datos. La evolución de un proceso está dirigida por un patrón de reglas llamado programa. La gente crea programas para dirigir procesos. En efecto, conjuramos los espíritus de la computadora con nuestros hechizos.
+Estamos a punto de estudiar la idea de un proceso computacional. Los procesos computacionales son seres abstractos que habitan en las computadoras. A medida que evolucionan, los procesos manipulan otras cosas abstractas llamadas datos. La evolución de un proceso está dirigida por un patrón de reglas llamado programa. La gente crea programas para dirigir procesos. En efecto, conjuramos los espíritus de la computadora con nuestros hechizos.
 
 Estamos a punto de estudiar la idea de un proceso computacional. Los procesos computacionales son seres abstractos que habitan en las computadoras. A medida que evolucionan, los procesos manipulan otras cosas abstractas llamadas datos. La evolución de un proceso está dirigida por un patrón de reglas llamado programa. La gente crea programas para dirigir procesos. En efecto, conjuramos los espíritus de la computadora con nuestros hechizos.
 
@@ -48,6 +48,65 @@ En este capítulo sólo trataremos con datos numéricos simples para que podamos
 
 
 #### 1.1.1 Expresiones
+
+Una manera fácil de empezar a programar es examinar algunas interacciones típicas con un intérprete para el dialecto Scheme de Lisp. Imagínese que se encuentra sentado en una terminal de computadora. Usted escribe una expresión, y el intérprete responde mostrando el resultado de su evaluación de esa expresión.
+
+Un tipo de expresión primitiva que uno podría escribir es un número. (más precisamente, la expresión que uno escriba consiste en los numerales que representan el número en base 10). Si usted presenta a Lisp con un número
+
+    486
+
+el intérprete responderá imprimiendo[^5]
+
+    486
+
+Las expresiones que representan números pueden combinarse con una expresión que represente un procedimiento primitivo (como + o \*) para formar una expresión compuesta que represente la aplicación del procedimiento a esos números. Por ejemplo:
+
+    (+ 137 349)
+    486
+    (- 1000 334)
+    666
+    (* 5 99)
+    495
+    (/ 10 5)
+    2
+    (+ 2.7 10)
+    12.7
+
+Expresiones como éstas, formadas por la delimitación de una lista de expresiones entre paréntesis con el fin de indicar la aplicación del procedimiento, son llamadas combinaciones. El elemento más a la izquierda de la lista se llama el operador, y los otros elementos se llaman operandos. El valor de una combinación se obtiene aplicando el procedimiento especificado por el operador a los argumentos que son los valores de los operandos.
+
+La convención de colocar el operador a la izquierda de los operandos se conoce como notación de prefijo (o *notación polaca*), y puede ser algo confuso al principio porque se aparta significativamente de la convención matemática habitual. Sin embargo, la notación de prefijo tiene varias ventajas. Una de ellas es que puede acomodar procedimientos que pueden tomar un número arbitrario de argumentos, como en los siguientes ejemplos:
+
+    (+ 21 35 12 7)
+    75
+
+    (* 25 4 12)
+    1200
+
+No puede surgir ninguna ambigüedad, ya que el operador es siempre el elemento más a la izquierda y toda la combinación está delimitada por los paréntesis.
+
+Una segunda ventaja de la notación de prefijo es que se extiende de una manera directa para permitir que las combinaciones sean anidadas, es decir, que tengan combinaciones cuyos elementos son en sí mismos combinaciones:
+
+    (+ (* 3 5) (- 10 6))
+    19
+
+No hay límite (en principio) a la profundidad de este tipo de anidamiento y a la complejidad general de las expresiones que el intérprete de Lisp puede evaluar. Somos nosotros los humanos los que nos confundimos por expresiones relativamente simples como
+
+    (+ (* 3 (+ (* 2 4) (+ 3 5))) (+ (- 10 7) 6))
+
+que el intérprete evaluaría fácilmente como 57. Podemos ayudarnos a nosotros mismos escribiendo esta expresión en la forma
+
+    (+ (* 3
+          (+ (* 2 4)
+             (+ 3 5)))
+       (+ (- 10 7)
+          6))
+
+siguiendo una convención de formato conocida como impresión-bonita (*pretty-printing* en inglés), en la que cada combinación larga se escribe de manera que los operandos estén alineados verticalmente. Las indentaciones resultantes muestran claramente la estructura de la expresión.[^6]
+
+Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión (en inglés *read-eval-print loop* o *REPL*). Observe en particular que no es necesario indicar explícitamente al intérprete que imprima el valor
+
+#### 1.1.2 Denominación y el entorno
+
 
 ### 1.2 Procedimientos y los Procesos que Generan
 

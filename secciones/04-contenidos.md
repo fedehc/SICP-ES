@@ -11,7 +11,7 @@
 * **[1. Construyendo Abstracciones con Procedimientos](./09-capitulo-1.md#%20Capítulo%201)**
   * 1.1. *[Los Elementos de la Programación](./09-capitulo-1.md#11-los-elementos-de-la-programaci%C3%B3n)*
     * 1.1.1. [Expresiones](./09-capitulo-1.md#111-expresiones)
-    * 1.1.2. Nombrado y el Entorno
+    * 1.1.2. [Denominación y el entorno](./09-capitulo-1.md#112-Denominación%20y%20el%20entorno)
     * 1.1.3. Evaluando Combinaciones
     * 1.1.4. Procedimientos Compuestos
     * 1.1.5. El Modelo de Sustitución para la Aplicación de Procedimiento
