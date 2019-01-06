@@ -47,7 +47,7 @@ En programación, nosotros lidiamos con dos tipos de elementos: procedimientos y
 En este capítulo sólo trataremos con datos numéricos simples para que podamos concentrarnos en las reglas para la construcción de procedimientos.[^4] En capítulos posteriores veremos que estas mismas reglas nos permiten construir procedimientos para manipular datos compuestos también.
 
 
-#### 1.1.1  Expresiones
+#### 1.1.1 Expresiones
 
 ### 1.2 Procedimientos y los Procesos que Generan
 
