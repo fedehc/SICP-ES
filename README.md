@@ -12,22 +12,21 @@ of Computer Programs" (SICP).
 
 ## Licencia 
 
-El libro está licenciado bajo [licencia internacional Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.es), por el MIT Press.
-
+El libro está licenciado bajo [licencia internacional Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.es) por el MIT Press.
+![Imagen CC](https://licensebuttons.net/l/by-sa/4.0/88x31.png)
 
 ## Fuente
 
-Todo el material que iré traduciendo se realizará a partir de la versión online en inglés del [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html), dispuesto voluntariamente por sus autores.
+Todo el material que iré traduciendo se realizará a partir de la versión online del [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html), dispuesto voluntariamente por sus autores.
 
 
 ## Motivos para la traducción
 
-Mi propósito general es el de facilitar el acceso al libro a todos aquellos que no sepan inglés pero que aún así sientan interés por leer el material. Por otra parte, personalmente al hacer este trabajo siento que obtengo un motivo más para repasar más detenidamente el contenido del mismo, ya que al traducir párrafo por párrafo se requiere de una lectura atenta.
+Mi propósito general es el de facilitar el acceso al libro a todos aquellos que no sepan inglés pero que aún así sientan interés por leer el material. Por otra parte, personalmente al hacer este trabajo siento que obtengo un motivo más para repasar más detenidamente el contenido del mismo, ya que al traducir párrafo por párrafo se requiere de una lectura atenta del material.
 
-Antes de que alguien se asuste, aclaro que el libro es 100% claro en sus explicaciones. Pero los conceptos a veces requieren de una segunda o tercera lectura para terminar de asimilarlos. Y cada tanto es necesario desempolvar o repasar algunos conocimientos de matemáticas en algún que otro ejercicio o ejemplo. Y en lo que respecta a los ejercicios mismos, varios resultan desafiantes pero no por ello menos entretenidos. En resumen, nada que nadie pueda lograr con un poco de voluntad.
+El libro es 100% claro en sus explicaciones. Pero algunos conceptos a veces requieren de una segunda o tercera lectura para terminar de asimilarlos. Y cada tanto es necesario desempolvar o repasar algunos conocimientos de matemáticas con algún que otro ejercicio o ejemplo. Y en lo que respecta a los ejercicios mismos, varios resultan desafiantes pero entretenidos.
 
-Debo comentar que no soy traductor profesional, ni programador con muchos años de experiencia (de hecho, al momento de redactar esto sigo siendo un completo novato) y menos aún soy un redactor profesional. Más aún: no soy siquiera el primero en intentar traducir esta obra. Pero al menos tengo la esperanza de ser uno de esos pocos en lograr traducirlo completamente al español (tal vez haya autores o alguna comunidad por internet abocada a la traducción de este libro, pero de momento desconozco). En cualquier caso, solo busco traducir el mismo lo mejor que pueda, en un castellano lo más neutro posible. Cualquier corrección o aporte por parte de gente más calificada o interesada es desde ya más que bienvenido.
-
+Debo comentar que no soy traductor profesional, ni programador con muchos años de experiencia (al momento de redactar esto sigo siendo un completo novato) y menos aún soy un redactor profesional. Más aún: no soy siquiera el primero en intentar traducir esta obra, pero al menos tengo la esperanza de lograr traducirlo completamente al español (tal vez haya autores o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco). En cualquier caso, solo busco traducirlo lo mejor que pueda, en un castellano lo más neutro posible. Cualquier corrección o aporte por parte de gente más calificada o interesada es desde ya bienvenido, aunque no garantizo respuestas rápidas y me reservo el derecho a tomar aquellos cambios que juzgue conveniente o pertinentes.
 
 ## Aclaración
 
