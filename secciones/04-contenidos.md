@@ -1,12 +1,12 @@
 ## Contenidos
 
-* Prólogo
+* [Prólogo](./05-prologo.md)
 
-* Prefacio a la Segunda Edición
+* [Prefacio a la Segunda Edición](./06-prefacio-2da-edicion.md)
 
-* Prefacio a la Primera Edición
+* [Prefacio a la Primera Edición](./07-prefacio-1ra-edicion.md)
 
-* Agradecimientos
+* [Agradecimientos](./08-agradecimientos.md)
 
 * **[1. Construyendo Abstracciones con Procedimientos](./09-capitulo-1.md#%20Capítulo%201)**
   * 1.1. *[Los Elementos de la Programación](./09-capitulo-1.md#11-los-elementos-de-la-programaci%C3%B3n)*
@@ -65,8 +65,8 @@
 ### ---Traducción pendiente---
 
 
-* Referencias
+* [Referencias](./14-referencias.md)
 
-* Lista de Ejercicios
+* [Lista de Ejercicios](./15-lista-de-ejercicios.md)
 
-* Indice
+* [Indice](./16-indice.md)
