@@ -28,13 +28,13 @@ Lograr traducir el libro completo para que pueda ser leído online o descargado 
 
 ## Motivos para la traducción
 
-Mi propósito general es el de facilitar el acceso al libro a todos aquellos que no sepan inglés pero que aún así sientan interés por leer el material. Por otra parte, personalmente al hacer este trabajo siento que obtengo un motivo más para repasar más detenidamente el contenido del mismo, ya que al traducir párrafo por párrafo se requiere de una lectura atenta del material.
+Mi propósito general es el de facilitar el acceso al libro a todos aquellos que no sepan inglés pero que aún así sientan gran interés por leer la obra. Por otra parte, personalmente al hacer este trabajo siento que obtengo un motivo más para repasar más detenidamente el contenido del mismo, ya que al traducir párrafo por párrafo se requiere de una lectura atenta del material.
 
 El libro es 100% claro en sus explicaciones. Pero algunos conceptos a veces requieren de una segunda o tercera lectura para terminar de asimilarlos. Y cada tanto es necesario desempolvar algunos conocimientos de matemáticas con algún que otro ejercicio o ejemplo. Y en lo que respecta a los ejercicios mismos, varios resultan desafiantes pero entretenidos.
 
-Debo comentar que no soy traductor profesional, ni programador con muchos años de experiencia (al momento de redactar esto sigo siendo un completo novato) y menos aún soy un redactor profesional. Más aún: no soy siquiera el primero en intentar traducir esta obra, pero al menos tengo la esperanza de lograr traducirlo completamente al español con auxilio del traductor online [DeepL](https://www.deepl.com/translator). 
+Debo comentar que no soy traductor profesional, ni programador con muchos años de experiencia (al momento de redactar esto sigo siendo un completo novato) y menos aún soy un redactor profesional. Más aún: no soy siquiera el primero en intentar traducir esta obra, pero al menos tengo la esperanza de lograr traducirlo completamente al español con auxilio del traductor online [DeepL](https://www.deepl.com/translator), que me facilita la tarea enormemente.
 
-Tal vez haya autores o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco. Y en cualquier caso, solo busco traducirlo lo mejor que pueda, en un castellano lo más neutro que sea posible. Cualquier corrección o aporte por parte de gente más calificada o interesada es desde ya bienvenido, aunque desde ya no garantizo respuestas rápidas y me reservo el derecho a tomar aquellos cambios que juzgue conveniente o pertinentes.
+Tal vez haya autores o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco. Como sea, solo busco traducirlo lo mejor que pueda, en un castellano lo más neutro posible. Cualquier corrección o aporte por parte de gente más calificada o interesada es desde ya bienvenido, aunque desde ya no garantizo respuestas rápidas y me reservo el derecho a tomar aquellos cambios que juzgue conveniente o pertinentes. Aquellos que no concuerden con esto son libres de hacer un fork y/o hacer su propia traducción.
 
 ## Aclaraciones
 
@@ -42,4 +42,4 @@ Tal vez haya autores o alguna comunidad por internet abocada a la traducción de
 
 2) A lo largo de los capítulos agregaré entre paréntesis las **NtD** (Notas del Traductor) cuando juzgue útil aclarar alguna terminología o concepto.
 
-3) Probablemente en un futuro no muy lejano incluya también contenidos que se encuentran aparte en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html). Sea tan solo la fe de erratas o hasta llegar incluso a una versión interactiva, tal como ha hecho [Li Xuanji](http://www.xuanji.li/isicp/index.html) en su propio sitio web. De momento son solo ideas y no los contemplo hasta que al menos no termine como mínimo con gran parte de la traducción del libro.
+3) Probablemente en un futuro no muy lejano incluya también contenidos que se encuentran aparte en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html). Sea tan solo la fe de erratas o hasta llegar incluso a una versión interactiva, tal como ha hecho [Li Xuanji](http://www.xuanji.li/isicp/index.html) en su propio sitio web. De momento son solo ideas y no los contemplo hasta no termine con gran parte de la traducción del libro.
