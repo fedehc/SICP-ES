@@ -70,3 +70,5 @@
 * [Lista de Ejercicios](./15-lista-de-ejercicios.md)
 
 * [Indice](./16-indice.md)
+
+* [Fe de Erratas](./17-fe-de-erratas.md)
