@@ -74,7 +74,7 @@ Las expresiones que representan números pueden combinarse con una expresión qu
 
 Expresiones como éstas, formadas por la delimitación de una lista de expresiones entre paréntesis con el fin de indicar la aplicación del procedimiento, son llamadas combinaciones. El elemento más a la izquierda de la lista se llama el operador, y los otros elementos se llaman operandos. El valor de una combinación se obtiene aplicando el procedimiento especificado por el operador a los argumentos que son los valores de los operandos.
 
-La convención de colocar el operador a la izquierda de los operandos se conoce como notación de prefijo (o *notación polaca*), y puede ser algo confuso al principio porque se aparta significativamente de la convención matemática habitual. Sin embargo, la notación de prefijo tiene varias ventajas. Una de ellas es que puede acomodar procedimientos que pueden tomar un número arbitrario de argumentos, como en los siguientes ejemplos:
+La convención de colocar el operador a la izquierda de los operandos se conoce como notación de prefijo (NdT: o también conocido como *notación polaca*), y puede ser algo confuso al principio porque se aparta significativamente de la convención matemática habitual. Sin embargo, la notación de prefijo tiene varias ventajas. Una de ellas es que puede acomodar procedimientos que pueden tomar un número arbitrario de argumentos, como en los siguientes ejemplos:
 
     (+ 21 35 12 7)
     75
@@ -101,9 +101,9 @@ que el intérprete evaluaría fácilmente como 57. Podemos ayudarnos a nosotros 
        (+ (- 10 7)
           6))
 
-siguiendo una convención de formato conocida como impresión-bonita (*pretty-printing* en inglés), en la que cada combinación larga se escribe de manera que los operandos estén alineados verticalmente. Las indentaciones resultantes muestran claramente la estructura de la expresión.[^6]
+siguiendo una convención de formato conocida como impresión-bonita (NdT: *pretty-printing* en inglés), en la que cada combinación larga se escribe de manera que los operandos estén alineados verticalmente. Las indentaciones resultantes muestran claramente la estructura de la expresión.[^6]
 
-Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión (en inglés *read-eval-print loop* o *REPL*). Observe en particular que no es necesario indicar explícitamente al intérprete que imprima el valor
+Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión (NdT: en inglés *read-eval-print loop*, o *REPL*). Observe en particular que no es necesario indicar explícitamente al intérprete que imprima el valor
 
 #### 1.1.2 Denominación y el entorno
 
