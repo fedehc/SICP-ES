@@ -34,12 +34,12 @@ El libro suele ser claro en sus explicaciones, aunque a veces se requieran de al
 
 Aclaro que soy traductor profesional, ni programador con años de experiencia (al momento de escribir sigo siendo un completo novato), ni siquiera redactor profesional. Más aún: no soy el primero en intentar traducir esta obra, pero al menos tengo la esperanza de ser uno de esos pocos en lograr completarlo. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo y paciencia puede hacerlo.
 
-Tal vez haya personas, grupos o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté en algún estado avanzado o lo haya completado. Como sea, por mi parte he decidido a traducirlo lo mejor que pueda, en un castellano lo más neutro posible. Cualquier corrección o aporte por parte de gente más calificada o interesada es desde ya bienvenido, aunque me reservo el derecho de tomar aquellos cambios que juzgue pertinentes. Aquellos que no concuerden con esto son libres de hacer su propio fork y/o hacer su propias traducciones.
+Tal vez haya personas, grupos o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté en algún estado avanzado o lo haya completado. Como sea, por mi parte he decidido a traducir este libro lo mejor que pueda, en un castellano lo más neutro posible. Cualquier corrección o aporte por parte de gente interesada o mejor calificada es desde ya bienvenido, aunque me reservo el derecho de tomar aquellos cambios que juzgue convenientes. Aquellos que no concuerden con esto son libres de hacer su propio fork y/o hacer su propias traducciones.
 
 ## Aclaraciones
 
 1) No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos que se señalan en la sección de [licencia](#licencia).
 
-2) A lo largo de los capítulos agregaré entre paréntesis las **NtD** (Notas del Traductor) cuando juzgue necesario aclarar algún concepto o terminología.
+2) A lo largo de los capítulos agregaré entre paréntesis las **NtD** (**N**otas **d**el **T**raductor) cuando juzgue necesario aclarar algún concepto o terminología.
 
 3) Probablemente en un futuro no muy lejano incluya también los contenidos que se encuentran por separado en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html). Incluso pienso algún día en crear una versión interactiva online, tal como ha hecho [Li Xuanji en su sitio web](http://www.xuanji.li/isicp/index.html) con la versión inglesa del libro. De momento igual son solo ideas y no contemplo en lo inmediato hacerlos hasta que al menos no termine con la mayor parte de la traducción.
