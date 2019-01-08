@@ -1,12 +1,12 @@
-* [Tapa](./00.md)
+* [Tapa](./00-tapa.md)
 
-* [Anteportada](./01.md)
+* [Anteportada](./01-anteportada.md)
 
-* [Contraportada](./02.md)
+* [Contraportada](./02-contraportada.md)
 
-* [Dedicatoria](./03.md)
+* [Dedicatoria](./03-dedicatoria.md)
 
-* [Contenidos](./04-contenidos.md))
+* [Contenidos](./04-contenidos.md)
 
 * [Prólogo](./05-prologo.md)
 
