@@ -40,6 +40,6 @@ Tal vez haya personas, grupos o alguna comunidad por internet abocada a la tradu
 
 1) No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos que se señalan en la sección de [licencia](#licencia).
 
-2) A lo largo de los capítulos agregaré entre paréntesis las **NtD** (**N**otas **d**el **T**raductor) cuando juzgue necesario aclarar algún concepto o terminología.
+2) A lo largo de los capítulos agregaré entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando juzgue necesario aclarar algo.
 
 3) Probablemente en un futuro no muy lejano incluya también los contenidos que se encuentran por separado en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html). Incluso pienso algún día en crear una versión interactiva online, tal como ha hecho [Li Xuanji en su sitio web](http://www.xuanji.li/isicp/index.html) con la versión inglesa del libro. De momento igual son solo ideas y no contemplo en lo inmediato hacerlos hasta que al menos no termine con la mayor parte de la traducción.
