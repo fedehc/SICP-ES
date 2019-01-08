@@ -1,0 +1,1 @@
+![Tapa](/secciones/imagenes/SICP-traducido.png)
