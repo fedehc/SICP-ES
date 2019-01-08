@@ -6,7 +6,7 @@
 
 * [Dedicatoria](./03-dedicatoria.md)
 
-* [Contenidos](./04-contenidos.md)
+### * [Contenidos](./04-contenidos.md)
 
 * [Prólogo](./05-prologo.md)
 

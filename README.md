@@ -23,23 +23,23 @@ Todo el material que iré traduciendo se realizará a partir de la versión onli
 
 ## Objetivo final
 
-Lograr traducir el libro completo para que pueda ser leído online o descargado en formato pdf, epub, mobi o cualquier otro.
+Lograr traducir el libro completo para que pueda ser leído online y/o descargado en formato pdf, epub, mobi o cualquier otro para el caso.
 
 
 ## Motivos para la traducción
 
-Mi propósito general es el de facilitar el acceso al libro a todos aquellos que no sepan inglés pero que aún así sientan gran interés por leer la obra. Por otra parte, personalmente al hacer este trabajo siento que obtengo un motivo más para repasar más detenidamente el contenido del mismo, ya que al traducir párrafo por párrafo se requiere de una lectura atenta del material.
+Mi propósito principal es acercar esta obra al mundo hispanohablante. Al hacer este trabajo de traducción también obtengo un motivo extra para repasar más detenidamente el contenido del mismo y sacarle más provecho.
 
-El libro es 100% claro en sus explicaciones. Pero algunos conceptos a veces requieren de una segunda o tercera lectura para terminar de asimilarlos. Y cada tanto es necesario desempolvar algunos conocimientos de matemáticas con algún que otro ejercicio o ejemplo. Y en lo que respecta a los ejercicios mismos, varios resultan desafiantes pero entretenidos.
+El libro suele ser claro en sus explicaciones, aunque a veces se requieran de algunas relecturas para terminar de asimilar conceptos. Probablemente para algunos necesario desempolvar algunos conocimientos de matemáticas con algún que otro ejercicio o ejemplos, que pueden resultan desafiantes y a veces entretenidos.
 
-Debo comentar que no soy traductor profesional, ni programador con muchos años de experiencia (al momento de redactar esto sigo siendo un completo novato) y menos aún soy un redactor profesional. Más aún: no soy siquiera el primero en intentar traducir esta obra, pero al menos tengo la esperanza de lograr traducirlo completamente al español con auxilio del traductor online [DeepL](https://www.deepl.com/translator), que me facilita enormemente la tarea.
+Aclaro que soy traductor profesional, ni programador con años de experiencia (al momento de escribir sigo siendo un completo novato) y menos aún soy un redactor profesional. Más aún: no soy siquiera el primero en intentar traducir esta obra hasta donde sé, pero al menos tengo la esperanza de ser uno de los pocos en lograr completarlo. Gracias a la ayuda del traductor online [DeepL](https://www.deepl.com/translator), que facilita enormemente la tarea, hoy por hoy cualquiera con tiempo y paciencia puede hacerlo.
 
-Tal vez haya autores o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco. Como sea, solo busco traducirlo lo mejor que pueda, en un castellano lo más neutro posible. Cualquier corrección o aporte por parte de gente más calificada o interesada es desde ya bienvenido, aunque desde ya no garantizo respuestas rápidas y me reservo el derecho a tomar aquellos cambios que juzgue convenientes o pertinentes. Aquellos que no concuerden con esto son libres de hacer su propio fork y/o hacer su propia traducción.
+Tal vez haya personas, grupos o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté en algun estado avanzado o lo haya completado. Como sea, por mi parte he decidido a traducirlo lo mejor que pueda, en un castellano lo más neutro posible. Cualquier corrección o aporte por parte de gente más calificada o interesada es desde ya bienvenido, aunque desde ya no garantizo respuestas rápidas y me reservo el derecho a tomar aquellos cambios que juzgue convenientes o pertinentes. Aquellos que no concuerden con esto son libres de hacer su propio fork y/o hacer su propias traducciones.
 
 ## Aclaraciones
 
 1) No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos que se señalan en la sección de [licencia](#licencia).
 
-2) A lo largo de los capítulos agregaré entre paréntesis las **NtD** (Notas del Traductor) cuando juzgue útil aclarar alguna terminología o concepto.
+2) A lo largo de los capítulos agregaré entre paréntesis las **NtD** (Notas del Traductor) cuando juzgue necesario aclarar algún concepto o terminología.
 
-3) Probablemente en un futuro no muy lejano incluya también los contenidos que se encuentran aparte en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html), incluso pienso en una versión interactiva online, tal como ha hecho [Li Xuanji](http://www.xuanji.li/isicp/index.html) con la versión inglesa en su sitio web. De momento son solo ideas y no los contemplo hasta no termine con gran parte de la traducción del libro.
+3) Probablemente en un futuro no muy lejano incluya también los contenidos que se encuentran por separado en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html). Incluso pienso algún día en crear una versión interactiva online, tal como ha hecho [Li Xuanji en su sitio web](http://www.xuanji.li/isicp/index.html) con la versión inglesa del libro. De momento igual son solo ideas y no contemplo en lo inmediato hacerlos hasta que al menos no termine con la mayor parte de la traducción.
