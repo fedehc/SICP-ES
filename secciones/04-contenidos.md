@@ -21,8 +21,8 @@
     * [1.1.1. Expresiones](./09-capitulo-1.md#111-expresiones)
     * [1.1.2. Los Nombres y el Entorno](./09-capitulo-1.md#112-Los-Nombres-y-el-Entorno)
     * [1.1.3. Evaluando Combinaciones](./09-capitulo-1.md#113-Evaluando-Combinaciones)
-    * 1.1.4. Procedimientos Compuestos
-    * 1.1.5. El Modelo de Sustitución para la Aplicación de Procedimientos
+    * [1.1.4. Procedimientos Compuestos](./09-capitulo-1.md#114-Procedimientos-Compuestos)
+    * [1.1.5. El Modelo de Sustitución para la Aplicación de Procedimientos](./09-capitulo-1.md#115-El-Modelo-de-Sustitución-para-la-Aplicación-de-Procedimientos)
     * 1.1.6. Expresiones Condicionales y Predicados
     * 1.1.7. Ejemplo: Raíces Cuadradas por el Método de Newton
     * 1.1.8. Procedimientos como Abstracciones de Caja Negra

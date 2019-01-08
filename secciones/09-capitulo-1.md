@@ -188,9 +188,91 @@ A continuación, observe que la aplicación repetida del primer paso nos lleva a
 
 Podemos considerar la segunda regla como un caso especial de la tercera estipulando que símbolos como `+` y `*` también están incluidos en el entorno global, y están asociados a las secuencias de instrucciones de máquina que son sus "valores". El punto clave a tener en cuenta es el papel del entorno en determinar el significado de los símbolos en las expresiones. En un lenguaje interactivo como Lisp, no tiene sentido hablar del valor de una expresión como `(+ x 1)` sin especificar ninguna información sobre el entorno que proporcione un significado para el símbolo `x` (o incluso para el símbolo `+`). Como veremos en el capítulo 3, la noción general de que el entorno proporciona un contexto en el que tiene lugar la evaluación desempeñará un papel importante en nuestra comprensión de la ejecución de los programas.
 
-Note que la regla de evaluación dada arriba no maneja definiciones. Por ejemplo, evaluar `(define x 3)` no se aplica a dos argumentos, uno de los cuales es el valor del símbolo **x** y el otro es **3**, ya que el propósito de la definición es precisamente asociar **x** con un valor (es decir, `(define x 3)` no es una combinación).
+Note que la regla de evaluación dada arriba no maneja definiciones. Por ejemplo, evaluar `(define x 3)` no se aplica a dos argumentos, uno de los cuales es el valor del símbolo `x` y el otro es `3`, ya que el propósito de la definición es precisamente asociar `x` con un valor (es decir, `(define x 3)` no es una combinación).
 
 Estas excepciones a la regla general de evaluación son llamadas *formas especiales*. `define` es el único ejemplo de una forma especial que hemos visto hasta ahora, pero nos encontraremos con otros en breve. Cada forma especial tiene su propia regla de evaluación. Los distintos tipos de expresiones (cada uno con su regla de evaluación asociada) constituyen la sintaxis del lenguaje de programación. En comparación con la mayoría de los otros lenguajes de programación, Lisp tiene una sintaxis muy simple; es decir, la regla de evaluación de expresiones puede ser descrita mediante una simple regla general junto con reglas especializadas para un pequeño número de formas especiales.[^11].
+
+
+### 1.1.4 Procedimientos Compuestos
+
+Hemos identificado en Lisp algunos de los elementos que deben aparecer en cualquier lenguaje de programación potente:
+
+* Los números y las operaciones aritméticas son datos y procedimientos primitivos.
+
+* El anidamiento de combinaciones proporciona un medio para combinar operaciones.
+
+* Las definiciones que asocian nombres con valores proporcionan un medio limitado de abstracción. 
+
+Ahora aprenderemos sobre las definiciones de procedimientos, una técnica de abstracción mucho más poderosa mediante la cual se puede dar un nombre a una operación compuesta y luego referirse a ella como una unidad.
+
+Comenzamos examinando cómo expresar la idea "al cuadrado ". Podríamos decir: "Para elevar al cuadrado algo, multiplíquelo por sí mismo". Esto se expresa en nuestro lenguaje como 
+
+```scheme
+(define (cuadrado x) (* x x))
+```
+
+Podemos entender esto de la siguiente manera:
+
+```
+(define (cuadrado           x)   (*            x   x))
+ ↑       ↑                  ↑     ↑            ↑   ↑                             
+ Para    elevar al cuadrado algo, multipicarlo por si mismo.
+```
+
+Tenemos aquí un procedimiento compuesto, al que se le ha dado el nombre `cuadrado`. El procedimiento representa la operación de multiplicar algo por sí mismo. La cosa a multiplicar se le da un nombre local, `x`, que juega el mismo papel que un pronombre juega en el lenguaje natural. La evaluación de la definición crea este procedimiento compuesto y lo asocia con el cuadrado del nombre.[^12]
+
+La forma general para la definición de un procedimiento es
+
+```scheme
+(define (<nombre> <parámetros formales>) <cuerpo>)
+```
+
+El `<nombre>` es un símbolo que se asocia con la definición del procedimiento en el entorno[^13] Los `<parámetros formales>` son los nombres utilizados dentro del cuerpo del procedimiento para referirse a los argumentos correspondientes del procedimiento. El `<cuerpo>` es una expresión que generará el valor de la aplicación del procedimiento cuando los parámetros formales sean reemplazados por los argumentos reales a los que se aplica el procedimiento.[^14] El `<nombre>` y los `<parámetros formales>` se agrupan entre paréntesis, justo como lo estarían si se tratara de una llamada real al procedimiento que se está definiendo.
+
+Una vez definido `cuadrado`, ahora podemos usarlo:
+
+```scheme
+(cuadrado 21)
+441
+
+(cuadrado (+ 2 5))
+49
+
+(cuadrado (cuadrado 3))
+81
+```
+También podemos usar `cuadrado` como un bloque de construcción en la definición de otros procedimientos. Por ejemplo, x² + y² puede expresarse como
+
+```scheme
+(+ (cuadrado x) (cuadrado y))
+```
+Podemos definir fácilmente un procedimiento `suma-de-cuadrados` que, dados dos números cualesquiera como argumentos, produce la suma de sus cuadrados:
+
+```scheme
+(define (suma-de-cuadrados x y)
+  (+ (cuadrado x) (cuadrado y)))
+
+(suma-de-cuadrados 3 4)
+25
+```
+
+Ahora podemos usar `suma-de-cuadrados` como un bloque de construcción en la construcción de otros procedimientos:
+
+```scheme
+(define (f a)
+  (suma-de-cuadrados (+ a 1) (* a 2)))
+
+(f 5)
+136
+```
+
+Los procedimientos compuestos son usados exactamente de la misma manera que los procedimientos primitivos. De hecho, uno no podría decir al mirar la definición de `suma-de-cuadrados` dada arriba si el cuadrado fue construido en el intérprete, como `+` y `*`, o definido como un procedimiento compuesto.
+
+
+#### 1.1.5 El Modelo de Sustitución para la Aplicación de Procedimientos
+
+
+
 
 ### 1.2 Procedimientos y los Procesos que Generan
 
