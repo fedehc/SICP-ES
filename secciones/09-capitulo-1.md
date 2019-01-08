@@ -8,8 +8,6 @@
 
 Estamos a punto de estudiar la idea de un proceso computacional. Los procesos computacionales son seres abstractos que habitan en las computadoras. A medida que evolucionan, los procesos manipulan otras cosas abstractas llamadas datos. La evolución de un proceso está dirigida por un patrón de reglas llamado programa. La gente crea programas para dirigir procesos. En efecto, conjuramos los espíritus de la computadora con nuestros hechizos.
 
-Estamos a punto de estudiar la idea de un proceso computacional. Los procesos computacionales son seres abstractos que habitan en las computadoras. A medida que evolucionan, los procesos manipulan otras cosas abstractas llamadas datos. La evolución de un proceso está dirigida por un patrón de reglas llamado programa. La gente crea programas para dirigir procesos. En efecto, conjuramos los espíritus de la computadora con nuestros hechizos.
-
 Un proceso computacional es ciertamente muy parecido al concepto que los hechiceros tienen de un espíritu. No puede ser visto ni tocado. No está compuesto de materia en absoluto. Sin embargo, es muy real. Puede realizar trabajo intelectual. Puede responder a preguntas. Puede influir en el mundo desembolsando dinero en un banco o controlando el brazo de un robot en una fábrica. Los programas que usamos para conjurar procesos son como los conjuros de un hechicero. Están cuidadosamente compuestos de expresiones simbólicas en lenguajes de programación arcanos y esotéricos que determinan las tareas que queremos que nuestros procesos realicen.
 
 Un proceso computacional, en una computadora que funciona correctamente, ejecuta programas con precisión y exactitud. Así, como el aprendiz del hechicero, los programadores principiantes deben aprender a entender y anticipar las consecuencias de sus conjuros. Incluso pequeños errores (usualmente llamados bugs o fallos) en los programas pueden tener consecuencias complejas e imprevistas.
@@ -53,60 +51,145 @@ Una manera fácil de empezar a programar es examinar algunas interacciones típi
 
 Un tipo de expresión primitiva que uno podría escribir es un número. (más precisamente, la expresión que uno escriba consiste en los numerales que representan el número en base 10). Si usted presenta a Lisp con un número
 
-    486
+```scheme
+486
+```
 
 el intérprete responderá imprimiendo[^5]
 
-    486
+```scheme
+486
+```
 
-Las expresiones que representan números pueden combinarse con una expresión que represente un procedimiento primitivo (como + o \*) para formar una expresión compuesta que represente la aplicación del procedimiento a esos números. Por ejemplo:
+Las expresiones que representan números pueden combinarse con una expresión que represente un procedimiento primitivo (como `+` o `*`) para formar una expresión compuesta que represente la aplicación del procedimiento a esos números. Por ejemplo:
 
-    (+ 137 349)
-    486
-    (- 1000 334)
-    666
-    (* 5 99)
-    495
-    (/ 10 5)
-    2
-    (+ 2.7 10)
-    12.7
+```scheme
+(+ 137 349)
+486
+(- 1000 334)
+666
+(* 5 99)
+495
+(/ 10 5)
+2
+(+ 2.7 10)
+12.7
+```
 
 Expresiones como éstas, formadas por la delimitación de una lista de expresiones entre paréntesis con el fin de indicar la aplicación del procedimiento, son llamadas combinaciones. El elemento más a la izquierda de la lista se llama el operador, y los otros elementos se llaman operandos. El valor de una combinación se obtiene aplicando el procedimiento especificado por el operador a los argumentos que son los valores de los operandos.
 
 La convención de colocar el operador a la izquierda de los operandos se conoce como notación de prefijo (NdT: o también conocido como *notación polaca*), y puede ser algo confuso al principio porque se aparta significativamente de la convención matemática habitual. Sin embargo, la notación de prefijo tiene varias ventajas. Una de ellas es que puede acomodar procedimientos que pueden tomar un número arbitrario de argumentos, como en los siguientes ejemplos:
 
-    (+ 21 35 12 7)
-    75
+```scheme
+(+ 21 35 12 7)
+75
 
-    (* 25 4 12)
-    1200
+(* 25 4 12)
+1200
+```
 
 No puede surgir ninguna ambigüedad, ya que el operador es siempre el elemento más a la izquierda y toda la combinación está delimitada por los paréntesis.
 
 Una segunda ventaja de la notación de prefijo es que se extiende de una manera directa para permitir que las combinaciones sean anidadas, es decir, que tengan combinaciones cuyos elementos son en sí mismos combinaciones:
 
-    (+ (* 3 5) (- 10 6))
-    19
+```scheme
+(+ (* 3 5) (- 10 6))
+19
+```
 
 No hay límite (en principio) a la profundidad de este tipo de anidamiento y a la complejidad general de las expresiones que el intérprete de Lisp puede evaluar. Somos nosotros los humanos los que nos confundimos por expresiones relativamente simples como
 
-    (+ (* 3 (+ (* 2 4) (+ 3 5))) (+ (- 10 7) 6))
+```scheme
+(+ (* 3 (+ (* 2 4) (+ 3 5))) (+ (- 10 7) 6))
+```
 
 que el intérprete evaluaría fácilmente como 57. Podemos ayudarnos a nosotros mismos escribiendo esta expresión en la forma
 
-    (+ (* 3
-          (+ (* 2 4)
-             (+ 3 5)))
-       (+ (- 10 7)
-          6))
+```scheme
+(+ (* 3
+      (+ (* 2 4)
+         (+ 3 5)))
+   (+ (- 10 7)
+      6))
+```
 
-siguiendo una convención de formato conocida como impresión-bonita (NdT: *pretty-printing* en inglés), en la que cada combinación larga se escribe de manera que los operandos estén alineados verticalmente. Las indentaciones resultantes muestran claramente la estructura de la expresión.[^6]
+siguiendo una convención de formato conocida como *pretty-printing* (NdT: traducido del inglés significaría *impresión-bonita*), en la que cada combinación larga se escribe de manera que los operandos estén alineados verticalmente. Las indentaciones resultantes muestran claramente la estructura de la expresión.[^6]
 
-Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión (NdT: en inglés *read-eval-print loop*, o *REPL*). Observe en particular que no es necesario indicar explícitamente al intérprete que imprima el valor
+Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión (NdT: en inglés *read-eval-print loop*, o más conocido como *REPL*). Observe en particular que no es necesario indicar explícitamente al intérprete que imprima el valor
 
-#### 1.1.2 Denominación y el entorno
 
+#### 1.1.2 Los Nombres y el Entorno
+
+Un aspecto crítico de un lenguaje de programación es la manera en que proporciona el uso de nombres para referirse a objetos computacionales. Decimos que el nombre identifica a una variable cuyo valor es el objeto.
+
+En el dialecto Scheme de Lisp, nombramos las cosas con *define*. Escribiendo
+
+```scheme
+(define tamaño 2)
+```
+
+hace que el intérprete asocie el valor 2 con el nombre `tamaño`.[^8] Una vez que el nombre `tamaño` ha sido asociado con el número 2, podemos referirnos al valor 2 por nombre:
+
+```scheme
+(tamaño)
+2
+(* 5 tamaño)
+10
+```
+Aquí hay más ejemplos del uso de `define` (NtD: `define` está expresado aquí en inglés, aunque en español se escriba igual):
+
+```scheme
+(define pi 3.14159)
+(define radio 10)
+(* pi (* radio radio))
+314.159
+(define circunferencia (* 2 pi radio))
+circunferencia
+62.8318
+```
+
+`define` es el medio de abstracción más simple de nuestro lenguaje, pues nos permite utilizar nombres simples para referirnos a los resultados de operaciones compuestas, como la circunferencia calculada anteriormente. En general, los objetos computacionales pueden tener estructuras muy complejas, y sería extremadamente incómodo tener que recordar y repetir sus detalles cada vez que queremos usarlos. En efecto, los programas complejos son construidos por la elaboración, paso a paso, de objetos computacionales de creciente complejidad. El intérprete hace que esta construcción paso a paso del programa sea muy conveniente porque las asociaciones nombre-objeto pueden ser creadas gradualmente en interacciones sucesivas. Esta característica fomenta el desarrollo incremental y el testeo de programas y es en gran medida responsable del hecho de que un programa Lisp normalmente se componga de un gran número de procedimientos relativamente sencillos.
+
+Debe quedar claro que la posibilidad de asociar valores con símbolos y luego recuperarlos significa que el intérprete debe mantener algún tipo de memoria que mantenga un registro de los pares nombre-objeto. Esta memoria se llama el entorno (más precisamente el entorno global, ya que veremos más adelante que un cálculo puede implicar varios entornos diferentes).[^9]
+
+
+#### 1.1.3 Evaluando Combinaciones
+
+Uno de nuestros objetivos en este capítulo es el de aislar cuestiones pensando en procedimientos. Como caso concreto, consideremos que, al evaluar las combinaciones, el propio intérprete está siguiendo un procedimiento.
+
+* Para evaluar una combinación, haga lo siguiente:
+
+1) Evaluar las subexpresiones de la combinación.
+
+2) Aplicar el procedimiento que es el valor de la subexpresión más a la izquierda (el operador) a los argumentos que son los valores de las otras subexpresiones (los operandos). 
+
+Incluso esta simple regla ilustra algunos puntos importantes sobre los procesos en general. Primero, observe que el primer paso dicta que para llevar a cabo el proceso de evaluación de una combinación, primero debemos realizar el proceso de evaluación de cada elemento de la combinación. Por lo tanto, la regla de evaluación es de naturaleza recursiva; esto es, incluye, como uno de sus pasos, la necesidad de invocar la regla misma.[^10]
+
+Observe cuán sucintamente se puede utilizar la idea de recursión para expresar lo que, en el caso de una combinación profundamente anidada, se vería de otro modo como un proceso bastante complicado. Por ejemplo, evaluar
+
+```scheme
+(* (+ 2 (* 4 6))
+   (+ 3 5 7))
+```
+
+requiere que la regla de evaluación se aplique a cuatro combinaciones diferentes. Podemos obtener una imagen de este proceso representando la combinación en forma de árbol, como se muestra en la figura 1.1. Cada combinación está representada por un nodo con ramas que corresponden al operador y a los operandos de la combinación que se derivan de él. Los nodos terminales (es decir, nodos sin ramas que deriven en ellos) representan operadores o números. Viendo la evaluación en términos del árbol, podemos imaginar que los valores de los operandos se filtran hacia arriba, empezando por los nodos terminales y luego combinándose a niveles cada vez más altos y altos. En general, veremos que la recursividad es una técnica muy poderosa para tratar con objetos jerárquicos en forma de árbol. De hecho, la forma "filtrar valores hacia arriba" de la regla de evaluación es un ejemplo de un tipo general de proceso conocido como *acumulación de árbol* (NtD: *tree accumulation* en inglés).
+
+![Figura 1.1](/secciones/imagenes/capitulo-1/figura-1-1.png)
+**Figura 1.1:**  Representación de un árbol, mostrando el valor de cada subcombinación.
+
+A continuación, observe que la aplicación repetida del primer paso nos lleva al punto en el que necesitamos evaluar, no combinaciones, sino expresiones primitivas como números, operadores incorporados, u otros nombres. Nos ocupamos de los casos primitivos estipulando que
+
+* los valores de los números son los números que nombran,
+
+* los valores de los operadores incorporados son las secuencias de instrucciones de máquina que realizan las operaciones correspondientes, y
+
+* los valores de otros nombres son los objetos asociados a esos nombres en el entorno.
+
+Podemos considerar la segunda regla como un caso especial de la tercera estipulando que símbolos como `+` y `*` también están incluidos en el entorno global, y están asociados a las secuencias de instrucciones de máquina que son sus "valores". El punto clave a tener en cuenta es el papel del entorno en determinar el significado de los símbolos en las expresiones. En un lenguaje interactivo como Lisp, no tiene sentido hablar del valor de una expresión como `(+ x 1)` sin especificar ninguna información sobre el entorno que proporcione un significado para el símbolo `x` (o incluso para el símbolo `+`). Como veremos en el capítulo 3, la noción general de que el entorno proporciona un contexto en el que tiene lugar la evaluación desempeñará un papel importante en nuestra comprensión de la ejecución de los programas.
+
+Note que la regla de evaluación dada arriba no maneja definiciones. Por ejemplo, evaluar `(define x 3)` no se aplica a dos argumentos, uno de los cuales es el valor del símbolo **x** y el otro es **3**, ya que el propósito de la definición es precisamente asociar **x** con un valor (es decir, `(define x 3)` no es una combinación).
+
+Estas excepciones a la regla general de evaluación son llamadas *formas especiales*. `define` es el único ejemplo de una forma especial que hemos visto hasta ahora, pero nos encontraremos con otros en breve. Cada forma especial tiene su propia regla de evaluación. Los distintos tipos de expresiones (cada uno con su regla de evaluación asociada) constituyen la sintaxis del lenguaje de programación. En comparación con la mayoría de los otros lenguajes de programación, Lisp tiene una sintaxis muy simple; es decir, la regla de evaluación de expresiones puede ser descrita mediante una simple regla general junto con reglas especializadas para un pequeño número de formas especiales.[^11].
 
 ### 1.2 Procedimientos y los Procesos que Generan
 
@@ -121,3 +204,19 @@ Incluso con expresiones complejas, el intérprete siempre opera en el mismo cicl
 [^2]: Los dos dialectos en los que se escribieron la mayor parte de los programas Lisp en la década de 1970 son MacLisp (Moon 1978; Pitman 1983), desarrollado en el Proyecto MAC del MIT, e Interlisp (Teitelman 1974), desarrollado en Bolt Beranek y Newman Inc. y en el Centro de Investigación Xerox Palo Alto. Portable Standard Lisp (Hearn 1969; Griss 1981) fue un dialecto de Lisp diseñado para ser fácilmente portable entre diferentes máquinas. MacLisp engendro una serie de subdialectos, como Franz Lisp, que fue desarrollado en la Universidad de California en Berkeley, y Zetalisp (Moon 1981), que estaba basado en un procesador de propósito especial diseñado en el Laboratorio de Inteligencia Artificial del MIT para que funcionara de manera muy eficiente. El dialecto Lisp utilizado en este libro, llamado Scheme (Steele 1975), fue inventado en 1975 por Guy Lewis Steele Jr. y Gerald Jay Sussman del Laboratorio de Inteligencia Artificial del MIT y posteriormente reimplementado para uso educativo en el MIT. Scheme se convirtió en un estándar IEEE en 1990 (IEEE 1990). El dialecto Common Lisp (Steele 1982, Steele 1990) fue desarrollado por la comunidad Lisp para combinar características de los primeros dialectos Lisp para crear un estándar industrial para Lisp. Common Lisp se convirtió en un estándar ANSI en 1994 (ANSI 1994).
 
 [^3]: Una de esas aplicaciones especiales fue un revolucionario cálculo de importancia científica, una integración del movimiento del Sistema Solar que extendió los resultados anteriores en casi dos órdenes de magnitud, y demostró que las dinámicas del Sistema Solar son caóticas. Este cálculo fue posible gracias a nuevos algoritmos de integración, un compilador de propósito especial y una computadora de propósito especial, todos implementados con la ayuda de herramientas de software escritas en Lisp (Abelson et al. 1992; Sussman y Wisdom 1992). 
+
+[^4]: La caracterización de los números como "datos simples" es un engaño descarado. De hecho, el tratamiento de los números es uno de los aspectos más difíciles y confusos de cualquier lenguaje de programación. Algunas cuestiones típicas implicadas son estas: Algunos sistemas informáticos distinguen los números enteros, como el 2, de los números reales, como el 2.71. ¿Es el número real 2.00 diferente del número entero 2? ¿Son las operaciones aritméticas utilizadas para los números enteros las mismas que las operaciones utilizadas para los números reales? ¿6 dividido por 2 produce 3, o 3.0? ¿Qué tan grande es el número que podemos representar? ¿Cuántos decimales de precisión podemos representar? ¿Es el rango de números enteros el mismo que el rango de números reales? Más allá de estas preguntas, por supuesto, subyace un conjunto de cuestiones relativas a los errores de redondeo y truncamiento, es decir, toda la ciencia del análisis numérico. Ya que nuestro enfoque en este libro está en el diseño de programas a gran escala en lugar de en técnicas numéricas, vamos a ignorar estos problemas. Los ejemplos numéricos de este capítulo mostrarán el comportamiento habitual de redondeo que se observa cuando se utilizan operaciones aritméticas que conservan un número limitado de decimales de precisión en operaciones no enteras.
+
+[^5]:  A lo largo de este libro, cuando queramos destacar la distinción entre la entrada introducida por el usuario y la respuesta mostrada por el intérprete, la mostraremos en letras cursivas.
+
+[^6]: Los sistemas Lisp típicamente proveen características para ayudar al usuario en el formateo de expresiones. Dos funciones especialmente útiles son una que automáticamente indenta a la posición correcta de pretty-print cada vez que se inicia una nueva línea y otra que resalta el paréntesis izquierdo correspondiente cada vez que se escribe un paréntesis derecho.
+
+[^7]: Lisp obedece a la convención de que toda expresión tiene un valor. Esta convención, junto con la antigua reputación de Lisp como un lenguaje ineficiente, es la fuente de la broma de Alan Perlis (parafraseando a Oscar Wilde) de que "los programadores de Lisp conocen el valor de todo menos el costo de nada".
+
+[^8]: En este libro, no mostramos la respuesta del intérprete a la evaluación de las definiciones, ya que esto depende en gran medida de la implementación.
+
+[^9]: El capítulo 3 mostrará que esta noción de entorno es crucial, tanto para comprender cómo trabaja el intérprete como también para implementar intérpretes.
+
+[^10]: Puede parecer extraño que la regla de evaluación diga, como parte del primer paso, que debemos evaluar el elemento que esté más a la izquierda de una combinación, ya que en este punto sólo puede ser un operador como `+` o `*` que represente un procedimiento primitivo incorporado como la suma o la multiplicación. Más adelante veremos que es útil poder trabajar con combinaciones cuyos operadores son a su vez expresiones compuestas.
+
+[^11]: Formas sintácticas especiales, que son una alternativa conveniente para estructuras superficiales de cosas que pueden ser escritas de manera más uniforme, son a veces llamadas *azúcar sintáctico* (NdT: *syntactic sugar* en inglés), para usar una frase acuñada por Peter Landin. En comparación con los usuarios de otros lenguajes, los programadores de Lisp, por regla general, están menos preocupados por las cuestiones de sintaxis (por contraste, examine cualquier manual de Pascal y observe cuánto de él está dedicado a las descripciones de la sintaxis). Este desdén por la sintaxis se debe en parte a la flexibilidad de Lisp, que hace que sea fácil cambiar la sintaxis superficial, y en parte a la observación de que muchas construcciones sintácticas "convenientes", que hacen que el lenguaje sea menos uniforme, terminan causando más problemas de los que valen la pena cuando los programas se vuelven grandes y complejos. En palabras de Alan Perlis, *"El azúcar sintáctico causa cáncer de punto y coma"*.
