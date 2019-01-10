@@ -271,7 +271,7 @@ Los procedimientos compuestos son usados exactamente de la misma manera que los 
 
 #### 1.1.5 El Modelo de Sustitución para la Aplicación de Procedimientos
 
-Para evaluar una combinación cuyo operador nombra a un procedimiento compuesto, el intérprete sigue el mismo proceso que para las combinaciones cuyos operadores nombran procedimientos primitivos, que hemos descripto en la sección 1.1.3. Es decir, el intérprete evalúa los elementos de la combinación y aplica el procedimiento (que es el valor del operador de la combinación) a los argumentos (que son los valores de los operandos de la combinación).
+Para evaluar una combinación cuyo operador nombra a un procedimiento compuesto, el intérprete sigue el mismo proceso que para las combinaciones cuyos operadores nombran procedimientos primitivos, que hemos descripto en la [sección 1.1.3](#113-Evaluando-Combinaciones). Es decir, el intérprete evalúa los elementos de la combinación y aplica el procedimiento (que es el valor del operador de la combinación) a los argumentos (que son los valores de los operandos de la combinación).
 
 Podemos asumir que el mecanismo para aplicar los procedimientos primitivos a los argumentos está incorporado en el intérprete. Para los procedimientos compuestos, el proceso de aplicación es el siguiente:
 
@@ -283,7 +283,7 @@ Para ilustrar este proceso, evaluemos la combinación
 (f 5)
 ```
 
-donde `f` es el procedimiento definido en la [sección 1.1.4](#1.1.4-Procedimientos-Compuestos). Comencemos por recuperar el cuerpo de `f`:
+donde `f` es el procedimiento definido en la [sección 1.1.4](#114-Procedimientos-Compuestos). Comencemos por recuperar el cuerpo de `f`:
 
 ```scheme
 (suma-de-cuadrados (+ a 1) (* a 2))
@@ -365,6 +365,188 @@ Lisp utiliza la evaluación de orden aplicativo, en parte debido a la eficiencia
 
 #### 1.1.6 Expresiones Condicionales y Predicados
 
+El poder expresivo de la clase de procedimientos que nosotros podemos definir hasta este punto es muy limitado, porque no tenemos forma de hacer pruebas y de realizar diferentes operaciones dependiendo del resultado de una prueba. Por ejemplo, no podemos definir un procedimiento que calcule el valor absoluto de un número comprobando si el número es positivo, negativo o cero y tomando diferentes acciones en los diferentes casos de acuerdo a la regla
+
+```
+      ⎧  x  si x > 0
+⎪x⎪ = ⎨  0  si x = 0
+      ⎩ -x  si x < 0
+```
+
+Esta construcción se denomina *análisis de casos*, y existe una forma especial en Lisp para anotar dicho análisis de casos. Se llama `cond` (que viene de "condicional"), y se usa de la siguiente manera:
+
+```scheme
+(define (abs x)
+  (cond ((> x 0) x)
+        ((= x 0) 0)
+        ((< x 0) (- x))))
+```
+
+La forma general de una expresión condicional es
+
+```scheme
+(cond (<p1> <e1>)
+      (<p2> <e2>)
+      ⋮
+      (<pn> <en>))
+```
+
+que consiste en el símbolo `cond` seguido de pares entre paréntesis de expresiones `(<p> <e>)` llamados *claúsulas*. La primera expresión en cada par es un predicado, es decir, una expresión cuyo valor se interpreta como verdadero o falso.[^17]
+
+Las expresiones condicionales se evalúan de la siguiente manera: el predicado `<p1>` se evalúa primero. Si su valor es falso, entonces se evalúa `<p2>`. Si el valor de `<p2>` también es falso, entonces se evalúa `<p3>`. Este proceso continúa hasta que se encuentra un predicado cuyo valor es verdadero, en cuyo caso el intérprete devuelve el valor correspondiente de la *expresión consecuente* `<e>` de la cláusula como valor de la expresión condicional. Si ninguno de los `<p>` es verdadero, el valor del `cond` es indefinido.
+
+La palabra *predicado* se utiliza para procedimientos que devuelven verdadero o falso, así como para expresiones que evalúen a verdadero o falso. El procedimiento del valor absoluto `abs` hace uso de los predicados primitivos `>`, `<`, y `=`.[^18] Estos toman dos números como argumentos y prueban si el primer número es, respectivamente, mayor que, menor que, o igual al segundo número, devolviendo verdadero o falso en consecuencia.
+
+Otra forma de escribir el procedimiento de valor absoluto es
+
+```scheme
+(define (abs x)
+  (cond ((< x 0) (- x))
+        (else x)))
+```
+
+que podría expresarse en inglés como "Si x es menor que cero, devolver - x; en caso contrario, devolver x." Otro" es un símbolo especial que puede ser usado en lugar de"`<p>` en la cláusula final de un `cond`. Esto hace que el `cond` devuelva como valor el valor del `<e>` correspondiente siempre que se hayan omitido todas las cláusulas anteriores. De hecho, cualquier expresión que siempre evalúe a un valor verdadero podría ser usado como `<p>` aquí.
+
+Aquí hay otra manera de escribir el procedimiento de valor absoluto:
+
+```scheme
+(define (abs x)
+  (if (< x 0)
+      (- x)
+      x))
+```
+
+Esto usa la forma especial `if`, un tipo restringido de condicional que puede ser usado cuando hay precisamente solo dos casos en el análisis de casos. La forma general de una expresión `if` es
+
+```scheme
+(if <predicado> <consecuente> <alternativa>)
+```
+
+Para evaluar una expresión " if ", el intérprete comienza por evaluar la parte del predicado de la expresión. Si el `<predicado>` se evalúa a un valor verdadero, el intérprete evalúa el  `<consecuente>` y devuelve su valor. De lo contrario, evalúa la `<alternativa>` y devuelve su valor.[^19]
+
+Además de predicados primitivos como `<`, `=`, y `>`, hay operaciones de composición lógica, que nos permiten construir predicados compuestos. Los tres más utilizados son estos:
+
+* `(and <e1> ... <en>)`
+
+    El intérprete evalúa las expresiones `<e>` una por una, en orden de izquierda a derecha. Si alguna `<e>` se evalúa como falsa, el valor de la expresión `and` es falso, y el resto de las `<e>` no se evaluará. Si todas las `<e>` evalúan a valores verdaderos, el valor de la expresión `and` será el valor de la última.
+
+* `(or <e1> ... <en>)`
+
+    El intérprete evalúa las expresiones `<e>` una por una, en orden de izquierda a derecha. Si cualquier `<e>` evalúa a un valor verdadero, ese valor se devuelve como el valor de la expresión `or`, y el resto de las `<e>` no se evaluarán. Si todas las `<e>` evalúan a falso, el valor de la expresión `or` es falso.
+
+* `(not <e>)`
+    El valor de una expresión `not` es verdadero cuando la expresión `<e>` se evalúa como falsa, de lo contrario es falsa.
+
+Note que `and` y `or` son formas especiales, no procedimientos, porque las subexpresiones no son necesariamente evaluadas. `Not` es un procedimiento ordinario.
+
+A modo de ejemplo de cómo se utilizan, la condición de que un número x esté en el rango 5 < x < 10 puede expresarse como
+
+```scheme
+(and (> x 5) (< x 10))
+```
+
+En otro ejemplo, podemos definir un predicado para probar si un número es mayor o igual a otro como
+
+```scheme
+(define (>= x y)
+  (or (> x y) (= x y)))
+```
+
+o alternativamente como
+
+
+```scheme
+(define (>= x y)
+  (not (< x y)))
+```
+
+**Ejercicio 1.1.** Abajo hay una secuencia de expresiones. ¿Cuál es el resultado obtenido por el intérprete en respuesta a cada expresión? Suponga que la secuencia debe evaluarse en el orden en que se presenta.
+
+```scheme
+10
+```
+```scheme
+(+ 5 3 4)
+```
+```scheme
+(- 9 1)
+```
+```scheme
+(/ 6 2)
+```
+```scheme
+(+ (* 2 4) (- 4 6))
+```
+```scheme
+(define a 3)
+```
+```scheme
+(define b (+ a 1))
+```
+```scheme
+(+ a b (* a b))
+```
+```scheme
+(= a b)
+```
+```scheme
+(if (and (> b a) (< b (* a b)))
+    b
+    a)
+```
+```scheme
+(cond ((= a 4) 6)
+      ((= b 4) (+ 6 7 a))
+      (else 25))
+```
+```scheme
+(+ 2 (if (> b a) b a))
+```
+```scheme
+(* (cond ((> a b) a)
+         ((< a b) b)
+         (else -1))
+   (+ a 1))
+```
+
+**Ejercicio 1.2.** Traduzca la siguiente expresión en forma de prefijo
+
+```
+5 + 4 + (2 - (3 - (6 + 4/5) ) )
+―――――――――――――――――――――――――――――――
+       3(6 - 2)(2 - 7)
+```
+
+**Ejercicio 1.3.** Defina un procedimiento que tome tres números como argumentos y devuelva la suma de los cuadrados de los dos números mayores.
+
+**Ejercicio 1.4.** Observe que nuestro modelo de evaluación permite combinaciones cuyos operadores son expresiones compuestas. Utilice esta observación para describir el comportamiento del siguiente procedimiento:
+
+```scheme
+(define (a-plus-abs-b a b)
+  ((if (> b 0) + -) a b))
+```
+
+**Ejercicio 1.5.** Ben Bitdiddle ha inventado una prueba para determinar si el intérprete al que se enfrenta hace uso de la evaluación de orden aplicativo o la evaluación de orden normal. Él define los dos procedimientos siguientes:
+
+```scheme
+(define (p) (p))
+
+(define (test x y)
+  (if (= x 0)
+      0
+      y))
+```
+Luego él evalúa la expresión
+
+```scheme
+(test 0 (p))
+```
+
+¿Qué comportamiento observará Ben con un intérprete que utiliza la evaluación de orden aplicativo? ¿Qué comportamiento observará con un intérprete que utiliza una evaluación de orden normal? Explique su respuesta (suponga que la regla de evaluación para el formulario especial es la misma, ya sea que el intérprete esté utilizando el orden normal o el orden de aplicación: la expresión predicada se evalúa primero, y el resultado determina si se debe evaluar la expresión consecuente o la expresión alternativa).
+
+
+#### 1.1.7 Ejemplo: Raíces cuadradas por el método de Newton
+
 
 
 
@@ -398,7 +580,7 @@ Lisp utiliza la evaluación de orden aplicativo, en parte debido a la eficiencia
 
 [^11]: Formas sintácticas especiales, que son una alternativa conveniente para estructuras superficiales de cosas que pueden ser escritas de manera más uniforme, son a veces llamadas *azúcar sintáctico* (NdT: *syntactic sugar* en inglés), para usar una frase acuñada por Peter Landin. En comparación con los usuarios de otros lenguajes, los programadores de Lisp, por regla general, están menos preocupados por las cuestiones de sintaxis (por contraste, examine cualquier manual de Pascal y observe cuánto de él está dedicado a las descripciones de la sintaxis). Este desdén por la sintaxis se debe en parte a la flexibilidad de Lisp, que hace que sea fácil cambiar la sintaxis superficial, y en parte a la observación de que muchas construcciones sintácticas "convenientes", que hacen que el lenguaje sea menos uniforme, terminan causando más problemas de los que valen la pena cuando los programas se vuelven grandes y complejos. En palabras de Alan Perlis, *"El azúcar sintáctico causa cáncer de punto y coma"*.
 
-[^12]: Observe que hay dos operaciones diferentes siendo combinadas aquí: estamos creando el procedimiento, y le estamos dando el nombre cuadrado. Es posible, de hecho importante, poder separar estas dos nociones: crear procedimientos sin nombrarlos, y dar nombres a procedimientos que ya han sido creados. Veremos cómo hacerlo en la sección 1.3.2.
+[^12]: Observe que hay dos operaciones diferentes siendo combinadas aquí: estamos creando el procedimiento, y le estamos dando el nombre cuadrado. Es posible, de hecho importante, poder separar estas dos nociones: crear procedimientos sin nombrarlos, y dar nombres a procedimientos que ya han sido creados. Veremos cómo hacerlo en la [sección 1.3.2](#132-).
 
 [^13]: A lo largo de este libro, describiremos la sintaxis general de las expresiones usando símbolos en cursiva delimitados por corchetes angulares -por ejemplo, *`<nombre>`*- para denotar las "posiciones" en la expresión a ser llenada cuando tal expresión es actualmente usada.
 
@@ -406,4 +588,4 @@ Lisp utiliza la evaluación de orden aplicativo, en parte debido a la eficiencia
 
 [^15]: A pesar de la simplicidad de la idea de sustitución, resulta sorprendentemente complicado dar una definición matemática rigurosa del proceso de sustitución.  El problema surge de la posibilidad de confusión entre los nombres utilizados para los parámetros formales de un procedimiento y los nombres (posiblemente idénticos) usados en las expresiones a los cuales el procedimiento puede ser aplicado. De hecho, hay una larga historia de definiciones erróneas de sustitución en la literatura de la lógica y la semántica de programación. Ver Stoy 1977 para una discusión cuidadosa de la sustitución.
 
-[^16]: En el capítulo 3 introduciremos *stream processing* (NdT: una traducción libre al español sería "procesamiento de flujos"), que es una forma de manejar estructuras de datos aparentemente "infinitas" incorporando una forma limitada de evaluación de orden normal. En la [sección 4.2](12-capitulo-4.md/#4.2) modificaremos el intérprete del Scheme para producir una variante de orden normal del Scheme.
+[^16]: En el capítulo 3 introduciremos *stream processing* (NdT: una traducción libre al español sería "procesamiento de flujos"), que es una forma de manejar estructuras de datos aparentemente "infinitas" incorporando una forma limitada de evaluación de orden normal. En la [sección 4.2](./12-capitulo-4.md/#4.2-) modificaremos el intérprete del Scheme para producir una variante de orden normal del Scheme.
