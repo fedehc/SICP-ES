@@ -193,7 +193,7 @@ Note que la regla de evaluación arriba mencionada no maneja definiciones. Por e
 Estas excepciones a la regla general de evaluación son llamadas *formas especiales*. `define` es el único ejemplo de una forma especial que hemos visto hasta ahora, pero nos encontraremos con otros en breve. Cada forma especial tiene su propia regla de evaluación. Los distintos tipos de expresiones (cada uno con su regla de evaluación asociada) constituyen la sintaxis del lenguaje de programación. En comparación con la mayoría de los otros lenguajes de programación, Lisp tiene una sintaxis muy simple; es decir, la regla de evaluación de expresiones puede ser descrita mediante una simple regla general junto con reglas especializadas para un pequeño número de formas especiales.[^11].
 
 
-### 1.1.4 Procedimientos Compuestos
+#### 1.1.4 Procedimientos Compuestos
 
 Hemos identificado en Lisp algunos de los elementos que deben aparecer en cualquier lenguaje de programación potente:
 
@@ -271,6 +271,63 @@ Los procedimientos compuestos son usados exactamente de la misma manera que los 
 
 #### 1.1.5 El Modelo de Sustitución para la Aplicación de Procedimientos
 
+Para evaluar una combinación cuyo operador nombra a un procedimiento compuesto, el intérprete sigue el mismo proceso que para las combinaciones cuyos operadores nombran procedimientos primitivos, que hemos descripto en la sección 1.1.3. Es decir, el intérprete evalúa los elementos de la combinación y aplica el procedimiento (que es el valor del operador de la combinación) a los argumentos (que son los valores de los operandos de la combinación).
+
+Podemos asumir que el mecanismo para aplicar los procedimientos primitivos a los argumentos está incorporado en el intérprete. Para los procedimientos compuestos, el proceso de aplicación es el siguiente:
+
+* Para aplicar un procedimiento compuesto a los argumentos, evalúe el cuerpo del procedimiento con cada parámetro formal sustituido por el argumento correspondiente.
+
+Para ilustrar este proceso, evaluemos la combinación
+
+```scheme
+(f 5)
+```
+
+donde `f` es el procedimiento definido en la [sección 1.1.4](#-1.1.4-Procedimientos-Compuestos). Comencemos por recuperar el cuerpo de `f`:
+
+```scheme
+(suma-de-cuadrados (+ a 1) (* a 2))
+```
+
+Luego reemplazamos el parámetro formal `a` por el argumento 5:
+
+```scheme
+(suma-de-cuadrados (+ 5 1) (* 5 2))
+```
+
+Por lo tanto, el problema se reduce a la evaluación de una combinación con dos operandos y un operador `suma-de-cuadrados`. Evaluar esta combinación implica tres subproblemas. Debemos evaluar al operador para conseguir que el procedimiento se aplique, y debemos evaluar a los operandos para conseguir los argumentos. Ahora `(+ 5 1)` produce 6 y `(* 5 2)` produce 10, por lo que debemos aplicar el procedimiento de `suma-de-cuadrados` a 6 y 10. Estos valores sustituyen a los parámetros formales `x` e `y` en el cuerpo de `suma-de-cuadrados`, reduciendo la expresión a
+
+
+```scheme
+(+ (cuadrado 6) (cuadrado 10))
+```
+
+Si usamos la definición de `cuadrado`, esto se reduce a
+
+```scheme
+(+ (* 6 6) (* 10 10))
+```
+
+que se reduce por multiplicación a
+
+```scheme
+(+ 36 100)
+```
+
+y finalmente a
+```scheme
+136
+```
+
+El proceso que acabamos de describir se denomina *modelo de sustitución* para la aplicación de procedimientos. Puede tomarse como un modelo que determina el "significado" de la aplicación del procedimiento, en la medida en que concierne a los procedimientos de este capítulo. Sin embargo, hay dos puntos que deben ser remarcados:
+
+* El propósito de la sustitución es ayudarnos a pensar en la aplicación del procedimiento, no para proporcionar una descripción de cómo funciona realmente el intérprete. Los intérpretes típicos no evalúan las aplicaciones de procedimientos manipulando el texto de un procedimiento para sustituir los valores de los parámetros formales. En la práctica, la "sustitución" se realiza utilizando un entorno local para los parámetros formales. Discutiremos esto más detalladamente en los capítulos 3 y 4 cuando examinemos la implementación de un intérprete en detalle.
+
+* A lo largo del curso de este libro, presentaremos una secuencia de modelos cada vez más elaborados de cómo trabajan los intérpretes, culminando con la implementación completa de un intérprete y compilador en el capítulo 5. El modelo de sustitución es sólo el primero de estos modelos, una forma de empezar a pensar formalmente sobre el proceso de evaluación. En general, al modelar fenómenos en ciencia e ingeniería, comenzamos con modelos simplificados e incompletos. A medida que examinamos las cosas en mayor detalle, estos modelos simples se vuelven inadecuados y deben ser reemplazados por modelos más refinados. El modelo de sustitución no es la excepción. En particular, cuando abordemos en el capítulo 3 el uso de procedimientos con "datos mutables", veremos que el modelo de sustitución se quiebra y debe ser reemplazado por un modelo más complicado de aplicación de procedimientos.[^15].
+
+##### Orden Aplicativo versus Orden Normal
+
+
 
 
 
@@ -309,3 +366,5 @@ Los procedimientos compuestos son usados exactamente de la misma manera que los 
 [^13]: A lo largo de este libro, describiremos la sintaxis general de las expresiones usando símbolos en cursiva delimitados por corchetes angulares -por ejemplo, *`<nombre>`*- para denotar las "posiciones" en la expresión a ser llenada cuando tal expresión es actualmente usada.
 
 [^14]: En términos más generales, el cuerpo del procedimiento puede ser una secuencia de expresiones. En este caso, el intérprete evalúa cada expresión de la secuencia y devuelve el valor de la expresión final como el valor de la aplicación del procedimiento.
+
+[^15]: A pesar de la simplicidad de la idea de sustitución, resulta sorprendentemente complicado dar una definición matemática rigurosa del proceso de sustitución.  El problema surge de la posibilidad de confusión entre los nombres utilizados para los parámetros formales de un procedimiento y los nombres (posiblemente idénticos) usados en las expresiones a los cuales el procedimiento puede ser aplicado. De hecho, hay una larga historia de definiciones erróneas de sustitución en la literatura de la lógica y la semántica de programación. Ver Stoy 1977 para una discusión cuidadosa de la sustitución.
