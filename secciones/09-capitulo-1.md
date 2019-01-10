@@ -283,7 +283,7 @@ Para ilustrar este proceso, evaluemos la combinación
 (f 5)
 ```
 
-donde `f` es el procedimiento definido en la [sección 1.1.4](#-1.1.4-Procedimientos-Compuestos). Comencemos por recuperar el cuerpo de `f`:
+donde `f` es el procedimiento definido en la [sección 1.1.4](#1.1.4-Procedimientos-Compuestos). Comencemos por recuperar el cuerpo de `f`:
 
 ```scheme
 (suma-de-cuadrados (+ a 1) (* a 2))
@@ -323,10 +323,47 @@ El proceso que acabamos de describir se denomina *modelo de sustitución* para l
 
 * El propósito de la sustitución es ayudarnos a pensar en la aplicación del procedimiento, no para proporcionar una descripción de cómo funciona realmente el intérprete. Los intérpretes típicos no evalúan las aplicaciones de procedimientos manipulando el texto de un procedimiento para sustituir los valores de los parámetros formales. En la práctica, la "sustitución" se realiza utilizando un entorno local para los parámetros formales. Discutiremos esto más detalladamente en los capítulos 3 y 4 cuando examinemos la implementación de un intérprete en detalle.
 
-* A lo largo del curso de este libro, presentaremos una secuencia de modelos cada vez más elaborados de cómo trabajan los intérpretes, culminando con la implementación completa de un intérprete y compilador en el capítulo 5. El modelo de sustitución es sólo el primero de estos modelos, una forma de empezar a pensar formalmente sobre el proceso de evaluación. En general, al modelar fenómenos en ciencia e ingeniería, comenzamos con modelos simplificados e incompletos. A medida que examinamos las cosas en mayor detalle, estos modelos simples se vuelven inadecuados y deben ser reemplazados por modelos más refinados. El modelo de sustitución no es la excepción. En particular, cuando abordemos en el capítulo 3 el uso de procedimientos con "datos mutables", veremos que el modelo de sustitución se quiebra y debe ser reemplazado por un modelo más complicado de aplicación de procedimientos.[^15].
+* A lo largo del curso de este libro, presentaremos una secuencia de modelos cada vez más elaborados de cómo trabajan los intérpretes, culminando con la implementación completa de un intérprete y compilador en el capítulo 5. El modelo de sustitución es sólo el primero de estos modelos, una forma de empezar a pensar formalmente sobre el proceso de evaluación. En general, al modelar fenómenos en ciencia e ingeniería, comenzamos con modelos simplificados e incompletos. A medida que examinamos las cosas en mayor detalle, estos modelos simples se vuelven inadecuados y deben ser reemplazados por modelos más refinados. El modelo de sustitución no es la excepción. En particular, cuando abordemos en el capítulo 3 el uso de procedimientos con "datos mutables", veremos que el modelo de sustitución se quiebra y debe ser reemplazado por un modelo más complicado de aplicación de procedimientos.[^15]
 
 ##### Orden Aplicativo versus Orden Normal
 
+De acuerdo con la descripción de evaluación dada en la [sección 1.1.3](#113-Evaluando-Combinaciones), el intérprete primero evalúa el operador y los operandos y luego aplica el procedimiento resultante a los argumentos resultantes. Esta no es la única manera de realizar una evaluación. Un modelo de evaluación alternativo no evaluaría los operandos hasta que se necesitaran sus valores. En lugar de ello, primero sustituiría los parámetros por expresiones de operandos hasta que obtenga una expresión que involucre sólo a operadores primitivos, y luego realizaría la evaluación. Si utilizamos este método, la evaluación de
+
+```scheme
+(f 5)
+```
+
+procedería de acuerdo a la secuencia de expansiones
+
+
+```scheme
+(suma-de-cuadrados (+ 5 1) (* 5 2))
+(+  (cuadrado (+ 5 1))   (cuadrado (* 5 2))
+(+  (* (+ 5 1) (+ 5 1))  (* (* 5 2) (* 5 2)))
+```
+
+seguido de las reducciones
+
+```scheme
+(+  (* 6 6)              (* 10 10))
+(+   36                   100)
+136
+```
+
+Esto da la misma respuesta que nuestro modelo de evaluación anterior, pero el proceso es diferente. En particular, las evaluaciones de `(+ 5 1)` y `(* 5 2)` se realizan aquí dos veces cada una, lo que corresponde a la reducción de la expresión
+
+```scheme
+(* x x)
+```
+
+con x reemplazado respectivamente por `(+ 5 1)` y `(* 5 2)`.
+
+Este método alternativo de evaluación de " expandir completamente y reducir después" se conoce como *evaluación de orden normal*, en contraste con el método de "evaluar los argumentos y luego aplicar " que el intérprete actualmente utiliza, que se denomina *evaluación de orden aplicativo*. Puede demostrarse que, para las aplicaciones de procedimientos que pueden modelarse utilizando la sustitución (incluyendo todos los procedimientos en los dos primeros capítulos de este libro) y que producen valores legítimos, la evaluación de orden normal y la de orden aplicativo producen el mismo valor (véase el [ejercicio 1.5](#Ej-1.5) para un ejemplo de un valor "ilegítimo" donde la evaluación de orden normal y la de orden aplicativo no dan el mismo resultado).
+
+Lisp utiliza la evaluación de orden aplicativo, en parte debido a la eficiencia adicional obtenida al evitar evaluaciones múltiples de expresiones como las ilustradas con (+ 5 1) y (* 5 2) anteriormente expuestas y, lo que es más importante, debido a que la evaluación de orden normal se vuelve mucho más complicada cuando dejamos el ámbito de los procedimientos que pueden ser modelados por sustitución. Por otro lado, la evaluación del orden normal puede ser una herramienta extremadamente valiosa, y vamos a investigar algunas de sus implicaciones en los capítulos 3 y 4.[^16]
+
+
+#### 1.1.6 Expresiones Condicionales y Predicados
 
 
 
@@ -368,3 +405,5 @@ El proceso que acabamos de describir se denomina *modelo de sustitución* para l
 [^14]: En términos más generales, el cuerpo del procedimiento puede ser una secuencia de expresiones. En este caso, el intérprete evalúa cada expresión de la secuencia y devuelve el valor de la expresión final como el valor de la aplicación del procedimiento.
 
 [^15]: A pesar de la simplicidad de la idea de sustitución, resulta sorprendentemente complicado dar una definición matemática rigurosa del proceso de sustitución.  El problema surge de la posibilidad de confusión entre los nombres utilizados para los parámetros formales de un procedimiento y los nombres (posiblemente idénticos) usados en las expresiones a los cuales el procedimiento puede ser aplicado. De hecho, hay una larga historia de definiciones erróneas de sustitución en la literatura de la lógica y la semántica de programación. Ver Stoy 1977 para una discusión cuidadosa de la sustitución.
+
+[^16]: En el capítulo 3 introduciremos *stream processing* (NdT: una traducción libre al español sería "procesamiento de flujos"), que es una forma de manejar estructuras de datos aparentemente "infinitas" incorporando una forma limitada de evaluación de orden normal. En la [sección 4.2](12-capitulo-4.md/#4.2) modificaremos el intérprete del Scheme para producir una variante de orden normal del Scheme.
