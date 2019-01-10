@@ -27,12 +27,12 @@ Lisp no fue el producto de un esfuerzo de diseño concertado. Al contrario, evol
 
 Debido a su carácter experimental y su énfasis en manipulación simbóloca, Lisp fue al principio muy ineficiente para los cálculos numéricos, al menos en comparación con Fortran. A lo largo de los años, sin embargo, se han desarrollado compiladores Lisp que traducen programas en código máquina que pueden realizar cálculos numéricos con una eficiencia razonable. Y para aplicaciones especiales, Lisp ha sido usado con gran efectividad.[^3] Aunque Lisp aún no ha superado su antigua reputación de ser ineficiente, Lisp se usa ahora en muchas aplicaciones donde la eficiencia no es la preocupación central. Por ejemplo, Lisp se ha convertido en el lenguaje preferido para los lenguajes de shell del sistemas operativos y para los lenguajes de extensión de los editores y para los sistemas de diseño asistido por computadora.
 
-Si Lisp no es un lenguaje convencional, ¿por qué lo usamos como marco para nuestra discusión de la *programación*? Porque el lenguaje posee características únicas que lo convierten en un excelente medio para estudiar importantes constructos de programación y estructuras de datos y para relacionarlos con las características lingüísticas que los soportan. El más significativo de estos rasgos es el hecho de que las descripciones de los procesos de Lisp, llamados procedimientos, pueden ser representados y manipulados como datos de Lisp. La importancia de esto es que existen poderosas técnicas de diseño de programas que se basan en la habilidad de desdibujar la distinción tradicional entre datos "pasivos" y procesos "activos". Como descubriremos, la flexibilidad de Lisp en el manejo de procedimientos como datos lo convierte en uno de los lenguajes más convenientes en existencia para explorar estas técnicas. La capacidad de representar procedimientos como datos también hace de Lisp un excelente lenguaje para escribir programas que deben manipular otros programas como datos, como los intérpretes y compiladores que soportan lenguajes de programación. Más allá de estas consideraciones, programar en Lisp es muy divertido.
+Si Lisp no es un lenguaje convencional, ¿por qué lo usamos como marco para nuestra discusión de la *programación*? Porque el lenguaje posee características únicas que lo convierten en un excelente medio para estudiar importantes constructos de programación y estructuras de datos y para relacionarlos con las características lingüísticas que los soportan. El más significativo de estos rasgos es el hecho de que las descripciones de los procesos de Lisp, llamados *procedimientos*, pueden ser representados y manipulados como datos de Lisp. La importancia de esto es que existen poderosas técnicas de diseño de programas que se basan en la habilidad de desdibujar la distinción tradicional entre datos "pasivos" y procesos "activos". Como descubriremos, la flexibilidad de Lisp en el manejo de procedimientos como datos lo convierte en uno de los lenguajes más convenientes en existencia para explorar estas técnicas. La capacidad de representar procedimientos como datos también hace de Lisp un excelente lenguaje para escribir programas que deben manipular otros programas como datos, como los intérpretes y compiladores que soportan lenguajes de programación. Más allá de estas consideraciones, programar en Lisp es muy divertido.
 
 
 ### 1.1 Los Elementos de la Programación
 
-Un poderoso lenguaje de programación es más que un medio para instruir a una computadora para que realice tareas. El lenguaje también sirve como marco dentro del cual organizamos nuestras ideas acerca de los procesos. Por lo tanto, cuando describimos un lenguaje, debemos prestar especial atención a los medios que el lenguaje proporciona para combinar ideas simples para formar ideas más complejas. Todo lenguaje potente tiene tres mecanismos para lograr esto:
+Un lenguaje de programación potente es más que un medio para instruir a una computadora para que realice tareas. El lenguaje también sirve como marco dentro del cual organizamos nuestras ideas acerca de los procesos. Por lo tanto, cuando describimos un lenguaje, debemos prestar especial atención a los medios que el lenguaje proporciona para combinar ideas simples para formar ideas más complejas. Todo lenguaje potente tiene tres mecanismos para lograr esto:
 
 * **expresiones primitivas**, que representan las entidades más simples que conciernen al lenguaje,
 
@@ -40,16 +40,16 @@ Un poderoso lenguaje de programación es más que un medio para instruir a una c
 
 * **medios de abstracción**, por el cual los elementos compuestos pueden ser nombrados y manipulados como unidades.
 
-En programación, nosotros lidiamos con dos tipos de elementos: procedimientos y datos (más adelante descubriremos que realmente no son tan distintos). Informalmente, los datos son "cosas" que queremos manipular, y los procedimientos son descripciones de las reglas para manipular los datos. Por lo tanto, cualquier lenguaje de programación potente debería ser capaz de describir datos y procedimientos primitivos y debería tener métodos para combinar y abstraer procedimientos y datos.
+En programación, nos ocupamos de dos tipos de elementos: procedimientos y datos (más adelante descubriremos que realmente no son tan distintos). Informalmente, los datos son "cosas" que queremos manipular, y los procedimientos son descripciones de las reglas para manipular los datos. Por lo tanto, cualquier lenguaje de programación potente debería ser capaz de describir datos y procedimientos primitivos y debería tener métodos para combinar y abstraer procedimientos y datos.
 
 En este capítulo sólo trataremos con datos numéricos simples para que podamos concentrarnos en las reglas para la construcción de procedimientos.[^4] En capítulos posteriores veremos que estas mismas reglas nos permitirán construir procedimientos para manipular también datos compuestos.
 
 
 #### 1.1.1 Expresiones
 
-Una manera fácil de empezar a programar es examinar algunas interacciones típicas con un intérprete para el dialecto Scheme de Lisp. Imagínese que se encuentra sentado en una terminal de computadora. Usted escribe una expresión, y el intérprete responde mostrando el resultado de su evaluación de esa expresión.
+Una manera fácil de empezar a programar es examinar algunas interacciones típicas con un intérprete para el dialecto Scheme de Lisp. Imagínese que se encuentra sentado en una terminal de computadora. Uno escribe una *expresión*, y el intérprete responde mostrando el resultado de su *evaluación* de esa expresión.
 
-Un tipo de expresión primitiva que uno podría escribir es un número. (más precisamente, la expresión que uno escriba consiste en los numerales que representan el número en base 10). Si usted presenta a Lisp con un número
+Un tipo de expresión primitiva que uno podría escribir es un número (para ser más precisos, la expresión que uno escriba consiste en las cifras que representan el número en base 10). Si le presentas a Lisp un número
 
 ```scheme
 486
@@ -76,9 +76,9 @@ Las expresiones que representan números pueden combinarse con una expresión qu
 12.7
 ```
 
-Expresiones como éstas, formadas por la delimitación de una lista de expresiones entre paréntesis con el fin de indicar la aplicación del procedimiento, son llamadas combinaciones. El elemento más a la izquierda de la lista se llama el operador, y los otros elementos se llaman operandos. El valor de una combinación se obtiene aplicando el procedimiento especificado por el operador a los argumentos que son los valores de los operandos.
+Expresiones como éstas, formadas por la delimitación de una lista de expresiones entre paréntesis con el fin de indicar la aplicación del procedimiento, son llamadas *combinaciones*. El elemento más a la izquierda de la lista se llama el *operador*, y los otros elementos se llaman *operandos*. El valor de una combinación se obtiene aplicando el procedimiento especificado por el operador a los argumentos que son los valores de los operandos.
 
-La convención de colocar el operador a la izquierda de los operandos se conoce como notación de prefijo (NdT: o también conocido como *notación polaca*), y puede ser algo confuso al principio porque se aparta significativamente de la convención matemática habitual. Sin embargo, la notación de prefijo tiene varias ventajas. Una de ellas es que puede acomodar procedimientos que pueden tomar un número arbitrario de argumentos, como en los siguientes ejemplos:
+La convención de colocar el operador a la izquierda de los operandos se conoce como *notación de prefijo* (NdT: o también conocido como *notación polaca*), y puede ser algo confuso al principio porque se aparta significativamente de la convención matemática habitual. Sin embargo, la notación de prefijo tiene varias ventajas. Una de ellas es que puede acomodar procedimientos que pueden tomar un número arbitrario de argumentos, como en los siguientes ejemplos:
 
 ```scheme
 (+ 21 35 12 7)
@@ -90,7 +90,7 @@ La convención de colocar el operador a la izquierda de los operandos se conoce 
 
 No puede surgir ninguna ambigüedad, ya que el operador es siempre el elemento más a la izquierda y toda la combinación está delimitada por los paréntesis.
 
-Una segunda ventaja de la notación de prefijo es que se extiende de una manera directa para permitir que las combinaciones sean anidadas, es decir, que tengan combinaciones cuyos elementos son en sí mismos combinaciones:
+Una segunda ventaja de la notación de prefijo es que se extiende de una manera directa para permitir que las combinaciones sean *anidadas*, es decir, que tengan combinaciones cuyos elementos son en sí mismos combinaciones:
 
 ```scheme
 (+ (* 3 5) (- 10 6))
@@ -103,7 +103,7 @@ No hay límite (en principio) a la profundidad de este tipo de anidamiento y a l
 (+ (* 3 (+ (* 2 4) (+ 3 5))) (+ (- 10 7) 6))
 ```
 
-que el intérprete evaluaría fácilmente como 57. Podemos ayudarnos a nosotros mismos escribiendo esta expresión en la forma
+que el intérprete evaluaría fácilmente como 57. Podemos ayudarnos escribiendo tal expresión en la forma
 
 ```scheme
 (+ (* 3
@@ -113,16 +113,16 @@ que el intérprete evaluaría fácilmente como 57. Podemos ayudarnos a nosotros 
       6))
 ```
 
-siguiendo una convención de formato conocida como *pretty-printing* (NdT: traducido del inglés significaría *impresión-bonita*), en la que cada combinación larga se escribe de manera que los operandos estén alineados verticalmente. Las indentaciones resultantes muestran claramente la estructura de la expresión.[^6]
+siguiendo una convención de formato conocida como *pretty-printing* (NdT: traducido sería *impresión-bonita*), en la que cada combinación larga se escribe de manera que los operandos estén alineados verticalmente. Las indentaciones resultantes muestran claramente la estructura de la expresión.[^6]
 
-Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión (NdT: en inglés *read-eval-print loop*, o más conocido como *REPL*). Observe en particular que no es necesario indicar explícitamente al intérprete que imprima el valor
+Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión (NdT: en inglés *read-eval-print loop*, o más conocido como *REPL*). Observe en particular que no es necesario indicar explícitamente al intérprete que imprima el valor de la expresión.[^7]
 
 
 #### 1.1.2 Los Nombres y el Entorno
 
-Un aspecto crítico de un lenguaje de programación es la manera en que proporciona el uso de nombres para referirse a objetos computacionales. Decimos que el nombre identifica a una variable cuyo valor es el objeto.
+Un aspecto crítico de un lenguaje de programación es la manera en que proporciona el uso de nombres para referirse a objetos computacionales. Decimos que el nombre identifica a una *variable* cuyo *valor* es el objeto.
 
-En el dialecto Scheme de Lisp, nombramos las cosas con *define*. Escribiendo
+En el dialecto Scheme de Lisp, nombramos las cosas con `define` (NtD: `define` está expresado en inglés, aunque en español se escriba igual). Escribiendo
 
 ```scheme
 (define tamaño 2)
@@ -136,7 +136,7 @@ hace que el intérprete asocie el valor 2 con el nombre `tamaño`.[^8] Una vez q
 (* 5 tamaño)
 10
 ```
-Aquí hay más ejemplos del uso de `define` (NtD: `define` está expresado aquí en inglés, aunque en español se escriba igual):
+Aquí hay más ejemplos del uso de `define`:
 
 ```scheme
 (define pi 3.14159)
@@ -148,14 +148,14 @@ circunferencia
 62.8318
 ```
 
-`define` es el medio de abstracción más simple de nuestro lenguaje, pues nos permite utilizar nombres simples para referirnos a los resultados de operaciones compuestas, como la circunferencia calculada anteriormente. En general, los objetos computacionales pueden tener estructuras muy complejas, y sería extremadamente incómodo tener que recordar y repetir sus detalles cada vez que queremos usarlos. En efecto, los programas complejos son construidos por la elaboración, paso a paso, de objetos computacionales de creciente complejidad. El intérprete hace que esta construcción paso a paso del programa sea muy conveniente porque las asociaciones nombre-objeto pueden ser creadas gradualmente en interacciones sucesivas. Esta característica fomenta el desarrollo incremental y el testeo de programas y es en gran medida responsable del hecho de que un programa Lisp normalmente se componga de un gran número de procedimientos relativamente sencillos.
+`define` es el medio de abstracción más simple de nuestro lenguaje, ya que nos permite utilizar nombres simples para referirnos a los resultados de operaciones compuestas, como la `circunferencia` calculada anteriormente. En general, los objetos computacionales pueden tener estructuras muy complejas, y sería extremadamente incómodo tener que recordar y repetir sus detalles cada vez que queremos usarlos. En efecto, los programas complejos se elaboran construyendo, paso a paso, objetos computacionales de complejidad creciente. El intérprete hace que esta construcción paso a paso del programa sea muy conveniente porque las asociaciones nombre-objeto pueden ser creadas gradualmente en interacciones sucesivas. Esta característica fomenta el desarrollo incremental y el testeo de programas y es en gran medida responsable del hecho de que un programa Lisp normalmente se componga de un gran número de procedimientos relativamente sencillos.
 
-Debe quedar claro que la posibilidad de asociar valores con símbolos y luego recuperarlos significa que el intérprete debe mantener algún tipo de memoria que mantenga un registro de los pares nombre-objeto. Esta memoria se llama el entorno (más precisamente el entorno global, ya que veremos más adelante que un cálculo puede implicar varios entornos diferentes).[^9]
+Debe quedar claro que la posibilidad de asociar valores con símbolos y luego recuperarlos significa que el intérprete debe mantener algún tipo de memoria que mantenga un registro de los pares nombre-objeto. Esta memoria se llama el *entorno* (más precisamente el *entorno global*, ya que veremos más adelante que un cálculo puede implicar varios entornos diferentes).[^9]
 
 
 #### 1.1.3 Evaluando Combinaciones
 
-Uno de nuestros objetivos en este capítulo es el de aislar cuestiones pensando en procedimientos. Como caso concreto, consideremos que, al evaluar las combinaciones, el propio intérprete está siguiendo un procedimiento.
+Uno de nuestros objetivos en este capítulo es aislar las cuestiones pensando en términos de procesos. Como caso concreto, consideremos que, al evaluar las combinaciones, el propio intérprete está siguiendo un procedimiento.
 
 * Para evaluar una combinación, haga lo siguiente:
 
@@ -163,7 +163,7 @@ Uno de nuestros objetivos en este capítulo es el de aislar cuestiones pensando 
 
 2) Aplicar el procedimiento que es el valor de la subexpresión más a la izquierda (el operador) a los argumentos que son los valores de las otras subexpresiones (los operandos). 
 
-Incluso esta simple regla ilustra algunos puntos importantes sobre los procesos en general. Primero, observe que el primer paso dicta que para llevar a cabo el proceso de evaluación de una combinación, primero debemos realizar el proceso de evaluación de cada elemento de la combinación. Por lo tanto, la regla de evaluación es de naturaleza recursiva; esto es, incluye, como uno de sus pasos, la necesidad de invocar la regla misma.[^10]
+Incluso esta simple regla ilustra algunos puntos importantes sobre los procesos en general. Primero, observe que el primer paso dicta que para llevar a cabo el proceso de evaluación de una combinación, primero debemos realizar el proceso de evaluación de cada elemento de la combinación. Por lo tanto, la regla de evaluación es de naturaleza *recursiva*; esto es, incluye, como uno de sus pasos, la necesidad de invocar la regla misma.[^10]
 
 Observe cuán sucintamente se puede utilizar la idea de recursión para expresar lo que, en el caso de una combinación profundamente anidada, se vería de otro modo como un proceso bastante complicado. Por ejemplo, evaluar
 
@@ -188,7 +188,7 @@ A continuación, observe que la aplicación repetida del primer paso nos lleva a
 
 Podemos considerar la segunda regla como un caso especial de la tercera estipulando que símbolos como `+` y `*` también están incluidos en el entorno global, y están asociados a las secuencias de instrucciones de máquina que son sus "valores". El punto clave a tener en cuenta es el papel del entorno en determinar el significado de los símbolos en las expresiones. En un lenguaje interactivo como Lisp, no tiene sentido hablar del valor de una expresión como `(+ x 1)` sin especificar ninguna información sobre el entorno que proporcione un significado para el símbolo `x` (o incluso para el símbolo `+`). Como veremos en el capítulo 3, la noción general de que el entorno proporciona un contexto en el que tiene lugar la evaluación desempeñará un papel importante en nuestra comprensión de la ejecución de los programas.
 
-Note que la regla de evaluación dada arriba no maneja definiciones. Por ejemplo, evaluar `(define x 3)` no se aplica a dos argumentos, uno de los cuales es el valor del símbolo `x` y el otro es `3`, ya que el propósito de la definición es precisamente asociar `x` con un valor (es decir, `(define x 3)` no es una combinación).
+Note que la regla de evaluación arriba mencionada no maneja definiciones. Por ejemplo, evaluar `(define x 3)` no se aplica a dos argumentos, uno de los cuales es el valor del símbolo `x` y el otro es `3`, ya que el propósito de la definición es precisamente asociar `x` con un valor (es decir, `(define x 3)` no es una combinación).
 
 Estas excepciones a la regla general de evaluación son llamadas *formas especiales*. `define` es el único ejemplo de una forma especial que hemos visto hasta ahora, pero nos encontraremos con otros en breve. Cada forma especial tiene su propia regla de evaluación. Los distintos tipos de expresiones (cada uno con su regla de evaluación asociada) constituyen la sintaxis del lenguaje de programación. En comparación con la mayoría de los otros lenguajes de programación, Lisp tiene una sintaxis muy simple; es decir, la regla de evaluación de expresiones puede ser descrita mediante una simple regla general junto con reglas especializadas para un pequeño número de formas especiales.[^11].
 
@@ -203,15 +203,15 @@ Hemos identificado en Lisp algunos de los elementos que deben aparecer en cualqu
 
 * Las definiciones que asocian nombres con valores proporcionan un medio limitado de abstracción. 
 
-Ahora aprenderemos sobre las definiciones de procedimientos, una técnica de abstracción mucho más poderosa mediante la cual se puede dar un nombre a una operación compuesta y luego referirse a ella como una unidad.
+Ahora aprenderemos sobre las *definiciones de procedimientos*, una técnica de abstracción mucho más poderosa mediante la cual se puede dar un nombre a una operación compuesta y luego referirse a ella como una unidad.
 
-Comenzamos examinando cómo expresar la idea "al cuadrado ". Podríamos decir: "Para elevar al cuadrado algo, multiplíquelo por sí mismo". Esto se expresa en nuestro lenguaje como 
+Comenzamos examinando cómo expresar la idea de "al cuadrado". Podríamos decir: "Para elevar al cuadrado algo, multiplíquelo por sí mismo". Esto se expresa en nuestro lenguaje como 
 
 ```scheme
 (define (cuadrado x) (* x x))
 ```
 
-Podemos entender esto de la siguiente manera:
+Podemos entender esto último de la siguiente manera:
 
 ```
 (define (cuadrado           x)   (*             x   x))
@@ -219,7 +219,7 @@ Podemos entender esto de la siguiente manera:
  Para    elevar al cuadrado algo, multiplicarlo por si mismo.
 ```
 
-Tenemos aquí un procedimiento compuesto, al que se le ha dado el nombre `cuadrado`. El procedimiento representa la operación de multiplicar algo por sí mismo. La cosa a multiplicar se le da un nombre local, `x`, que juega el mismo papel que un pronombre juega en el lenguaje natural. La evaluación de la definición crea este procedimiento compuesto y lo asocia con el cuadrado del nombre.[^12]
+Tenemos aquí un *procedimiento compuesto*, al que se le ha dado el nombre `cuadrado`. El procedimiento representa la operación de multiplicar algo por sí mismo. La cosa a multiplicar se le da un nombre local, `x`, que juega el mismo papel que un pronombre juega en el lenguaje natural. La evaluación de la definición crea este procedimiento compuesto y lo asocia con el cuadrado del nombre.[^12]
 
 La forma general para la definición de un procedimiento es
 
@@ -227,9 +227,9 @@ La forma general para la definición de un procedimiento es
 (define (<nombre> <parámetros formales>) <cuerpo>)
 ```
 
-El *`<nombre>`* es un símbolo que se asocia con la definición del procedimiento en el entorno[^13] Los *`<parámetros formales>`* son los nombres utilizados dentro del cuerpo del procedimiento para referirse a los argumentos correspondientes del procedimiento. El *`<cuerpo>`* es una expresión que generará el valor de la aplicación del procedimiento cuando los parámetros formales sean reemplazados por los argumentos reales a los que se aplica el procedimiento.[^14] El *`<nombre>`* y los *`<parámetros formales>`* se agrupan entre paréntesis, justo como lo estarían si se tratara de una llamada real al procedimiento que se está definiendo.
+El *`<nombre>`* es un símbolo que se asocia con la definición del procedimiento en el entorno.[^13] Los *`<parámetros formales>`* son los nombres utilizados dentro del cuerpo del procedimiento para referirse a los argumentos correspondientes del procedimiento. El *`<cuerpo>`* es una expresión que generará el valor de la aplicación del procedimiento cuando los parámetros formales sean reemplazados por los argumentos reales a los que se aplica el procedimiento.[^14] El *`<nombre>`* y los *`<parámetros formales>`* se agrupan entre paréntesis, justo como lo estarían si se tratara de una llamada real al procedimiento que se está definiendo.
 
-Una vez definido `cuadrado`, ahora podemos usarlo:
+Habiendo definido `cuadrado`, ahora podemos usarlo:
 
 ```scheme
 (cuadrado 21)
@@ -266,11 +266,10 @@ Ahora podemos usar `suma-de-cuadrados` como un bloque de construcción en la con
 136
 ```
 
-Los procedimientos compuestos son usados exactamente de la misma manera que los procedimientos primitivos. De hecho, uno no podría decir al mirar la definición de `suma-de-cuadrados` dada arriba si el cuadrado fue construido en el intérprete, como `+` y `*`, o definido como un procedimiento compuesto.
+Los procedimientos compuestos son usados exactamente de la misma manera que los procedimientos primitivos. De hecho, uno no podría decir al mirar la definición de `suma-de-cuadrados` dada arriba si `cuadrado` fue construido dentro del intérprete, como **+** y **\***, o definido como un procedimiento compuesto.
 
 
 #### 1.1.5 El Modelo de Sustitución para la Aplicación de Procedimientos
-
 
 
 
