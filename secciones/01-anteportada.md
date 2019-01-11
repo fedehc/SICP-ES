@@ -1,25 +1,26 @@
-# Estructura e Interpretación
-# de Programas Informáticos
+<h1>Estructura e Interpretación<br>
+de Programas Informáticos</h1>
 
 segunda edición
-
-
-
-
-
+<br>
+<br>
+<br>
+<br>
+<br>
 Harold Abelson y Gerald Jay Sussman
-con Julie Sussman
-
-prólogo de Alan J. Perlis
-
-
-
-
-
-
-
-
-MIT Press
-Cambridge, Massachusetts   Londres, Inglaterra
-Compañia editorial McGraw-Hill
-Nueva York   St. Louis   San Francisco   Montreal   Toronto
+con Julie Sussman  
+<br>
+prólogo de Alan J. Perlis  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+MIT Press<br>
+Cambridge, Massachusetts   Londres, Inglaterra<br>
+<br>
+Compañía editorial McGraw-Hill<br>
+Nueva York&nbsp;&nbsp;&nbsp;St. Louis&nbsp;&nbsp;&nbsp;San Francisco&nbsp;&nbsp;&nbsp;Montreal&nbsp;&nbsp;&nbsp;Toronto
