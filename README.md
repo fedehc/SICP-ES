@@ -21,20 +21,24 @@ El libro está licenciado bajo [licencia internacional Creative Commons Atribuci
 Todo el material que iré traduciendo se realizará a partir de la versión online del [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html), dispuesto voluntariamente por sus autores.
 
 
-## Objetivo final
+## Objetivos
 
-Lograr traducir el libro completo para que pueda ser leído online y/o descargado en formato pdf, epub, mobi o cualquier otro para el caso.
+
+Lograr traducir el libro completo para que pueda ser leído online y/o descargado en formato pdf, epub, mobi o cualquier otro formato conocido.
+
+Contemplo en un futuro no muy lejano incluir también algunos de los contenidos que se encuentran por separado en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html) y también en recrear una versión interactiva online, tal como ha hecho por ejemplo [Li Xuanji en su sitio web](http://www.xuanji.li/isicp/index.html) con la versión inglesa del libro. Aunque de momento tendrán que esperar hasta que al menos no finalice con el grueso de la traducción.
 
 
 ## Motivos para la traducción
 
-Mi propósito principal es acercar esta obra al mundo hispanohablante. Al hacer este trabajo de traducción también obtengo un motivo extra para repasar más detenidamente el contenido del mismo y sacarle más provecho.
+1) Acercar la obra a los hablantes de lengua hispana interesados en el libro;
+2) Poner en práctica mi inglés mientras realizo el trabajo de traducción;
+3) Leer con mayor detenimiento para sacarle el mayor provecho posible.
 
-El libro suele ser claro en sus explicaciones, aunque a veces se requieran de algunas relecturas para terminar de asimilar conceptos. Probablemente para algunos sea necesario desempolvar algunos conocimientos de matemáticas con determinados ejercicios o ejemplos, que pueden resultan desafiantes pero también entretenidos.
+Aclaro que soy traductor profesional, ni programador con años de experiencia, escritor o redactor experimentado. Además, ni siquiera soy el primero en buscar traducir esta obra, aunque al menos tengo la esperanza de ser uno de esos pocos (¿o el primero?) en lograr terminarlo. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede hacerlo. O al menos eso es lo que creo.
 
-Aclaro que soy traductor profesional, ni programador con años de experiencia (al momento de escribir sigo siendo un completo novato), ni siquiera redactor profesional. Más aún: no soy el primero en intentar traducir esta obra, pero al menos tengo la esperanza de ser uno de esos pocos en lograr completarlo. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo y paciencia puede hacerlo.
+Tal vez haya personas o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté en un estado avanzado o lo haya siquiera completado. Como sea, por mi parte he decidido a traducir este libro lo mejor que pueda, en un castellano lo más neutro y claro posible, libre de errores y fiel al original.
 
-Tal vez haya personas, grupos o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté en algún estado avanzado o lo haya completado. Como sea, por mi parte he decidido a traducir este libro lo mejor que pueda, en un castellano lo más neutro posible. Cualquier corrección o aporte por parte de gente interesada o mejor calificada es desde ya bienvenido, aunque me reservo el derecho de tomar aquellos cambios que juzgue convenientes. Aquellos que no concuerden con esto son libres de hacer su propio fork y/o hacer su propias traducciones.
 
 ## Aclaraciones
 
@@ -42,4 +46,4 @@ Tal vez haya personas, grupos o alguna comunidad por internet abocada a la tradu
 
 2) A lo largo de los capítulos agregaré entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando juzgue necesario aclarar algo.
 
-3) Probablemente en un futuro no muy lejano incluya también los contenidos que se encuentran por separado en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html). Incluso pienso algún día en crear una versión interactiva online, tal como ha hecho [Li Xuanji en su sitio web](http://www.xuanji.li/isicp/index.html) con la versión inglesa del libro. De momento igual son solo ideas y no contemplo en lo inmediato hacerlos hasta que al menos no termine con la mayor parte de la traducción.
+3) Cualquier corrección o aporte por parte de gente interesada o mejor calificada es desde ya bienvenido, aunque me reservo el derecho de tomar aquellos cambios que juzgue convenientes. Aquellos que no concuerden con esto son libres de hacer su propio fork y/o hacer su propias traducciones.
