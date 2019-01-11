@@ -35,15 +35,15 @@ Contemplo en un futuro no muy lejano incluir también algunos de los contenidos 
 2) Poner en práctica mi inglés mientras realizo el trabajo de traducción;
 3) Leer con mayor detenimiento para sacarle el mayor provecho posible.
 
-Aclaro que soy traductor profesional, ni programador con años de experiencia, escritor o redactor experimentado. Además, ni siquiera soy el primero en buscar traducir esta obra, aunque al menos tengo la esperanza de ser uno de esos pocos (¿o el primero?) en lograr terminarlo. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede hacerlo. O al menos eso es lo que creo.
+Aclaro que soy traductor profesional, ni programador con años de experiencia, escritor o redactor experimentado. Además, ni siquiera soy el primero en buscar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de esos pocos (¿o el primero?) en lograr terminarlo. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede hacerlo. O al menos eso es lo que creo.
 
 Tal vez haya personas o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté en un estado avanzado o lo haya siquiera completado. Como sea, por mi parte he decidido a traducir este libro lo mejor que pueda, en un castellano lo más neutro y claro posible, libre de errores y fiel al original.
 
 
 ## Aclaraciones
 
-1) No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos que se señalan en la sección de [licencia](#licencia).
+1) No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos de [licencia](#licencia).
 
-2) A lo largo de los capítulos agregaré entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando juzgue necesario aclarar algo.
+2) A lo largo de los capítulos agregaré entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando crea necesario aclarar términos en inglés. Algunas veces sucede de que estos no son bien conocidos o que no tienen incluso una traducción al castellano. Por esto mismo pienso que es necesario señalarlos de esta manera.
 
 3) Cualquier corrección o aporte por parte de gente interesada o mejor calificada es desde ya bienvenido, aunque me reservo el derecho de tomar aquellos cambios que juzgue convenientes. Aquellos que no concuerden con esto son libres de hacer su propio fork y/o hacer su propias traducciones.
