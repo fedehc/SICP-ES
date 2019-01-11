@@ -1,5 +1,5 @@
 <br><br>
-<h2>Contenidos</h2><br>
+<h1>Contenidos</h1><br>
 
 [Prólogo](./05-prologo.md)
 
@@ -63,9 +63,6 @@
 
 **[5. Computando con máquinas de registro](./13-capitulo-5.md#%20Capítulo%205)**
 
-### ---Traducción pendiente---
-
-
 [Referencias](./14-referencias.md)
 
 [Lista de Ejercicios](./15-lista-de-ejercicios.md)
@@ -73,3 +70,6 @@
 [Indice](./16-indice.md)
 
 [Fe de Erratas](./17-fe-de-erratas.md)
+
+
+### ---Traducción pendiente---
