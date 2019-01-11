@@ -1,3 +1,4 @@
+<br>
 <h1>Estructura e Interpretación<br>
 de Programas Informáticos</h1>
 
@@ -7,7 +8,8 @@ segunda edición
 <br>
 <br>
 <br>
-Harold Abelson y Gerald Jay Sussman
+<br>
+Harold Abelson y Gerald Jay Sussman<br>
 con Julie Sussman  
 <br>
 prólogo de Alan J. Perlis  
