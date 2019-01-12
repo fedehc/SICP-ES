@@ -611,7 +611,7 @@ También tenemos que explicar lo que entendemos por "suficientemente bueno". Lo 
 
 ```scheme
 (define (suficientemente-bueno? estimacion x)
-  (< (abs (- (raiz estimacion) x)) 0.001))
+  (< (abs (- (cuadrado estimacion) x)) 0.001))
 ```
 
 Finalmente, necesitamos una manera de poder comenzar. Por ejemplo, siempre podemos adivinar que la raíz cuadrada de cualquier número es 1:[^23]
@@ -663,6 +663,7 @@ Eva demuestra el programa para Alyssa:
 ```
 
 Entusiasmada, Alyssa usa el `nuevo-if` para reescribir el programa `raiz`:
+
 ```scheme
 (define (raiz-iter estimacion x)
   (nuevo-if (suficientemente-bueno? estimacion x)
@@ -685,6 +686,31 @@ x/y² + 2y
 
 #### 1.1.8 Procedimientos como abstracciones de caja negra
 
+La `raiz` es nuestro primer ejemplo de un proceso definido por un conjunto de procedimientos mutualmente definidos. Note que la definición de `raiz-iter` es recursiva; es decir, el procedimiento se define en términos de sí mismo. La idea de poder definir un procedimiento en términos de sí mismo puede ser perturbadora; puede parecer poco claro cómo podría tener sentido una definición tan "circular", y mucho menos aún especificar un proceso bien definido que debe ser llevado a cabo por una computadora. Esto se abordará con más detenimiento en la [sección 1.2](#12-). Pero primero consideremos algunos otros puntos importantes ilustrados por este caso `raiz`.
+
+Observe que el problema de computar las raíces cuadradas se divide naturalmente en una serie de subproblemas: cómo decir si una estimación es lo suficientemente buena, cómo mejorar una estimación, y así sucesivamente. Cada una de estas tareas se lleva a cabo mediante un procedimiento separado. Todo el programa `raiz` puede ser visto como un conjunto de procedimientos (mostrado en la figura 1.2) que refleja la descomposición del problema en subproblemas.
+
+![Figura 1.2](/secciones/imagenes/capitulo-1/figura-1-2.png)
+
+**Figura 1.2:** Descomposición procedural del programa `raiz`.
+
+La importancia de esta estrategia de descomposición no es simplemente que se esté dividiendo el programa en partes. Después de todo, podríamos tomar cualquier programa grande y dividirlo en partes: las primeras diez líneas, las próximas diez líneas, las siguientes diez líneas, y así sucesivamente. Más bien, es crucial que cada procedimiento lleve a cabo una tarea identificable que pueda ser utilizada como un módulo para definir otros procedimientos. Por ejemplo, cuando definimos el procedimiento `suficientemente-bueno?` en términos de `cuadrado`, podemos considerar el procedimiento `cuadrado` como una "caja negra". En ese momento no nos preocupa la forma en que el procedimiento calcula su resultado, sino el hecho de que calcule el cuadrado. Los detalles de cómo se calcula el cuadrado pueden ser suprimidos, para ser considerados en un momento posterior. De hecho, en lo que respecta al procedimiento `suficientemente-bueno?`, `cuadrado` no es un procedimiento, sino más bien una abstracción de un procedimiento, lo que se denomina *abstracción de procedimiento*. En este nivel de abstracción, cualquier procedimiento que calcule el cuadrado es igualmente bueno.
+
+Por lo tanto, considerando sólo los valores que devuelven, los dos procedimientos siguientes para obtener el cuadrado de un número deben ser indistinguibles. Cada uno toma un argumento numérico y produce el cuadrado de ese número como valor.[^25]
+
+```scheme
+(define (cuadrado x) (* x x))
+
+(define (cuadrado x) 
+  (exp (doble (log x))))
+
+(define (doble x) (+ x x))
+```
+
+Por lo tanto, una definición de procedimiento debería ser capaz de ocultar detalles. Los usuarios del procedimiento pueden no haber escrito el procedimiento ellos mismos, pero pueden haberlo obtenido de otro programador como una caja negra. Un usuario no necesita saber cómo se implementa el procedimiento para poder utilizarlo.
+
+
+##### Nombres locales
 
 
 
@@ -743,4 +769,4 @@ x/y² + 2y
 
 [^23]: Observe que expresamos nuestra estimación inicial como 1.0 en lugar de 1. Esto no haría ninguna diferencia en muchas implementaciones de Lisp. En el Scheme del MIT, sin embargo, se distingue entre números enteros exactos y valores decimales, y dividir dos números enteros produce un número racional en lugar de un decimal. Por ejemplo, dividir 10 por 6 produce 5/3, mientras que dividir 10.0 por 6.0 produce 1.666666666666666666666667 (aprenderemos a cómo implementar la aritmética sobre números racionales en la sección 2.1.1.). Si comenzamos con una estimación inicial de 1 en nuestro programa de raíz cuadrada, y `x` es un número entero exacto, todos los valores siguientes producidos por el cálculo de la raíz cuadrada serán números racionales en lugar de decimales. Las operaciones mixtas de números racionales y decimales siempre producen decimales, así que si se empieza con una estimación inicial de 1.0 fuerza a que todos los valores subsecuentes sean decimales.
 
-[^24]: Los lectores que estén preocupados por los problemas de eficiencia involucrados en el uso de llamadas de procedimiento para implementar la iteración deben tener en cuenta las observaciones sobre "tail recursion" (NdT: traducido libremente al español sería *recursividad de cola*) en la sección 1.2.1.
+[^24]: Los lectores que estén preocupados por los problemas de eficiencia involucrados en el uso de llamadas de procedimiento para implementar la iteración deben tener en cuenta las observaciones sobre "tail recursion" (NdT: traducido libremente al español sería *recursividad de cola*) en la [sección 1.2.1](#121-).
