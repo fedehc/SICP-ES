@@ -26,7 +26,7 @@ Todo el material que iré traduciendo se realizará a partir de la versión onli
 
 Lograr traducir el libro completo para que pueda ser leído online y/o descargado en formato pdf, epub, mobi o cualquier otro formato conocido.
 
-Contemplo en un futuro no muy lejano incluir también algunos de los contenidos que se encuentran por separado en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html) y también en recrear una versión interactiva online, tal como ha hecho por ejemplo [Li Xuanji en su sitio web](http://www.xuanji.li/isicp/index.html) con la versión inglesa del libro. Aunque de momento tendrán que esperar hasta que al menos no finalice con el grueso de la traducción.
+Contemplo en un futuro no muy lejano incluir también algunos de los contenidos que se encuentran por separado en el [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html) y también en recrear una versión interactiva online, tal como ha hecho por ejemplo [Li Xuanji en su sitio web](http://www.xuanji.li/isicp/index.html) con la versión inglesa del libro. Aunque de momento son solo ideas.
 
 
 ## Motivos para la traducción
@@ -35,9 +35,9 @@ Contemplo en un futuro no muy lejano incluir también algunos de los contenidos 
 2) Poner en práctica mi inglés mientras realizo el trabajo de traducción;
 3) Leer con mayor detenimiento para sacarle el mayor provecho posible.
 
-Aclaro que soy traductor profesional, ni programador con años de experiencia, escritor o redactor experimentado. Además, ni siquiera soy el primero en buscar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de esos pocos (¿o el primero?) en lograr terminarlo. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede hacerlo. O al menos eso es lo que creo.
+Aclaro que soy traductor profesional, ni programador con años de experiencia, escritor o redactor experimentado. Además, ni siquiera soy el primero en buscar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de esos pocos (¿o el primero?) en lograr terminarlo\*. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede hacerlo. O al menos eso es lo que creo.
 
-Tal vez haya personas o alguna comunidad por internet abocada a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté en un estado avanzado o lo haya siquiera completado. Como sea, por mi parte he decidido a traducir este libro lo mejor que pueda, en un castellano lo más neutro y claro posible, libre de errores y fiel al original.
+*\* Tal vez haya personas o alguna comunidad por internet abocada actualmente a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté siquiera en un estado avanzado, mucho menos completado. Como sea, por mi parte he decidido a traducir este libro lo mejor que pueda, en un castellano lo más claro posible, libre de errores y fiel al original.*
 
 
 ## Aclaraciones
