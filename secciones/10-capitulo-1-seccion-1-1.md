@@ -142,7 +142,7 @@ Observe cuán sucintamente se puede utilizar la idea de recursión para expresar
 
 requiere que la regla de evaluación se aplique a cuatro combinaciones diferentes. Podemos obtener una imagen de este proceso representando la combinación en forma de árbol, como se muestra en la figura 1.1. Cada combinación está representada por un nodo con ramas que corresponden al operador y a los operandos de la combinación que se derivan de él. Los nodos terminales (es decir, nodos sin ramas que deriven en ellos) representan operadores o números. Viendo la evaluación en términos del árbol, podemos imaginar que los valores de los operandos se filtran hacia arriba, empezando por los nodos terminales y luego combinándose a niveles cada vez más altos y altos. En general, veremos que la recursividad es una técnica muy poderosa para tratar con objetos jerárquicos en forma de árbol. De hecho, la forma "filtrar valores hacia arriba" de la regla de evaluación es un ejemplo de un tipo general de proceso conocido como *acumulación de árbol* (NtD: *tree accumulation* en inglés).
 
-![Figura 1.1](/imagenes/capitulo-1/figura-1-1.png)
+![Figura 1.1](./imagenes/capitulo-1/figura-1-1.png)
 
 **Figura 1.1:**  Representación de un árbol, mostrando el valor de cada subcombinación.
 
@@ -658,7 +658,7 @@ La `raiz-cuadrada` es nuestro primer ejemplo de un proceso definido por un conju
 
 Observe que el problema de computar las raíces cuadradas se divide naturalmente en una serie de subproblemas: cómo decir si una estimación es lo suficientemente buena, cómo mejorar una estimación, y así sucesivamente. Cada una de estas tareas se lleva a cabo mediante un procedimiento separado. Todo el programa `raiz-cuadrada` puede ser visto como un conjunto de procedimientos (mostrado en la figura 1.2) que refleja la descomposición del problema en subproblemas.
 
-![Figura 1.2](/imagenes/capitulo-1/figura-1-2.png)
+![Figura 1.2](./imagenes/capitulo-1/figura-1-2.png)
 
 **Figura 1.2:** Descomposición procedural del programa `raiz-cuadrada`.
 
