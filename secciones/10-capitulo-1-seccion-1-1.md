@@ -706,11 +706,61 @@ En la definición de `suficientemente-bueno?` mencionada arriba, `estimacion` y 
 
 ##### Definiciones internas y estructura de bloques
 
+Tenemos un tipo de aislamiento de nombre disponible hasta ahora: Los parámetros formales de un procedimiento son locales al cuerpo del procedimiento. El programa de raíz cuadrada ilustra otra manera en la cual nos gustaría controlar el uso de los nombres. El programa actual consiste en procedimientos separados:
 
+```scheme
+(define (raiz-cuadrada x)
+  (raiz-iter 1.0 x))
 
+(define (raiz-iter estimacion x)
+  (if (suficientemente-bueno? estimacion x)
+      estimacion
+      (raiz-iter (mejorar estimacion x) x)))
 
+(define (suficientemente-bueno? estimacion x)
+  (< (abs (- (al-cuadrado estimacion) x)) 0.001))
 
-## ---Traducción pendiente---
+(define (mejorar estimacion x)
+  (promedio estimacion (/ x estimacion)))
+```
+
+El problema con este programa es que el único procedimiento que es importante para los usuarios de `raiz-cuadrada` es justamente `raiz-cuadrada`. Los otros procedimientos (`raiz-iter`, `suficientemente-bueno?`, y `mejorar`) sólo confunden sus mentes. Es posible que no definan ningún otro procedimiento llamado "suficientemente bueno" como parte de otro programa para trabajar junto con el programa de raíz cuadrada, simplemente porque `raiz-cuadrada` lo necesita. El problema es especialmente grave en la construcción de grandes sistemas por parte de muchos programadores independientes. Por ejemplo, en la construcción de una gran librería (NdT: *library* en inglés, cuya traducción correcta debería ser ["biblioteca"](https://es.wikipedia.org/wiki/Biblioteca_(inform%C3%A1tica), pero usaré "librería" a lo largo de libro por ser el término más empleado) de procedimientos numéricos, muchas funciones numéricas se calculan como aproximaciones sucesivas y, por lo tanto, pueden tener procedimientos denominados `suficientemente-bueno?` y `mejorar` como procedimientos auxiliares. Desearíamos ubicar los subprocedimientos, escondiéndolos dentro de `raiz-cuadrada` para que `raiz-cuadrada` pueda coexistir con otras aproximaciones sucesivas, cada una de ellas con su propio procedimiento privado `suficientemente-bueno`. Para que esto sea posible, permitiremos que un procedimiento tenga definiciones internas que sean locales a ese procedimiento. Por ejemplo, en el problema de raíz cuadrada podemos escribir
+
+```scheme
+(define (raiz-cuadrada x)
+    (define (suficientemente-bueno? estimacion x)
+      (< (abs (- (al-cuadrado estimacion) x)) 0.001))
+
+    (define (mejorar estimacion x)
+      (promedio estimacion (/ x estimacion)))
+
+    (define (raiz-iter estimacion x)
+      (if (suficientemente-bueno? estimacion x)
+          estimacion
+          (raiz-iter (mejorar estimacion x) x)))
+
+    (raiz-iter 1.0 x))
+```
+
+Este anidamiento de definiciones, llamado *estructura de bloques*, es básicamente la solución correcta para el problema más común del empaquetamiento de nombres. Pero hay una mejor idea acechando aquí. Además de internalizar las definiciones de los procedimientos auxiliares, podemos también simplificarlos. Desde que `x` está vinculado en la definición de `raiz-cuadrada`, los procedimientos `suficientemente-bueno`, `mejorar`, y `raiz-iter`, que se definen internamente a `raiz-cuadrada`, están en el ámbito de `x`. Por lo tanto, no es necesario pasar `x` explícitamente a cada uno de estos procedimientos. En cambio, permitimos que `x` sea una variable libre en las definiciones internas, como se muestra abajo. Entonces `x` obtiene su valor del argumento con el que el procedimiento envolvente `raiz-cuadrada` es llamado. Esta modalidad se llama *alcance léxico* (NdT: en inglés *lexical scoping*).[^27]
+
+```scheme
+(define (raiz-cuadrada x)
+    (define (suficientemente-bueno? estimacion)
+      (< (abs (- (al-cuadrado estimacion) x)) 0.001))
+
+    (define (mejorar estimacion)
+      (promedio estimacion (/ x estimacion)))
+
+    (define (raiz-iter estimacion)
+      (if (suficientemente-bueno? estimacion)
+          estimacion
+          (raiz-iter (mejorar estimacion))))
+
+    (raiz-iter 1.0))
+```
+
+Usaremos ampliamente la estructura de bloques para ayudarnos a descomponer programas grandes en piezas más manejables.[^28] La idea de la estructura de bloques se originó con el lenguaje de programación Algol 60. Aparece en los lenguajes de programación más avanzados y es una herramienta importante para ayudar a organizar la construcción de programas grandes.
 
 ___
 
