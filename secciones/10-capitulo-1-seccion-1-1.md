@@ -710,13 +710,8 @@ En la definición de `suficientemente-bueno?` mencionada arriba, `estimacion` y 
 
 
 
-
-### 1.2 Procedimientos y los Procesos que Generan
-
-### 1.3 Formulación de Abstracciones con Procedimientos de Orden Superior
-
-
 ## ---Traducción pendiente---
+
 ___
 
 [^4]: La caracterización de los números como "datos simples" es un engaño descarado. De hecho, el tratamiento de los números es uno de los aspectos más difíciles y confusos de cualquier lenguaje de programación. Algunas cuestiones típicas implicadas son estas: Algunos sistemas informáticos distinguen los números enteros, como el 2, de los números reales, como el 2.71. ¿Es el número real 2.00 diferente del número entero 2? ¿Son las operaciones aritméticas utilizadas para los números enteros las mismas que las operaciones utilizadas para los números reales? ¿6 dividido por 2 produce 3, o 3.0? ¿Qué tan grande es el número que podemos representar? ¿Cuántos decimales de precisión podemos representar? ¿Es el rango de números enteros el mismo que el rango de números reales? Más allá de estas preguntas, por supuesto, subyace un conjunto de cuestiones relativas a los errores de redondeo y truncamiento, es decir, toda la ciencia del análisis numérico. Ya que nuestro enfoque en este libro está en el diseño de programas a gran escala en lugar de en técnicas numéricas, vamos a ignorar estos problemas. Los ejemplos numéricos de este capítulo mostrarán el comportamiento habitual de redondeo que se observa cuando se utilizan operaciones aritméticas que conservan un número limitado de decimales de precisión en operaciones no enteras.

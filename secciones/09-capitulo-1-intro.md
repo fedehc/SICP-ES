@@ -29,7 +29,7 @@ Debido a su carácter experimental y su énfasis en manipulación simbóloca, Li
 
 Si Lisp no es un lenguaje convencional, ¿por qué lo usamos como marco para nuestra discusión de la *programación*? Porque el lenguaje posee características únicas que lo convierten en un excelente medio para estudiar importantes constructos de programación y estructuras de datos y para relacionarlos con las características lingüísticas que los soportan. El más significativo de estos rasgos es el hecho de que las descripciones de los procesos de Lisp, llamados *procedimientos*, pueden ser representados y manipulados como datos de Lisp. La importancia de esto es que existen poderosas técnicas de diseño de programas que se basan en la habilidad de desdibujar la distinción tradicional entre datos "pasivos" y procesos "activos". Como descubriremos, la flexibilidad de Lisp en el manejo de procedimientos como datos lo convierte en uno de los lenguajes más convenientes en existencia para explorar estas técnicas. La capacidad de representar procedimientos como datos también hace de Lisp un excelente lenguaje para escribir programas que deben manipular otros programas como datos, como los intérpretes y compiladores que soportan lenguajes de programación. Más allá de estas consideraciones, programar en Lisp es muy divertido.
 
-
+___
 
 [^1]: El Manual del programador de Lisp 1 apareció en 1960, y el Manual del programador de Lisp 1.5 (McCarthy 1965) se publicó en 1962. La primera etapa de Lisp es descrito en McCarthy 1978.
 
