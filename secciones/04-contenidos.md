@@ -69,6 +69,4 @@
 
 **[Indice](./38-indice.md)**
 
-**[Fe de Erratas](./39-fe-de-erratas.md)**
-
 ### ---Traducción pendiente---
