@@ -432,45 +432,33 @@ o alternativamente como
 
 ```scheme
 10
-```
-```scheme
+
 (+ 5 3 4)
-```
-```scheme
+
 (- 9 1)
-```
-```scheme
+
 (/ 6 2)
-```
-```scheme
+
 (+ (* 2 4) (- 4 6))
-```
-```scheme
+
 (define a 3)
-```
-```scheme
+
 (define b (+ a 1))
-```
-```scheme
+
 (+ a b (* a b))
-```
-```scheme
+
 (= a b)
-```
-```scheme
+
 (if (and (> b a) (< b (* a b)))
     b
     a)
-```
-```scheme
+
 (cond ((= a 4) 6)
       ((= b 4) (+ 6 7 a))
       (else 25))
-```
-```scheme
+
 (+ 2 (if (> b a) b a))
-```
-```scheme
+
 (* (cond ((> a b) a)
          ((< a b) b)
          (else -1))
