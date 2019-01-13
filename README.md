@@ -10,11 +10,13 @@ of Computer Programs" (SICP).
 > **The New Hacker's Dictionary, 2nd edition**
 > **(MIT Press, 1993)**
 
+
 ## Licencia 
 
 El libro está licenciado bajo [licencia internacional Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.es) por el MIT Press.
 
 ![Imagen CC](https://licensebuttons.net/l/by-sa/4.0/88x31.png)
+
 
 ## Fuente
 
@@ -22,7 +24,6 @@ Todo el material que iré traduciendo se realizará a partir de la versión onli
 
 
 ## Objetivos
-
 
 Lograr traducir el libro completo para que pueda ser leído online y/o descargado en formato pdf, epub, mobi o cualquier otro formato conocido.
 
@@ -44,6 +45,6 @@ Aclaro que soy traductor profesional, ni programador con años de experiencia, e
 
 1) No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos de [licencia](#licencia).
 
-2) A lo largo de los capítulos agregaré entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando crea necesario aclarar términos en inglés. Algunas veces sucede de que estos no son bien conocidos o que no tienen incluso una traducción al castellano. Por esto mismo pienso que es necesario señalarlos de esta manera.
+2) A lo largo de los capítulos agregaré entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando crea necesario aclarar términos en inglés.
 
 3) Cualquier corrección o aporte por parte de gente interesada o mejor calificada es desde ya bienvenido, aunque me reservo el derecho de tomar aquellos cambios que juzgue convenientes. Aquellos que no concuerden con esto son libres de hacer su propio fork y/o hacer su propias traducciones.
