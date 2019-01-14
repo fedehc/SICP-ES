@@ -15,6 +15,60 @@ En esta sección examinaremos algunas "formas" comunes para aquellos procesos ge
 
 **Figura 1.3:** Un proceso recursivo lineal para calcular `6!`.
 
+Comenzamos por considerar la función factorial, definida por
+
+```
+n! = n . (n-1) . (n-2) ... 3 - 2 - 1
+```
+
+Hay varias maneras de calcular los factoriales. Una forma es hacer uso de la observación de que `n!` es igual a `n` veces `(n - 1)!` para cualquier entero positivo `n`:
+
+```
+n! = n . [(n-1) . (n-2) ... 3 - 2 - 1]  =  n . (n-1)!
+```
+
+Así, podemos calcular `n!` computando `(n - 1)!` y multiplicando el resultado por `n`. Si agregamos la condición de que `1!` es igual a 1, esta observación se traduce directamente al procedimiento:
+
+```scheme
+(define (factorial n)
+  (if (= n 1)
+      1
+      (* n (factorial (- n 1)))))
+```
+
+Podemos usar el modelo de sustitución de la [sección 1.1.5]((./10-capitulo-1-seccion-1-1.md#115-El-Modelo-de-Sustitución-para-la-Aplicación-de-Procedimientos)) para observar este procedimiento en el cálculo de `6!`, como se muestra en la figura 1.3.
+
+Ahora tomemos una perspectiva diferente sobre el cálculo de factoriales. Podríamos describir una regla para calcular `n!` especificando que primero multiplicamos 1 por 2, luego multiplicamos el resultado por 3, luego por 4, y así sucesivamente hasta alcanzar `n`. Más formalmente, nosotros mantendremos un producto en ejecución, junto con un contador que contará de 1 a `n`. Podemos describir este cómputo diciendo que el contador y el producto cambian simultáneamente de un paso al siguiente según la regla
+
+```
+producto ← contador · producto
+
+contador ← contador + 1
+```
+
+y estipular que `n!` es el valor del producto cuando el contador excede `n`.
+
+![Figura 1.4](./imagenes/capitulo-1/figura-1-4.png)
+
+**Figura 1.4:** Un proceso iterativo lineal para calcular `6!`.
+
+Una vez más, podemos reformular nuestra descripción como un procedimiento para calcular factoriales: [^29] 
+
+```scheme
+(define (factorial n)
+  (fact-iter 1 1 n))
+
+(define (fact-iter producto contador max-count)
+  (if (> contador max-count)
+      producto
+      (fact-iter (* contador producto)
+                 (+ contador 1)
+                 max-count)))
+```
+
+Como en el caso anterior, podemos usar el modelo de sustitución para visualizar el proceso de calcular `6!`, como se muestra en la figura 1.4.
+
+
 
 
 ## ---Traducción pendiente---
