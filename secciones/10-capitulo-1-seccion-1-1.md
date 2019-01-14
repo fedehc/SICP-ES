@@ -144,7 +144,7 @@ requiere que la regla de evaluación se aplique a cuatro combinaciones diferente
 
 ![Figura 1.1](./imagenes/capitulo-1/figura-1-1.png)
 
-**Figura 1.1:**  Representación de un árbol, mostrando el valor de cada subcombinación.
+**Figura 1.1:** Representación de un árbol, mostrando el valor de cada subcombinación.
 
 A continuación, observe que la aplicación repetida del primer paso nos lleva al punto en el que necesitamos evaluar, no combinaciones, sino expresiones primitivas como números, operadores incorporados, u otros nombres. Nos ocupamos de los casos primitivos estipulando que
 

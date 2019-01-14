@@ -9,7 +9,11 @@ Un procedimiento es un patrón para la *evolución local* de un proceso computac
 En esta sección examinaremos algunas "formas" comunes para aquellos procesos generados a partir de procedimientos simples. También investigaremos el ritmo con el que estos procesos consumen valiosos recursos computacionales de tiempo y espacio. Los procedimientos que consideraremos son muy simples. Su papel es como el que desempeñan las pruebas de patrones en fotografía: como patrones prototípicos sobresimplificados, más que como ejemplos prácticos por si mismos.
 
 
-#### 1.2.1 Recursión lineal e iteración
+#### 1.2.1 Recursión e Iteración Lineales
+
+![Figura 1.3](./imagenes/capitulo-1/figura-1-3.png)
+
+**Figura 1.3:** Un proceso recursivo lineal para calcular `6!`.
 
 
 
