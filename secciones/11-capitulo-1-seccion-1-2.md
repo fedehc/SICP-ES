@@ -68,7 +68,7 @@ Una vez más, podemos reformular nuestra descripción como un procedimiento para
 
 Como en el caso anterior, podemos usar el modelo de sustitución para visualizar el proceso de calcular `6!`, como se muestra en la figura 1.4.
 
-Compare los dos procesos. Desde un punto de vista, apenas parecen diferentes entre sí. Ambos computan la misma función matemática en el mismo dominio, y cada uno requiere un número de pasos proporcional a `n` para calcular `n!`. De hecho, ambos procesos incluso llevan a cabo la misma secuencia de multiplicaciones, obteniendo la misma secuencia de productos parciales. Pero cuando consideramos las "formas" de los dos procesos, nos damos cuenta de que evolucionan de una manera muy diferente.
+Comparemos los dos procesos. Desde un punto de vista, apenas parecen diferentes entre sí. Ambos computan la misma función matemática en el mismo dominio, y cada uno requiere un número de pasos proporcional a `n` para calcular `n!`. De hecho, ambos procesos incluso llevan a cabo la misma secuencia de multiplicaciones, obteniendo la misma secuencia de productos parciales. Pero cuando consideramos las "formas" de los dos procesos, nos damos cuenta de que evolucionan de una manera muy diferente.
 
 Consideremos el primer proceso. El modelo de sustitución revela una forma de expansión seguida de una contracción, indicada por la flecha de la figura 1.3. La expansión ocurre a medida de que el proceso construye una cadena de *operaciones diferidas* (en este caso, una cadena de multiplicaciones). La contracción se produce a medida que se realizan las operaciones. Este tipo de proceso, caracterizado por una cadena de operaciones diferidas, se denomina *proceso recursivo*. Para llevar a cabo este proceso es necesario que el intérprete lleve el registro de las operaciones que se van a realizar posteriormente. En el cálculo de `n!`, la longitud de la cadena de multiplicaciones diferidas, y por lo tanto la cantidad de información necesaria para seguirla, crece linealmente con `n` (o sea, es proporcional a `n`), así como el número de pasos. Este proceso se denomina *proceso recursivo lineal*.
 
@@ -133,6 +133,78 @@ Defina de forma concisa las funciones calculadas mediante los procedimientos `f`
 
 
 #### 1.2.2 Recursión de Árbol
+
+Otro patrón común de cálculo se llama *Recursión de Árbol* (NdT: *Tree Recursion* en inglés). A modo de ejemplo, consideremos el cálculo de la secuencia de números de Fibonacci, en la que cada número es la suma de los dos anteriores:
+
+```
+0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+```
+
+En general, los números de Fibonacci pueden ser definidos por la regla
+
+```
+         ⎧  0                    si n = 0
+Fib(n) = ⎨  1                    si n = 1
+         ⎩  Fib(n-1) + Fib(n-2)  en caso contrario
+```
+
+Podemos traducir inmediatamente esta definición en un procedimiento recursivo para calcular los números de Fibonacci:
+
+```scheme
+(define (fib n)
+  (cond ((= n 0) 0)
+        ((= n 1) 1)
+        (else (+ (fib (- n 1))
+                 (fib (- n 2))))))
+```
+
+![Figura 1.5](./imagenes/capitulo-1/figura-1-5.png)
+
+**Figura 1.5:** El proceso árbol-recursivo generado en el cálculo de `(fib 5)`..
+
+Consideremos el patrón de este cálculo. Para calcular `(fib 5)`, calculamos `(fib 4)` y `(fib 3)`. Para calcular `(fib 4)`, calculamos `(fib 3)` y `(fib 2)`. En general, el proceso desarrollado se parece a un árbol, como se muestra en la figura 1.5. Note que las ramas se dividen en dos en cada nivel (excepto en la parte inferior); esto refleja el hecho de que el procedimiento `fib` se llama a sí mismo dos veces cada vez que es invocado.
+
+Este procedimiento es ilustrativo a modo de árbol de recursión prototípico, aunque resulte una forma pésima de calcular los números de Fibonacci, ya que realiza una gran cantidad de cálculos redundantes. Note en la figura 1.5 que todo el cálculo de `(fib 3)` -casi la mitad del trabajo- está duplicado. De hecho, no es difícil mostrar que el número de veces que el procedimiento computará `(fib 1)` o ``(fib 0)` (el número de hojas en el árbol anterior, en general) es precisamente `Fib(n + 1)``. Para tener una idea de lo malo que es esto, uno puede mostrar que el valor de `Fib(n)` crece exponencialmente con `n`. Más precisamente (ver ejercicio 1.13), `Fib(n)` es el entero más cercano a `φⁿ/√5`, donde
+
+```
+φ = (1 + √5)/2 = 1,6810...
+```
+
+es la número áureo, que satisface la ecuación
+
+```
+φ² = φ + 1
+```
+
+Por lo tanto, el proceso utiliza una serie de pasos que crecen exponencialmente con la entrada. Por otro lado, el espacio requerido crece sólo linealmente con la entrada, ya que sólo tenemos que hacer un seguimiento de los nodos que están por encima de nosotros en el árbol en cualquier punto del cálculo. En general, el número de pasos requeridos por un proceso recursivo de árbol será proporcional al número de nodos en el árbol, mientras que el espacio requerido será proporcional a la profundidad máxima del árbol.
+
+También podemos formular un proceso iterativo para calcular los números de Fibonacci. La idea es usar un par de enteros a y b, inicializados a `Fib(1) = 1` y `Fib(0) = 0`, y aplicar repetidamente las transformaciones simultáneas 
+
+```
+a ← a + b
+
+b ← a
+```
+
+No es difícil demostrar que, después de aplicar esta transformación `n` veces, `a` y `b` serán iguales, respectivamente, a `Fib(n + 1)` y `Fib(n)`. Así, podemos calcular los números de Fibonacci de forma iterativa utilizando el procedimiento
+
+```scheme
+(define (fib n)
+  (fib-iter 1 0 n))
+
+(define (fib-iter a b contador)
+  (if (= contador 0)
+      b
+      (fib-iter (+ a b) a (- contador 1))))
+```
+
+Este segundo método para calcular `Fib(n)` es una iteración lineal. La diferencia en el número de pasos requeridos por los dos métodos -uno lineal en `n`, el otro creciendo tan rápido como `Fib(n)` mismo- es enorme, incluso para entradas pequeñas.
+
+No se debe concluir de esto que los procesos de recursión de árbol son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que la recursividad de árbol es una herramienta natural y poderosa.[^32] Incluso en operaciones numéricas, los procesos de recursividad de árbol pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, es más sencillo, siendo poco más que una traducción a Lisp de la definición de la secuencia de Fibonacci. Para formular el algoritmo iterativo es necesario debe tenerse en cuenta que el cálculo puede ser reformulado como una iteración con tres variables de estado.
+
+
+
+
 
 
 
