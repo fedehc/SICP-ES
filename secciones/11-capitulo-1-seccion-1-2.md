@@ -178,7 +178,7 @@ es la número áureo, que satisface la ecuación
 
 Por lo tanto, el proceso utiliza una serie de pasos que crecen exponencialmente con la entrada. Por otro lado, el espacio requerido crece sólo linealmente con la entrada, ya que sólo tenemos que hacer un seguimiento de los nodos que están por encima de nosotros en el árbol en cualquier punto del cálculo. En general, el número de pasos requeridos por un proceso recursivo de árbol será proporcional al número de nodos en el árbol, mientras que el espacio requerido será proporcional a la profundidad máxima del árbol.
 
-También podemos formular un proceso iterativo para calcular los números de Fibonacci. La idea es usar un par de enteros a y b, inicializados a `Fib(1) = 1` y `Fib(0) = 0`, y aplicar repetidamente las transformaciones simultáneas 
+También podemos formular un proceso iterativo para calcular los números de Fibonacci. La idea es usar un par de enteros `a` y `b`, inicializados a `Fib(1) = 1` y `Fib(0) = 0`, y aplicar repetidamente las transformaciones simultáneas 
 
 ```
 a ← a + b
