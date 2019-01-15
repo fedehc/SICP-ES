@@ -137,3 +137,23 @@ Defina de forma concisa las funciones calculadas mediante los procedimientos `f`
 
 
 ## ---Traducción pendiente---
+
+___
+
+[^29]: En un programa real probablemente usaríamos la estructura de bloques introducida en la última sección para ocultar la definición de `fact-iter`:
+
+```scheme
+(define (factorial n)
+  (define (iter producto contador)
+    (if (> contador n)
+        producto
+        (iter (* contador producto)
+              (+ contador 1))))
+  (iter 1 1))
+```
+
+Evitamos hacer esto aquí para minimizar el número de cosas en las que pensar a la vez.
+
+[^30]: Cuando discutamos la implementación de procedimientos en máquinas de registro en el [capítulo 5](./30-capitulo-5-intro.md), veremos que cualquier proceso iterativo puede ser realizado "en hardware" como una máquina que tiene un conjunto de registros fijos y sin memoria auxiliar. Por el contrario, la realización de un proceso recursivo requiere una máquina que utilice una estructura de datos auxiliar conocida como *stack*.
+
+[^31]: La recursividad de la cola se conoce desde hace tiempo como un truco de optimización del compilador. Una base semántica coherente para la recursión de la cola fue proporcionada por Carl Hewitt (1977), quien la explicó en términos del modelo de computación de "pasar mensajes" que discutiremos en el [capítulo 3](./19-capitulo-3-intro.md). Inspirados por esto, Gerald Jay Sussman y Guy Lewis Steele Jr (ver Steele 1975) construyeron un intérprete de cola recurrente para Scheme. Más tarde Steele mostró cómo la recursividad de la cola es una consecuencia de la forma natural de compilar las llamadas de procedimiento (Steele 1977). El estándar IEEE para Scheme requiere que las implementaciones de Scheme sean recursivas. 
