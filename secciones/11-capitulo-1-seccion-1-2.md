@@ -160,7 +160,7 @@ Podemos traducir inmediatamente esta definición en un procedimiento recursivo p
 
 ![Figura 1.5](./imagenes/capitulo-1/figura-1-5.png)
 
-**Figura 1.5:** El proceso árbol-recursivo generado en el cálculo de `(fib 5)`..
+**Figura 1.5:** El proceso árbol-recursivo generado en el cálculo de `(fib 5)`.
 
 Consideremos el patrón de este cálculo. Para calcular `(fib 5)`, calculamos `(fib 4)` y `(fib 3)`. Para calcular `(fib 4)`, calculamos `(fib 3)` y `(fib 2)`. En general, el proceso desarrollado se parece a un árbol, como se muestra en la figura 1.5. Note que las ramas se dividen en dos en cada nivel (excepto en la parte inferior); esto refleja el hecho de que el procedimiento `fib` se llama a sí mismo dos veces cada vez que es invocado.
 
@@ -170,7 +170,7 @@ Este procedimiento es ilustrativo a modo de árbol de recursión prototípico, a
 φ = (1 + √5)/2 = 1,6810...
 ```
 
-es la número áureo, que satisface la ecuación
+es el número áureo, que satisface la ecuación
 
 ```
 φ² = φ + 1
