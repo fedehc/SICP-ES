@@ -203,9 +203,77 @@ Este segundo método para calcular `Fib(n)` es una iteración lineal. La diferen
 No se debe concluir de esto que los procesos de recursión de árbol son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que la recursividad de árbol es una herramienta natural y poderosa.[^32] Incluso en operaciones numéricas, los procesos de recursividad de árbol pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, es más sencillo, siendo poco más que una traducción a Lisp de la definición de la secuencia de Fibonacci. Para formular el algoritmo iterativo es necesario debe tenerse en cuenta que el cálculo puede ser reformulado como una iteración con tres variables de estado.
 
 
+##### Ejemplo: Contando cambios
 
+Ejemplo: Contando cambios
 
+Sólo se necesita un poco de inteligencia para crear el algoritmo iterativo de Fibonacci. En contraste, considere el siguiente problema: ¿De cuántas maneras diferentes podemos hacer el cambio de 1 dolar, teniendo solamente monedas de 50, 25, 10, 5 y 1 centavos? De manera más general, ¿podemos escribir un procedimiento para calcular la cantidad de formas de cambiar una determinada cantidad de dinero?
 
+Este problema tiene una solución simple como procedimiento recursivo. Supongamos que estamos pensando en los tipos de monedas que tenemos ordenados de alguna manera. Entonces la siguiente relación es aplicable:
+
+La cantidad de maneras de cambiar la cantidad `a` usando `n` tipos de monedas es igual a
+
+* la cantidad de maneras de cambiar la cantidad `a` usando todas menos la primera clase de moneda, más
+
+* el número de maneras de cambiar la cantidad `a - d` usando todos los tipos de monedas `n`, donde `d` es la denominación de la primera clase de moneda.
+
+Para comprender por qué esto es cierto, observe que las formas de hacer el cambio se pueden dividir en dos grupos: los que no usan ninguna de las primera clase de monedas, y los que sí lo hacen. Por lo tanto, la cantidad total de maneras de hacer cambios por una cantidad es igual a la cantidad de maneras de hacer cambios por ese monto sin usar ninguno de las primeras clases de monedas, más la cantidad de maneras de hacer cambios asumiendo que usamos la primera clase de monedas. Pero este último número es igual a la cantidad de maneras de hacer cambios por el monto que queda después de usar una moneda de la primera clase.
+
+Así, podemos reducir recursivamente el problema de cambiar una cantidad dada al problema de cambiar cantidades más pequeñas usando menos tipos de monedas. Considere esta regla de reducción cuidadosamente, y convénzase de que podemos usarla para describir un algoritmo si especificamos los siguientes casos degradados:[^33].
+
+* Si `a` es exactamente 0, debemos contarlo como 1 manera de hacer cambio.
+
+* Si `a` es menos de 0, debemos contarlo como 0 maneras de hacer cambios.
+
+* Si `n` es 0, debemos contarlo como 0 maneras de hacer cambios. 
+
+Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
+
+```scheme
+(define (contar-cambio monto)
+  (cc monto 5))
+
+(define (cc monto tipos-de-monedas)
+  (cond ((= monto 0) 1)
+        ((or (< monto 0) (= tipos-de-monedas 0)) 0)
+        (else (+ (cc monto
+                     (- tipos-de-monedas 1))
+                 (cc (- monto
+                        (primera-clase-de-monedas tipos-de-monedas))
+                     tipos-de-monedas)))))
+
+(define (primera-clase-de-monedas tipos-de-monedas)
+  (cond ((= tipos-de-monedas 1) 1)
+        ((= tipos-de-monedas 2) 5)
+        ((= tipos-de-monedas 3) 10)
+        ((= tipos-de-monedas 4) 25)
+        ((= tipos-de-monedas 5) 50)))
+```
+
+(El procedimiento `primera-clase-de-monedas` toma como entrada el número de tipos de monedas disponibles y devuelve la primera clase de monedas. En este caso estamos pensando en las monedas en orden desde el más grande hasta el más pequeño, pero con cualquier orden también funcionaría). Ahora podemos responder a nuestra pregunta inicial sobre el cambio de 1 dólar: 
+
+```scheme
+(contar-cambio 100)
+292
+```
+
+`contar-cambio` genera un proceso recursivo de árbol con redundancias similares a las de nuestra primera implementación de `fib` (tomará un tiempo para que ese 292 sea calculado). Por otro lado, no es tan obvio saber diseñar un mejor algoritmo para calcular el resultado, y dejaremos este problema como un reto. El hecho de que un proceso recursivo de árbol puede ser altamente ineficiente pero a la vez fácil de especificar y de entender ha llevado a la gente a proponer que uno podría obtener lo mejor de ambos mundos mediante el diseño de un "compilador inteligente" que podría transformar los procedimientos recursivos de árbol en procedimientos más eficientes que calculen el mismo resultado.[^34]
+
+**Ejercicio 1.11.** Una función `f` se define por la regla que `f(n) = n` si `n<3` y `f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3)` si `n> 3`. Escribir un procedimiento que calcule `f` mediante un proceso recursivo. Escriba un procedimiento que calcule `f` por medio de un proceso iterativo.
+
+**Ejercicio 1.12.** El siguiente patrón de números se llama el triángulo de Pascal.
+
+```
+    1
+   1 1
+  1 2 1
+ 1 3 3 1
+1 4 6 4 1
+```
+
+Los números en el borde del triángulo son todos 1, y cada número dentro del triángulo es la suma de los dos números que están por encima de él.[^35] Escriba un procedimiento que calcule los elementos del triángulo de Pascal por medio de un proceso recursivo.
+
+**Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `φⁿ/√5)/2`, donde `φ= (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver sección 1.2.2) para probar que `Fib(n) = (φⁿ - ⨚ⁿ)/5`. 
 
 
 ## ---Traducción pendiente---
