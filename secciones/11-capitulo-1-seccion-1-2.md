@@ -205,8 +205,6 @@ No se debe concluir de esto que los procesos de recursión de árbol son inútil
 
 ##### Ejemplo: Contando cambios
 
-Ejemplo: Contando cambios
-
 Sólo se necesita un poco de inteligencia para crear el algoritmo iterativo de Fibonacci. En contraste, considere el siguiente problema: ¿De cuántas maneras diferentes podemos hacer el cambio de 1 dolar, teniendo solamente monedas de 50, 25, 10, 5 y 1 centavos? De manera más general, ¿podemos escribir un procedimiento para calcular la cantidad de formas de cambiar una determinada cantidad de dinero?
 
 Este problema tiene una solución simple como procedimiento recursivo. Supongamos que estamos pensando en los tipos de monedas que tenemos ordenados de alguna manera. Entonces la siguiente relación es aplicable:
