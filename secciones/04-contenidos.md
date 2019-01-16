@@ -22,7 +22,7 @@
   * [1.2. Procedimientos y los Procesos que Generan](./11-capitulo-1-seccion-1-2.md)
     * [1.2.1. Recursión e Iteración Lineales](./11-capitulo-1-seccion-1-2.md#121-Recursión-e-Iteración-Lineales)
     * [1.2.2. Recursión de Árbol](./11-capitulo-1-seccion-1-2.md#122-Recursión-de-Árbol)
-    * 1.2.3. Ordenes de Crecimiento
+    * [1.2.3. Órdenes de Crecimiento](./11-capitulo-1-seccion-1-2.md#123-Órdenes-de-Crecimiento)
     * 1.2.4. Exponenciación
     * 1.2.5. Máximos Comunes Divisores
     * 1.2.6. Ejemplo: Evaluando por Primalidad
