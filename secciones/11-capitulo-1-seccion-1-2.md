@@ -200,24 +200,24 @@ No es difícil demostrar que, después de aplicar esta transformación `n` veces
 
 Este segundo método para calcular `Fib(n)` es una iteración lineal. La diferencia en el número de pasos requeridos por los dos métodos -uno lineal en `n`, el otro creciendo tan rápido como `Fib(n)` mismo- es enorme, incluso para entradas pequeñas.
 
-No se debe concluir de esto que los procesos de recursión de árbol son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que la recursividad de árbol es una herramienta natural y poderosa.[^32] Incluso en operaciones numéricas, los procesos de recursividad de árbol pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, es más sencillo, siendo poco más que una traducción a Lisp de la definición de la secuencia de Fibonacci. Para formular el algoritmo iterativo es necesario debe tenerse en cuenta que el cálculo puede ser reformulado como una iteración con tres variables de estado.
+De esto no se debe concluir de que los procesos recursivos de árbol son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que la recursividad de árbol es una herramienta natural y poderosa.[^32] Incluso en operaciones numéricas, los procesos de recursividad de árbol pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, es más sencillo, siendo poco más que una traducción a Lisp de la definición de la secuencia de Fibonacci. Para formular el algoritmo iterativo es necesario debe tenerse en cuenta que el cálculo puede ser reformulado como una iteración con tres variables de estado.
 
 
 ##### Ejemplo: Contando cambios
 
-Se necesita algo de ingenio para desarrollar el algoritmo iterativo de Fibonacci. En contraste, considere el siguiente problema: ¿De cuántas maneras diferentes podemos hacer el cambio de 1 dolar, teniendo solamente monedas de 50, 25, 10, 5 y 1 centavos? De manera más general, ¿podemos escribir un procedimiento para calcular la cantidad de formas de cambiar una determinada cantidad de dinero?
+Se necesita algo de ingenio para obtener el algoritmo iterativo de Fibonacci. En contraste, considere el siguiente problema: ¿De cuántas maneras diferentes podemos hacer el cambio de 1 dolar, teniendo solamente monedas de 50, 25, 10, 5 y 1 centavos? De manera más general, ¿podemos escribir un procedimiento para calcular la cantidad de formas de cambiar una determinada cantidad de dinero?
 
-Este problema tiene una solución simple como procedimiento recursivo. Supongamos que estamos pensando en los tipos de monedas que tenemos ordenados de alguna manera. Entonces la siguiente relación es aplicable:
+Este problema tiene una solución simple como procedimiento recursivo. Supongamos que estamos pensando en los tipos de monedas que tenemos ordenados de alguna manera. Entonces, la siguiente relación es válida:
 
 La cantidad de maneras de cambiar la cantidad `a` usando `n` tipos de monedas es igual a
 
-* la cantidad de maneras de cambiar la cantidad `a` usando todas menos la primera clase de moneda, más
+* la cantidad de maneras de cambiar la cantidad `a` usando todas menos la primera clase de monedas, más
 
-* el número de maneras de cambiar la cantidad `a - d` usando todos los tipos de monedas `n`, donde `d` es la denominación de la primera clase de moneda.
+* el número de maneras de cambiar la cantidad `a - d` usando todos los tipos de monedas `n`, donde `d` es la denominación de la primera clase de monedas.
 
-Para comprender por qué esto es cierto, observe que las formas de hacer el cambio se pueden dividir en dos grupos: los que no usan ninguna de las primera clase de monedas, y los que sí lo hacen. Por lo tanto, la cantidad total de maneras de hacer cambios por una cantidad es igual a la cantidad de maneras de hacer cambios por ese monto sin usar ninguno de las primeras clases de monedas, más la cantidad de maneras de hacer cambios asumiendo que usamos la primera clase de monedas. Pero este último número es igual a la cantidad de maneras de hacer cambios por el monto que queda después de usar una moneda de la primera clase.
+Para comprender por qué esto es cierto, observe que las formas de hacer el cambio se pueden dividir en dos grupos: los que no usan ninguna de las primera clase de monedas, y los que sí lo hacen. Por lo tanto, la cantidad total de maneras de hacer cambios por un monto es igual a la cantidad de maneras de hacer cambios por ese monto sin usar ninguna de las primeras clases de monedas, más la cantidad de maneras de hacer cambios asumiendo que usamos la primera clase de monedas. Pero este último número es igual a la cantidad de maneras de hacer cambios por el monto que queda después de usar una moneda de la primera clase.
 
-Así, podemos reducir recursivamente el problema de cambiar una cantidad dada al problema de cambiar cantidades más pequeñas usando menos tipos de monedas. Considere esta regla de reducción cuidadosamente, y convénzase de que podemos usarla para describir un algoritmo si especificamos los siguientes casos degradados:[^33].
+Así, podemos reducir recursivamente el problema de cambiar una cantidad dada al problema de cambiar cantidades más pequeñas usando menos tipos de monedas. Considere esta regla de reducción cuidadosamente, y comprenda a fondo de que podemos usarla para describir un algoritmo si especificamos los siguientes casos degradados:[^33].
 
 * Si `a` es exactamente 0, debemos contarlo como 1 manera de hacer cambio.
 
@@ -275,6 +275,22 @@ Los números en el borde del triángulo son todos 1, y cada número dentro del t
 
 
 #### 1.2.3 Órdenes de crecimiento
+
+os ejemplos previos nos ilustran que los procesos pueden diferir considerablemente en el ritmo en el que consumen recursos computacionales. Una forma conveniente de describir esta diferencia es utilizar la noción de *orden de crecimiento* para obtener una medida en bruto de los recursos requeridos por un proceso a medida de que las entradas se hacen más grandes.
+
+Hagamos que `n` sea un parámetro que mida el tamaño del problema, y que `R(n)` sea la cantidad de recursos que el proceso requiere para un problema de tamaño `n`. En nuestros ejemplos anteriores tomamos `n` como el número para el cual una función dada debe ser calculada, pero hay otras posibilidades. Por ejemplo, si nuestra meta es calcular una aproximación a la raíz cuadrada de un número, podríamos tomar `n` como el número de dígitos de precisión requeridos. Para la multiplicación de matrices podríamos tomar `n` como el número de filas en las matrices. En general, hay una serie de propiedades del problema con respecto a las cuales será deseable analizar un proceso determinado. De manera similar, `R(n)` podría medir el número de registros internos de almacenamiento usados, el número de operaciones elementales de la máquina realizadas, y así sucesivamente. En computadoras donde sólo se realizan un número fijo de operaciones a la vez, el tiempo requerido será proporcional al número de operaciones elementales de la máquina realizadas.
+
+Decimos que `R(n)` tiene orden de crecimiento `Θ(f(n))`, escrito `R(n) = (Θf(n))` (pronunciado "theta de f(n)"), si hay constantes positivas k1 y k2 independientes de n tales que 
+
+```
+k₁ f(n) < R(n) < k₂ f(n)
+```
+
+para cualquier valor suficientemente grande de `n` (en otras palabras, para un gran `n`, el valor `R(n)` está entre `k1f(n)` y `k2f(n)`).
+[
+Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente a la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.[^36] El cálculo de Fibonacci de árbol recursivo requiere `Θ(n)` pasos y espacio `Θ(φⁿ)`, donde `φ` es la relación de oro descrita en la [sección 1.2.2](#122-Recursión-de-Árbol).
+
+Las órdenes de crecimiento sólo proporcionan una descripción aproximada del comportamiento de un proceso. Por ejemplo, un proceso que requiere `n²` pasos, un proceso que requiere `1000n²` pasos y un proceso que requiere `3n² + 10n + 17` pasos, todos tienen un orden de crecimiento `Θ(n²)`. Por otro lado, el orden de crecimiento proporciona una indicio útil de cómo podemos esperar que el comportamiento del proceso cambie a medida de que cambiamos el tamaño del problema. Para un proceso `Θ(n)` (lineal), duplicar el tamaño duplicará aproximadamente la cantidad de recursos utilizados. Para un proceso exponencial, cada incremento en el tamaño del problema multiplicará la utilización de recursos por un factor constante. En el resto de la sección 1.2 examinaremos dos algoritmos cuyo orden de crecimiento es logarítmico, de modo que duplicar el tamaño del problema aumenta las necesidades de recursos en una cantidad constante.
 
 
 
