@@ -293,6 +293,33 @@ Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallad
 Los órdenes de crecimiento sólo proporcionan una descripción aproximada del comportamiento de un proceso. Por ejemplo, un proceso que requiere `n²` pasos, un proceso que requiere `1000n²` pasos y un proceso que requiere `3n² + 10n + 17` pasos, todos estos tienen un orden de crecimiento `Θ(n²)`. Por otro lado, el orden de crecimiento nos proporciona una indicio útil de cómo podemos esperar a que el comportamiento del proceso cambie a medida de que cambiamos el tamaño del problema. Para un proceso `Θ(n)` (lineal), duplicar el tamaño duplicará aproximadamente la cantidad de recursos utilizados. Para un proceso exponencial, cada incremento en el tamaño del problema multiplicará la utilización de recursos por un factor constante. En el resto de la sección 1.2 examinaremos dos algoritmos cuyo orden de crecimiento es logarítmico, de modo que duplicar el tamaño del problema aumentará las necesidades de recursos en una cantidad constante.
 
 
+**Ejercicio 1.14.** Dibuje el árbol que ilustra el proceso generado por el procedimiento de `contar-cambio` de la [sección 1.2.2](#122-Recursión-de-Árbol) al hacer el cambio de 11 centavos. ¿Cómo son los órdenes de crecimiento del espacio y el número de pasos utilizados por este proceso a medida que aumenta la cantidad a cambiar? 
+
+**Ejercicio 1.15.** El seno de un ángulo (especificado en radianes) puede ser calculado haciendo uso de la aproximación `sen(x) ≈ x` si `x` es suficientemente pequeño, y la identidad trigonométrica
+
+```
+sen(x) = 3 sen(x/3) - 4 sen³(x/3)
+```
+
+para reducir el tamaño del argumento de seno (para los propósitos de este ejercicio, un ángulo se considerará "suficientemente pequeño" si su magnitud no es mayor a 0.1 radianes). Estas ideas son incorporadas en los siguientes procedimientos:
+
+```scheme
+(define (cubo x) (* x x x))
+
+(define (p x) (- (* 3 x) (* 4 (cubo x))))
+
+(define (seno angulo)
+   (if (not (> (abs angulo) 0.1))
+       angulo
+       (p (seno (/ angulo 3.0)))))
+```
+
+a.  ¿Cuántas veces se aplicará el procedimiento `p` cuando seno(12.15) es evaluado?
+
+b.  ¿Cuál es el orden de crecimiento en espacio y el número de pasos (en función de `a`) utilizados por el proceso generado por el procedimiento cuando `seno(a)` es evaluado?
+
+
+
 
 ## ---Traducción pendiente---
 
