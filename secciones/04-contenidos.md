@@ -23,9 +23,9 @@
     * [1.2.1. Recursión e Iteración Lineales](./11-capitulo-1-seccion-1-2.md#121-Recursión-e-Iteración-Lineales)
     * [1.2.2. Recursión de Árbol](./11-capitulo-1-seccion-1-2.md#122-Recursión-de-Árbol)
     * [1.2.3. Órdenes de Crecimiento](./11-capitulo-1-seccion-1-2.md#123-Órdenes-de-Crecimiento)
-    * [1.2.4. Exponenciación](./11-capitulo-1-seccion-1-2.md#123-Exponenciación)
+    * [1.2.4. Exponenciación](./11-capitulo-1-seccion-1-2.md#124-Exponenciación)
     * 1.2.5. Máximos Comunes Divisores
-    * 1.2.6. Ejemplo: Evaluando por Primalidad
+    * 1.2.6. Ejemplo: Evaluando por Primalidad3
   * [1.3. Formulación de Abstracciones con Procedimientos de Orden Superior](./12-capitulo-1-seccion-1-3.md)
     * 1.3.1. Procedimientos como Argumentos
     * 1.3.2. Construcción de Procedimientos usando Lambda
