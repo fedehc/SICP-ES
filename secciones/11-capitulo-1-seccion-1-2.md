@@ -429,3 +429,8 @@ Evitamos hacer esto aquí para minimizar el número de cosas en las que pensar a
 
 [^36]: Estas declaraciones enmascaran una gran cantidad de simplificación. Por ejemplo, si contamos los pasos del proceso como "operaciones de máquina", estamos haciendo la suposición de que el número de operaciones de máquina necesarias para realizar, por ejemplo, una multiplicación es independiente del tamaño de los números a multiplicar, lo que es falso si los números son lo suficientemente grandes. Observaciones similares son válidas también para las estimaciones de espacio. Al igual que el diseño y la descripción de un proceso, el análisis de un proceso puede llevarse a cabo en varios niveles de abstracción.
 
+[^37]: Más precisamente, el número de multiplicaciones requeridas es igual a 1 menos que la base logarítmica 2 de `n`, más el número de multiplicaciones en la representación binaria de `n`. Este total es siempre menos del doble de la base logarítmica 2 de `n`. Las constantes arbitrarias `k1` y `k2` en la definición de notación de orden implican que, para un proceso logarítmico, la base a la que se llevan los logaritmos no importa, así que todos esos procesos se describen como `Θ(log n)`.
+
+[^38]: Se preguntará por qué a alguien le importaría elevar los números a la 1000va potencia. Vea la [sección 1.2.6](#126-Ejemplo:-Evaluando-por-Primalidad).
+
+[^39]: Este algoritmo iterativo es antiguo.  Aparece en el *Chandah-sutra* de Áchárya Pingala, escrito antes del año 200 a.C. Ver Knuth 1981, [sección 4.6.3](), para una discusión completa y análisis de este y otros métodos de exponenciación.
