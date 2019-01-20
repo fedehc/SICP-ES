@@ -15,7 +15,7 @@ En este capítulo sólo trataremos con datos numéricos simples para que podamos
 
 #### 1.1.1 Expresiones
 
-Una manera fácil de empezar a programar es analizando algunas interacciones típicas con el intérprete del dialecto Scheme de Lisp. Imagine que uno se encuentra sentado frente a una terminal de computadora. Se escribe una *expresión*, y el intérprete responde mostrando el resultado de la *evaluación* de esa expresión.
+Una manera fácil de empezar a programar es analizando algunas interacciones típicas con el intérprete del dialecto Scheme de Lisp. Imagine que se encuentra sentado frente a una terminal de computadora. Se escribe una *expresión*, y el intérprete responde mostrando el resultado de la *evaluación* de esa expresión.
 
 Una clase de expresión primitiva que uno puede escribir es un número (para ser más precisos, la expresión que uno escribe consiste en las cifras que representan al número en base 10). Si se le presenta a Lisp con el número
 
@@ -88,15 +88,15 @@ Incluso con expresiones complejas, el intérprete siempre opera en el mismo cicl
 
 #### 1.1.2 Los Nombres y el Entorno
 
-Un aspecto crítico de un lenguaje de programación es la manera en que proporciona el uso de nombres para referirse a objetos computacionales. Decimos que el nombre identifica a una *variable* cuyo *valor* es el objeto.
+Un aspecto crucial de un lenguaje de programación es el medio que proporciona para el uso de nombres que hacen referencia a objetos computacionales. Decimos que el nombre identifica a una *variable* cuyo valor es el objeto.
 
-En el dialecto Scheme de Lisp, nombramos las cosas con `define` (NtD: `define` está expresado en inglés, aunque en español se escriba igual). Escribiendo
+En el dialecto Scheme de Lisp, nombramos las cosas con `define` (NtD: `define` -como todas las expresiones nativas de Lisp de ahora en más- está expresado en inglés, aunque en este caso se escriba igual que en español). Escribiendo
 
 ```scheme
 (define tamaño 2)
 ```
 
-hace que el intérprete asocie el valor 2 con el nombre `tamaño`.[^8] Una vez que el nombre `tamaño` ha sido asociado con el número 2, podemos referirnos al valor 2 por nombre:
+hace que el intérprete asocie el valor 2 con el nombre `tamaño`.[^8] Una vez que el nombre `tamaño` ha sido asociado con el número 2, podemos referirnos al valor 2 por este nombre:
 
 ```scheme
 (tamaño)
@@ -116,22 +116,22 @@ circunferencia
 62.8318
 ```
 
-`define` es el medio de abstracción más simple de nuestro lenguaje, ya que nos permite utilizar nombres simples para referirnos a los resultados de operaciones compuestas, como la `circunferencia` calculada anteriormente. En general, los objetos computacionales pueden tener estructuras muy complejas, y sería extremadamente incómodo tener que recordar y repetir sus detalles cada vez que queremos usarlos. En efecto, los programas complejos se elaboran construyendo, paso a paso, objetos computacionales de complejidad creciente. El intérprete hace que esta construcción paso a paso del programa sea muy conveniente porque las asociaciones nombre-objeto pueden ser creadas gradualmente en interacciones sucesivas. Esta característica fomenta el desarrollo incremental y el testeo de programas y es en gran medida responsable del hecho de que un programa Lisp normalmente se componga de un gran número de procedimientos relativamente sencillos.
+`define` es el medio de abstracción más simple de nuestro lenguaje, ya que nos permite utilizar nombres sencillos para referirnos a los resultados de operaciones compuestas, como la `circunferencia` calculada anteriormente. En general, los objetos computacionales pueden tener estructuras muy complejas, y sería extremadamente incómodo tener que recordar y repetir sus detalles cada vez que queremos usarlos. En efecto, los programas complejos se elaboran construyendo, paso a paso, objetos computacionales de complejidad creciente. El intérprete hace que esta construcción paso a paso del programa sea muy conveniente porque las asociaciones nombre-objeto pueden ser creadas gradualmente en sucesivas interacciones. Esta característica fomenta el desarrollo incremental y el testeo de programas, y es en gran medida responsable del hecho de que un programa Lisp normalmente se componga de un gran número de procedimientos relativamente sencillos.
 
-Debe quedar claro que la posibilidad de asociar valores con símbolos y luego recuperarlos significa que el intérprete debe mantener algún tipo de memoria que mantenga un registro de los pares nombre-objeto. Esta memoria se llama el *entorno* (más precisamente el *entorno global*, ya que veremos más adelante que un cálculo puede implicar varios entornos diferentes).[^9]
+Debe quedar claro que la posibilidad de asociar valores con símbolos y luego llamarlos significa que el intérprete debe mantener algún tipo de memoria que mantenga un registro de los pares nombre-objeto. Esta memoria se llama el *entorno* (más precisamente el *entorno global*, ya que veremos más adelante que un cálculo puede implicar varios entornos diferentes).[^9]
 
 
 #### 1.1.3 Evaluando Combinaciones
 
-Uno de nuestros objetivos en este capítulo es aislar las cuestiones pensando en términos de procesos. Como caso concreto, consideremos que, al evaluar las combinaciones, el propio intérprete está siguiendo un procedimiento.
+Uno de nuestros objetivos en este capítulo es el de aislar cuestiones pensando en términos de procesos. Como caso concreto, consideremos que, al evaluar las combinaciones, el propio intérprete está siguiendo un procedimiento.
 
-* Para evaluar una combinación, haga lo siguiente:
+* Para evaluar una combinación, hacer lo siguiente:
 
 1) Evaluar las subexpresiones de la combinación.
 
-2) Aplicar el procedimiento que es el valor de la subexpresión más a la izquierda (el operador) a los argumentos que son los valores de las otras subexpresiones (los operandos). 
+2) Aplicar el procedimiento, que es el valor de la subexpresión más a la izquierda (el operador), a los argumentos que son los valores de las otras subexpresiones (los operandos). 
 
-Incluso esta simple regla ilustra algunos puntos importantes sobre los procesos en general. Primero, observe que el primer paso dicta que para llevar a cabo el proceso de evaluación de una combinación, primero debemos realizar el proceso de evaluación de cada elemento de la combinación. Por lo tanto, la regla de evaluación es de naturaleza *recursiva*; esto es, incluye, como uno de sus pasos, la necesidad de invocar la regla misma.[^10]
+Incluso esta simple regla demuestra algunos puntos importantes sobre los procesos en general. Primero, observe que el primer paso dicta que, para llevar a cabo el proceso de evaluación de una combinación, debemos primero realizar el proceso de evaluación de cada elemento de la combinación. Por lo tanto, la regla de evaluación es de naturaleza *recursiva*; es decir, incluye en una de sus etapas la necesidad de invocar la propia regla.[^10]
 
 Observe cuán sucintamente se puede utilizar la idea de recursión para expresar lo que, en el caso de una combinación profundamente anidada, se vería de otro modo como un proceso bastante complicado. Por ejemplo, evaluar
 
@@ -140,25 +140,25 @@ Observe cuán sucintamente se puede utilizar la idea de recursión para expresar
    (+ 3 5 7))
 ```
 
-requiere que la regla de evaluación se aplique a cuatro combinaciones diferentes. Podemos obtener una imagen de este proceso representando la combinación en forma de árbol, como se muestra en la figura 1.1. Cada combinación está representada por un nodo con ramas que corresponden al operador y a los operandos de la combinación que se derivan de él. Los nodos terminales (es decir, nodos sin ramas que deriven en ellos) representan operadores o números. Viendo la evaluación en términos del árbol, podemos imaginar que los valores de los operandos se filtran hacia arriba, empezando por los nodos terminales y luego combinándose a niveles cada vez más altos y altos. En general, veremos que la recursividad es una técnica muy poderosa para tratar con objetos jerárquicos en forma de árbol. De hecho, la forma "filtrar valores hacia arriba" de la regla de evaluación es un ejemplo de un tipo general de proceso conocido como *acumulación de árbol* (NtD: *tree accumulation* en inglés).
+requiere que la regla de evaluación se aplique a cuatro combinaciones diferentes. Podemos obtener una imagen de este proceso representando la combinación en forma de árbol, como se muestra en la figura 1.1. Cada combinación está representada por un nodo con ramas que corresponden al operador y a los operandos de la combinación que se derivan de él. Los nodos terminales (es decir, nodos sin ramas que provengan de ellos) representan operadores o números. Viendo la evaluación en términos del árbol, podemos imaginar que los valores de los operandos se filtran hacia arriba, empezando por los nodos terminales y luego combinándose a niveles cada vez más altos y altos. En general, veremos que la recursividad es una técnica muy poderosa para tratar con objetos jerárquicos en forma de árbol. De hecho, la forma "filtrar valores hacia arriba" de la regla de evaluación es un ejemplo de un tipo general de proceso conocido como *acumulación de árbol* (NtD: *tree accumulation* en inglés).
 
 ![Figura 1.1](./imagenes/capitulo-1/figura-1-1.png)
 
 **Figura 1.1:** Representación de un árbol, mostrando el valor de cada subcombinación.
 
-A continuación, observe que la aplicación repetida del primer paso nos lleva al punto en el que necesitamos evaluar, no combinaciones, sino expresiones primitivas como números, operadores incorporados, u otros nombres. Nos ocupamos de los casos primitivos estipulando que
+A continuación, observe que la aplicación repetida del primer paso nos lleva al punto en el que necesitamos evaluar ya no combinaciones sino expresiones primitivas como números, operadores incorporados, u otros nombres. Nos ocupamos de los casos primitivos estipulando que
 
-* los valores de los números son los números que nombran,
+* los valores numéricos son los números que estos representan,
 
 * los valores de los operadores incorporados son las secuencias de instrucciones de máquina que realizan las operaciones correspondientes, y
 
 * los valores de otros nombres son los objetos asociados a esos nombres en el entorno.
 
-Podemos considerar la segunda regla como un caso especial de la tercera estipulando que símbolos como `+` y `*` también están incluidos en el entorno global, y están asociados a las secuencias de instrucciones de máquina que son sus "valores". El punto clave a tener en cuenta es el papel del entorno en determinar el significado de los símbolos en las expresiones. En un lenguaje interactivo como Lisp, no tiene sentido hablar del valor de una expresión como `(+ x 1)` sin especificar ninguna información sobre el entorno que proporcione un significado para el símbolo `x` (o incluso para el símbolo `+`). Como veremos en el [capítulo 3](./19-capitulo-3-intro.md), la noción general de que el entorno proporciona un contexto en el que tiene lugar la evaluación desempeñará un papel importante en nuestra comprensión de la ejecución de los programas.
+Podemos considerar la segunda regla como un caso especial de la tercera al estipular que símbolos como `+` y `*` también están incluidos en el entorno global, y que están asociados a las secuencias de instrucciones de máquina que son sus "valores". El punto clave a tener en cuenta es el papel del entorno en determinar el significado de los símbolos en las expresiones. En un lenguaje interactivo como Lisp, no tiene sentido hablar del valor de una expresión como `(+ x 1)` sin especificar ninguna información sobre el entorno que proporcione un significado para el símbolo `x` (o incluso para el símbolo `+`). Como veremos en el [capítulo 3](./19-capitulo-3-intro.md), la noción general de que el entorno proporciona un contexto en el que tiene lugar la evaluación desempeñará un papel importante en nuestra comprensión de la ejecución de los programas.
 
 Note que la regla de evaluación arriba mencionada no maneja definiciones. Por ejemplo, evaluar `(define x 3)` no se aplica a dos argumentos, uno de los cuales es el valor del símbolo `x` y el otro es `3`, ya que el propósito de la definición es precisamente asociar `x` con un valor (es decir, `(define x 3)` no es una combinación).
 
-Estas excepciones a la regla general de evaluación son llamadas *formas especiales*. `define` es el único ejemplo de una forma especial que hemos visto hasta ahora, pero nos encontraremos con otros en breve. Cada forma especial tiene su propia regla de evaluación. Los distintos tipos de expresiones (cada uno con su regla de evaluación asociada) constituyen la sintaxis del lenguaje de programación. En comparación con la mayoría de los otros lenguajes de programación, Lisp tiene una sintaxis muy simple; es decir, la regla de evaluación de expresiones puede ser descrita mediante una simple regla general junto con reglas especializadas para un pequeño número de formas especiales.[^11].
+Estas excepciones a la regla general de evaluación son llamadas *formas especiales*. `define` es el único ejemplo de una forma especial que hemos visto hasta ahora, pero nos encontraremos con otros en breve. Cada forma especial tiene su propia regla de evaluación. Las distintas clases de expresiones (cada una con su regla de evaluación asociada) constituyen la sintaxis del lenguaje de programación. En comparación con la mayoría de los otros lenguajes de programación, Lisp tiene una sintaxis muy simple; es decir, la regla de evaluación de expresiones puede ser descrita mediante una simple regla general junto con reglas especializadas para un pequeño número de formas especiales.[^11].
 
 
 #### 1.1.4 Procedimientos Compuestos
