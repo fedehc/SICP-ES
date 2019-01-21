@@ -1,3 +1,3 @@
-### 2.2 Datos Jerárquicos y la Propiedad de Clausura
+## 2.2 Datos Jerárquicos y la Propiedad de Clausura
 
-## ---Traducción pendiente---
+# ---Traducción pendiente---

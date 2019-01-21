@@ -1,1 +1,1 @@
-## ---Traducción pendiente---
+# ---Traducción pendiente---

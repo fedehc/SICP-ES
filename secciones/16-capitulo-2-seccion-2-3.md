@@ -1,3 +1,3 @@
-### 2.3 Datos Simbólicos
+## 2.3 Datos Simbólicos
 
-## ---Traducción pendiente---
+# ---Traducción pendiente---

@@ -1,6 +1,6 @@
-# Capítulo 3
+## Capítulo 3
 
-## Modularidad, Objetos y Estado
+# Modularidad, Objetos y Estado
 
 > Aunque cambie, se queda quieto.
 >
@@ -11,4 +11,4 @@
 > **Alphonse Karr**
 
 
-### ---Traducción pendiente---
+# ---Traducción pendiente---
