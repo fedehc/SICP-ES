@@ -173,13 +173,13 @@ Hemos identificado en Lisp algunos de los elementos que deben aparecer en cualqu
 
 Ahora aprenderemos sobre las *definiciones de procedimientos*, una técnica de abstracción mucho más poderosa mediante la cual se puede dar un nombre a una operación compuesta y luego referirse a ella como una unidad.
 
-Comenzamos examinando cómo expresar la idea de "al cuadrado". Podríamos decir: "Para elevar al cuadrado algo, multiplíquelo por sí mismo". Esto se expresa en nuestro lenguaje como 
+Comencemos examinando cómo expresar la idea de "al cuadrado". Podríamos decir: "Para elevar al cuadrado algo, multiplíquelo por sí mismo". Esto se expresa en nuestro lenguaje como 
 
 ```scheme
 (define (al-cuadrado x) (* x x))
 ```
 
-Podemos entender esto último de la siguiente manera:
+Podemos entender esto de la siguiente manera:
 
 ```
 (define (al-cuadrado        x)   (*             x   x))
@@ -187,7 +187,7 @@ Podemos entender esto último de la siguiente manera:
  Para    elevar al cuadrado algo, multiplicarlo por si mismo.
 ```
 
-Tenemos aquí un *procedimiento compuesto*, al que se le ha dado el nombre `al-cuadrado`. El procedimiento representa la operación de multiplicar algo por sí mismo. La cosa a multiplicar se le da un nombre local, `x`, que juega el mismo papel que un pronombre juega en el lenguaje natural. La evaluación de la definición crea este procedimiento compuesto y lo asocia con el nombre `al-cuadrado`.[^12]
+Tenemos aquí un *procedimiento compuesto*, al que se le ha dado el nombre `al-cuadrado`. El procedimiento representa la operación de multiplicar algo por sí mismo. La cosa a multiplicar se le da un nombre local, `x`, que juega el mismo papel que los pronombres juegan en el lenguaje natural. La evaluación de la definición crea este procedimiento compuesto y lo asocia con el nombre `al-cuadrado`.[^12]
 
 La forma general para la definición de un procedimiento es
 
@@ -195,7 +195,7 @@ La forma general para la definición de un procedimiento es
 (define (<nombre> <parámetros formales>) <cuerpo>)
 ```
 
-El *`<nombre>`* es un símbolo que se asocia con la definición del procedimiento en el entorno.[^13] Los *`<parámetros formales>`* son los nombres utilizados dentro del cuerpo del procedimiento para referirse a los argumentos correspondientes del procedimiento. El *`<cuerpo>`* es una expresión que generará el valor de la aplicación del procedimiento cuando los parámetros formales sean reemplazados por los argumentos reales a los que se aplica el procedimiento.[^14] El *`<nombre>`* y los *`<parámetros formales>`* se agrupan entre paréntesis, justo como lo estarían si se tratara de una llamada real al procedimiento que se está definiendo.
+El *`<nombre>`* es un símbolo que se asocia con la definición del procedimiento en el entorno.[^13] Los *`<parámetros formales>`* son los nombres utilizados dentro del cuerpo del procedimiento para referirse a los argumentos correspondientes del procedimiento mismo. El *`<cuerpo>`* es una expresión que generará el valor de la aplicación del procedimiento cuando los parámetros formales son reemplazados por los argumentos reales a los que se aplica el procedimiento.[^14] El *`<nombre>`* y los *`<parámetros formales>`* se agrupan entre paréntesis, justo como lo estarían si se tratara de una llamada real al procedimiento que se está definiendo.
 
 Habiendo definido `al-cuadrado`, ahora podemos usarlo:
 
@@ -214,7 +214,7 @@ También podemos usar `al-cuadrado` como un bloque de construcción en la defini
 ```scheme
 (+ (al-cuadrado x) (al-cuadrado y))
 ```
-Podemos definir fácilmente un procedimiento `suma-de-cuadrados` que, dados dos números cualesquiera como argumentos, produce la suma de sus al-cuadrados:
+Podemos definir fácilmente un procedimiento `suma-de-cuadrados` que, dados dos números cualesquiera como argumentos, produce la suma de sus cuadrados:
 
 ```scheme
 (define (suma-de-cuadrados x y)
@@ -234,7 +234,7 @@ Ahora podemos usar `suma-de-cuadrados` como un bloque de construcción en la con
 136
 ```
 
-Los procedimientos compuestos son usados exactamente de la misma manera que los procedimientos primitivos. De hecho, uno no podría decir al mirar la definición de `suma-de-cuadrados` dada arriba si `al-cuadrado` fue construido dentro del intérprete, como **+** y **\***, o definido como un procedimiento compuesto.
+Los procedimientos compuestos son usados exactamente de la misma manera que los procedimientos primitivos. De hecho, uno no podría decir al mirar la definición de `suma-de-cuadrados` dada arriba si `al-cuadrado` fue construido dentro del intérprete, como `+` y `*`, o definido como un procedimiento compuesto.
 
 
 #### 1.1.5 El Modelo de Sustitución para la Aplicación de Procedimientos
