@@ -1,4 +1,4 @@
-### 1.1 Los Elementos de la Programación
+## 1.1 Los Elementos de la Programación
 
 Un lenguaje de programación avanzado es más que un medio para instruir a una computadora para que realice tareas. El lenguaje también sirve como marco desde el cual organizamos nuestras ideas acerca de los procesos. Por lo tanto, cuando describimos un lenguaje, debemos prestar especial atención a los medios que el lenguaje proporciona para combinar ideas simples para formar ideas más complejas. Todo lenguaje avanzado tiene tres mecanismos para lograr esto:
 
@@ -13,7 +13,7 @@ En programación, nos ocupamos de dos tipos de elementos: procedimientos y datos
 En este capítulo sólo trataremos con datos numéricos simples para que podamos concentrarnos en las reglas para la construcción de procedimientos.[^4] En capítulos posteriores veremos que estas mismas reglas nos permiten construir procedimientos para manipular también datos compuestos.
 
 
-#### 1.1.1 Expresiones
+### 1.1.1 Expresiones
 
 Una manera fácil de empezar a programar es analizando algunas interacciones típicas con el intérprete del dialecto Scheme de Lisp. Imagine que se encuentra sentado frente a una terminal de computadora. Se escribe una *expresión*, y el intérprete responde mostrando el resultado de la *evaluación* de esa expresión.
 
@@ -86,7 +86,7 @@ siguiendo la convención de formato conocida como *pretty-printing* (NdT: traduc
 Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión (NdT: en inglés *read-eval-print loop*, o más conocido en este idioma como *REPL*). Observe en particular que no es necesario indicarle explícitamente al intérprete de que imprima el valor de la expresión.[^7]
 
 
-#### 1.1.2 Los Nombres y el Entorno
+### 1.1.2 Los Nombres y el Entorno
 
 Un aspecto crucial de un lenguaje de programación es el medio que proporciona para el uso de nombres que hacen referencia a objetos computacionales. Decimos que el nombre identifica a una *variable* cuyo valor es el objeto.
 
@@ -121,7 +121,7 @@ circunferencia
 Debe quedar claro que la posibilidad de asociar valores con símbolos y luego llamarlos significa que el intérprete debe mantener algún tipo de memoria que mantenga un registro de los pares nombre-objeto. Esta memoria se llama el *entorno* (más precisamente el *entorno global*, ya que veremos más adelante que un cálculo puede implicar varios entornos diferentes).[^9]
 
 
-#### 1.1.3 Evaluando Combinaciones
+### 1.1.3 Evaluando Combinaciones
 
 Uno de nuestros objetivos en este capítulo es el de aislar cuestiones pensando en términos de procesos. Como caso concreto, consideremos que, al evaluar las combinaciones, el propio intérprete está siguiendo un procedimiento.
 
@@ -161,7 +161,7 @@ Note que la regla de evaluación arriba mencionada no maneja definiciones. Por e
 Estas excepciones a la regla general de evaluación son llamadas *formas especiales*. `define` es el único ejemplo de una forma especial que hemos visto hasta ahora, pero nos encontraremos con otros en breve. Cada forma especial tiene su propia regla de evaluación. Las distintas clases de expresiones (cada una con su regla de evaluación asociada) constituyen la sintaxis del lenguaje de programación. En comparación con la mayoría de los otros lenguajes de programación, Lisp tiene una sintaxis muy simple; es decir, la regla de evaluación de expresiones puede ser descrita mediante una simple regla general junto con reglas especializadas para un pequeño número de formas especiales.[^11].
 
 
-#### 1.1.4 Procedimientos Compuestos
+### 1.1.4 Procedimientos Compuestos
 
 Hemos identificado en Lisp algunos de los elementos que deben aparecer en cualquier lenguaje de programación avanzado:
 
@@ -237,7 +237,7 @@ Ahora podemos usar `suma-de-cuadrados` como un bloque de construcción en la con
 Los procedimientos compuestos son usados exactamente de la misma manera que los procedimientos primitivos. De hecho, uno no podría decir al mirar la definición de `suma-de-cuadrados` dada arriba si `al-cuadrado` fue construido dentro del intérprete, como `+` y `*`, o definido como un procedimiento compuesto.
 
 
-#### 1.1.5 El Modelo de Sustitución para la Aplicación de Procedimientos
+### 1.1.5 El Modelo de Sustitución para la Aplicación de Procedimientos
 
 Para evaluar una combinación cuyo operador nombra a un procedimiento compuesto, el intérprete sigue el mismo proceso que para las combinaciones cuyos operadores nombran procedimientos primitivos, que hemos descripto en la [sección 1.1.3](#113-Evaluando-Combinaciones). Es decir, el intérprete evalúa los elementos de la combinación y aplica el procedimiento (que es el valor del operador de la combinación) a los argumentos (que son los valores de los operandos de la combinación).
 
@@ -293,7 +293,7 @@ El proceso que acabamos de describir se denomina *modelo de sustitución* para l
 
 * A lo largo del curso de este libro, presentaremos una secuencia de modelos cada vez más elaborados de cómo trabajan los intérpretes, culminando con la implementación completa de un intérprete y compilador en el [capítulo 5](./30-capitulo-5-intro.md). El modelo de sustitución es sólo el primero de estos modelos, una forma de empezar a pensar formalmente sobre el proceso de evaluación. En general, al modelar fenómenos en ciencia e ingeniería, comenzamos con modelos simplificados e incompletos. A medida que examinamos las cosas en mayor detalle, estos modelos simples se vuelven inadecuados y deben ser reemplazados por modelos más refinados. El modelo de sustitución no es la excepción. En particular, cuando abordemos en el [capítulo 3](./19-capitulo-3-intro.md) el uso de procedimientos con "datos mutables", veremos que el modelo de sustitución se quiebra y debe ser reemplazado por un modelo más complicado de aplicación de procedimientos.[^15]
 
-##### Orden Aplicativo versus Orden Normal
+#### Orden Aplicativo versus Orden Normal
 
 De acuerdo con la descripción de evaluación dada en la [sección 1.1.3](#113-Evaluando-Combinaciones), el intérprete primero evalúa el operador y los operandos y luego aplica el procedimiento resultante a los argumentos resultantes. Esta no es la única manera de realizar una evaluación. Un modelo de evaluación alternativo no evaluaría los operandos hasta que se necesitaran sus valores. En lugar de ello, primero sustituiría los parámetros por expresiones de operandos hasta que obtenga una expresión que involucre sólo a operadores primitivos, y luego realizaría la evaluación. Si utilizamos este método, la evaluación de
 
@@ -331,7 +331,7 @@ Este método alternativo de evaluación de " expandir completamente y reducir de
 Lisp utiliza la evaluación de orden aplicativo, en parte debido a la eficiencia adicional obtenida al evitar evaluaciones múltiples de expresiones como las ilustradas con (+ 5 1) y (* 5 2) anteriormente expuestas y, lo que es más importante, debido a que la evaluación de orden normal se vuelve mucho más complicada cuando dejamos el ámbito de los procedimientos que pueden ser modelados por sustitución. Por otro lado, la evaluación del orden normal puede ser una herramienta extremadamente valiosa, y vamos a investigar algunas de sus implicaciones en los capítulos [3](./19-capitulo-3-intro.md) y [4](./25-capitulo-4-intro.md).[^16]
 
 
-#### 1.1.6 Expresiones Condicionales y Predicados
+### 1.1.6 Expresiones Condicionales y Predicados
 
 El poder expresivo de la clase de procedimientos que nosotros podemos definir hasta este punto es muy limitado, porque no tenemos forma de hacer pruebas y de realizar diferentes operaciones dependiendo del resultado de una prueba. Por ejemplo, no podemos definir un procedimiento que calcule el valor absoluto de un número comprobando si el número es positivo, negativo o cero y tomando diferentes acciones en los diferentes casos de acuerdo a la regla
 
@@ -501,7 +501,7 @@ Luego él evalúa la expresión
 ¿Qué comportamiento observará Ben con un intérprete que utiliza la evaluación de orden aplicativo? ¿Qué comportamiento observará con un intérprete que utiliza una evaluación de orden normal? Explique su respuesta (suponga que la regla de evaluación para el formulario especial es la misma, ya sea que el intérprete esté utilizando el orden normal o el orden de aplicación: la expresión predicada se evalúa primero, y el resultado determina si se debe evaluar la expresión consecuente o la expresión alternativa).
 
 
-#### 1.1.7 Ejemplo: Raíces cuadradas por el método de Newton
+### 1.1.7 Ejemplo: Raíces cuadradas por el método de Newton
 
 Los procedimientos, como se presentó anteriormente, son muy parecidos a las funciones matemáticas ordinarias. Éstos especifican un valor determinado por uno o más parámetros. Pero hay una diferencia importante entre las funciones matemáticas y los procedimientos informáticos. Los procedimientos deben ser efectivos.
 
@@ -640,7 +640,7 @@ x/y² + 2y
     3
 ```
 
-#### 1.1.8 Procedimientos como abstracciones de caja negra
+### 1.1.8 Procedimientos como abstracciones de caja negra
 
 La `raiz-cuadrada` es nuestro primer ejemplo de un proceso definido por un conjunto de procedimientos mutualmente definidos. Note que la definición de `raiz-iter` es recursiva; es decir, el procedimiento se define en términos de sí mismo. La idea de poder definir un procedimiento en términos de sí mismo puede ser perturbadora; puede parecer poco claro cómo podría tener sentido una definición tan "circular", y mucho menos aún especificar un proceso bien definido que debe ser llevado a cabo por una computadora. Esto se abordará con más detenimiento en la [sección 1.2](./11-capitulo-1-seccion-1-2.md). Pero primero consideremos algunos otros puntos importantes ilustrados por este caso `raiz-cuadrada`.
 
@@ -666,7 +666,7 @@ Por lo tanto, considerando sólo los valores que devuelven, los dos procedimient
 Por lo tanto, una definición de procedimiento debería ser capaz de ocultar detalles. Los usuarios del procedimiento pueden no haber escrito el procedimiento ellos mismos, pero pueden haberlo obtenido de otro programador como una caja negra. Un usuario no necesita saber cómo se implementa el procedimiento para poder utilizarlo.
 
 
-##### Nombres locales
+#### Nombres locales
 
 Un detalle de la implementación de un procedimiento que no debería importar al usuario del mismo es la elección de los nombres de los parámetros formales del procedimiento por parte del implementador. Por lo tanto, los siguientes procedimientos no deberían ser distinguibles:
 
@@ -692,7 +692,7 @@ Un parámetro formal de un procedimiento tiene un rol muy especial en la definic
 En la definición de `suficientemente-bueno?` mencionada arriba, `estimacion` y `x` son variables vinculadas pero `<`, `-`, `abs`, y `al-cuadrado` son libres. El significado de `suficientemente-bueno` debería ser independiente de los nombres que elijamos para `estimacion` y `x`, siempre y cuando sean distintos y diferentes de `<`, `-`, `abs`, y `al-cuadrado` (si cambiásemos el nombre de `estimacion` por el de `abs`, hubiésemos introducido un error al *capturar* la variable `abs`). Habría pasado de libre a vinculada. Sin embargo, el significado de `suficientemente-bueno?` no es independiente de los nombres de sus variables libres. Depende seguramente del hecho (externo a esta definición) de que el símbolo `abs` nombre a un procedimiento para calcular el valor absoluto de un número. `Suficientemente bueno?` computará una función diferente si sustituimos `cos` por `abs` en su definición.
 
 
-##### Definiciones internas y estructura de bloques
+#### Definiciones internas y estructura de bloques
 
 Tenemos un tipo de aislamiento de nombre disponible hasta ahora: Los parámetros formales de un procedimiento son locales al cuerpo del procedimiento. El programa de raíz cuadrada ilustra otra manera en la cual nos gustaría controlar el uso de los nombres. El programa actual consiste en procedimientos separados:
 

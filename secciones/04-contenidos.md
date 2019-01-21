@@ -1,5 +1,6 @@
-<br><br>
-<h1>Contenidos</h1><br>
+<br>
+# Contenidos
+<br>
 
 **[Prólogo](./05-prologo.md)**
 
@@ -9,7 +10,7 @@
 
 **[Agradecimientos](./08-agradecimientos.md)**
 
-**[1. Construyendo Abstracciones con Procedimientos](./09-capitulo-1-intro.md)**
+**[1. Construyendo Abstracciones con Procedimientos](./09-capitulo-1-intro.md#Construyendo-Abstracciones-con-Procedimientos)**
   * [1.1. Los Elementos de la Programación](./10-capitulo-1-seccion-1-1.md)
     * [1.1.1. Expresiones](./10-capitulo-1-seccion-1-1.md#111-expresiones)
     * [1.1.2. Los Nombres y el Entorno](./10-capitulo-1-seccion-1-1.md#112-Los-Nombres-y-el-Entorno)

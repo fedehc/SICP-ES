@@ -1,6 +1,6 @@
-# Capítulo 1
+## Capítulo 1
 
-## Construyendo Abstracciones con Procedimientos
+# Construyendo Abstracciones con Procedimientos
 
 > Los actos de la mente, en los que ejerce su poder sobre las ideas simples, son principalmente estos tres: 1. Combinar varias ideas simples en una compuesta, y así todas las ideas complejas son elaboradas. 2. La segunda es reunir dos ideas, simples o complejas, y ponerlas una al lado de la otra para poder verlas a la vez, sin unirlas en una sola, con lo que obtiene todas las ideas de sus relaciones. 3. La tercera es separarlas de todas las demás ideas que las acompañan en su existencia real: esto se llama abstracción, y así todas sus ideas generales son elaboradas. 
 >

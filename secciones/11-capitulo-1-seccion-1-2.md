@@ -1,4 +1,4 @@
-### 1.2 Procedimientos y los Procesos que Generan
+## 1.2 Procedimientos y los Procesos que Generan
 
 Ya hemos considerado los elementos de la programación: Hemos usado operaciones aritméticas primitivas, hemos combinado estas operaciones, y las hemos abstraído definiéndolas como procedimientos compuestos. Pero eso no es suficiente como para poder decir que sabemos programar. Nuestra situación es análoga a la de alguien que aprendió las reglas de cómo se mueven las piezas en el ajedrez pero que no sabe nada de las aperturas típicas, tácticas, o estrategias. Al igual que el jugador de ajedrez novato, todavía no conocemos los patrones comunes de uso en este campo. Nos falta el conocimiento sobre qué movimientos convienen hacer (qué procedimientos conviene definir). Nos falta la experiencia para predecir las consecuencias de hacer una jugada (ejecutar un procedimiento).
 
@@ -9,7 +9,7 @@ Un procedimiento es un patrón para la *evolución local* de un proceso computac
 En esta sección examinaremos algunas "formas" comunes para aquellos procesos generados a partir de procedimientos simples. También investigaremos el ritmo con el que estos procesos consumen valiosos recursos computacionales de tiempo y espacio. Los procedimientos que consideraremos son muy simples. Su papel es como el que desempeñan las pruebas de patrones en fotografía: como patrones prototípicos sobresimplificados, más que como ejemplos prácticos por si mismos.
 
 
-#### 1.2.1 Recursión e Iteración Lineales
+### 1.2.1 Recursión e Iteración Lineales
 
 ![Figura 1.3](./imagenes/capitulo-1/figura-1-3.png)
 
@@ -132,7 +132,7 @@ Consider the following procedures, where `A` is the procedure defined above:
 Defina de forma concisa las funciones calculadas mediante los procedimientos `f`, `g`, y `h` para valores enteros positivos de `n`. Por ejemplo, `(k n)` calcula `5n2`.
 
 
-#### 1.2.2 Recursión de Árbol
+### 1.2.2 Recursión de Árbol
 
 Otro patrón común de cálculo se llama *Recursión de Árbol* (NdT: *Tree Recursion* en inglés). A modo de ejemplo, consideremos el cálculo de la secuencia de números de Fibonacci, en la que cada número es la suma de los dos anteriores:
 
@@ -203,7 +203,7 @@ Este segundo método para calcular `Fib(n)` es una iteración lineal. La diferen
 De esto no se debe concluir de que los procesos recursivos de árbol son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que la recursividad de árbol es una herramienta natural y poderosa.[^32] Incluso en operaciones numéricas, los procesos de recursividad de árbol pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, es más sencillo, siendo poco más que una traducción a Lisp de la definición de la secuencia de Fibonacci. Para formular el algoritmo iterativo es necesario debe tenerse en cuenta que el cálculo puede ser reformulado como una iteración con tres variables de estado.
 
 
-##### Ejemplo: Contando cambios
+#### Ejemplo: Contando cambios
 
 Se necesita algo de ingenio para obtener el algoritmo iterativo de Fibonacci. En contraste, considere el siguiente problema: ¿De cuántas maneras diferentes podemos hacer el cambio de 1 dolar, teniendo solamente monedas de 50, 25, 10, 5 y 1 centavos? De manera más general, ¿podemos escribir un procedimiento para calcular la cantidad de formas de cambiar una determinada cantidad de dinero?
 
@@ -274,7 +274,7 @@ Los números en el borde del triángulo son todos 1, y cada número dentro del t
 **Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `φⁿ/√5)/2`, donde `φ= (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver [sección 1.2.2](#122-Recursión-de-Árbol)) para probar que `Fib(n) = (φⁿ - ⨚ⁿ)/5`. 
 
 
-#### 1.2.3 Órdenes de crecimiento
+### 1.2.3 Órdenes de crecimiento
 
 Los ejemplos previos nos ilustran que los procesos pueden diferir considerablemente en el ritmo en el que consumen recursos computacionales. Una forma conveniente de describir esta diferencia es utilizar la noción de *orden de crecimiento* para obtener una medida en bruto de los recursos requeridos por un proceso a medida de que las entradas se hacen más grandes.
 
@@ -319,7 +319,7 @@ a.  ¿Cuántas veces se aplicará el procedimiento `p` cuando seno(12.15) es eva
 b.  ¿Cuál es el orden de crecimiento en espacio y el número de pasos (en función de `a`) utilizados por el proceso generado por el procedimiento cuando `seno(a)` es evaluado?
 
 
-#### 1.2.4 Exponenciación
+### 1.2.4 Exponenciación
 
 Considere el problema de calcular el exponencial de un número dado. Queremos un procedimiento que tome como argumentos una base `b` y un exponente entero positivo `n` y calcule `bⁿ`. Una forma de hacerlo sería mediante la definición recursiva
 
@@ -397,7 +397,7 @@ La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se
 
 
 
-## ---Traducción pendiente---
+# ---Traducción pendiente---
 
 ___
 
