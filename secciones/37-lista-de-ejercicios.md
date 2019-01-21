@@ -1,3 +1,3 @@
 ## Lista de ejercicios
 
-### ---Traducción pendiente---
+# ---Traducción pendiente---
