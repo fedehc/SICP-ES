@@ -239,9 +239,9 @@ Los procedimientos compuestos son usados exactamente de la misma manera que los 
 
 ### 1.1.5 El Modelo de Sustitución para la Aplicación de Procedimientos
 
-Para evaluar una combinación cuyo operador nombra a un procedimiento compuesto, el intérprete sigue el mismo proceso que para las combinaciones cuyos operadores nombran procedimientos primitivos, que hemos descripto en la [sección 1.1.3](#113-Evaluando-Combinaciones). Es decir, el intérprete evalúa los elementos de la combinación y aplica el procedimiento (que es el valor del operador de la combinación) a los argumentos (que son los valores de los operandos de la combinación).
+Para evaluar una combinación cuyo operador nombra a un procedimiento compuesto, el intérprete sigue el mismo proceso aplicado a las combinaciones cuyos operadores nombran procedimientos primitivos, tal como describimos en la sección [sección 1.1.3](#113-Evaluando-Combinaciones). Es decir, el intérprete evalúa los elementos de la combinación y aplica el procedimiento (que es el valor del operador de la combinación) a los argumentos (que son los valores de los operandos de la combinación).
 
-Podemos asumir que el mecanismo para aplicar los procedimientos primitivos a los argumentos está incorporado en el intérprete. Para los procedimientos compuestos, el proceso de aplicación es el siguiente:
+Podemos asumir que el mecanismo para aplicar los procedimientos primitivos a los argumentos está incorporado dentro del intérprete. Para los procedimientos compuestos, el proceso de aplicación es el siguiente:
 
 * Para aplicar un procedimiento compuesto a los argumentos, evalúe el cuerpo del procedimiento con cada parámetro formal sustituido por el argumento correspondiente.
 
@@ -251,7 +251,7 @@ Para ilustrar este proceso, evaluemos la combinación
 (f 5)
 ```
 
-donde `f` es el procedimiento definido en la [sección 1.1.4](#114-Procedimientos-Compuestos). Comencemos por recuperar el cuerpo de `f`:
+donde `f` es el procedimiento definido en la [sección 1.1.4](#114-Procedimientos-Compuestos). Comencemos entonces por recuperar el cuerpo de `f`:
 
 ```scheme
 (suma-de-cuadrados (+ a 1) (* a 2))
@@ -287,11 +287,11 @@ y finalmente a
 136
 ```
 
-El proceso que acabamos de describir se denomina *modelo de sustitución* para la aplicación de procedimientos. Puede tomarse como un modelo que determina el "significado" de la aplicación del procedimiento, en la medida en que concierne a los procedimientos de este capítulo. Sin embargo, hay dos puntos que deben ser remarcados:
+El proceso que acabamos de describir se denomina *modelo de sustitución* para la aplicación de procedimientos. Puede tomarse como un modelo que determina el "significado" de la aplicación de procedimientos, en la medida en que concierne a los procedimientos de este capítulo. Sin embargo, hay dos puntos que deben ser remarcados:
 
-* El propósito de la sustitución es ayudarnos a pensar en la aplicación del procedimiento, no para proporcionar una descripción de cómo funciona realmente el intérprete. Los intérpretes típicos no evalúan las aplicaciones de procedimientos manipulando el texto de un procedimiento para sustituir los valores de los parámetros formales. En la práctica, la "sustitución" se realiza utilizando un entorno local para los parámetros formales. Discutiremos esto más detalladamente en los capítulos [3](./19-capitulo-3-intro.md) y [4](25-capitulo-4-intro.md) cuando examinemos la implementación de un intérprete en detalle.
+* El propósito de la sustitución es ayudarnos a pensar en la aplicación del procedimiento, no para proporcionar una descripción de cómo funciona realmente el intérprete. Los intérpretes convencionales no evalúan las aplicaciones de procedimientos al manipular el texto de un procedimiento con el fin de sustituir los parámetros formales por valores. En la práctica, la "sustitución" se realiza al usar un entorno local para los parámetros formales. Discutiremos esto más detenidamente en los capítulos [3](./19-capitulo-3-intro.md) y [4](25-capitulo-4-intro.md) cuando examinemos la implementación de un intérprete en detalle.
 
-* A lo largo del curso de este libro, presentaremos una secuencia de modelos cada vez más elaborados de cómo trabajan los intérpretes, culminando con la implementación completa de un intérprete y compilador en el [capítulo 5](./30-capitulo-5-intro.md). El modelo de sustitución es sólo el primero de estos modelos, una forma de empezar a pensar formalmente sobre el proceso de evaluación. En general, al modelar fenómenos en ciencia e ingeniería, comenzamos con modelos simplificados e incompletos. A medida que examinamos las cosas en mayor detalle, estos modelos simples se vuelven inadecuados y deben ser reemplazados por modelos más refinados. El modelo de sustitución no es la excepción. En particular, cuando abordemos en el [capítulo 3](./19-capitulo-3-intro.md) el uso de procedimientos con "datos mutables", veremos que el modelo de sustitución se quiebra y debe ser reemplazado por un modelo más complicado de aplicación de procedimientos.[^15]
+* A lo largo del curso de este libro, presentaremos una secuencia de modelos cada vez más elaborados de cómo trabajan los intérpretes, culminando con la implementación completa de un intérprete y compilador en el [capítulo 5](./30-capitulo-5-intro.md). El modelo de sustitución es sólo el primero de estos modelos, una forma de empezar a pensar formalmente sobre el proceso de evaluación. En general, al modelar fenómenos en ciencia e ingeniería, comenzamos con modelos simplificados e incompletos. A medida que examinamos las cosas en mayor detalle, estos modelos simples se vuelven inadecuados y deben ser reemplazados por modelos más refinados. El modelo de sustitución no es la excepción. En particular, cuando abordemos en el [capítulo 3](./19-capitulo-3-intro.md) el uso de procedimientos con "datos mutables", veremos que el modelo de sustitución se rompe y debe ser reemplazado por un modelo más complicado de aplicación de procedimientos.[^15]
 
 #### Orden Aplicativo versus Orden Normal
 
