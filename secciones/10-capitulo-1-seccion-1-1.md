@@ -334,7 +334,7 @@ Lisp utiliza la evaluación de orden aplicativo, en parte debido a la eficiencia
 
 ### 1.1.6 Expresiones Condicionales y Predicados
 
-El poder expresivo de la clase de procedimientos que nosotros podemos definir hasta este punto es muy limitado, porque no tenemos forma de hacer pruebas y de realizar diferentes operaciones dependiendo del resultado de una prueba. Por ejemplo, no podemos definir un procedimiento que calcule el valor absoluto de un número comprobando si el número es positivo, negativo o cero y tomando diferentes acciones en los diferentes casos de acuerdo a la regla
+El poder expresivo de la clase de procedimientos que podemos definir hasta ahora es muy limitado, ya que no tenemos forma de hacer comprobaciones y de realizar diferentes operaciones en función del resultado de un test. Por ejemplo, no podemos definir un procedimiento que calcule el valor absoluto de un número comprobando si el número es positivo, negativo o cero y tomando diferentes acciones en los diferentes casos de acuerdo a la regla
 
 ```
       ⎧  x  si x > 0
@@ -342,7 +342,7 @@ El poder expresivo de la clase de procedimientos que nosotros podemos definir ha
       ⎩ -x  si x < 0
 ```
 
-Esta construcción se denomina *análisis de casos*, y existe una forma especial en Lisp para anotar dicho análisis de casos. Se llama `cond` (que viene de "condicional"), y se usa de la siguiente manera:
+Esta construcción se denomina *análisis de casos* (NdT: *case analysis* en inglés), y existe una forma especial en Lisp para anotar dichos análisis de casos. Se llama `cond` (que viene de "condicional"), y se usa de la siguiente manera:
 
 ```scheme
 (define (abs x)
@@ -364,7 +364,7 @@ que consiste en el símbolo `cond` seguido de pares entre paréntesis de expresi
 
 Las expresiones condicionales se evalúan de la siguiente manera: el predicado `<p1>` se evalúa primero. Si su valor es falso, entonces se evalúa `<p2>`. Si el valor de `<p2>` también es falso, entonces se evalúa `<p3>`. Este proceso continúa hasta que se encuentra un predicado cuyo valor es verdadero, en cuyo caso el intérprete devuelve el valor correspondiente de la *expresión consecuente* `<e>` de la cláusula como valor de la expresión condicional. Si ninguno de los `<p>` es verdadero, el valor del `cond` es indefinido.
 
-La palabra *predicado* se utiliza para procedimientos que devuelven verdadero o falso, así como para expresiones que evalúen a verdadero o falso. El procedimiento del valor absoluto `abs` hace uso de los predicados primitivos `>`, `<`, y `=`.[^18] Estos toman dos números como argumentos y prueban si el primer número es, respectivamente, mayor que, menor que, o igual al segundo número, devolviendo verdadero o falso en consecuencia.
+La palabra *predicado* es usado por procedimientos que devuelven verdadero o falso, así como para expresiones que evalúen a verdadero o falso. El procedimiento del valor absoluto `abs` hace uso de los predicados primitivos `>`, `<`, y `=`.[^18] Estos toman dos números como argumentos y prueban si el primer número es, respectivamente, mayor que, menor que, o igual al segundo número, devolviendo verdadero o falso en consecuencia.
 
 Otra forma de escribir el procedimiento de valor absoluto es
 
@@ -374,7 +374,7 @@ Otra forma de escribir el procedimiento de valor absoluto es
         (else x)))
 ```
 
-que podría expresarse en inglés como "Si x es menor que cero, devolver - x; en caso contrario, devolver x." Otro" es un símbolo especial que puede ser usado en lugar de"`<p>` en la cláusula final de un `cond`. Esto hace que el `cond` devuelva como valor el valor del `<e>` correspondiente siempre que se hayan omitido todas las cláusulas anteriores. De hecho, cualquier expresión que siempre evalúe a un valor verdadero podría ser usado como `<p>` aquí.
+que podría expresarse en inglés como "Si x es menor que cero, devolver -x; en caso contrario, devolver x". `Else` es un símbolo especial que puede ser usado en lugar de `<p>` en la cláusula final de un `cond`. Esto hace que el `cond` devuelva como su valor el valor del `<e>` correspondiente cuando todas las cláusulas anteriores han sido pasadas. De hecho, cualquier expresión que evalúe siempre a un valor verdadero podría ser usado como `<p>` aquí.
 
 Aquí hay otra manera de escribir el procedimiento de valor absoluto:
 
@@ -385,19 +385,19 @@ Aquí hay otra manera de escribir el procedimiento de valor absoluto:
       x))
 ```
 
-Esto usa la forma especial `if`, un tipo restringido de condicional que puede ser usado cuando hay precisamente solo dos casos en el análisis de casos. La forma general de una expresión `if` es
+Esto usa la forma especial `if`, un tipo restringido de condicional que puede ser usado cuando solo exista precisamente dos casos en el análisis de casos. La forma general de una expresión `if` es
 
 ```scheme
 (if <predicado> <consecuente> <alternativa>)
 ```
 
-Para evaluar una expresión " if ", el intérprete comienza por evaluar la parte del predicado de la expresión. Si el `<predicado>` se evalúa a un valor verdadero, el intérprete evalúa el  `<consecuente>` y devuelve su valor. De lo contrario, evalúa la `<alternativa>` y devuelve su valor.[^19]
+Para evaluar una expresión `if`, el intérprete comienza por evaluar la parte del predicado de la expresión. Si el `<predicado>` se evalúa a un valor verdadero, el intérprete evalúa el  `<consecuente>` y devuelve su valor. De lo contrario, evalúa la `<alternativa>` y devuelve su valor.[^19]
 
 Además de predicados primitivos como `<`, `=`, y `>`, hay operaciones de composición lógica, que nos permiten construir predicados compuestos. Los tres más utilizados son estos:
 
 * `(and <e1> ... <en>)`
 
-    El intérprete evalúa las expresiones `<e>` una por una, en orden de izquierda a derecha. Si alguna `<e>` se evalúa como falsa, el valor de la expresión `and` es falso, y el resto de las `<e>` no se evaluará. Si todas las `<e>` evalúan a valores verdaderos, el valor de la expresión `and` será el valor de la última.
+    El intérprete evalúa las expresiones `<e>` una por una, en orden de izquierda a derecha. Si alguna `<e>` se evalúa como falsa, el valor de la expresión `and` es falso, y el resto de las `<e>` no se evaluarán. Si todas las `<e>` evalúan a valores verdaderos, el valor de la expresión `and` será el valor de la última.
 
 * `(or <e1> ... <en>)`
 
@@ -406,7 +406,7 @@ Además de predicados primitivos como `<`, `=`, y `>`, hay operaciones de compos
 * `(not <e>)`
     El valor de una expresión `not` es verdadero cuando la expresión `<e>` se evalúa como falsa, de lo contrario es falsa.
 
-Note que `and` y `or` son formas especiales, no procedimientos, porque las subexpresiones no son necesariamente evaluadas. `Not` es un procedimiento ordinario.
+Observe que `and` y `or` son formas especiales, no procedimientos, porque las subexpresiones no son necesariamente evaluadas. `not` es un procedimiento ordinario.
 
 A modo de ejemplo de cómo se utilizan, la condición de que un número x esté en el rango 5 < x < 10 puede expresarse como
 
@@ -422,7 +422,6 @@ En otro ejemplo, podemos definir un predicado para probar si un número es mayor
 ```
 
 o alternativamente como
-
 
 ```scheme
 (define (>= x y)
