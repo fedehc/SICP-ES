@@ -391,7 +391,7 @@ Esto usa la forma especial `if`, un tipo restringido de condicional que puede se
 (if <predicado> <consecuente> <alternativa>)
 ```
 
-Para evaluar una expresión `if`, el intérprete comienza por evaluar la parte del predicado de la expresión. Si el `<predicado>` se evalúa a un valor verdadero, el intérprete evalúa el  `<consecuente>` y devuelve su valor. De lo contrario, evalúa la `<alternativa>` y devuelve su valor.[^19]
+Para evaluar una expresión `if`, el intérprete comienza por evaluar la parte del predicado de la expresión. Si el `<predicado>` se evalúa a un valor verdadero, el intérprete evalúa el `<consecuente>` y devuelve su valor. De lo contrario, evalúa la `<alternativa>` y devuelve su valor.[^19]
 
 Además de predicados primitivos como `<`, `=`, y `>`, hay operaciones de composición lógica, que nos permiten construir predicados compuestos. Los tres más utilizados son estos:
 
@@ -475,14 +475,14 @@ o alternativamente como
 
 **Ejercicio 1.3.** Defina un procedimiento que tome tres números como argumentos y devuelva la suma de los cuadrados de los dos números mayores.
 
-**Ejercicio 1.4.** Observe que nuestro modelo de evaluación permite combinaciones cuyos operadores son expresiones compuestas. Utilice esta observación para describir el comportamiento del siguiente procedimiento:
+**Ejercicio 1.4.** Observe que nuestro modelo de evaluación permite combinaciones cuyos operadores son expresiones compuestas. Haga uso de esta observación para describir el comportamiento del siguiente procedimiento:
 
 ```scheme
 (define (a-plus-abs-b a b)
   ((if (> b 0) + -) a b))
 ```
 
-**Ejercicio 1.5.** Ben Bitdiddle ha inventado una prueba para determinar si el intérprete al que se enfrenta hace uso de la evaluación de orden aplicativo o la evaluación de orden normal. Él define los dos procedimientos siguientes:
+**Ejercicio 1.5.** Ben Bitdiddle ha inventado una prueba para determinar si el intérprete con el que se encuentra utiliza la evaluación de orden aplicativo o la evaluación de orden normal. Él define los dos procedimientos siguientes:
 
 ```scheme
 (define (p) (p))
@@ -492,13 +492,13 @@ o alternativamente como
       0
       y))
 ```
-Luego él evalúa la expresión
+Después él evalúa la expresión
 
 ```scheme
 (test 0 (p))
 ```
 
-¿Qué comportamiento observará Ben con un intérprete que utiliza la evaluación de orden aplicativo? ¿Qué comportamiento observará con un intérprete que utiliza una evaluación de orden normal? Explique su respuesta (suponga que la regla de evaluación para el formulario especial es la misma, ya sea que el intérprete esté utilizando el orden normal o el orden de aplicación: la expresión predicada se evalúa primero, y el resultado determina si se debe evaluar la expresión consecuente o la expresión alternativa).
+¿Qué comportamiento observará Ben con un intérprete que utiliza la evaluación de orden aplicativo? ¿Qué comportamiento observará con un intérprete que utiliza una evaluación de orden normal? Explique su respuesta (suponga que la regla de evaluación para la forma especial es la misma, ya sea que el intérprete esté utilizando el orden normal o el orden aplicativo: la expresión del predicado se evalúa primero, y el resultado determina si se debe evaluar la expresión consecuente o la expresión alternativa).
 
 
 ### 1.1.7 Ejemplo: Raíces cuadradas por el método de Newton
