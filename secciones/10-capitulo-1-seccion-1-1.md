@@ -627,7 +627,7 @@ Entusiasmada, Alyssa usa el `nuevo-if` para reescribir el programa `raiz-cuadrad
                      x)))
 ```
 
-¿Qué sucederá cuando Alyssa intenta usar esto para calcular raíces cuadradas? Explicar.
+¿Qué sucederá cuando Alyssa intente usar esto para calcular raíces cuadradas? Explicar.
 
 **Ejercicio 1.7.** El test `suficientemente-bueno?` utilizado en el cálculo de raíces cuadradas no resulta muy efectivo para encontrar las raíces cuadradas de números muy pequeños. Además, en computadoras reales, las operaciones aritméticas casi siempre se realizan con una precisión limitada. Esto hace que nuestro test sea inadecuado para números muy grandes. Explique estas afirmaciones, con ejemplos que muestren cómo el test falla para números pequeños y grandes. Una estrategia alternativa para implementar `suficientemente-bueno?` sería estudiar cómo cambia `estimacion` de una iteración a la otra y detenerse cuando el cambio sea una fracción muy pequeña de la estimación. Diseñe un procedimiento de raíz cuadrada que utilice este tipo de prueba final. ¿Funciona mejor para pequeños y grandes números?
 
@@ -639,7 +639,7 @@ x/y² + 2y
     3
 ```
 
-### 1.1.8 Procedimientos como abstracciones de caja negra
+### 1.1.8 Procedimientos como Abstracciones de Caja Negra
 
 La `raiz-cuadrada` es nuestro primer ejemplo de un proceso definido por un conjunto de procedimientos mutualmente definidos. Note que la definición de `raiz-iter` es recursiva; es decir, el procedimiento se define en términos de sí mismo. La idea de poder definir un procedimiento en términos de sí mismo puede ser perturbadora; puede parecer poco claro cómo podría tener sentido una definición tan "circular", y mucho menos aún especificar un proceso bien definido que debe ser llevado a cabo por una computadora. Esto se abordará con más detenimiento en la [sección 1.2](./11-capitulo-1-seccion-1-2.md). Pero primero consideremos algunos otros puntos importantes ilustrados por este caso `raiz-cuadrada`.
 

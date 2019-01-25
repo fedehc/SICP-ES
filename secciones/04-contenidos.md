@@ -21,7 +21,7 @@
     * [1.1.5. El Modelo de Sustitución para la Aplicación de Procedimientos](./10-capitulo-1-seccion-1-1.md#115-El-Modelo-de-Sustitución-para-la-Aplicación-de-Procedimientos)
     * [1.1.6. Expresiones Condicionales y Predicados](./10-capitulo-1-seccion-1-1.md#116-Expresiones-Condicionales-y-Predicados)
     * [1.1.7. Ejemplo: Raíces Cuadradas por el Método de Newton](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)
-    * [1.1.8. Procedimientos como Abstracciones de Caja Negra](./10-capitulo-1-seccion-1-1.md#118-Procedimientos-como-abstracciones-de-caja-negra)
+    * [1.1.8. Procedimientos como Abstracciones de Caja Negra](./10-capitulo-1-seccion-1-1.md#118-Procedimientos-como-Abstracciones-de-Caja-Negra)
   * [1.2. Procedimientos y los Procesos que Generan](./11-capitulo-1-seccion-1-2.md)
     * [1.2.1. Recursión e Iteración Lineales](./11-capitulo-1-seccion-1-2.md#121-Recursión-e-Iteración-Lineales)
     * [1.2.2. Recursión de Árbol](./11-capitulo-1-seccion-1-2.md#122-Recursión-de-Árbol)
