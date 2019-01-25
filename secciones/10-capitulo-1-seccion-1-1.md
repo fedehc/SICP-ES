@@ -627,9 +627,9 @@ Entusiasmada, Alyssa usa el `nuevo-if` para reescribir el programa `raiz-cuadrad
                      x)))
 ```
 
-¿Qué sucede cuando Alyssa intenta usar esto para calcular raíces cuadradas? Explicar.
+¿Qué sucederá cuando Alyssa intenta usar esto para calcular raíces cuadradas? Explicar.
 
-**Ejercicio 1.7.** El test `suficientemente-bueno?` utilizado en el cálculo de raíces cuadradas no será muy efectivo para encontrar las raíces cuadradas de números muy pequeños. Además, en las computadoras de verdad, las operaciones aritméticas casi siempre se realizan con una precisión limitada. Esto hace que nuestra prueba sea inadecuada para números muy grandes. Explique estas afirmaciones, con ejemplos que muestren cómo el test falla para números pequeños y grandes. Una estrategia alternativa para implementar `suficientemente-bueno?` sería estudiar cómo cambia `estimacion` de una iteración a la otra y frenar cuando el cambio sea una fracción muy pequeña de la estimación. Diseñe un procedimiento de raíz cuadrada que utilice este tipo de prueba final. ¿Funciona mejor para pequeños y grandes números?
+**Ejercicio 1.7.** El test `suficientemente-bueno?` utilizado en el cálculo de raíces cuadradas no resulta muy efectivo para encontrar las raíces cuadradas de números muy pequeños. Además, en computadoras reales, las operaciones aritméticas casi siempre se realizan con una precisión limitada. Esto hace que nuestro test sea inadecuado para números muy grandes. Explique estas afirmaciones, con ejemplos que muestren cómo el test falla para números pequeños y grandes. Una estrategia alternativa para implementar `suficientemente-bueno?` sería estudiar cómo cambia `estimacion` de una iteración a la otra y detenerse cuando el cambio sea una fracción muy pequeña de la estimación. Diseñe un procedimiento de raíz cuadrada que utilice este tipo de prueba final. ¿Funciona mejor para pequeños y grandes números?
 
 **Ejercicio 1.8.** El método de Newton para raíces cúbicas se basa en el hecho de que si `y` es una aproximación a la raíz cúbica de `x`, entonces una mejor aproximación es dada por el valor 
 
