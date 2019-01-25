@@ -32,13 +32,13 @@ Contemplo en un futuro no muy lejano incluir también algunos de los contenidos 
 
 ## Motivos para la traducción
 
-1) Acercar la obra a los hablantes de lengua hispana interesados en el libro;
-2) Poner en práctica mi inglés mientras realizo el trabajo de traducción;
-3) Leer con mayor detenimiento para sacarle el mayor provecho posible.
+1) Acercar la obra a los hablantes de lengua hispana interesados en la obra;
+2) Poner en práctica un poco mi inglés mientras realizo el trabajo de traducción;
+3) Leer y releer con detenimiento, para sacarle el mayor provecho posible al libro.
 
-Aclaro que soy traductor profesional, ni programador con años de experiencia, escritor o redactor experimentado. Además, ni siquiera soy el primero en buscar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de esos pocos (¿o el primero?) en lograr terminarlo\*. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede hacerlo. O al menos eso es lo que creo.
+Aclaro que no soy traductor profesional, ni programador con experiencia, o escritor o redactor especializado. Ni siquiera soy el primero en buscar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de esos pocos en lograr terminarlo\*. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede intentarlo.
 
-*\* Tal vez haya personas o alguna comunidad por internet abocada actualmente a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté siquiera en un estado avanzado, mucho menos completado. Como sea, por mi parte he decidido a traducir este libro lo mejor que pueda, en un castellano lo más claro posible, libre de errores y fiel al original.*
+*\* Tal vez haya personas o alguna comunidad por internet abocada actualmente a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté siquiera en un estado avanzado, mucho menos completado. En esos pocos casos que he visto, la calidad de traducción dejaba mucho que desear.*
 
 
 ## Aclaraciones
