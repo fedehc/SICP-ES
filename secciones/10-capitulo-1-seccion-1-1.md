@@ -503,7 +503,7 @@ Después él evalúa la expresión
 
 ### 1.1.7 Ejemplo: Raíces cuadradas por el método de Newton
 
-Los procedimientos, como se presentó anteriormente, son muy parecidos a las funciones matemáticas ordinarias. Éstos especifican un valor determinado por uno o más parámetros. Pero hay una diferencia importante entre las funciones matemáticas y los procedimientos informáticos. Los procedimientos deben ser efectivos.
+Los procedimientos, como se han explicado anteriormente, son muy parecidos a las funciones matemáticas ordinarias. Éstos especifican un valor determinado por uno o más parámetros. Pero hay una diferencia importante entre las funciones matemáticas y los procedimientos informáticos. Los procedimientos deben ser efectivos.
 
 Como ejemplo concreto, consideremos el problema de computar las raíces cuadradas. Podemos definir la función de raíz cuadrada como
 
@@ -513,15 +513,15 @@ Como ejemplo concreto, consideremos el problema de computar las raíces cuadrada
 
 Esto describe una función matemática perfectamente legítima. Podríamos usarlo para reconocer si un número es la raíz cuadrada de otro, o para derivar hechos sobre las raíces cuadradas en general. Por otra parte, la definición no describe un procedimiento. De hecho, no nos dice casi nada sobre cómo encontrar realmente la raíz cuadrada de un número dado. No ayudaría mucho reformular esta definición en pseudo-Lisp:
 
-```scheme
-(define (raiz-cuadrada x)
-  (el y (también (>= y 0)
-              (= (raiz-cuadrada y) x))))
+```
+(define (raiz cuadrada de x)
+  (la variable y (and (>= y 0)
+              (= (elevar al cuadrado y) x))))
 ```
 
 Esto sólo nos plantea la pregunta.
 
-El contraste entre función y procedimiento es un reflejo de la distinción general entre describir las propiedades de las cosas y describir cómo hacerlas o, como a veces se le llama, la distinción entre conocimiento declarativo y conocimiento imperativo. En matemáticas solemos ocuparnos de las descripciones declarativas (lo que es), mientras que en informática solemos ocuparnos de las descripciones imperativas (cómo hacerlo)[^20].
+El contraste entre función y procedimiento es un reflejo de la distinción general entre describir las propiedades de las cosas y describir cómo hacerlas o, como a veces se le llama, la distinción entre el conocimiento declarativo y el conocimiento imperativo. En matemáticas por lo general nos ocupamos de las descripciones declarativas (lo que es), mientras que en informática nos ocupamos de las descripciones imperativas (cómo hacerlo).[^20]
 
 ¿Cómo puede uno calcular las raíces cuadradas? La forma más común es usar el método de aproximaciones sucesivas de Newton, el cual dice que siempre que tengamos una estimación cualquiera `y` para el valor de la raíz cuadrada de un número `x`, podemos realizar una simple manipulación para obtener una mejor estimación (una más cercana a la raíz cuadrada real) promediando `y` con `x/y`.[^21] Por ejemplo, podemos calcular la raíz cuadrada de 2 de la siguiente manera. Supongamos que nuestra suposición inicial es 1:
 
@@ -541,7 +541,6 @@ Continuando con este proceso, obtenemos cada vez mejores aproximaciones a la ra�
 
 Ahora formalizemos el proceso en términos de procedimientos. Comenzamos con un valor para el radicando (el número cuya raíz cuadrada estamos tratando de calcular) y un valor para la estimación. Si la estimación es lo suficientemente buena para nuestros propósitos, hemos terminado; si no, debemos repetir el proceso con una estimación mejor. Escribimos esta estrategia básica como un procedimiento:
 
-
 ```scheme
 (define (raiz-iter estimacion x)
   (if (suficientemente-bueno? estimacion x)
@@ -558,19 +557,20 @@ Una estimación se mejora al promediarla con el cociente del radicando y la ante
 ```
 
 donde
+
 ```scheme
 (define (promedio x y)
   (/ (+ x y) 2))
 ```
 
-También tenemos que explicar lo que entendemos por "suficientemente bueno". Lo siguiente servirá para ilustrar, pero no es realmente una buena prueba (ver ejercicio 1.7). La idea es mejorar la respuesta hasta que esté lo suficientemente cerca para que su cuadrado difiera del radicando en menos de una tolerancia predeterminada (acá es 0.001)[^22].
+También tenemos que explicar lo que entendemos por "suficientemente bueno". Lo siguiente servirá para ilustrar, pero no es realmente un buen test (ver ejercicio 1.7). La idea es mejorar la respuesta hasta que esté lo suficientemente cerca como para que su cuadrado difiera del radicando por debajo de una tolerancia predeterminada (en este caso 0.001):[^22].
 
 ```scheme
 (define (suficientemente-bueno? estimacion x)
   (< (abs (- (al-cuadrado estimacion) x)) 0.001))
 ```
 
-Finalmente, necesitamos una manera de poder comenzar. Por ejemplo, siempre podemos adivinar que la raíz cuadrada de cualquier número es 1:[^23]
+Finalmente, necesitamos una manera de poder comenzar. Por ejemplo, siempre podemos poner como estimación para la raíz cuadrada de cualquier número en 1:[^23]
 
 ```scheme
 (define (raiz-cuadrada x)
@@ -596,8 +596,7 @@ Si nosotros escribimos estas definiciones en el intérprete, podemos usar `raiz-
 1000.000369924366
 ```
 
-El programa `raiz-cuadrada` también ilustra que el simple lenguaje procedural que hemos introducido hasta ahora es suficiente como para escribir cualquier programa puramente numérico que se pueda escribir en, digamos, C o Pascal. Esto puede parecer sorprendente, ya que no hemos incluido en nuestro lenguaje ninguna construcción iterativa (ciclos, o *looping* en inglés) que dirija a la computadora a hacer algo una y otra vez. `raiz-iter`, por otro lado, demuestra como la iteración puede ser lograda sin usar ninguna construcción especial que no sea la común habilidad para llamar a un procedimiento.[^24]
-
+El programa `raiz-cuadrada` también ilustra que el simple lenguaje procedural que hemos introducido hasta ahora es suficiente como para escribir cualquier programa puramente numérico que se pueda escribir en, digamos, C o Pascal. Esto puede parecer sorprendente, ya que no hemos incluido en nuestro lenguaje ninguna construcción iterativa (ciclos - NdT: *looping* en inglés) que dirija a la computadora a hacer algo una y otra vez. `raiz-iter`, por otro lado, demuestra cómo se puede lograr la iteración sin utilizar ninguna construcción especial que no sea la capacidad ordinaria de llamar a un procedimiento.[^24]
 
 **Ejercicio 1.6.** Alyssa P. Hacker no ve por qué `if` necesita ser provisto como una forma especial. "¿Por qué no puedo simplemente definirlo como un procedimiento ordinario en términos de `cond`?", pregunta ella. La amiga de Alyssa, Eva Lu Ator, asegura que esto se puede hacer, y define una nueva versión de `if`:
 
