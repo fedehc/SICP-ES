@@ -1,6 +1,6 @@
 ## Prefacio a la primera edición
 
->Una computadora es como un violín. Puedes imaginarte a un novato probando primero un fonógrafo y después un violín. Este último, dice, suena terrible. Este es el argumento que hemos escuchado de nuestros humanistas y de la mayoría de nuestros científicos de la computación. Los programas de computadora son buenos, dicen, para propósitos particulares, pero no son flexibles. Tampoco lo es un violín, o una máquina de escribir, hasta que uno aprende a usarlo.
+>Una computadora es como un violín. Puedes imaginarte a un novato probando primero un fonógrafo y después el violín. Este último, dice, suena terrible. Este es el argumento que hemos escuchado de nuestros humanistas y de la mayoría de nuestros científicos de la computación. Los programas de computadora son buenos, dicen, para propósitos particulares, pero no son flexibles. Tampoco lo es un violín, o una máquina de escribir, hasta que uno aprende a usarlo.
 >
 >**Marvin Minsky**, *Why Programming Is a Good Medium for Expresing Poorly-Undertood and Sloppily-Formulated Ideas*.
 
