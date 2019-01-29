@@ -107,7 +107,7 @@ Usando el modelo de sustitución, muestre el proceso generado por cada procedimi
                  (A x (- y 1))))))
 ```
 
-¿Cuáles son los valores de las siguientes expresiones?
+¿Cuáles serán los valores para las siguientes expresiones?
 
 ```scheme
 (A 1 10)
@@ -117,7 +117,7 @@ Usando el modelo de sustitución, muestre el proceso generado por cada procedimi
 (A 3 3)
 ```
 
-Consider the following procedures, where `A` is the procedure defined above:
+Considere los siguientes procedimientos, donde `A` es el procedimiento definido anteriormente:
 
 ```scheme
 (define (f n) (A 0 n))
