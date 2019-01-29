@@ -45,6 +45,6 @@ Aclaro que no soy traductor profesional, ni programador experimentado, o escrito
 
 1) No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos de [licencia](#licencia).
 
-2) A lo largo de los capítulos agregaré entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando crea necesario aclarar cierta terminología en inglés -por lo gral. la terminología introducida o remarcada por los propios autores- o ante cualquier diferencia con respecto al libro original que sea necesario aclarar.
+2) A lo largo de los capítulos agregaré entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando crea necesario aclarar cierta terminología en inglés -por lo gral. la terminología introducida o remarcada por los propios autores- o ante cualquier diferencia que sea necesario aclarar con respecto al original.
 
 3) Cualquier corrección o aporte por parte de gente interesada o mejor calificada es desde ya bienvenido, aunque me reservo el derecho de tomar aquellos cambios que juzgue convenientes. Aquellos que no concuerden con esto son libres de hacer su propio fork y/o hacer su propias traducciones.
