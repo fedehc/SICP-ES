@@ -1,6 +1,6 @@
 ## Prefacio a la segunda edición
 
-> ¿Es posible que el software no sea como cualquier otra cosa, que esté destinado a ser desechado: que el propósito es siempre verlo como una burbuja de jabón?
+> ¿Es posible que el software no sea como cualquier otra cosa, que esté destinado a ser desechado?: ¿Que la idea general sea verlo siempre como una burbuja de jabón?
 >
 > **Alan J. Perlis**
 
