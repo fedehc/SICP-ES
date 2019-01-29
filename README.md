@@ -36,9 +36,9 @@ Contemplo en un futuro no muy lejano incluir también algunos de los contenidos 
 2) Poner en práctica un poco mi inglés mientras realizo el trabajo de traducción;
 3) Leer y releer con detenimiento, para sacarle el mayor provecho posible al libro.
 
-Aclaro que no soy traductor profesional, ni programador con experiencia, o escritor o redactor especializado. Ni siquiera soy el primero en buscar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de esos pocos en lograr terminarlo\*. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede intentarlo.
+Aclaro que no soy traductor profesional, ni programador experimentado, o escritor o redactor especializado. Ni siquiera soy el primero en buscar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de los primeros en lograr terminarlo\*. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
 
-*\* Tal vez haya personas o alguna comunidad por internet abocada actualmente a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté siquiera en un estado avanzado, mucho menos completado. En esos pocos casos que he visto, la calidad de traducción dejaba mucho que desear.*
+*\* Tal vez haya personas o alguna comunidad por internet abocada actualmente a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté siquiera en un estado avanzado, mucho menos completado. En esos pocos casos que he visto, la calidad de la traducción dejaba mucho que desear.*
 
 
 ## Aclaraciones
