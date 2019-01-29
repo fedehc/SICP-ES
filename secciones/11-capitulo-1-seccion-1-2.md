@@ -132,9 +132,9 @@ Considere los siguientes procedimientos, donde `A` es el procedimiento definido 
 Defina de forma concisa las funciones calculadas mediante los procedimientos `f`, `g`, y `h` para valores enteros positivos de `n`. Por ejemplo, `(k n)` calcula `5n2`.
 
 
-### 1.2.2 Recursión de Árbol
+### 1.2.2 Árbol de Recursión
 
-Otro patrón común de cálculo se llama *Recursión de Árbol* (NdT: *Tree Recursion* en inglés). A modo de ejemplo, consideremos el cálculo de la secuencia de números de Fibonacci, en la que cada número es la suma de los dos anteriores:
+Otro patrón común de cálculo se llama *Árbol de Recursión* (NdT: *Tree Recursion* en inglés). A modo de ejemplo, consideremos el cálculo de la secuencia de números de Fibonacci, en la que cada número es la suma de los dos anteriores:
 
 ```
 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
@@ -162,9 +162,9 @@ Podemos traducir inmediatamente esta definición en un procedimiento recursivo p
 
 **Figura 1.5:** El proceso árbol-recursivo generado en el cálculo de `(fib 5)`.
 
-Consideremos el patrón de este cálculo. Para calcular `(fib 5)`, calculamos `(fib 4)` y `(fib 3)`. Para calcular `(fib 4)`, calculamos `(fib 3)` y `(fib 2)`. En general, el proceso desarrollado se parece a un árbol, como se muestra en la figura 1.5. Note que las ramas se dividen en dos en cada nivel (excepto en la parte inferior); esto refleja el hecho de que el procedimiento `fib` se llama a sí mismo dos veces cada vez que es invocado.
+Considere el patrón de este cálculo. Para calcular `(fib 5)`, calculamos `(fib 4)` y `(fib 3)`. Para calcular `(fib 4)`, calculamos `(fib 3)` y `(fib 2)`. En general, el proceso desarrollado se parece a un árbol, como se muestra en la figura 1.5. Note que las ramas se dividen en dos en cada nivel (excepto en la parte inferior); esto refleja el hecho de que el procedimiento `fib` se llama a sí mismo dos veces cada vez que es invocado.
 
-Este procedimiento es ilustrativo a modo de árbol de recursión prototípico, aunque resulte una forma pésima de calcular los números de Fibonacci, ya que realiza una gran cantidad de cálculos redundantes. Note en la figura 1.5 que todo el cálculo de `(fib 3)` -casi la mitad del trabajo- está duplicado. De hecho, no es difícil mostrar que el número de veces que el procedimiento computará `(fib 1)` o `(fib 0)` (el número de hojas en el árbol anterior, en general) es precisamente `Fib(n + 1)`. Para tener una idea de lo malo que es esto, uno puede mostrar que el valor de `Fib(n)` crece exponencialmente con `n`. Más precisamente (ver ejercicio 1.13), `Fib(n)` es el entero más cercano a `φⁿ/√5`, donde
+Este procedimiento es instructivo como un caso prototípico de árbol de recursión, aunque resulte una forma pésima de calcular los números de Fibonacci, ya que realiza una gran cantidad de cálculos redundantes. Note en la figura 1.5 que todo el cálculo de `(fib 3)` -casi la mitad del trabajo- está duplicado. De hecho, no es difícil mostrar que el número de veces que el procedimiento computará `(fib 1)` o `(fib 0)` (el número de hojas en el árbol anterior, en general) es precisamente `Fib(n + 1)`. Para tener una idea de lo malo que es esto, uno puede mostrar que el valor de `Fib(n)` crece exponencialmente con `n`. Más precisamente (ver ejercicio 1.13), `Fib(n)` es el entero más cercano a `φⁿ/√5`, donde
 
 ```
 φ = (1 + √5)/2 = 1,6810...
@@ -176,7 +176,7 @@ es el número áureo, que satisface la ecuación
 φ² = φ + 1
 ```
 
-Por lo tanto, el proceso utiliza una serie de pasos que crecen exponencialmente con la entrada. Por otro lado, el espacio requerido crece sólo linealmente con la entrada, ya que sólo tenemos que hacer un seguimiento de los nodos que están por encima de nosotros en el árbol en cualquier punto del cálculo. En general, el número de pasos requeridos por un proceso recursivo de árbol será proporcional al número de nodos en el árbol, mientras que el espacio requerido será proporcional a la profundidad máxima del árbol.
+Por lo tanto, el proceso utiliza una serie de pasos que crecen exponencialmente con la entrada. Por otra parte, el espacio requerido crece sólo linealmente con la entrada, ya que sólo tenemos que hacer un seguimiento de los nodos que están por encima de nosotros en el árbol en cualquier punto del cálculo. En general, el número de pasos requeridos por un proceso árbol-recursivo será proporcional al número de nodos en el árbol, mientras que el espacio requerido será proporcional a la profundidad máxima del árbol.
 
 También podemos formular un proceso iterativo para calcular los números de Fibonacci. La idea es usar un par de enteros `a` y `b`, inicializados a `Fib(1) = 1` y `Fib(0) = 0`, y aplicar repetidamente las transformaciones simultáneas 
 
@@ -200,7 +200,7 @@ No es difícil demostrar que, después de aplicar esta transformación `n` veces
 
 Este segundo método para calcular `Fib(n)` es una iteración lineal. La diferencia en el número de pasos requeridos por los dos métodos -uno lineal en `n`, el otro creciendo tan rápido como `Fib(n)` mismo- es enorme, incluso para entradas pequeñas.
 
-De esto no se debe concluir de que los procesos recursivos de árbol son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que la recursividad de árbol es una herramienta natural y poderosa.[^32] Incluso en operaciones numéricas, los procesos de recursividad de árbol pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, es más sencillo, siendo poco más que una traducción a Lisp de la definición de la secuencia de Fibonacci. Para formular el algoritmo iterativo es necesario debe tenerse en cuenta que el cálculo puede ser reformulado como una iteración con tres variables de estado.
+De esto no se debe concluir de que los procesos árbol-recursivos son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que el árbol de recursión es una herramienta natural y poderosa.[^32] Incluso en operaciones numéricas, los procesos árbol-recursivos pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, este es más sencillo, siendo poco más que una traducción a Lisp de la definición de la secuencia de Fibonacci. Para formular el algoritmo iterativo fue necesario tener en cuenta que el cálculo podía ser reformulado como una iteración con tres variables de estado.
 
 
 #### Ejemplo: Contando cambios
@@ -255,7 +255,7 @@ Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
 292
 ```
 
-`contar-cambio` genera un proceso recursivo de árbol con redundancias similares a las de nuestra primera implementación de `fib` (tomará un tiempo para que ese 292 sea calculado). Por otro lado, no es tan obvio saber diseñar un mejor algoritmo para calcular el resultado, y dejaremos este problema como un reto. El hecho de que un proceso recursivo de árbol puede ser altamente ineficiente pero a la vez fácil de especificar y de entender ha llevado a la gente a proponer que uno podría obtener lo mejor de ambos mundos mediante el diseño de un "compilador inteligente" que podría transformar los procedimientos recursivos de árbol en procedimientos más eficientes que calculen el mismo resultado.[^34]
+`contar-cambio` genera un proceso árbol-recursivo con redundancias similares a las de nuestra primera implementación de `fib` (tomará un tiempo para que ese 292 sea calculado). Por otro lado, no es tan obvio saber diseñar un mejor algoritmo para calcular el resultado, y dejaremos este problema como un reto. El hecho de que un proceso árbol-recursivo puede ser altamente ineficiente pero a la vez fácil de especificar y de entender ha llevado a la gente a proponer que uno podría obtener lo mejor de ambos mundos mediante el diseño de un "compilador inteligente" que podría transformar los procedimientos árbol-recursivos en procedimientos más eficientes que calculen el mismo resultado.[^34]
 
 **Ejercicio 1.11.** Una función `f` se define por la regla que `f(n) = n` si `n<3` y `f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3)` si `n> 3`. Escribir un procedimiento que calcule `f` mediante un proceso recursivo. Escriba un procedimiento que calcule `f` por medio de un proceso iterativo.
 
@@ -271,7 +271,7 @@ Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
 
 Los números en el borde del triángulo son todos 1, y cada número dentro del triángulo es la suma de los dos números que están por encima de él.[^35] Escriba un procedimiento que calcule los elementos del triángulo de Pascal por medio de un proceso recursivo.
 
-**Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `φⁿ/√5)/2`, donde `φ= (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver [sección 1.2.2](#122-Recursión-de-Árbol)) para probar que `Fib(n) = (φⁿ - ⨚ⁿ)/5`. 
+**Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `φⁿ/√5)/2`, donde `φ= (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver [sección 1.2.2](#122-Árbol-de-Recursión)) para probar que `Fib(n) = (φⁿ - ⨚ⁿ)/5`. 
 
 
 ### 1.2.3 Órdenes de crecimiento
@@ -288,12 +288,12 @@ k₁ f(n) < R(n) < k₂ f(n)
 
 para cualquier valor suficientemente grande de `n` (o en otras palabras, para un gran `n`, el valor `R(n)` está entre `k₁ f(n)` y `k₂ f(n)`).
 
-Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente con la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.[^36] El cálculo de Fibonacci de árbol recursivo requiere `Θ(n)` pasos y espacio `Θ(φⁿ)`, donde `φ` es la relación de oro descrita en la [sección 1.2.2](#122-Recursión-de-Árbol).
+Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente con la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.[^36] El cálculo árbol-recursivo de Fibonacci requiere `Θ(n)` pasos y espacio `Θ(φⁿ)`, donde `φ` es la relación de oro descrita en la [sección 1.2.2](#122-Árbol-de-Recursión).
 
 Los órdenes de crecimiento sólo proporcionan una descripción aproximada del comportamiento de un proceso. Por ejemplo, un proceso que requiere `n²` pasos, un proceso que requiere `1000n²` pasos y un proceso que requiere `3n² + 10n + 17` pasos, todos estos tienen un orden de crecimiento `Θ(n²)`. Por otro lado, el orden de crecimiento nos proporciona una indicio útil de cómo podemos esperar a que el comportamiento del proceso cambie a medida de que cambiamos el tamaño del problema. Para un proceso `Θ(n)` (lineal), duplicar el tamaño duplicará aproximadamente la cantidad de recursos utilizados. Para un proceso exponencial, cada incremento en el tamaño del problema multiplicará la utilización de recursos por un factor constante. En el resto de la sección 1.2 examinaremos dos algoritmos cuyo orden de crecimiento es logarítmico, de modo que duplicar el tamaño del problema aumentará las necesidades de recursos en una cantidad constante.
 
 
-**Ejercicio 1.14.** Dibuje el árbol que ilustra el proceso generado por el procedimiento de `contar-cambio` de la [sección 1.2.2](#122-Recursión-de-Árbol) al hacer el cambio de 11 centavos. ¿Cómo son los órdenes de crecimiento del espacio y el número de pasos utilizados por este proceso a medida que aumenta la cantidad a cambiar? 
+**Ejercicio 1.14.** Dibuje el árbol que ilustre el proceso generado por el procedimiento de `contar-cambio` de la [sección 1.2.2](#122-Árbol-de-Recursión) al hacer el cambio de 11 centavos. ¿Cómo son los órdenes de crecimiento del espacio y el número de pasos utilizados por este proceso a medida que aumenta la cantidad a cambiar? 
 
 **Ejercicio 1.15.** El seno de un ángulo (especificado en radianes) puede ser calculado haciendo uso de la aproximación `sen(x) ≈ x` si `x` es suficientemente pequeño, y la identidad trigonométrica
 
@@ -420,7 +420,7 @@ Evitamos hacer esto aquí para minimizar el número de cosas en las que pensar a
 
 [^31]: La recursividad de la cola se conoce desde hace tiempo como un truco de optimización del compilador. Una base semántica coherente para la recursión de la cola fue proporcionada por Carl Hewitt (1977), quien la explicó en términos del modelo de computación de "pasar mensajes" que discutiremos en el [capítulo 3](./19-capitulo-3-intro.md). Inspirados por esto, Gerald Jay Sussman y Guy Lewis Steele Jr (ver Steele 1975) construyeron un intérprete de cola recurrente para Scheme. Más tarde Steele mostró cómo la recursividad de la cola es una consecuencia de la forma natural de compilar las llamadas de procedimiento (Steele 1977). El estándar IEEE para Scheme requiere que las implementaciones de Scheme sean recursivas. 
 
-[^32]: Un ejemplo de esto fue mencionado en la sección 1.1.3: El propio intérprete evalúa las expresiones usando un proceso recursivo de árbol.
+[^32]: Un ejemplo de esto fue mencionado en la sección 1.1.3: El propio intérprete evalúa las expresiones usando un proceso árbol-recursivo.
 
 [^33]: Por ejemplo, analice detalladamente cómo se aplica la regla de reducción al problema de hacer cambios de 10 centavos utilizando monedas de un centavo y de cinco centavos.
 
