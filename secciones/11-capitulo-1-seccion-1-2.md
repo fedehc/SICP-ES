@@ -237,10 +237,10 @@ Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
         (else (+ (cc monto
                      (- clases-de-monedas 1))
                  (cc (- monto
-                        (primera-clase-de-monedas clases-de-monedas))
+                        (primera-denominacion clases-de-monedas))
                      clases-de-monedas)))))
 
-(define (primera-clase-de-monedas clases-de-monedas)
+(define (primera-denominacion clases-de-monedas)
   (cond ((= clases-de-monedas 1) 1)
         ((= clases-de-monedas 2) 5)
         ((= clases-de-monedas 3) 10)
@@ -248,7 +248,7 @@ Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
         ((= clases-de-monedas 5) 50)))
 ```
 
-(El procedimiento `primera-clase-de-monedas` toma como entrada el número de clases de monedas disponibles y devuelve la primera clase de monedas. En este caso estamos pensando en las monedas en orden desde el más grande hasta el más pequeño, pero con cualquier orden también funcionaría). Ahora podemos responder a nuestra pregunta inicial sobre el cambio de $1.00: 
+(El procedimiento `primera-denominacion` toma como entrada el número de clases de monedas disponibles y devuelve la primera denominación de monedas. En este caso estamos pensando en las monedas en orden desde el más grande hasta el más pequeño, pero con cualquier orden también funcionaría). Ahora podemos responder a nuestra pregunta inicial sobre el cambio de $1.00 (NdT: tener en cuenta que $1.00 = 100 centavos):
 
 ```scheme
 (contar-cambio 100)
