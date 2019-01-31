@@ -203,7 +203,7 @@ Este segundo método para calcular `Fib(n)` es una iteración lineal. La diferen
 De esto no se debe concluir de que los procesos árbol-recursivos son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que el árbol de recursión es una herramienta natural y poderosa.[^32] Incluso en operaciones numéricas, los procesos árbol-recursivos pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, este es más sencillo, siendo poco más que una traducción a Lisp de la definición de la secuencia de Fibonacci. Para formular el algoritmo iterativo fue necesario tener en cuenta que el cálculo podía ser reformulado como una iteración con tres variables de estado.
 
 
-#### Ejemplo: Contando cambios
+#### Ejemplo: Contando el cambio
 
 Sólo se necesita un poco de ingenio para idear el algoritmo iterativo de Fibonacci. En contraste, considere el siguiente problema: ¿De cuántas maneras diferentes podemos hacer el cambio de $1.00, teniendo solamente monedas de 50, 25, 10, 5 y 1 centavos? De manera más general, ¿podemos escribir un procedimiento para calcular la cantidad de formas de cambiar una determinada cantidad de dinero?
 
@@ -221,9 +221,9 @@ Así, podemos reducir recursivamente el problema de cambiar una cantidad dada al
 
 * Si `a` es exactamente 0, debemos contarlo como 1 manera de hacer cambio.
 
-* Si `a` es menos de 0, debemos contarlo como 0 maneras de hacer cambios.
+* Si `a` es menos de 0, debemos contarlo como 0 maneras de hacer cambio.
 
-* Si `n` es 0, debemos contarlo como 0 maneras de hacer cambios. 
+* Si `n` es 0, debemos contarlo como 0 maneras de hacer cambio. 
 
 Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
 
