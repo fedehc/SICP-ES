@@ -377,10 +377,10 @@ bⁿ = b . bⁿ⁻¹      si n es impar
 Podemos expresar este método como un procedimiento:
 
 ```scheme
-(define (rapido-exp b n)
+(define (exp-rapido b n)
   (cond ((= n 0) 1)
-        ((par? n) (cuadrado (rapido-exp b (/ n 2))))
-        (else (* b (rapido-exp b (- n 1))))))
+        ((par? n) (cuadrado (exp-rapido b (/ n 2))))
+        (else (* b (exp-rapido b (- n 1))))))
 ```
 
 donde el predicado para determinar si un número entero es par se define en términos del procedimiento primitivo `remainder` (NdT: *remanente* o *resto* en español) de la siguiente manera
@@ -390,11 +390,43 @@ donde el predicado para determinar si un número entero es par se define en tér
   (= (remainder n 2) 0))
 ```
 
-El proceso desarrollado por `rapido-exp` crece logarítmicamente con `n` tanto en espacio como en número de pasos. Para ver esto, observe que computar `b²ⁿ` usando `rapido-exp` sólo requiere de una multiplicación más en comparación con `bⁿ`. El tamaño del exponente que podemos calcular se duplica (aproximadamente) con cada nueva multiplicación permitida. De este modo, el número de multiplicaciones requeridas para un exponente de `n` crece tan rápido como el logaritmo de `n` de base 2. El proceso tiene un crecimiento de `Θ(log n)`.[^37]
+El proceso desarrollado por `exp-rapido` crece logarítmicamente con `n` tanto en espacio como en número de pasos. Para ver esto, observe que computar `b²ⁿ` usando `exp-rapido` sólo requiere de una multiplicación más en comparación con `bⁿ`. El tamaño del exponente que podemos calcular se duplica (aproximadamente) con cada nueva multiplicación permitida. De este modo, el número de multiplicaciones requeridas para un exponente de `n` crece tan rápido como el logaritmo de `n` de base 2. El proceso tiene un crecimiento de `Θ(log n)`.[^37]
 
-La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se vuelve sorprendente a medida que `n` se hace más grande. Por ejemplo, `rapido-exp` para `n = 1000` requiere de sólo 14 multiplicaciones.[^38] También es posible usar la idea de cuadráticas sucesivas para idear un algoritmo iterativo que calcule exponenciales con un número logarítmico de pasos (ver ejercicio 1.16), aunque, como suele suceder con los algoritmos iterativos, esto no se escribe de manera tan sencilla como en el caso con el algoritmo recursivo[^39].
+La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se vuelve sorprendente a medida que `n` se hace más grande. Por ejemplo, `exp-rapido` para `n = 1000` requiere de sólo 14 multiplicaciones.[^38] También es posible usar la idea de cuadráticas sucesivas para idear un algoritmo iterativo que calcule exponenciales con un número logarítmico de pasos (ver ejercicio 1.16), aunque, como suele suceder con los algoritmos iterativos, esto no se escribe de manera tan sencilla como en el caso con el algoritmo recursivo[^39].
 
 
+**Ejercicio 1.17.** Los algoritmos de exponenciación de esta sección se basan en la realización de la exponenciación mediante multiplicación repetida. De manera similar, se puede realizar la multiplicación de números enteros por medio de la suma repetida. El siguiente procedimiento de multiplicación (en el cual se asume que nuestro lenguaje sólo puede sumar, no multiplicar) es análogo al procedimiento `exp`:
+
+```scheme
+(define (* a b)
+  (if (= b 0)
+      0
+      (+ a (* a (- b 1)))))
+```
+
+Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora supongamos que incluimos, junto con la suma, las operaciones `doble`, que duplica un entero, y `mitad`, que divide un entero (par) por 2. Usando estos, diseñamos un procedimiento de multiplicación análogo a `exp-rapido` que utiliza un número logarítmico de pasos. 
+
+**Ejercicio 1.18.** Usando los resultados de los ejercicios 1.16 y 1.17, idear un procedimiento que genere un proceso iterativo para multiplicar dos números enteros en términos de sumar, duplicar y dividir a la mitad, y que use un número logarítmico de pasos.[^40].
+
+**Ejercicio 1.19.** Existe un algoritmo ingenioso para calcular los números de Fibonacci en una cantidad logarítmica de pasos. Recordemos la transformación de las variables de estado `a` y `b` en el proceso `fib-iter` de la [sección 1.2.2](#122-Árbol-de-Recursión): `a ← a + b` y `b ← a`. Llamemos a esta transformación `T`, y observemos que la aplicación de `T` una y otra vez `n` veces, comenzando con 1 y 0, produce el par `Fib(n + 1)` y `Fib(n)`. En otras palabras, los números de Fibonacci se producen aplicando `Tⁿ`, la enésima potencia de la transformación `T`, comenzando con la pareja `(1,0)`. Ahora consideremos el caso especial de `p = 0` y `q = 1` en una familia de transformaciones `Tₚᵩ`, donde `Tₚᵩ` transforma la pareja `(a,b)` según `a ← bq + aq + ap` y `b ← bp + aq`. Mostrar que si aplicamos tal transformación `Tₚᵩ` dos veces, el efecto es el mismo que si usáramos una sola transformación `Tᵖ'ᵠ'` de la misma forma, y calcular `p'` y `q'` en términos de `p` y `q`. Esto nos da una forma explícita de elevar al cuadrado estas transformaciones, y así podemos calcular `Tⁿ` usando cuadráticas sucesivas, como en el procedimiento `exp-rapido`. Reúna todo esto para completar el siguiente procedimiento, que corre en un número logarítmico de pasos: [^41]
+
+```scheme
+(define (fib n)
+  (fib-iter 1 0 0 1 n))
+(define (fib-iter a b p q contador)
+  (cond ((= contador 0) b)
+        ((par? contador)
+         (fib-iter a
+                   b
+                   <??>      ; compute p'
+                   <??>      ; compute q'
+                   (/ contador 2)))
+        (else (fib-iter (+ (* b q) (* a q) (* a p))
+                        (+ (* b p) (* a q))
+                        p
+                        q
+                        (- contador 1)))))
+```
 
 
 
