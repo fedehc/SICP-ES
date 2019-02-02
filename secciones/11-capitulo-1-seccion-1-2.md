@@ -394,6 +394,7 @@ El proceso desarrollado por `exp-rapido` crece logarítmicamente con `n` tanto e
 
 La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se vuelve sorprendente a medida que `n` se hace más grande. Por ejemplo, `exp-rapido` para `n = 1000` requiere de sólo 14 multiplicaciones.[^38] También es posible usar la idea de cuadráticas sucesivas para idear un algoritmo iterativo que calcule exponenciales con un número logarítmico de pasos (ver ejercicio 1.16), aunque, como suele suceder con los algoritmos iterativos, esto no se escribe de manera tan sencilla como en el caso con el algoritmo recursivo[^39].
 
+**Ejercicio 1.16.** Diseñar un procedimiento que desarrolle un proceso de exponenciación iterativo, que utilice cuadráticas sucesivas y un número logarítmico de pasos, a lo igual que `exp-rápido` (sugerencia: usando la observación de que `(bⁿ/²)² = (b²)ⁿ/²`, mantener junto con el exponente `n` y la base `b` una variable de estado adicional `a`, y definir la transformación del estado de tal forma que el producto `bⁿ` no sufra ningún cambio de un estado a otro. Al principio del proceso `a` se toma como 1, y la respuesta viene dada por el valor de `a` al final del proceso. En general, la técnica de definir una *cantidad invariable* que permanece sin cambiar de un estado a otro es una forma poderosa de pensar en el diseño de algoritmos iterativos). 
 
 **Ejercicio 1.17.** Los algoritmos de exponenciación de esta sección se basan en la realización de la exponenciación mediante multiplicación repetida. De manera similar, se puede realizar la multiplicación de números enteros por medio de la suma repetida. El siguiente procedimiento de multiplicación (en el cual se asume que nuestro lenguaje sólo puede sumar, no multiplicar) es análogo al procedimiento `exp`:
 
@@ -404,7 +405,7 @@ La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se
       (+ a (* a (- b 1)))))
 ```
 
-Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora supongamos que incluimos, junto con la suma, las operaciones `doble`, que duplica un entero, y `mitad`, que divide un entero (par) por 2. Usando estos, diseñamos un procedimiento de multiplicación análogo a `exp-rapido` que utiliza un número logarítmico de pasos. 
+Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora supongamos que incluimos, junto con la suma, las operaciones `doble`, que duplica un entero, y `mitad`, que divide un entero (par) por 2. Usando estos, diseñemos un procedimiento de multiplicación análogo a `exp-rapido` que utilice un número logarítmico de pasos. 
 
 **Ejercicio 1.18.** Usando los resultados de los ejercicios 1.16 y 1.17, idear un procedimiento que genere un proceso iterativo para multiplicar dos números enteros en términos de sumar, duplicar y dividir a la mitad, y que use un número logarítmico de pasos.[^40].
 
@@ -427,7 +428,6 @@ Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora suponga
                         q
                         (- contador 1)))))
 ```
-
 
 
 # ---Traducción pendiente---
