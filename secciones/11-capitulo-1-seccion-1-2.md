@@ -467,3 +467,7 @@ Evitamos hacer esto aquí para minimizar el número de cosas en las que pensar a
 [^38]: Se preguntará por qué a alguien le importaría elevar los números a la 1000va potencia. Vea la [sección 1.2.6](#126-Ejemplo:-Evaluando-por-Primalidad).
 
 [^39]: Este algoritmo iterativo es antiguo.  Aparece en el *Chandah-sutra* de Áchárya Pingala, escrito antes del año 200 a.C. Ver Knuth 1981, [sección 4.6.3](), para una discusión completa y análisis de este y otros métodos de exponenciación.
+
+[^40]: Este algoritmo, que a veces se conoce como el "método ruso" (NdT: en inglés *Russian peasant method*) de multiplicación, es antiguo. Ejemplos de su uso se encuentran en el Papiro de Rhind, uno de los dos documentos matemáticos más antiguos que existen, escrito alrededor del año 1700 a.C. (y copiado a partir de un documento aún más antiguo) por un escriba egipcio llamado A'h-mose.
+
+[^41]: Este ejercicio nos fue sugerido por Joe Stoy, basado en un ejemplo de Kaldewaij 1990. 
