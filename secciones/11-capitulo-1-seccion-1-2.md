@@ -278,7 +278,7 @@ Los números en el borde del triángulo son todos 1, y cada número dentro del t
 
 Los ejemplos anteriores ilustran que los procesos pueden diferir considerablemente en la velocidad con la que consumen recursos computacionales. Una forma conveniente de describir esta diferencia es utilizar la noción de *orden de crecimiento* para obtener una medida en bruto de los recursos requeridos por un proceso a medida de que las entradas se hacen cada vez más grandes.
 
-Supongamos que `n` es un parámetro que mide el tamaño del problema y que `R(n)` es la cantidad de recursos que el proceso requiere para un problema de tamaño `n`. En nuestros ejemplos anteriores tomábamos a `n` como el número con el que debe calcularse una función dada, pero hay otras posibilidades. Por ejemplo, si nuestra meta es calcular una aproximación a la raíz cuadrada de un número, podríamos tomar a `n` como el número de dígitos de precisión que requerimos. Para la multiplicación de matrices podríamos tomar a `n` como el número de filas en las matrices. En general, hay una serie de propiedades del problema con respecto a las cuales será deseable analizar un proceso determinado. De manera similar, `R(n)` podría medir el número de registros internos de almacenamiento usados, el número de operaciones elementales de máquina realizadas, y así sucesivamente. En computadoras donde sólo se realizan un número fijo de operaciones a la vez, el tiempo requerido será proporcional al número de operaciones elementales efectuadas en la misma.
+Supongamos que `n` es un parámetro que mide el tamaño del problema y que `R(n)` es la cantidad de recursos que el proceso requiere para un problema de tamaño `n`. En nuestros ejemplos anteriores tomábamos a `n` como el número con el que debe calcularse una función dada, pero hay otras posibilidades. Por ejemplo, si nuestra meta es calcular una aproximación a la raíz cuadrada de un número, podríamos tomar a `n` como el número de dígitos de precisión que requerimos. Para la multiplicación de matrices podríamos tomar a `n` como el número de filas en las matrices. En general, hay una serie de propiedades del problema con respecto a las cuales será deseable analizar un proceso determinado. De manera similar, `R(n)` podría medir el número de registros internos de almacenamiento usados, el número de operaciones elementales de máquina realizadas, y así sucesivamente. En computadoras donde sólo se realizan un número fijo de operaciones a la vez, el tiempo requerido será proporcional al número de operaciones elementales efectuadas por la máquina.
 
 Decimos que `R(n)` tiene orden de crecimiento `Θ(f(n))`, escrito `R(n) = Θ(f(n))` (pronunciado "theta de f(n)"), si hay constantes positivas `k₁` y `k₂` independientes de `n` tales que 
 
@@ -321,7 +321,7 @@ b.  ¿Cuál es el orden de crecimiento en espacio y el número de pasos (en func
 
 ### 1.2.4 Exponenciación
 
-Considere el problema de calcular el exponencial de un número dado. Queremos un procedimiento que tome como argumentos una base `b` y un exponente entero positivo `n` y calcule `bⁿ`. Una forma de hacerlo sería mediante la definición recursiva
+Considere el problema de calcular el exponencial de un número dado. Queremos un procedimiento que tome como argumentos una base `b`, un exponente entero positivo `n` y calcule `bⁿ`. Una forma de hacer esto sería mediante la definición recursiva
 
 ```
 bⁿ = b . bⁿ⁻¹
@@ -353,7 +353,7 @@ Este es un proceso recursivo lineal, que requiere de `Θ(n)` pasos y `Θ(n)` esp
 
 Esta versión requiere `Θ(n)` pasos y `Θ(1)` espacio.
 
-Podemos calcular exponenciales en menos pasos usando cuadraturas sucesivas. Por ejemplo, en lugar de computar `b⁸` como
+Podemos calcular exponenciales en menos pasos usando cuadráticas sucesivas. Por ejemplo, en lugar de computar `b⁸` como
 
 ```
 b . (b . (b . (b . (b . (b . (b . b))))))
@@ -370,8 +370,8 @@ b⁸  = b⁴ . b⁴
 Este método funciona bien para exponentes que son potencias de 2. También podemos aprovechar en general la cuadratura sucesiva en el cálculo de exponenciales si usamos la regla
 
 ```
-bⁿ = (b⁽ⁿ/²⁾)²
-bⁿ = b . bⁿ⁻¹
+bⁿ = (b⁽ⁿ/²⁾)²⁾    si n es par
+bⁿ = b . bⁿ⁻¹      si n es impar
 ```
 
 Podemos expresar este método como un procedimiento:
@@ -390,9 +390,9 @@ donde el predicado para determinar si un número entero es par se define en tér
   (= (remainder n 2) 0))
 ```
 
-El proceso desarrollado por `rapido-exp` crece logarítmicamente con `n` tanto en espacio como en número de pasos. Para ver esto, note que computar `b²ⁿ` usando `rapido-exp` sólo requiere de una multiplicación más que calcular `bⁿ`. El tamaño del exponente que podemos calcular se duplica (aproximadamente) con cada nueva multiplicación que se nos permite. De este modo, el número de multiplicaciones requeridas para un exponente de `n` crece tan rápido como el logaritmo de `n` hasta la base 2. El proceso tiene un crecimiento de `Θ(log n)`.[^37]
+El proceso desarrollado por `rapido-exp` crece logarítmicamente con `n` tanto en espacio como en número de pasos. Para ver esto, observe que computar `b²ⁿ` usando `rapido-exp` sólo requiere de una multiplicación más en comparación con `bⁿ`. El tamaño del exponente que podemos calcular se duplica (aproximadamente) con cada nueva multiplicación permitida. De este modo, el número de multiplicaciones requeridas para un exponente de `n` crece tan rápido como el logaritmo de `n` de base 2. El proceso tiene un crecimiento de `Θ(log n)`.[^37]
 
-La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se vuelve sorprendente a medida que `n` se hace grande. Por ejemplo, `rapido-exp` para `n = 1000` requiere de sólo 14 multiplicaciones.[^38] También es posible usar la idea de cuadrar sucesivamente para idear un algoritmo iterativo que calcule exponenciales con un número logarítmico de pasos (ver ejercicio 1.16), aunque, como suele suceder con los algoritmos iterativos, esto no se escribe de manera tan sencilla como en el caso con el algoritmo recursivo[^39].
+La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se vuelve sorprendente a medida que `n` se hace más grande. Por ejemplo, `rapido-exp` para `n = 1000` requiere de sólo 14 multiplicaciones.[^38] También es posible usar la idea de cuadráticas sucesivas para idear un algoritmo iterativo que calcule exponenciales con un número logarítmico de pasos (ver ejercicio 1.16), aunque, como suele suceder con los algoritmos iterativos, esto no se escribe de manera tan sencilla como en el caso con el algoritmo recursivo[^39].
 
 
 
