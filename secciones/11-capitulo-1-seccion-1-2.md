@@ -271,7 +271,7 @@ Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
 
 Los números en el borde del triángulo son todos 1, y cada número dentro del triángulo es la suma de los dos números que están por encima de él.[^35] Escriba un procedimiento que calcule los elementos del triángulo de Pascal por medio de un proceso recursivo.
 
-**Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `φⁿ/√5`, donde `φ= (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver [sección 1.2.2](#122-Árbol-de-Recursión)) para probar que `Fib(n) = (φⁿ - ⨚ⁿ)/5`. 
+**Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `φⁿ/√5`, donde `φ = (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver [sección 1.2.2](#122-Árbol-de-Recursión)) para probar que `Fib(n) = (φⁿ - ⨚ⁿ)/5`. 
 
 
 ### 1.2.3 Órdenes de crecimiento
@@ -428,6 +428,49 @@ Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora suponga
                         q
                         (- contador 1)))))
 ```
+
+
+### 1.2.5 Mayores Comunes Divisores
+
+El mayor divisor común (MCD) de dos enteros `a` y `b` se define como el mayor entero que divide tanto `a` como `b` sin dejar resto. Por ejemplo, el MCD de 16 y 28 es 4. En el capítulo 2, cuando investiguemos cómo implementar la aritmética de números racionales, necesitaremos poder calcular MCD's para reducir los números racionales a los términos más bajos (para reducir un número racional a los términos más bajos, debemos dividir tanto el numerador como el denominador por su MCD. Por ejemplo, `16/28` se reduce a `4/7`). Una manera de encontrar el MCD de dos enteros es factorizarlos y buscar factores comunes, pero hay un algoritmo famoso que es mucho más eficiente.
+
+La idea del algoritmo se basa en la observación de que, si `r` es el resto cuando `a` se divide por `b`, entonces los divisores comunes de `a` y `b` son precisamente los mismos que los divisores comunes de `b` y `r`. Por lo tanto, podemos usar la ecuación
+
+```
+MCD(a,b) = MCD(b,r)
+```
+
+para reducir sucesivamente el problema de calcular un MCD al problema de calcular el MCD de pares cada vez más pequeños de enteros. Por ejemplo
+
+```
+MCD(206,40) = MCD(40,6)
+            = MCD(6,4)
+            = MCD(4,2)
+            = MCD(2,0)
+            = 2
+```
+
+reduce MCD(206,40) a MCD(2,0), que es 2. Es posible mostrar que comenzando con dos números enteros positivos cualesquiera y realizando reducciones repetidas siempre se producirá finalmente un par donde el segundo número es 0. Entonces el MCD es el otro número del par. Este método para calcular el MCD se conoce como el *Algoritmo de Euclides*.[^42]
+
+Es fácil expresar el Algoritmo de Euclides como un procedimiento:
+
+```scheme
+(define (mcd a b)
+  (if (= b 0)
+      a
+      (mcd b (remainder a b))))
+```
+
+Esto genera un proceso iterativo, cuyo número de pasos crece como el logaritmo de los números implicados.
+
+El hecho de que el número de pasos requeridos por el Algoritmo de Euclides tenga crecimiento logarítmico conlleva una relación interesante con los números de Fibonacci:
+
+**Teorema de Lame:** Si el Algoritmo de Euclides requiere `k` pasos para calcular el MCD de algún par, entonces el número más pequeño en el par debe ser mayor o igual al k-ésimo número de Fibonacci.[^43]
+
+Podemos usar este teorema para obtener una estimación del orden de crecimiento del Algoritmo de Euclides. Sea `n` la más pequeña de las dos entradas del procedimiento. Si el proceso toma `k` pasos, entonces debemos tener `n >= Fib(k) ≈ φᵏ/√5`. Por lo tanto, el número de pasos `k` crece como el logaritmo (hasta la base) de `n`. Por lo tanto, el orden de crecimiento es `(log n)`.
+
+
+
 
 
 # ---Traducción pendiente---
