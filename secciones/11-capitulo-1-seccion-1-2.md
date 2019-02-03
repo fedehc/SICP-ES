@@ -164,16 +164,16 @@ Podemos traducir inmediatamente esta definición en un procedimiento recursivo p
 
 Considere el patrón de este cálculo. Para calcular `(fib 5)`, calculamos `(fib 4)` y `(fib 3)`. Para calcular `(fib 4)`, calculamos `(fib 3)` y `(fib 2)`. En general, el proceso desarrollado se parece a un árbol, como se muestra en la figura 1.5. Note que las ramas se dividen en dos en cada nivel (excepto en la parte inferior); esto refleja el hecho de que el procedimiento `fib` se llama a sí mismo dos veces cada vez que es invocado.
 
-Este procedimiento es instructivo como un caso prototípico de árbol de recursión, aunque resulte una forma pésima de calcular los números de Fibonacci, ya que realiza una gran cantidad de cálculos redundantes. Note en la figura 1.5 que todo el cálculo de `(fib 3)` -casi la mitad del trabajo- está duplicado. De hecho, no es difícil mostrar que el número de veces que el procedimiento computará `(fib 1)` o `(fib 0)` (el número de hojas en el árbol anterior, en general) es precisamente `Fib(n + 1)`. Para tener una idea de lo malo que es esto, uno puede mostrar que el valor de `Fib(n)` crece exponencialmente con `n`. Más precisamente (ver ejercicio 1.13), `Fib(n)` es el entero más cercano a `φⁿ/√5`, donde
+Este procedimiento es instructivo como un caso prototípico de árbol de recursión, aunque resulte una forma pésima de calcular los números de Fibonacci, ya que realiza una gran cantidad de cálculos redundantes. Note en la figura 1.5 que todo el cálculo de `(fib 3)` -casi la mitad del trabajo- está duplicado. De hecho, no es difícil mostrar que el número de veces que el procedimiento computará `(fib 1)` o `(fib 0)` (el número de hojas en el árbol anterior, en general) es precisamente `Fib(n + 1)`. Para tener una idea de lo malo que es esto, uno puede mostrar que el valor de `Fib(n)` crece exponencialmente con `n`. Más precisamente (ver ejercicio 1.13), `Fib(n)` es el entero más cercano a `Φⁿ/√5`, donde
 
 ```
-φ = (1 + √5)/2 = 1,6810...
+Φ = (1 + √5)/2 = 1,6810...
 ```
 
 es el número áureo, que satisface la ecuación
 
 ```
-φ² = φ + 1
+Φ² = Φ + 1
 ```
 
 Por lo tanto, el proceso utiliza una serie de pasos que crecen exponencialmente con la entrada. Por otra parte, el espacio requerido crece sólo linealmente con la entrada, ya que sólo tenemos que hacer un seguimiento de los nodos que están por encima de nosotros en el árbol en cualquier punto del cálculo. En general, el número de pasos requeridos por un proceso árbol-recursivo será proporcional al número de nodos en el árbol, mientras que el espacio requerido será proporcional a la profundidad máxima del árbol.
@@ -271,7 +271,7 @@ Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
 
 Los números en el borde del triángulo son todos 1, y cada número dentro del triángulo es la suma de los dos números que están por encima de él.[^35] Escriba un procedimiento que calcule los elementos del triángulo de Pascal por medio de un proceso recursivo.
 
-**Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `φⁿ/√5`, donde `φ = (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver [sección 1.2.2](#122-Árbol-de-Recursión)) para probar que `Fib(n) = (φⁿ - ⨚ⁿ)/5`. 
+**Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `Φⁿ/√5`, donde `Φ = (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver [sección 1.2.2](#122-Árbol-de-Recursión)) para probar que `Fib(n) = (Φⁿ - ⨚ⁿ)/5`. 
 
 
 ### 1.2.3 Órdenes de crecimiento
@@ -288,7 +288,7 @@ k₁ f(n) < R(n) < k₂ f(n)
 
 para cualquier valor suficientemente grande de `n` (en otras palabras, para un gran `n`, el valor `R(n)` está entre `k₁ f(n)` y `k₂ f(n)`).
 
-Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente con la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.[^36] El cálculo árbol-recursivo de Fibonacci requiere `Θ(n)` pasos y espacio `Θ(φⁿ)`, donde `φ` es la relación de oro descrita en la [sección 1.2.2](#122-Árbol-de-Recursión).
+Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente con la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.[^36] El cálculo árbol-recursivo de Fibonacci requiere `Θ(n)` pasos y espacio `Θ(Φⁿ)`, donde `Φ` es la relación de oro descrita en la [sección 1.2.2](#122-Árbol-de-Recursión).
 
 Los órdenes de crecimiento sólo proporcionan una descripción aproximada del comportamiento de un proceso. Por ejemplo, un proceso que requiere `n²` pasos, un proceso que requiere `1000n²` pasos y un proceso que requiere `3n² + 10n + 17` pasos, todos estos tienen un orden de crecimiento `Θ(n²)`. Por otro lado, el orden de crecimiento nos proporciona una indicio útil de cómo podemos esperar a que el comportamiento del proceso cambie a medida de que cambiemos el tamaño del problema. Para un proceso `Θ(n)` (lineal), duplicar el tamaño duplicará aproximadamente la cantidad de recursos utilizados. Para un proceso exponencial, cada incremento en el tamaño del problema multiplicará la utilización de recursos por un factor constante. En el resto de la sección 1.2 examinaremos dos algoritmos cuyo orden de crecimiento es logarítmico, de modo que duplicar el tamaño del problema aumentará la necesidad de recursos en una cantidad constante.
 
@@ -467,7 +467,7 @@ El hecho de que el número de pasos requeridos por el Algoritmo de Euclides teng
 
 **Teorema de Lamé:** Si el Algoritmo de Euclides requiere `k` pasos para calcular el MCD de algún par, entonces el número más pequeño en el par debe ser mayor o igual al k-ésimo número de Fibonacci.[^43]
 
-Podemos usar este teorema para obtener una estimación del orden de crecimiento del Algoritmo de Euclides. Sea `n` la más pequeña de las dos entradas del procedimiento. Si el proceso toma `k` pasos, entonces debemos tener `n >= Fib(k) ≈ φᵏ/√5`. Por lo tanto, el número de pasos `k` crece como el logaritmo (hasta la base) de `n`. Por lo tanto, el orden de crecimiento es `(log n)`.
+Podemos usar este teorema para obtener una estimación del orden de crecimiento del Algoritmo de Euclides. Sea `n` la más pequeña de las dos entradas del procedimiento. Si el proceso toma `k` pasos, entonces debemos tener `n >= Fib(k) ≈ Φᵏ/√5`. Por lo tanto, el número de pasos `k` crece como el logaritmo (hasta la base) de `n`. Por lo tanto, el orden de crecimiento es `(log n)`.
 
 **Ejercicio 1.20.** El proceso que genera un procedimiento depende, por supuesto, de las reglas utilizadas por el intérprete. Como ejemplo, considere el procedimiento iterativo de `mcd` dado arriba. Supongamos que interpretamos este procedimiento usando la evaluación de orden normal, como se discutió en la [sección 1.1.5]((./10-capitulo-1-seccion-1-1.md#115-El-Modelo-de-Sustitución-para-la-Aplicación-de-Procedimientos) (la regla de evaluación de orden normal para `if` se describe en el ejercicio 1.5.). Utilizando el método de sustitución (para el orden normal), ilustre el proceso generado en la evaluación `(mcd 206 40)` e indique las operaciones restantes que se efectúan realmente.  ¿Cuántas operaciones restantes son realmente realizadas en la evaluación de orden normal de `(mcd 206 40)`? ¿Y en la evaluación del orden aplicativo? 
 
