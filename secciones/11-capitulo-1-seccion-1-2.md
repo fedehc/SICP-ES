@@ -414,6 +414,7 @@ Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora suponga
 ```scheme
 (define (fib n)
   (fib-iter 1 0 0 1 n))
+
 (define (fib-iter a b p q contador)
   (cond ((= contador 0) b)
         ((par? contador)
@@ -467,9 +468,41 @@ El hecho de que el número de pasos requeridos por el Algoritmo de Euclides teng
 
 **Teorema de Lamé:** Si el Algoritmo de Euclides requiere `k` pasos para calcular el MCD de algún par, entonces el número más pequeño en el par debe ser mayor o igual al k-ésimo número de Fibonacci.[^43]
 
-Podemos usar este teorema para obtener una estimación del orden de crecimiento del Algoritmo de Euclides. Sea `n` la más pequeña de las dos entradas del procedimiento. Si el proceso toma `k` pasos, entonces debemos tener `n >= Fib(k) ≈ Φᵏ/√5`. Por lo tanto, el número de pasos `k` crece como el logaritmo (hasta la base) de `n`. Por lo tanto, el orden de crecimiento es `(log n)`.
+Podemos usar este teorema para obtener una estimación del orden de crecimiento del Algoritmo de Euclides. Sea `n` la más pequeña de las dos entradas del procedimiento. Si el proceso toma `k` pasos, entonces debemos tener `n >= Fib(k) ≈ Φᵏ/√5`. Por lo tanto, el número de pasos `k` crece como el logaritmo (hasta la base) de `n`. Por lo tanto, el orden de crecimiento es `Θ(log n)`.
 
 **Ejercicio 1.20.** El proceso que genera un procedimiento depende, por supuesto, de las reglas utilizadas por el intérprete. Como ejemplo, considere el procedimiento iterativo de `mcd` dado arriba. Supongamos que interpretamos este procedimiento usando la evaluación de orden normal, como se discutió en la [sección 1.1.5]((./10-capitulo-1-seccion-1-1.md#115-El-Modelo-de-Sustitución-para-la-Aplicación-de-Procedimientos) (la regla de evaluación de orden normal para `if` se describe en el ejercicio 1.5.). Utilizando el método de sustitución (para el orden normal), ilustre el proceso generado en la evaluación `(mcd 206 40)` e indique las operaciones restantes que se efectúan realmente.  ¿Cuántas operaciones restantes son realmente realizadas en la evaluación de orden normal de `(mcd 206 40)`? ¿Y en la evaluación del orden aplicativo? 
+
+
+### 1.2.6 Ejemplo: Evaluando por Primalidad
+
+Esta sección describe dos métodos para comprobar la primalidad de un entero `n`, uno con orden de crecimiento `Θ(√n)`, y un algoritmo "probabilístico" con orden de crecimiento `Θ(log n)`. Los ejercicios al final de esta sección sugieren proyectos de programación basados en estos algoritmos.
+
+
+#### Búsqueda de divisores
+
+Desde la antigüedad, los matemáticos han estado fascinados por los problemas relacionados con los números primos, y muchas personas han trabajado en el problema de determinar las formas de comprobar si los números son primos. Una manera de comprobarlo es encontrar los divisores de un número. El siguiente programa encuentra el divisor integral más pequeño (mayor que 1) de un número `n` dado. Esto se hace de forma directa, probando la divisibilidad de `n` mediante números enteros sucesivos que empiezan con 2.
+
+```scheme
+(define (menor-divisor n)
+  (encontrar-divisor n 2))
+
+(define (encontrar-divisor n test-divisor)
+  (cond ((> (cuadrado test-divisor) n) n)
+        ((divide? test-divisor n) test-divisor)
+        (else (encontrar-divisor n (+ test-divisor 1)))))
+
+(define (divide? a b)
+  (= (remainder b a) 0))
+```
+
+Podemos probar si un número es primo de la siguiente manera: `n` es primo si y sólo si `n` es su propio divisor más pequeño.
+
+```scheme
+(define (primo? n)
+  (= n (menor-divisor n)))
+```
+
+La prueba final de `encontrar-divisor` se basa en el hecho de que si `n` no es primo debe tener un divisor menor o igual a `√n`.[^44] Esto significa que el algoritmo sólo necesita probar divisores entre 1 y `√n`. Consecuentemente, el número de pasos necesarios para identificar a `n` como primo tendrá un orden de crecimiento `Θ(√n)`.
 
 
 
