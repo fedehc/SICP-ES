@@ -505,6 +505,49 @@ Podemos probar si un número es primo de la siguiente manera: `n` es primo si y 
 La prueba final de `encontrar-divisor` se basa en el hecho de que si `n` no es primo debe tener un divisor menor o igual a `√n`.[^44] Esto significa que el algoritmo sólo necesita probar divisores entre 1 y `√n`. Consecuentemente, el número de pasos necesarios para identificar a `n` como primo tendrá un orden de crecimiento `Θ(√n)`.
 
 
+#### El test de Fermat
+
+El test de primalidad de `Θ(log n)` se basa en un resultado de la teoría de números conocida como el Pequeño Teorema de Fermat.[^45]
+
+**El pequeño teorema de Fermat:** Si `n` es un número primo y `a` es un número entero positivo menor que `n`, entonces `a` elevado a la n-ésima potencia es congruente con un módulo `n`.
+
+(Se dice que dos números son *módulo congruente* `n` si ambos tienen el mismo resto cuando son divididos por `n`. El resto de un número `a` cuando es dividido por `n` también es referido como el *remanente de `a` modulo `n`*, o simplemente como `a` modulo `n`).
+
+Si `n` no es primo, entonces, en general, la mayoría de los números `a< n` no cumplirán la relación anterior. Esto lleva al siguiente algoritmo para probar la primalidad: Dado un número `n`, se elige un número aleatorio `a < n` y se calcula el resto de un módulo `n`. Si el resultado no es igual a `a`, entonces `n` no es ciertamente el primo. Si es `a`, entonces hay buenas posibilidades de que `n` sea primo. Ahora elija otro número aleatorio `a` y pruébelo con el mismo método. Si también satisface la ecuación, entonces podemos estar aún más seguros de que `n` es el primo. Probando más y más valores de `a`, podemos aumentar nuestra confianza en el resultado. Este algoritmo se conoce como el test de Fermat.
+
+Para implementar el test de Fermat, necesitamos un procedimiento que calcule el exponencial de un número módulo a otro número:
+
+```scheme
+(define (exp-mod base exp m)
+  (cond ((= exp 0) 1)
+        ((par? exp)
+         (remainder (cuadrado (exp-mod base (/ exp 2) m))
+                    m))
+        (else
+         (remainder (* base (exp-mod base (- exp 1) m))
+                    m))))    
+```
+
+Esto es muy similar al procedimiento de `exp-rapido` de la [sección 1.2.4]((./11-capitulo-1-seccion-1-2.md#124-Exponenciación)). Utiliza cuadráticas sucesivas, de modo que el número de pasos crece logarítmicamente con el exponente.[^46]
+
+El test de Fermat se realiza eligiendo al azar un número `a` entre 1 y `n - 1` inclusive, y comprobando si el resto del módulo `n` de la n-ésima potencia de `a` es igual a `a`. El número aleatorio `a` se elige usando el procedimiento `random`, el cual asumimos que está incluido como primitivo en Scheme. `random` devuelve un número entero no negativo menor que el valor de su número entero de entrada. Por lo tanto, para obtener un número aleatorio entre 1 y `n - 1`, llamamos a `random` con una entrada de `n - 1` y sumamos 1 al resultado:
+
+```scheme
+(define (test-fermat n)
+  (define (probar a)
+    (= (exp-mod a n n) a))
+  (probar (+ 1 (random (- n 1)))))
+```
+
+El siguiente procedimiento ejecuta la prueba un número determinado de veces, según lo especificado por un parámetro. Su valor es verdadero si la prueba tiene éxito siempre, y falso en caso contrario.
+
+```scheme
+(define (primo-rapido? n veces)
+  (cond ((= veces 0) true)
+        ((test-fermat n) (primo-rapido? n (- veces 1)))
+        (else false)))
+```
+
 
 # ---Traducción pendiente---
 
