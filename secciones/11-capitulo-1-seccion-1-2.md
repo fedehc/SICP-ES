@@ -584,8 +584,34 @@ Usando este procedimiento, escriba un procedimiento `buqueda-de-primos` que comp
 
 **Ejercicio 1.24.** Modifique el procedimiento de `test-primo-cronometrado` del ejercicio 1.22 para usar el método de `primo-rapido?` (el método de Fermat), y pruebe cada uno de los 12 primos que usted encontró en ese ejercicio. Ya que el test de Fermat tiene un crecimiento de `Θ(log n)`, ¿cómo esperaría que el tiempo de testar primos de casi 1.000.000 se compare con el tiempo que se necesita para testar primos de alrededor de 1000? ¿Sus datos lo confirman? ¿Puede explicar cualquier discrepancia que encuentre?
 
+**Ejercicio 1.25.** Alyssa P. Hacker se queja de que hicimos demasiado trabajo extra al escribir `exp-mod`. Después de todo, dice, dado que ya sabemos cómo calcular los exponenciales podríamos simplemente haber escrito
 
-# ---Traducción pendiente---
+```scheme
+(define (exp-mod base exp m)
+  (remainder (exp-rapido base exp) m))
+```
+
+¿Está en lo cierto? ¿Serviría este procedimiento también para nuestro test rápido de primos? Explicar.
+
+**Ejercicio 1.26.** Louis Reasoner está teniendo grandes dificultades para hacer el ejercicio 1.24. Su prueba de `primo-rapido?` parece ser más lenta que su prueba de `primo?`. Louis llama a su amiga Eva Lu Ator para que le ayude. Cuando examinan el código de Louis, descubren que ha reescrito el procedimiento `exp-mod` para usar una multiplicación explícita, en lugar de llamar `cuadrado`:
+
+```scheme
+(define (exp-mod base exp m)
+  (cond ((= exp 0) 1)
+        ((par? exp)
+         (remainder (* (exp-mod base (/ exp 2) m)
+                       (exp-mod base (/ exp 2) m))
+                    m))
+        (else
+         (remainder (* base (exp-mod base (- exp 1) m))
+                    m))))
+```
+
+"No veo la diferencia", dice Louis. "Yo sí", dice Eva. "Al escribir el procedimiento de esta manera, transformamos el proceso de `Θ(log n)` en un proceso de `Θ(n)`". Explicar.
+
+**Ejercicio 1.27.** Demostrar que los números de Carmichael listados en la nota [^47] realmente engañan al test de Fermat. Es decir, escriba un procedimiento que tome un número entero `n` y compruebe si un es congruente con un módulo `n` para cada `a < n`, y pruebe su procedimiento con los números de Carmichael dados.
+
+**Ejercicio 1.28.** Una variante del test Fermat que no se puede engañar se llama el test Miller-Rabin (Miller 1976; Rabin 1980). Este parte de una forma alternativa del Pequeño Teorema de Fermat, que establece que si `n` es un número primo y `a` es un número entero positivo menor que `n`, entonces una potencia `a` elevada a `(n - 1)`-esima es congruente con 1 módulo `n`. Para probar la primalidad de un número `n` por la prueba de Miller-Rabin, elegimos un número aleatorio `a < n` y elevamos `a` a la  `(n - 1)`-esima potencia modulo `n` usando el procedimiento `exp-mod`. Sin embargo, siempre que realicemos el paso de cuadrar en `exp-mod`, comprobaremos si hemos descubierto una "raíz cuadrada no trivial de 1 módulo `n`", es decir, un número no igual a 1 o `n - 1` cuyo cuadrado es igual a 1 módulo `n`. Es posible probar que si existe tal raíz cuadrada no trivial de 1, entonces `n` no es primo. También es posible probar que si `n` es un número impar que no es primo, entonces, para al menos la mitad de los números `a < n`, el cálculo de `aⁿ⁻¹` de esta manera revelará una raíz cuadrada no trivial de 1 módulo `n` (esta es la razón por la que la prueba de Miller-Rabin no puede ser engañada). Modifique el procedimiento `exp-mod` para señalar si este descubre una raíz cuadrada no trivial de 1, y utilícelo para implementar la prueba de Miller-Rabin con un procedimiento análogo a `test-fermat`. Revise su procedimiento probando varios primos y no primos conocidos. Sugerencia: Una forma conveniente de hacer la señal `exp-mod` es que devuelva 0.
 
 ___
 
