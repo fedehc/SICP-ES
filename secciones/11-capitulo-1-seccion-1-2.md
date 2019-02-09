@@ -280,7 +280,7 @@ Los ejemplos anteriores ilustran que los procesos pueden diferir considerablemen
 
 Supongamos que `n` es un parámetro que mide el tamaño del problema y que `R(n)` es la cantidad de recursos que el proceso requiere para un problema de tamaño `n`. En nuestros ejemplos anteriores tomábamos a `n` como el número con el que debe calcularse una función dada, pero hay otras posibilidades. Por ejemplo, si nuestra meta es calcular una aproximación a la raíz cuadrada de un número, podríamos tomar a `n` como el número de dígitos de precisión que requerimos. Para la multiplicación de matrices podríamos tomar a `n` como el número de filas en las matrices. En general, hay una serie de propiedades del problema con respecto a las cuales será deseable analizar un proceso determinado. De manera similar, `R(n)` podría medir el número de registros internos de almacenamiento usados, el número de operaciones elementales de máquina realizadas, y así sucesivamente. En computadoras donde sólo se realizan un número fijo de operaciones a la vez, el tiempo requerido será proporcional al número de operaciones elementales efectuadas por la máquina.
 
-Decimos que `R(n)` tiene orden de crecimiento `Θ(f(n))`, escrito `R(n) = Θ(f(n))` (pronunciado "theta de f(n)")\*, si hay constantes positivas `k₁` y `k₂` independientes de `n` tales que 
+Decimos que `R(n)` tiene orden de crecimiento `Θ(f(n))`, escrito `R(n) = Θ(f(n))` (pronunciado "theta de f(n)")**\***, si hay constantes positivas `k₁` y `k₂` independientes de `n` tales que 
 
 ```
 k₁ f(n) < R(n) < k₂ f(n)
@@ -288,7 +288,7 @@ k₁ f(n) < R(n) < k₂ f(n)
 
 para cualquier valor suficientemente grande de `n` (en otras palabras, para un gran `n`, el valor `R(n)` está entre `k₁ f(n)` y `k₂ f(n)`).
 
-\*NdT: este concepto se lo conoce más actualmente como *Notación O*, o en inglés *Big O Notation* (o simplemente *Big O*).
+**\*** NdT: este concepto se lo conoce más actualmente como *Notación O*, o en inglés *Big O Notation* (o simplemente *Big O*).
 
 Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente con la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.[^36] El cálculo árbol-recursivo de Fibonacci requiere `Θ(n)` pasos y espacio `Θ(Φⁿ)`, donde `Φ` es la relación de oro descrita en la [sección 1.2.2](#122-Árbol-de-Recursión).
 
