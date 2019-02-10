@@ -323,14 +323,14 @@ b. ¿Cuál es el orden de crecimiento en espacio y en número de pasos (en funci
 
 ### 1.2.4 Exponenciación
 
-Considere el problema de calcular el exponencial de un número dado. Queremos un procedimiento que tome como argumentos una base `b`, un exponente entero positivo `n` y calcule `bⁿ`. Una forma de hacer esto sería mediante la definición recursiva
+Considere el problema de calcular el exponencial de un número dado. Queremos un procedimiento que tome como argumentos una base `b` y un exponente entero positivo `n` y que calcule `bⁿ`. Una forma de hacer esto sería mediante la definición recursiva
 
 ```
 bⁿ = b . bⁿ⁻¹
 b⁰ = 1
 ```
 
-que se traduce fácilmente en el procedimiento
+que se traduce fácilmente al procedimiento
 
 ```scheme
 (define (exp b n)
@@ -353,7 +353,7 @@ Este es un proceso recursivo lineal, que requiere de `Θ(n)` pasos y `Θ(n)` esp
                 (* b producto)))) 
 ```
 
-Esta versión requiere `Θ(n)` pasos y `Θ(1)` espacio.
+Esta versión requiere `Θ(n)` pasos y de `Θ(1)` espacio.
 
 Podemos calcular exponenciales en menos pasos usando cuadráticas sucesivas. Por ejemplo, en lugar de computar `b⁸` como
 
@@ -369,10 +369,10 @@ b⁴  = b² . b²
 b⁸  = b⁴ . b⁴
 ```
 
-Este método funciona bien para exponentes que son potencias de 2. También podemos aprovechar en general la cuadratura sucesiva en el cálculo de exponenciales si usamos la regla
+Este método funciona bien para exponentes que son potencias de 2. También podemos aprovechar en general las cuadráticas sucesivas en el cálculo de exponenciales si usamos la regla
 
 ```
-bⁿ = (b⁽ⁿ/²⁾)²⁾    si n es par
+bⁿ = (b⁽ⁿ/²⁾)²     si n es par
 bⁿ = b . bⁿ⁻¹      si n es impar
 ```
 
@@ -394,11 +394,11 @@ donde el predicado para determinar si un número entero es par se define en tér
 
 El proceso desarrollado por `exp-rapido` crece logarítmicamente con `n` tanto en espacio como en número de pasos. Para ver esto, observe que computar `b²ⁿ` usando `exp-rapido` sólo requiere de una multiplicación más en comparación con `bⁿ`. El tamaño del exponente que podemos calcular se duplica (aproximadamente) con cada nueva multiplicación permitida. De este modo, el número de multiplicaciones requeridas para un exponente de `n` crece tan rápido como el logaritmo de `n` de base 2. El proceso tiene un crecimiento de `Θ(log n)`.[^37]
 
-La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se vuelve sorprendente a medida que `n` se hace más grande. Por ejemplo, `exp-rapido` para `n = 1000` requiere de sólo 14 multiplicaciones.[^38] También es posible usar la idea de cuadráticas sucesivas para idear un algoritmo iterativo que calcule exponenciales con un número logarítmico de pasos (ver ejercicio 1.16), aunque, como suele suceder con los algoritmos iterativos, esto no se escribe de manera tan sencilla como en el caso con el algoritmo recursivo[^39].
+La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se vuelve sorprendente a medida que `n` se hace más grande. Por ejemplo, `exp-rapido` para `n = 1000` solo requiere de sólo 14 multiplicaciones.[^38] También es posible usar la idea de cuadráticas sucesivas para idear un algoritmo iterativo que calcule exponenciales con un número logarítmico de pasos (ver ejercicio 1.16), aunque, como suele suceder con los algoritmos iterativos, esto no se escribe de manera tan directa como los algoritmos recursivos.[^39]
 
-**Ejercicio 1.16.** Diseñar un procedimiento que desarrolle un proceso de exponenciación iterativo, que utilice cuadráticas sucesivas y un número logarítmico de pasos, a lo igual que `exp-rápido` (sugerencia: usando la observación de que `(bⁿ/²)² = (b²)ⁿ/²`, mantener junto con el exponente `n` y la base `b` una variable de estado adicional `a`, y definir la transformación del estado de tal forma que el producto `bⁿ` no sufra ningún cambio de un estado a otro. Al principio del proceso `a` se toma como 1, y la respuesta viene dada por el valor de `a` al final del proceso. En general, la técnica de definir una *cantidad invariable* que permanece sin cambiar de un estado a otro es una forma poderosa de pensar en el diseño de algoritmos iterativos). 
+**Ejercicio 1.16.** Diseñar un procedimiento que desarrolle un proceso de exponenciación iterativo, que utilice cuadráticas sucesivas y un número logarítmico de pasos, igual como en  `exp-rápido` (sugerencia: partiendo de la observación de que `(bⁿ/²)² = (b²)ⁿ/²`, mantener junto con el exponente `n` y la base `b` una variable de estado adicional `a`, y definir la transformación del estado de tal forma que el producto `bⁿ` no sufra ningún cambio de un estado a otro. Al principio del proceso `a` se toma como 1, y la respuesta viene dada por el valor de `a` al final del proceso. En general, la técnica de definir una *cantidad invariable* que permanece sin cambiar de un estado a otro es una forma poderosa de pensar el diseño de los algoritmos iterativos). 
 
-**Ejercicio 1.17.** Los algoritmos de exponenciación de esta sección se basan en la realización de la exponenciación mediante multiplicación repetida. De manera similar, se puede realizar la multiplicación de números enteros por medio de la suma repetida. El siguiente procedimiento de multiplicación (en el cual se asume que nuestro lenguaje sólo puede sumar, no multiplicar) es análogo al procedimiento `exp`:
+**Ejercicio 1.17.** Los algoritmos de exponenciación de esta sección se basan en la realización de la exponenciación misma mediante la multiplicación repetida. De manera similar, se puede realizar la multiplicación de números enteros por medio de la suma repetida. El siguiente procedimiento de multiplicación (en el cual se asume que nuestro lenguaje sólo puede sumar, no multiplicar) es análogo al procedimiento `exp`:
 
 ```scheme
 (define (* a b)
@@ -407,7 +407,7 @@ La diferencia entre el crecimiento de `Θ(log n)` y el crecimiento de `Θ(n)` se
       (+ a (* a (- b 1)))))
 ```
 
-Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora supongamos que incluimos, junto con la suma, las operaciones `doble`, que duplica un entero, y `mitad`, que divide un entero (par) por 2. Usando estos, diseñemos un procedimiento de multiplicación análogo a `exp-rapido` que utilice un número logarítmico de pasos. 
+Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora supongamos que incluimos, junto con la suma, las operaciones `doble`, que duplica un entero, y `mitad`, que divide un entero (par) por 2. Usando estos, diseñar un procedimiento de multiplicación análogo a `exp-rapido` que utilice un número logarítmico de pasos. 
 
 **Ejercicio 1.18.** Usando los resultados de los ejercicios 1.16 y 1.17, idear un procedimiento que genere un proceso iterativo para multiplicar dos números enteros en términos de sumar, duplicar y dividir a la mitad, y que use un número logarítmico de pasos.[^40].
 
@@ -511,7 +511,7 @@ La prueba final de `encontrar-divisor` se basa en el hecho de que si `n` no es p
 
 El test de primalidad de `Θ(log n)` se basa en un resultado de la teoría de números conocida como el Pequeño Teorema de Fermat.[^45]
 
-**El pequeño teorema de Fermat:** Si `n` es un número primo y `a` es un número entero positivo menor que `n`, entonces `a` elevado a la n-ésima potencia es congruente con un módulo `n`.
+**El pequeño teorema de Fermat:** Si `n` es un número primo y `a` es un número entero positivo menor que `n`, entonces `a` elevado a la enésima potencia es congruente con un módulo `n`.
 
 (Se dice que dos números son *módulo congruente* `n` si ambos tienen el mismo resto cuando son divididos por `n`. El resto de un número `a` cuando es dividido por `n` también es referido como el *remanente de `a` modulo `n`*, o simplemente como `a` modulo `n`).
 
@@ -532,7 +532,7 @@ Para implementar el test de Fermat, necesitamos un procedimiento que calcule el 
 
 Esto es muy similar al procedimiento de `exp-rapido` de la [sección 1.2.4]((./11-capitulo-1-seccion-1-2.md#124-Exponenciación)). Utiliza cuadráticas sucesivas, de modo que el número de pasos crece logarítmicamente con el exponente.[^46]
 
-El test de Fermat se realiza eligiendo al azar un número `a` entre 1 y `n - 1` inclusive, y comprobando si el resto del módulo `n` de la n-ésima potencia de `a` es igual a `a`. El número aleatorio `a` se elige usando el procedimiento `random`, el cual asumimos que está incluido como primitivo en Scheme. `random` devuelve un número entero no negativo menor que el valor de su número entero de entrada. Por lo tanto, para obtener un número aleatorio entre 1 y `n - 1`, llamamos a `random` con una entrada de `n - 1` y sumamos 1 al resultado:
+El test de Fermat se realiza eligiendo al azar un número `a` entre 1 y `n - 1` inclusive, y comprobando si el resto del módulo `n` de la enésima potencia de `a` es igual a `a`. El número aleatorio `a` se elige usando el procedimiento `random`, el cual asumimos que está incluido como primitivo en Scheme. `random` devuelve un número entero no negativo menor que el valor de su número entero de entrada. Por lo tanto, para obtener un número aleatorio entre 1 y `n - 1`, llamamos a `random` con una entrada de `n - 1` y sumamos 1 al resultado:
 
 ```scheme
 (define (test-fermat n)
@@ -641,7 +641,7 @@ Evitamos hacer esto aquí para minimizar el número de cosas en las que pensar a
 
 [^34]: Un enfoque para hacer frente a los cálculos redundantes es organizar las cosas de manera tal que automáticamente construyamos una tabla de valores a medida que se calculan. Cada vez que se nos pide que apliquemos el procedimiento a algún argumento, primero buscamos si el valor ya está almacenado en la tabla, en cuyo caso evitamos realizar el cálculo redundante. Esta estrategia, conocida como *tabulación* o *memoization*, puede ser implementada de manera sencilla. La tabulación se puede utilizar a veces para transformar procesos que requieren de un número exponencial de pasos (tal como sucede en `contar-cambio`) en procesos cuyos requisitos de espacio y tiempo crecen linealmente con la entrada de datos. Ver ejercicio 3.27.
 
-[^35]: Los elementos del triángulo de Pascal se llaman *coeficientes binomiales*, porque la n-ésima fila consiste en los coeficientes de los términos en la expansión de `(x + y)ⁿ`. Este patrón para calcular los coeficientes apareció en el trabajo seminal de Blaise Pascal en 1653 sobre la teoría de la probabilidad, *Traité du triangle arithmétique*. Según Knuth (1973), el mismo patrón aparece en el *Szu-yuen Yü-chien* ("El precioso espejo de los cuatro elementos"), publicado por el matemático chino Chu Shih-chieh en 1303, en las obras del matemático hindú del siglo XII Bháscara Áchárya.
+[^35]: Los elementos del triángulo de Pascal se llaman *coeficientes binomiales*, porque la enésima fila consiste en los coeficientes de los términos en la expansión de `(x + y)ⁿ`. Este patrón para calcular los coeficientes apareció en el trabajo seminal de Blaise Pascal en 1653 sobre la teoría de la probabilidad, *Traité du triangle arithmétique*. Según Knuth (1973), el mismo patrón aparece en el *Szu-yuen Yü-chien* ("El precioso espejo de los cuatro elementos"), publicado por el matemático chino Chu Shih-chieh en 1303, en las obras del matemático hindú del siglo XII Bháscara Áchárya.
 
 [^36]: Estas declaraciones enmascaran una gran cantidad de simplificación. Por ejemplo, si contamos los pasos del proceso como "operaciones de máquina", estamos haciendo la suposición de que el número de operaciones de máquina necesarias para realizar, por ejemplo, una multiplicación es independiente del tamaño de los números a multiplicar, lo que es falso si los números son lo suficientemente grandes. Observaciones similares son válidas también para las estimaciones de espacio. Al igual que el diseño y la descripción de un proceso, el análisis de un proceso puede llevarse a cabo en varios niveles de abstracción.
 
