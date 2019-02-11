@@ -468,7 +468,7 @@ Esto genera un proceso iterativo, cuyo número de pasos crece como el logaritmo 
 
 El hecho de que el número de pasos requeridos por el Algoritmo de Euclides tenga crecimiento logarítmico conlleva una relación interesante con los números de Fibonacci:
 
-* **Teorema de Lamé:** Si el Algoritmo de Euclides requiere `k` pasos para calcular el MCD de algún par, entonces el número más pequeño en el par debe ser mayor o igual al k-ésimo número de Fibonacci.* [^43]
+***Teorema de Lamé:** Si el Algoritmo de Euclides requiere `k` pasos para calcular el MCD de algún par, entonces el número más pequeño en el par debe ser mayor o igual al k-ésimo número de Fibonacci.* [^43]
 
 Podemos usar este teorema para obtener una estimación del orden de crecimiento del Algoritmo de Euclides. Sea `n` la más pequeña de las dos entradas del procedimiento. Si el proceso toma `k` pasos, entonces debemos tener `n >= Fib(k) ≈ Φᵏ/√5`. Por lo tanto, el número de pasos `k` crece como el logaritmo (a la base `Φ`) de `n`. Por lo tanto, el orden de crecimiento es `Θ(log n)`.
 
@@ -511,7 +511,7 @@ La prueba final de `encontrar-divisor` se basa en el hecho de que si `n` no es p
 
 El test de primalidad de `Θ(log n)` se basa en un resultado de la teoría de números conocida como el Pequeño Teorema de Fermat.[^45]
 
-* **El pequeño teorema de Fermat:** Si `n` es un número primo y `a` es un número entero positivo menor que `n`, entonces `a` elevado a la enésima potencia es congruente con un módulo `n`.*
+***El pequeño teorema de Fermat:** Si `n` es un número primo y `a` es un número entero positivo menor que `n`, entonces `a` elevado a la enésima potencia es congruente con un módulo `n`.*
 
 (Se dice que dos números son *módulo congruente* `n` si ambos tienen el mismo resto cuando son divididos por `n`. El resto de un número `a` cuando es dividido por `n` también es referido como el *remanente de `a` modulo `n`*, o simplemente como `a` modulo `n`).
 
