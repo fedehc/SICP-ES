@@ -482,7 +482,7 @@ Esta sección describe dos métodos para comprobar la primalidad de un entero `n
 
 #### Búsqueda de divisores
 
-Desde la antigüedad, los matemáticos han estado fascinados por los problemas relacionados con los números primos, y muchas personas han trabajado en el problema de determinar las formas de comprobar si los números son primos. Una manera de comprobarlo es encontrar los divisores de un número. El siguiente programa encuentra el divisor integral más pequeño (mayor que 1) de un número `n` dado. Esto se hace de forma directa, probando la divisibilidad de `n` mediante números enteros sucesivos que empiezan con 2.
+Desde la antigüedad, los matemáticos han estado fascinados por los problemas relacionados con los números primos, y muchas personas han trabajado en el problema de determinar maneras de comprobar si los números son tales. Una manera de chequear que un número es primo es encontrar los divisores del mismo. El siguiente programa busca el divisor integral más pequeño (mayor que 1) de un número `n` dado. Esto se hace de forma directa, al probar la divisibilidad de `n` mediante números enteros sucesivos que empiecen a partir de 2.
 
 ```scheme
 (define (menor-divisor n)
