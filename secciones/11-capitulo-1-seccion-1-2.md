@@ -532,7 +532,7 @@ Para implementar el test de Fermat, necesitamos un procedimiento que calcule el 
 
 Esto es muy similar al procedimiento de `exp-rapido` de la [sección 1.2.4]((./11-capitulo-1-seccion-1-2.md#124-Exponenciación)). Utiliza cuadráticas sucesivas, de modo que el número de pasos crece logarítmicamente con el exponente.[^46]
 
-El test de Fermat se realiza eligiendo al azar un número `a` entre 1 y `n - 1` inclusive, y comprobando si el resto del módulo `n` de la enésima potencia de `a` es igual a `a`. El número aleatorio `a` se elige usando el procedimiento `random`, el cual asumimos que está incluido como un primitivo en Scheme. `random` devuelve un número entero no negativo menor que el valor de su número entero de entrada. Por lo tanto, para obtener un número aleatorio entre 1 y `n - 1`, llamamos a `random` con una entrada de `n - 1` y sumamos 1 al resultado:
+El test de Fermat se realiza eligiendo al azar un número `a` entre 1 y `n - 1` inclusive, y comprobando si el resto del módulo `n` de la enésima potencia de `a` es igual a `a`. El número aleatorio `a` se elige usando el procedimiento `random`, el cual asumimos que está incluido como procedimiento primitivo en Scheme. `random` devuelve un número entero no negativo menor que el valor de su número entero de entrada. Por lo tanto, para obtener un número aleatorio entre 1 y `n - 1`, llamamos a `random` con una entrada de `n - 1` y sumamos 1 al resultado:
 
 ```scheme
 (define (test-fermat n)
