@@ -30,11 +30,11 @@ Lograr traducir el libro completo para que pueda ser leído online y/o descargad
 Contemplo en un futuro no muy lejano recrear una versión interactiva online, tal como ha hecho por ejemplo [Li Xuanji en su sitio web](http://www.xuanji.li/isicp/index.html) con la versión inglesa del libro. Aunque de momento es solo una idea.
 
 
-## Mis motivos para la traducción
+## Motivos para la traducción
 
 1) Tengo tiempo de sobra;
 2) Deseaba poner en práctica mi inglés (que me hace falta) y la traducción de esta obra me pareció un desafío interesante;
-3) Tener un motivo extra para releer el libro con detenimiento.
+3) Ganar un motivo extra para leer y releer cada sección del libro con mayor detenimiento.
 
 Aclaro que no soy traductor profesional, o programador experimentado, y menos aún redactor especializado. Ni siquiera soy el primero en intentar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de los primeros en lograr terminarlo\*. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
 
