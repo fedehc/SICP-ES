@@ -38,7 +38,7 @@ Contemplo en un futuro no muy lejano recrear una versión interactiva online, ta
 
 Aclaro que no soy traductor profesional, o programador experimentado, y menos aún redactor especializado. Ni siquiera soy el primero en intentar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de los primeros en lograr terminarlo\*. Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
 
-*\* Tal vez haya personas o alguna comunidad por internet abocada aún a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté siquiera en un estado avanzado, mucho menos completado. En los pocos casos que he visto, la calidad de la traducción dejaba mucho que desear. Presumiblemente por ser traducciones automáticas en su mayor parte.*
+*\* Tal vez haya personas o alguna comunidad por internet abocada aún a la traducción del mismo, pero de momento desconozco cualquiera de estos que esté siquiera en un estado avanzado, ni hablar aún de completado. En los pocos casos que he visto, la calidad de la traducción dejaba mucho que desear (presumiblemente por ser traducciones automáticas en su mayor parte).*
 
 
 ## Aclaraciones
