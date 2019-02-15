@@ -36,7 +36,7 @@ Así, podemos calcular `n!` computando `(n - 1)!` y multiplicando el resultado p
       (* n (factorial (- n 1)))))
 ```
 
-Podemos usar el modelo de sustitución de la [sección 1.1.5]((./10-capitulo-1-seccion-1-1.md#115-El-Modelo-de-Sustitución-para-la-Aplicación-de-Procedimientos) para observar este procedimiento en acción calculando `6!`, como se muestra en la figura 1.3.
+Podemos usar el modelo de sustitución de la [sección 1.1.5](./10-capitulo-1-seccion-1-1.md#115-El-Modelo-de-Sustitución-para-la-Aplicación-de-Procedimientos) para observar este procedimiento en acción calculando `6!`, como se muestra en la figura 1.3.
 
 Ahora tomemos una perspectiva diferente en el cálculo de factoriales. Podríamos describir una regla para calcular `n!` especificando primero que multiplicamos 1 por 2, luego multiplicamos el resultado por 3, luego por 4, y así sucesivamente hasta alcanzar `n`. Más formalmente, mantendremos una productoria en ejecución, junto con un contador que contará de 1 a `n`. Podemos describir este cálculo diciendo que el contador y el producto cambian simultáneamente de un paso al siguiente según la regla
 
