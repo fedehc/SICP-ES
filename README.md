@@ -45,7 +45,7 @@ Aclaro que no soy traductor profesional, o programador experimentado, o siquiera
 
 1) No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio a lo largo del tiempo. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos establecidos en la [licencia](#licencia).
 
-2) A lo largo de los capítulos he agregado entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando vea necesario aclarar cierta terminología en inglés. Estos aparecen en mayor parte cuando los autores introducen nuevos conceptos, remarcados siempre en cursiva. La razón por la cual considero necesario agregar estas notas a lo largo de esta traducción viene a raíz de estas cuestiones:
+2) A lo largo de los capítulos he agregado entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando vea necesario aclarar cierta terminología en inglés. Estos aparecen en mayor parte cuando los autores introducen nuevos conceptos, remarcados siempre *en cursiva*. La razón por la cual considero necesario agregar estas notas a lo largo de esta traducción viene a raíz de estas cuestiones:
 
     * Lamentablemente hoy en día muchos conceptos de informática se los conoce mejor en inglés que en español. Solo por esto considero necesario mencionar también la terminología en inglés para no dejar mayores dudas sobre lo que se habla.
 
