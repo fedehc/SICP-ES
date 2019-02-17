@@ -30,7 +30,7 @@
     * [1.2.5. Máximos Comunes Divisores](./11-capitulo-1-seccion-1-2.md#125-Máximos-Comunes-Divisores)
     * [1.2.6. Ejemplo: Evaluando por Primalidad](./11-capitulo-1-seccion-1-2.md#126-Ejemplo-Evaluando-por-Primalidad)
   * [1.3. Formulación de Abstracciones con Procedimientos de Orden Superior](./12-capitulo-1-seccion-1-3.md)
-    * 1.3.1. Procedimientos como Argumentos
+    * [1.3.1. Procedimientos como Argumentos](./12-capitulo-1-seccion-1-3.md#131-Procedimientos-como-Argumentos)
     * 1.3.2. Construcción de Procedimientos usando Lambda
     * 1.3.3. Procedimientos como Métodos Generales
     * 1.3.4. Procedimientos como Valores Retornados
