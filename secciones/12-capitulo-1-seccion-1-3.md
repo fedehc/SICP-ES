@@ -1,4 +1,4 @@
-### 1.3 Formulación de Abstracciones con Procedimientos de Orden Superior
+## 1.3 Formulación de Abstracciones con Procedimientos de Orden Superior
 
 Hemos visto que los procedimientos son, en efecto, abstracciones que describen operaciones compuestas sobre números, independientemente de los números particulares. Por ejemplo, cuando nosotros
 
