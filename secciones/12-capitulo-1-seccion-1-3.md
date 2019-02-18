@@ -142,7 +142,7 @@ Usando estos procedimientos, podemos calcular una aproximación a `π`:
 Una vez que tenemos `suma`, podemos usarla como un bloque de construcción en la formulación de otros conceptos. Por ejemplo, la integral definida de una función `f` entre los límites `a` y `b` puede ser aproximada numéricamente usando la fórmula
 
 ```
-ᵃ     
+ₐ     
 ∫ f =  [ f(a + dx/2) + f(a + dx + dx/2) + f(a + 2dx + dx/2) + ... ] dx
 ᵇ    
 ```
