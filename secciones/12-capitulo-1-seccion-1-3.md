@@ -1,6 +1,6 @@
 ## 1.3 Formulación de Abstracciones con Procedimientos de Orden Superior
 
-Hemos visto que los procedimientos son, en efecto, abstracciones que describen operaciones compuestas sobre números, independientemente de los números particulares. Por ejemplo, cuando nosotros
+Hemos visto que los procedimientos son, en efecto, abstracciones que describen operaciones compuestas sobre números, independientemente de los números dados. Por ejemplo, cuando nosotros
 
 ```scheme
 (define (al-cubo x) (* x x x))
@@ -14,9 +14,9 @@ no estamos hablando del cubo de un número en particular, sino de un método par
 (* y y y) 
 ```
 
-y nunca mencionar `al-cubo` explícitamente. Esto nos pondría en una seria desventaja, obligándonos a trabajar siempre al nivel de las operaciones particulares que resultan ser primitivas en el lenguaje (multiplicación, en este caso), más que en términos de operaciones de nivel superior. Nuestros programas podrían calcular cubos, pero nuestro lenguaje carecería de la capacidad de expresar el concepto de cubo. Una de las cosas que debemos exigir de un potente lenguaje de programación es la capacidad de construir abstracciones asignando nombres a patrones comunes y luego trabajar en términos de abstracciones directamente. Los procedimientos proporcionan esta capacidad. Por eso, todos los lenguajes de programación, excepto los más primitivos, incluyen mecanismos para definir procedimientos.
+y nunca mencionar `al-cubo` explícitamente. Esto nos pondría en una seria desventaja, obligándonos a trabajar siempre al nivel de las operaciones particulares, que resultan ser primitivas en el lenguaje (multiplicación, en este caso), más que en términos de operaciones de nivel superior. Nuestros programas podrían calcular números al cubo, pero nuestro lenguaje carecería de la capacidad de expresar el concepto de elevar al cubo. Una de las cosas que debemos exigir de un potente lenguaje de programación es la capacidad de construir abstracciones asignando nombres a patrones comunes y luego trabajar en términos de abstracciones directamente. Los procedimientos proporcionan esta capacidad. Es por esto que todos los lenguajes de programación, excepto los más primitivos, incluyen mecanismos para definir procedimientos.
 
-Sin embargo, incluso en el procesamiento numérico, estaremos severamente limitados en nuestra capacidad de crear abstracciones si nos limitamos a procedimientos cuyos parámetros deban ser números. Con frecuencia el mismo patrón de programación se utiliza con varios procedimientos diferentes. Para expresar patrones como conceptos, necesitaremos construir procedimientos que puedan aceptar los procedimientos como argumentos o los procedimientos de retorno como valores. Los procedimientos que manipulan procedimientos se denominan *procedimientos de orden superior*. Esta sección describe cómo los procedimientos de orden superior pueden servir como poderosos mecanismos de abstracción, aumentando enormemente el poder expresivo de nuestro lenguaje.
+Aún incluso en el procesamiento numérico estaremos severamente limitados en nuestra capacidad de crear abstracciones si nos limitamos a procedimientos cuyos parámetros deban ser números. Con frecuencia el mismo patrón de programación se utiliza con varios procedimientos diferentes. Para expresar patrones como conceptos, necesitaremos construir procedimientos que puedan aceptar los procedimientos como argumentos o los procedimientos de retorno como valores. Los procedimientos que manipulan procedimientos se denominan *procedimientos de orden superior*. Esta sección describe cómo los procedimientos de orden superior pueden servir como poderosos mecanismos de abstracción, aumentando enormemente el poder expresivo de nuestro lenguaje.
 
 
 ### 1.3.1 Procedimientos como Argumentos
@@ -31,7 +31,7 @@ Considere los siguientes tres procedimientos. El primero calcula la suma de los 
       (+ a (suma-enteros (+ a 1) b))))
 ```
 
-El segundo calcula la suma de los cubos de los enteros en el rango dado:
+El segundo calcula la suma de los enteros al cubo en el rango dado:
 
 ```scheme
 (define (suma-cubos a b)
@@ -87,7 +87,7 @@ De la misma manera, como diseñadores de programas, nos gustaría que nuestro le
          (suma term (sig a) sig b))))
 ```
 
-Nótese que `suma` toma como argumentos los límites inferior y superior `a` y `b` junto con los procedimientos `term` y `sig`. Podemos usar la suma como lo haríamos con cualquier procedimiento. Por ejemplo, podemos usarlo (junto con un procedimiento `inc` que incrementa su argumento en 1) para definir `suma-cubos`:
+Nótese que `suma` toma como argumentos los límites inferior y superior `a` y `b` junto con los procedimientos `term` (término) y `sig` (siguiente). Podemos usar la suma como lo haríamos con cualquier procedimiento. Por ejemplo, podemos usarlo (junto con un procedimiento `inc` que incrementa su argumento en 1) para definir `suma-cubos`:
 
 ```scheme
 (define (inc n) (+ n 1))
@@ -103,13 +103,13 @@ Usando esto, podemos calcular la suma de los cubos de los enteros de 1 a 10:
 3025
 ```
 
-Con la ayuda de un procedimiento `identidad` para calcular el término, podemos definir `suma-enteros` en términos de suma:
+Con la ayuda de un procedimiento `identidad` para calcular el término, podemos definir `suma-enteros` en términos de `suma`:
 
 ```scheme
 (define (identidad x) x)
 
 (define (suma-enteros a b)
-  (sum identidad a inc b))
+  (suma identidad a inc b))
 ```
 
 Entonces podemos sumar los números enteros de 1 a 10:
