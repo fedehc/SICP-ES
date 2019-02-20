@@ -165,6 +165,38 @@ para valores pequeños de `dx`. Podemos expresarlo directamente como un procedim
 
 (el valor exacto de la integral de `al-cubo` entre 0 y 1 es `1/4`).
 
+**Ejercicio 1.29.** La Regla de Simpson es un método más preciso de integración numérica que el método ilustrado anteriormente. Usando la Regla de Simpson, la integral de una función `f` entre `a` y `b` es aproximada como
+
+```   
+h/3 = [y₀ + 4y₁ + 2y₂ + 4y₃ + 2y₄ + ... + 2yₙ₋₂ + 4yₙ₋₁ + yₙ ]
+```
+
+donde `h = (b - a)/n`, para algunos incluso enteros `n`, y `yₖ = f(a + kh)` (aumentando `n` aumenta la precisión de la aproximación). Defina un procedimiento que tome como argumentos `f`, `a`, `b`, y `n`, y devuelva el valor de la integral, calculado mediante la Regla de Simpson. Use su procedimiento para integrar el cubo entre 0 y 1 (con n = 100 y n = 1000), y compare los resultados con los del procedimiento `integral` mostrado arriba.
+
+**Ejercicio 1.30.** El procedimiento `suma` anterior genera una recursión lineal. El procedimiento puede ser reescrito para que la suma se realice de forma iterativa. Muestre cómo hacerlo rellenando las expresiones que faltan en la siguiente definición:
+
+```scheme
+(define (suma term a sig b)
+  (define (iter a result)
+    (if <??>
+        <??>
+        (iter <??> <??>)))
+  (iter <??> <??>))
+```
+
+**Ejercicio 1.31.**
+a.  El procedimiento `suma` es sólo el más simple de un vasto número de abstracciones similares que pueden ser tomadas como procedimientos de orden superior. [^51] Escriba un procedimiento análogo llamado `producto` que devuelva el producto de los valores de una función en puntos sobre un rango dado. Mostrar cómo definir `factorial` en términos de `producto`. También use `producto` para calcular aproximaciones al uso de la fórmula [^52].
+
+```
+π   2 . 4 . 4 . 6 . 6 . 8 ...
+― = ―――――――――――――――――――――――――
+4   3 . 3 . 5 . 5 . 7 . 7 ...
+```
+
+b.  Si su procedimiento `producto` genera un proceso recursivo, escriba uno que genere un proceso iterativo. Si genera un proceso iterativo, escriba uno que genere un proceso recursivo.
+
+
+
 
 # ---Traducción pendiente---
 
