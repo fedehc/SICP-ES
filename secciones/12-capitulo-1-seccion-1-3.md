@@ -195,6 +195,21 @@ a.  El procedimiento `suma` es sólo el más simple de un vasto número de abstr
 
 b.  Si su procedimiento `producto` genera un proceso recursivo, escriba uno que genere un proceso iterativo. Si genera un proceso iterativo, escriba uno que genere un proceso recursivo.
 
+**Ejercicio 1.32.** a. Mostrar que `suma` y `producto` (ejercicio 1.31) son ambos ejemplos especiales de una noción aún más general llamada `acumular` que combina una colección de términos, usando una determinada función de acumulación general:
+
+```scheme
+(acumular combinador valor-nulo term a sig b)
+```
+
+`acumular` toma como argumentos las mismas especificaciones de términos y rangos que `suma` y `producto` junto con un procedimiento de `combinador` (de dos argumentos) que especifica cómo debe combinarse el término actual con la acumulación de los términos precedentes, así como un `valor nulo` que especifica qué valor de base se debe usar cuando se acaban los términos. Escriba `acumular` y muestre cómo la `suma` y el `producto` pueden definirse como simples llamadas a `acumular`.
+
+b. Si su procedimiento `acumular` genera un proceso recursivo, escriba uno que genere un proceso iterativo. Si genera un proceso iterativo, escriba uno que genere un proceso recursivo.
+
+**Ejercicio 1.33.** Puede obtener una versión aún más general de "acumular" (ejercicio 1.32) introduciendo la noción de *filtro* en los términos a combinar. Es decir, combinar sólo aquellos términos derivados de valores en el rango que cumplan una condición especificada. La abstracción resultante `filtrado-acumulador` toma los mismos argumentos que el acumulado, junto con un predicado adicional de un argumento que especifica el filtro. Escribir `filtrado-acumulador` como procedimiento. Muestre cómo expresar lo siguiente usando `filtrado-acumulador`:
+
+a. la suma de los cuadrados de los números primos en el intervalo `a` a `b` (asumiendo que se tiene un predicado `primo?` ya escrito).
+
+b. El producto de todos los enteros positivos menores que `n` que son relativamente primos a `n` (es decir, todos los enteros positivos `i < n` tales que `GCD(i,n) = 1`).
 
 
 
