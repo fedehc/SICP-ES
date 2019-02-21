@@ -212,6 +212,78 @@ a. la suma de los cuadrados de los números primos en el intervalo `a` a `b` (as
 b. El producto de todos los enteros positivos menores que `n` que son relativamente primos a `n` (es decir, todos los enteros positivos `i < n` tales que `GCD(i,n) = 1`).
 
 
+### 1.3.2 Construcción de procedimientos mediante `lambda`.
+
+Al usar la suma como en la [sección 1.3.1](./12-capitulo-1-seccion-1-3.md#131-Procedimientos-como-Argumentos), parece terriblemente incómodo tener que definir procedimientos triviales como `pi-term` y `pi-sig` sólo para poder usarlos como argumentos para nuestro procedimiento de orden superior. En lugar de definir `pi-sig` y `pi-term`, sería más conveniente tener una forma de especificar directamente "el procedimiento que devuelve su entrada incrementado en 4" y "el procedimiento que devuelve el recíproco de su entrada multiplicado por su entrada más 2". Podemos hacer esto introduciendo la forma especial `lambda`, que genera procedimientos. Usando `lambda` podemos describir lo que queremos como
+
+```scheme
+(lambda (x) (+ x 4))
+```
+
+y
+
+```scheme
+(lambda (x) (/ 1.0 (* x (+ x 2))))
+```
+
+Entonces nuestro procedimiento `pi-suma` puede ser expresado sin definir ningún procedimiento auxiliar como
+
+```scheme
+(define (pi-sum a b)
+  (sum (lambda (x) (/ 1.0 (* x (+ x 2))))
+       a
+       (lambda (x) (+ x 4))
+       b))
+```
+
+De nuevo, usando `lambda`, podemos escribir el procedimiento `integral` sin tener que definir el procedimiento auxiliar `agregar-dx`:
+
+```scheme
+(define (integral f a b dx)
+  (* (suma f
+          (+ a (/ dx 2.0))
+          (lambda (x) (+ x dx))
+          b)
+     dx))
+```
+
+En general, `lambda` es usado para crear procedimientos de la misma manera que `define`, con la diferencia de que no se especifica ningún nombre para el procedimiento:
+
+```scheme
+(lambda (<formal-parameters>) <body>)
+```
+
+El procedimiento resultante es exactamente igual a un procedimiento creado usando `define`. La única diferencia es que no se ha asociado a ningún nombre en el entorno. De hecho,
+
+```scheme
+(define (sumar-4 x) (+ x 4))
+```
+
+es equivalente a
+
+```scheme
+(define sumar-4 (lambda (x) (+ x 4)))
+```
+
+Podemos leer una expresión `lambda` como sigue:
+
+```
+(lambda            (x)                 (+          x     4))
+ ↑                  ↑                   ↑          ↑     ↑
+ El procedimiento   de un argumento x   que suma   x  y  4
+```
+
+Como cualquier expresión que tenga un procedimiento como valor, una expresión `lambda` puede ser usada como operador en una combinación tal como
+
+```scheme
+((lambda (x y z) (+ x y (al-cuadrado z))) 1 2 3)
+12
+```
+
+o, más generalmente, en cualquier contexto en el que normalmente utilizaríamos un nombre de procedimiento. [^53]
+
+
+
 
 # ---Traducción pendiente---
 
