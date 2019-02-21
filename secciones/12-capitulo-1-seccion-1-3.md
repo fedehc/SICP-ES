@@ -153,7 +153,7 @@ para valores pequeños de `dx`. Podemos expresarlo directamente como un procedim
 (define (integral f a b dx)
   (define (agregar-dx x) (+ x dx))
 
-  (* (sum f (+ a (/ dx 2.0)) agregar-dx b)
+  (* (suma f (+ a (/ dx 2.0)) agregar-dx b)
      dx))
 
 (integral al-cubo 0 1 0.01)
@@ -229,8 +229,8 @@ y
 Entonces nuestro procedimiento `pi-suma` puede ser expresado sin definir ningún procedimiento auxiliar como
 
 ```scheme
-(define (pi-sum a b)
-  (sum (lambda (x) (/ 1.0 (* x (+ x 2))))
+(define (pi-suma a b)
+  (suma (lambda (x) (/ 1.0 (* x (+ x 2))))
        a
        (lambda (x) (+ x 4))
        b))
