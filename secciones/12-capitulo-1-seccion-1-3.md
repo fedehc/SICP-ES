@@ -142,9 +142,9 @@ Usando estos procedimientos, podemos calcular una aproximación a `π`:
 Una vez que tenemos `suma`, podemos usarla como un bloque de construcción en la formulación de otros conceptos. Por ejemplo, la integral definida de una función `f` entre los límites `a` y `b` puede ser aproximada numéricamente usando la fórmula
 
 ```
-ₐ     
-∫ f =  [ f(a + dx/2) + f(a + dx + dx/2) + f(a + 2dx + dx/2) + ... ] dx
-ᵇ    
+ₐ  
+∫ f = [ f(a + dx/2) + f(a + dx + dx/2) + f(a + 2dx + dx/2) + ... ] dx
+ᵇ
 ```
 
 para valores pequeños de `dx`. Podemos expresarlo directamente como un procedimiento:
@@ -167,7 +167,7 @@ para valores pequeños de `dx`. Podemos expresarlo directamente como un procedim
 
 **Ejercicio 1.29.** La Regla de Simpson es un método más preciso de integración numérica que el método ilustrado anteriormente. Usando la Regla de Simpson, la integral de una función `f` entre `a` y `b` es aproximada como
 
-```   
+```
 h/3 = [y₀ + 4y₁ + 2y₂ + 4y₃ + 2y₄ + ... + 2yₙ₋₂ + 4yₙ₋₁ + yₙ ]
 ```
 
@@ -273,7 +273,7 @@ Podemos leer una expresión `lambda` como sigue:
  El procedimiento   de un argumento x   que suma   x  y  4
 ```
 
-Como cualquier expresión que tenga un procedimiento como valor, una expresión `lambda` puede ser usada como operador en una combinación tal como
+Como cualquier expresión que tenga un procedimiento como su valor, una expresión `lambda` puede ser usada como operador en una combinación tal como
 
 ```scheme
 ((lambda (x y z) (+ x y (al-cuadrado z))) 1 2 3)
@@ -282,6 +282,77 @@ Como cualquier expresión que tenga un procedimiento como valor, una expresión 
 
 o, más generalmente, en cualquier contexto en el que normalmente utilizaríamos un nombre de procedimiento. [^53]
 
+
+#### Usando `let` para crear variables locales
+
+Otro uso del `lambda` es en la creación de variables locales. A menudo necesitamos variables locales en nuestros procedimientos que no sean las que han sido vinculadas como parámetros formales. Por ejemplo, supongamos que deseamos calcular la función
+
+```
+f(x,y) = x(1 + xy)² + y(1 - y) + (1 + xy) (1 - y)
+```
+
+que también podríamos expresar como 
+
+```
+     a = 1 + xy
+     b = 1 - y
+f(x,y) = xa² + yb + ab
+```
+
+Al escribir un procedimiento para calcular `f`, nos gustaría incluir como variables locales no sólo `x` y `y` sino también los nombres de las cantidades intermedias como `a` y `b`. Una manera de lograr esto es usando un procedimiento auxiliar para enlazar las variables locales:
+
+```scheme
+(define (f x y)
+  (define (f-auxiliar a b)
+    (+ (* x (al-cuadrado a))
+       (* y b)
+       (* a b)))
+  (f-auxiliar (+ 1 (* x y)) 
+            (- 1 y)))
+```
+
+Por supuesto, podríamos usar una expresión `lambda` para especificar un procedimiento anónimo para vincular nuestras variables locales. El cuerpo de `f` se convierte entonces en una sola llamada a ese procedimiento:
+
+```scheme
+(define (f x y)
+  ((lambda (a b)
+     (+ (* x (al-cuadrado a))
+        (* y b)
+        (* a b)))
+   (+ 1 (* x y))
+   (- 1 y)))
+```
+
+Esta construcción es tan útil que hay una forma especial llamada `let` para hacer su uso más conveniente. Usando `let`, el procedimiento `f` podría escribirse como
+
+```scheme
+(define (f x y)
+  (let ((a (+ 1 (* x y)))
+        (b (- 1 y)))
+    (+ (* x (al-cuadrado a))
+       (* y b)
+       (* a b))))
+```
+
+La forma general de una expresión `let` es
+
+```scheme
+(let ((<var₁> <exp₁>)
+      (<var₂> <exp₂>)
+      ⋮
+      (<varₙ> <expₙ>))
+   <body>)
+```
+
+que se puede pensar como si dijera
+
+```
+let <var₁> tiene el valor de <exp₁> y
+    <var₂> tiene el valor de <exp₂> y
+    ⋮
+    <varₙ> tiene el valor de <expₙ>
+en  <body> 
+```
 
 
 
