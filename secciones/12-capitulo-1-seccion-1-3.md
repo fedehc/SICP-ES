@@ -354,6 +354,74 @@ let <var₁> tiene el valor de <exp₁> y
 en  <body> 
 ```
 
+La primera parte de la expresión `let` es una lista de pares de nombre-expresión. Cuando el `let` es evaluado, cada nombre se asocia con el valor de la expresión correspondiente. El cuerpo del `let` se evalúa con estos nombres vinculados como variables locales. Ocurre así porque la expresión `let` se interpreta como una sintaxis alternativa para
+
+```scheme
+((lambda (<var₁> ...<varₙ>)
+    <cuerpo>)
+ <exp₁>
+ 
+ <expₙ>)
+```
+
+No se requiere ningún mecanismo nuevo en el intérprete para proporcionar variables locales. Una expresión `let` es simplemente un azúcar sintáctico para la aplicación subyacente de `lambda`.
+
+Podemos deducir de esta equivalencia que el alcance de una variable especificada por una expresión `let` es el cuerpo del `let`. Esto implica que:
+
+  * `let` permite vincular variables tan localmente como sea posible en el lugar donde se van a utilizar. Por ejemplo, si el valor de `x` es 5, el valor de la expresión
+
+  ```scheme
+  (+ (let ((x 3))
+       (+ x (* x 10)))
+     x)
+  ```
+
+  es 38. Aquí, la "x" en el cuerpo del `let` es 3, así que el valor de la expresión `let` es 33. Por otro lado, el `x`, que es el segundo argumento para el `+` más externo, sigue siendo 5.
+
+  * Los valores de la variable se calculan fuera del `let`. Esto importa cuando las expresiones que proporcionan los valores para las variables locales dependen de que las variables tengan los mismos nombres que las variables locales mismas. Por ejemplo, si el valor de `x` es 2, la expresión
+
+  ```scheme
+  (let ((x 3)
+        (y (+ x 2)))
+    (* x y))
+  ```
+
+  tendrá el valor 12 porque, dentro del cuerpo del `let`, `x` será 3 e `y` será 4 (que es el `x` exterior más 2).
+
+A veces podemos usar definiciones internas para obtener el mismo efecto que con `let`. Por ejemplo, podríamos haber definido el procedimiento `f` arriba como
+
+```scheme
+(define (f x y)
+  (define a (+ 1 (* x y)))
+  (define b (- 1 y))
+  (+ (* x (al.cuadrado a))
+     (* y b)
+     (* a b)))
+```
+
+Sin embargo, preferimos usar `let` en situaciones como ésta y usar `define` internos sólo para procedimientos internos. [^54]
+
+
+**Ejercicio 1.34.** Supongamos que definimos el procedimiento
+
+```scheme
+(define (f g)
+  (g 2))
+```
+
+Entonces tenemos
+
+```scheme
+(f al-cuadrado)
+4
+
+(f (lambda (z) (* z (+ z 1))))
+6
+```
+
+¿Qué sucede si le pedimos (perversamente) al intérprete que evalúe la combinación `(f f)`? Explicar.
+
+
 
 
 # ---Traducción pendiente---
@@ -369,4 +437,6 @@ ___
 [^52]: Esta fórmula fue descubierta por el matemático inglés del siglo XVII John Wallis.
 
 [^53]: Sería más claro y menos intimidante para la gente que esta aprendiendo Lisp si se usara un nombre más obvio que `lambda`, como `hacer-procedimiento`. Pero la convención está firmemente arraigada. La notación se adopta del cálculo λ, un formalismo matemático introducido por el lógico matemático Alonzo Church (1941). Church desarrolló el cálculo λ para proporcionar una base rigurosa para el estudio de las nociones de función y aplicación de la función. El cálculo λ se ha convertido en una herramienta básica para la investigación matemática de la semántica de los lenguajes de programación.
+
+
 
