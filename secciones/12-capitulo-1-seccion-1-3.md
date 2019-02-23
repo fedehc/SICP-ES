@@ -368,7 +368,7 @@ No se requiere ningún mecanismo nuevo en el intérprete para proporcionar varia
 
 Podemos deducir de esta equivalencia que el alcance de una variable especificada por una expresión `let` es el cuerpo del `let`. Esto implica que:
 
-  * `let` permite vincular variables tan localmente como sea posible en el lugar donde se van a utilizar. Por ejemplo, si el valor de `x` es 5, el valor de la expresión
+* `let` permite vincular variables tan localmente como sea posible en el lugar donde se van a utilizar. Por ejemplo, si el valor de `x` es 5, el valor de la expresión
 
   ```scheme
   (+ (let ((x 3))
@@ -378,7 +378,7 @@ Podemos deducir de esta equivalencia que el alcance de una variable especificada
 
   es 38. Aquí, la "x" en el cuerpo del `let` es 3, así que el valor de la expresión `let` es 33. Por otro lado, el `x`, que es el segundo argumento para el `+` más externo, sigue siendo 5.
 
-  * Los valores de la variable se calculan fuera del `let`. Esto importa cuando las expresiones que proporcionan los valores para las variables locales dependen de que las variables tengan los mismos nombres que las variables locales mismas. Por ejemplo, si el valor de `x` es 2, la expresión
+* Los valores de la variable se calculan fuera del `let`. Esto importa cuando las expresiones que proporcionan los valores para las variables locales dependen de que las variables tengan los mismos nombres que las variables locales mismas. Por ejemplo, si el valor de `x` es 2, la expresión
 
   ```scheme
   (let ((x 3)
