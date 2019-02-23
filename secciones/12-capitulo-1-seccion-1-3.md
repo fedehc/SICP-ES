@@ -438,5 +438,5 @@ ___
 
 [^53]: Sería más claro y menos intimidante para la gente que esta aprendiendo Lisp si se usara un nombre más obvio que `lambda`, como `hacer-procedimiento`. Pero la convención está firmemente arraigada. La notación se adopta del cálculo λ, un formalismo matemático introducido por el lógico matemático Alonzo Church (1941). Church desarrolló el cálculo λ para proporcionar una base rigurosa para el estudio de las nociones de función y aplicación de la función. El cálculo λ se ha convertido en una herramienta básica para la investigación matemática de la semántica de los lenguajes de programación.
 
-
+[^54]: Entender las definiciones internas lo suficientemente bien como para asegurarnos de que un programa significa lo que pretendemos que signifique requiere un modelo más elaborado del proceso de evaluación que el que hemos presentado en este capítulo. Sin embargo, las sutilezas no surgen con las definiciones internas de los procedimientos. Volveremos sobre este tema en la [sección 4.1.6](./26-capitulo-4-seccion-4.1.md#416-), después de aprender más sobre la evaluación.
 
