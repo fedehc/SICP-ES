@@ -250,7 +250,7 @@ De nuevo, usando `lambda`, podemos escribir el procedimiento `integral` sin tene
 En general, `lambda` es usado para crear procedimientos de la misma manera que `define`, con la diferencia de que no se especifica ningún nombre para el procedimiento:
 
 ```scheme
-(lambda (<formal-parameters>) <body>)
+(lambda (<parametros-formales>) <cuerpo>)
 ```
 
 El procedimiento resultante es exactamente igual a un procedimiento creado usando `define`. La única diferencia es que no se ha asociado a ningún nombre en el entorno. De hecho,
