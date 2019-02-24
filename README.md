@@ -53,7 +53,7 @@ Aclaro que no soy traductor profesional, o programador experimentado, o siquiera
 
     * En algunos casos hay que reconocer que no existe una traducción conocida al español con determinados conceptos de informática. Cuando sucede esto, uso sin más la terminología original en inglés. Solo me limito a mostrar una traducción literal en español, a modo informativo, cuando los autores introducen por primera vez los conceptos.
 
-    * Por último, dejando de lado ya las cuestiones de terminología, algunas veces surge la necesidad de aclarar términos o cuestiones que resultan poco claros en contexto; o comentar nuevos usos, o informar de alguna novedad o alternativa con respecto a lo que los autores mencionan en determinadas ocasiones.
+    * Por último, dejando de lado ya las cuestiones de terminología, algunas veces veo la necesidad de aclarar algunas cuestiones que pueden resultar un poco confusas ante una primera lectura, o de comentar nuevos usos, novedades o alternativas en determinadas partes de la obra.
     
 4) Cualquier corrección, aporte o sugerencias a esta traducción es más que bienvenido. Aunque desde ya me reservo el derecho de tomar aquellas correcciones, aportes o sugerencias que considere necesarios o convenientes. 
 
