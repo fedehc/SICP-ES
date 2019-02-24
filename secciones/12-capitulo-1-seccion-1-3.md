@@ -422,7 +422,7 @@ Entonces tenemos
 ¿Qué sucede si le pedimos (perversamente) al intérprete que evalúe la combinación `(f f)`? Explicar.
 
 
-### 1.3.3 Procedimientos como métodos generales
+### 1.3.3 Procedimientos como Métodos Generales
 
 Introducimos procedimientos compuestos en la sección 1.1.4 como mecanismo para abstraer patrones de operaciones numéricas con el fin de hacerlas independientes de los números particulares involucrados. Con los procedimientos de orden superior, como el procedimiento `integral` de la sección 1.3.1, comenzamos a ver un tipo de abstracción más potente: los procedimientos utilizados para expresar métodos generales de cálculo, independientemente de las funciones particulares involucradas. En esta sección discutimos dos ejemplos más elaborados -los métodos generales para encontrar ceros y puntos fijos de funciones- y mostramos cómo estos métodos pueden expresarse directamente como procedimientos.
 
