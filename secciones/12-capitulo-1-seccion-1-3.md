@@ -424,7 +424,7 @@ Entonces tenemos
 
 ### 1.3.3 Procedimientos como Métodos Generales
 
-Introducimos procedimientos compuestos en la sección 1.1.4 como mecanismo para abstraer patrones de operaciones numéricas con el fin de hacerlas independientes de los números particulares involucrados. Con los procedimientos de orden superior, como el procedimiento `integral` de la sección 1.3.1, comenzamos a ver un tipo de abstracción más potente: los procedimientos utilizados para expresar métodos generales de cálculo, independientemente de las funciones particulares involucradas. En esta sección discutimos dos ejemplos más elaborados -los métodos generales para encontrar ceros y puntos fijos de funciones- y mostramos cómo estos métodos pueden expresarse directamente como procedimientos.
+Introducimos procedimientos compuestos en la [sección 1.1.4](./10-capitulo-1-seccion-1-1.md#114-Procedimientos-Compuestos) como mecanismo para abstraer patrones de operaciones numéricas con el fin de hacerlas independientes de los números particulares involucrados. Con los procedimientos de orden superior, como el procedimiento `integral` de la [sección 1.3.1](./12-capitulo-1-seccion-1-3.md#131-Procedimientos-como-Argumentos), comenzamos a ver un tipo de abstracción más potente: los procedimientos utilizados para expresar métodos generales de cálculo, independientemente de las funciones particulares involucradas. En esta sección discutimos dos ejemplos más elaborados -los métodos generales para encontrar ceros y puntos fijos de funciones- y mostramos cómo estos métodos pueden expresarse directamente como procedimientos.
 
 
 
