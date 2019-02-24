@@ -36,7 +36,7 @@ Contemplo en un futuro no muy lejano recrear una versión interactiva online, ta
 2) Deseaba poner en práctica mi inglés (que me hace mucha falta) y la traducción de esta obra me pareció un desafío interesante;
 3) Ganar un motivo extra para leer y releer cada sección del libro con mayor detenimiento.
 
-Aclaro que no soy traductor profesional, o programador experimentado, o siquiera aún un escritor o redactor especializado. Tampoco soy el primero en intentar traducir esta obra al español**\***, pero al menos tengo la esperanza de ser uno de los primeros en lograr terminarlo. Hoy, gracias a la ayuda de traductores online de uso gratuito como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
+Aclaro que no soy traductor profesional, o programador experimentado, o siquiera aún un escritor o redactor especializado. Tampoco soy el primero en intentar traducir esta obra al español **\***, pero al menos tengo la esperanza de ser uno de los primeros en lograr terminarlo. Hoy, gracias a la ayuda de traductores online de uso gratuito como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
 
 * **\*** Varias personas han intentado traducirlo, pero en todos los casos que he podido ver ninguno terminó completar los 5 capitulos (en realidad ni siquiera el 1° capítulo). Y en todos estos casos, la calidad de la traducción siempre dejaba mucho que desear porque resultaban ser traducciones automáticas sin corrección alguna.*
 
