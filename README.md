@@ -33,24 +33,28 @@ Contemplo en un futuro no muy lejano recrear una versión interactiva online, ta
 ## Motivos para la traducción
 
 1) Tengo tiempo de sobra;
-2) Deseaba poner en práctica mi inglés (que me hace falta) y la traducción de esta obra me pareció un desafío interesante;
+2) Deseaba poner en práctica mi inglés (que me hace mucha falta) y la traducción de esta obra me pareció un desafío interesante;
 3) Ganar un motivo extra para leer y releer cada sección del libro con mayor detenimiento.
 
-Aclaro que no soy traductor profesional, o programador experimentado, o siquiera aún escritor o redactor especializado. Tampoco soy el primero en intentar traducir esta obra al español, aunque al menos tengo la esperanza de ser uno de esos pocos en lograr terminarlo.**\*** Hoy, gracias a la ayuda de traductores online como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
+Aclaro que no soy traductor profesional, o programador experimentado, o siquiera aún un escritor o redactor especializado. Tampoco soy el primero en intentar traducir esta obra al español**\***, pero al menos tengo la esperanza de ser uno de los primeros en lograr terminarlo. Hoy, gracias a la ayuda de traductores online de uso gratuito como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
 
-***\*** Tal vez haya personas o grupo en internet que continuen con la traducción del mismo, pero de momento desconozco cualquiera de estos que esté siquiera en un estado avanzado. En los pocos casos que he visto, la calidad de la traducción dejaba mucho que desear (presumiblemente por ser traducciones automáticas en su mayor parte).*
+* **\*** Varias personas han intentado traducirlo, pero en todos los casos que he podido ver ninguno terminó completar los 5 capitulos (en realidad ni siquiera el 1° capítulo). Y en todos estos casos, la calidad de la traducción siempre dejaba mucho que desear porque resultaban ser traducciones automáticas sin corrección alguna.*
 
 
 ## Aclaraciones
 
-1) No busco sacar provecho comercial alguno por cualquier traducción parcial o total que suba a este repositorio a lo largo del tiempo. Tampoco me hago responsable bajo ningún término por cualquier uso indebido que se haga del material presente y que viole los términos establecidos en la [licencia](#licencia).
+1) No busco sacar ningún provecho comercial por la traducción parcial o total de la obra. Mis motivos para realizar este trabajo están aclarados en la [sección correspondiente](#Motivos-para-la-traducción).
 
-2) A lo largo de los capítulos he agregado entre paréntesis las **NdT** (**N**otas **d**el **T**raductor) cuando vea necesario aclarar cierta terminología en inglés. Estos aparecen en mayor parte cuando los autores introducen nuevos conceptos, remarcados siempre *en cursiva*. La razón por la cual considero necesario agregar estas notas a lo largo de esta traducción viene a raíz de estas cuestiones:
+2) No me hago responsable por cualquier uso indebido que se haga de las traducciones que se encuentren alojadas en este repositorio, asi como tampoco por cualquier libro -sea libros electrónicos o físicos- que se originen a raíz de estas mismas traducciones y que violen cualquiera de los términos de la [licencia](#licencia).
 
-    * Lamentablemente hoy en día muchos conceptos de informática se los conoce mejor en inglés que en español. Solo por esto considero necesario mencionar también la terminología en inglés para no dejar mayores dudas sobre lo que se habla.
+3) A lo largo de los capítulos he agregado por mi parte, entre paréntesis, las **NdT** (**N**otas **d**el **T**raductor) cuando he visto necesario aclarar cierta terminología. Estas notas aparecen en su mayor parte cuando los autores introducen nuevos conceptos, remarcados siempre *en cursiva*. Y la razón por la cual considero necesario agregar estas notas se debe a lo siguiente:
 
-    * En algunos casos hay que reconocer que no existe una traducción conocida al español con determinados conceptos de informática. Cuando suceden estos casos, uso sin más la terminología original en inglés a lo largo del libro. Solo me limito a mostrar una traducción libre o literal en español -a modo informativo- cuando los autores introducen por primera vez los conceptos.
+    * Lamentablemente hoy en día muchos conceptos de informática se los conoce mejor en inglés que en español. Solo por esto considero necesario mencionar también la terminología en inglés para no dejar mayores dudas en los lectores acerca de los conceptos que se introducen.
 
-    * Por último, dejando de lado las cuestiones de terminología, algunas veces surge la necesidad de aclarar cuestiones que resultan poco claros, comentar nuevos usos, o que requieran informar de alguna novedad o alternativa luego de una primera lectura.
+    * En algunos casos hay que reconocer que no existe una traducción conocida al español con determinados conceptos de informática. Cuando sucede esto, uso sin más la terminología original en inglés. Solo me limito a mostrar una traducción literal en español, a modo informativo, cuando los autores introducen por primera vez los conceptos.
+
+    * Por último, dejando de lado ya las cuestiones de terminología, algunas veces surge la necesidad de aclarar términos o cuestiones que resultan poco claros en contexto; o comentar nuevos usos, o informar de alguna novedad o alternativa con respecto a lo que los autores mencionan en determinadas ocasiones.
     
-3) Cualquier corrección o aporte por parte de gente interesada en este trabajo de traducción es más que bienvenido; aunque desde ya me reservo el derecho de tomar aquellos cambios o sugerencias que considere convenientes. En caso de no estar de acuerdo con esto último, de más está decir que cualquiera es libre de hacer su propio fork de este repositorio y/o de hacer sus propias traducciones de la obra.
+4) Cualquier corrección, aporte o sugerencias a esta traducción es más que bienvenido. Aunque desde ya me reservo el derecho de tomar aquellas correcciones, aportes o sugerencias que considere necesarios o convenientes. 
+
+5) Cualquiera es libre de hacer su propio fork de este repositorio o hacer sus propias traducciones a partir de la misma.
