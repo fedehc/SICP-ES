@@ -500,3 +500,6 @@ ___
 
 [^54]: Entender las definiciones internas lo suficientemente bien como para asegurarnos de que un programa significa lo que pretendemos que signifique requiere un modelo más elaborado del proceso de evaluación que el que hemos presentado en este capítulo. Sin embargo, las sutilezas no surgen con las definiciones internas de los procedimientos. Volveremos sobre este tema en la [sección 4.1.6](./26-capitulo-4-seccion-4.1.md#416-), después de aprender más sobre la evaluación.
 
+[^55]: Hemos utilizado 0,001 como un número "pequeño" representativo para indicar una tolerancia de error aceptable en un cálculo. La tolerancia adecuada para un cálculo real depende del problema a resolver y de las limitaciones de la computadora y del algoritmo. Esta es a menudo una consideración muy sutil, que requiere de la ayuda de un analista numérico o de algún otro tipo de mago.
+
+[^56]: Esto se puede lograr usando `error,` que toma como argumentos un número de ítems que se imprimen como mensajes de error.
