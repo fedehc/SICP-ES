@@ -427,6 +427,62 @@ Entonces tenemos
 Introducimos procedimientos compuestos en la [sección 1.1.4](./10-capitulo-1-seccion-1-1.md#114-Procedimientos-Compuestos) como mecanismo para abstraer patrones de operaciones numéricas con el fin de hacerlas independientes de los números particulares involucrados. Con los procedimientos de orden superior, como el procedimiento `integral` de la [sección 1.3.1](./12-capitulo-1-seccion-1-3.md#131-Procedimientos-como-Argumentos), comenzamos a ver un tipo de abstracción más potente: los procedimientos utilizados para expresar métodos generales de cálculo, independientemente de las funciones particulares involucradas. En esta sección discutimos dos ejemplos más elaborados -los métodos generales para encontrar ceros y puntos fijos de funciones- y mostramos cómo estos métodos pueden expresarse directamente como procedimientos.
 
 
+#### Encontrar las raíces de las ecuaciones por el método de intervalo medio
+
+El método *intervalo medio* es una técnica simple pero poderosa para encontrar las raíces de una ecuación `f(x) = 0`, donde `f` es una función continua. La idea es que, si se nos dan puntos `a` y `b` de tal manera que `f(a) < 0 < f(b)`, entonces `f` debe tener al menos un cero entre `a` y `b`. Para localizar un cero, permitamos que `x` sea el promedio de `a` y `b` y computemos `f(x)`. Si `f(x) > 0`, entonces `f` debe tener un cero entre `a` y `x`. Si `f(x) < 0`, entonces `f` debe tener un cero entre `x` y `b`. Continuando de esta manera, podemos identificar intervalos cada vez más pequeños en los que `f` debe tener un cero. Cuando llegamos al punto donde el intervalo es lo suficientemente pequeño, el proceso se detiene. Dado que el intervalo de incertidumbre se reduce a la mitad en cada paso del proceso, el número de pasos requeridos crece como `Θ(log( L/T))`, donde `L` es la longitud del intervalo original y `T` es la tolerancia de error (es decir, el tamaño del intervalo que consideraremos lo "suficientemente pequeño"). A continuación se presenta un procedimiento que implementa esta estrategia:
+
+
+```scheme
+(define (buscar f punto-neg punto-pos)
+  (let ((mitad (promedio punto-neg punto-pos)))
+    (if (suficientemente-bueno? punto-neg punto-pos)
+        mitad
+        (let ((test-valor (f mitad)))
+          (cond ((positivo? test-valor)
+                 (buscar f punto-neg mitad))
+                ((negativo? test-valor)
+                 (buscar f mitad punto-pos))
+                (else mitad))))))
+```
+
+Asumimos que inicialmente se nos da la función `f` junto con puntos en los que sus valores son negativos y positivos. Primero calculamos el punto medio de los dos puntos dados. A continuación comprobamos si el intervalo dado es lo suficientemente pequeño, y si es así, simplemente devolvemos el punto medio como respuesta. De lo contrario, calculamos como valor de prueba el valor de `f` en el punto medio. Si el valor de la prueba es positivo, entonces continuamos el proceso con un nuevo intervalo que va desde el punto negativo original hasta el punto medio. Si el valor de la prueba es negativo, continuamos con el intervalo desde el punto medio hasta el punto positivo. Finalmente, existe la posibilidad de que el valor de la prueba sea 0, en cuyo caso el punto medio es en sí mismo la raíz que estamos buscando.
+
+```scheme
+(define (suficientemente-bueno? x y)
+  (< (abs (- x y)) 0.001))
+```
+
+`buscar` es difícil de usar directamente, porque podemos accidentalmente darles puntos en los que los valores de `f` no tienen el signo requerido, en cuyo caso obtendríamos una respuesta errónea. En su lugar usaremos `buscar` a través del siguiente procedimiento, que comprueba cuál de los puntos finales tiene un valor de función negativo y cuál tiene un valor positivo, y llamará al procedimiento `buscar` de forma acorde. Si la función tiene el mismo signo en los dos puntos dados, el método de intervalo medio no se puede utilizar, en cuyo caso el procedimiento señala un error. [^56]
+
+```scheme
+(define (metodo-intervalo-medio f a b)
+  (let ((valor-a (f a))
+        (valor-b (f b)))
+    (cond ((and (negativo? valor-a) (positivo? valor-b))
+           (buscar f a b))
+          ((and (negativo? valor-b) (positivo? valor-a))
+           (buscar f b a))
+          (else
+           (error "Los valores no son de signo opuesto" a b)))))
+```
+
+El siguiente ejemplo utiliza el método de intervalo medio para aproximarse como la raíz entre 2 y 4 de `sin x = 0`:
+
+```scheme
+(metodo-intervalo-medio sin 2.0 4.0)
+3.14111328125
+```
+
+Aquí hay otro ejemplo, usando el método de intervalo medio para buscar una raíz de la ecuación `x³ - 2x - 3 = 0` entre 1 y 2:
+
+```scheme
+(metodo-intervalo-medio (lambda (x) (- (* x x x) (* 2 x) 3))
+                      1.0
+                      2.0)
+1.89306640625
+```
+
+
 
 # ---Traducción pendiente---
 
