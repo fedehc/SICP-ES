@@ -482,6 +482,69 @@ Aquí hay otro ejemplo, usando el método de intervalo medio para buscar una ra�
 1.89306640625
 ```
 
+#### Encontrar puntos fijos de funciones
+
+Un número `x` se denomina punto fijo de una función `f` si `x` satisface la ecuación `f(x) = x`. Para algunas funciones `f` podemos localizar un punto fijo comenzando con una suposición inicial y aplicando `f` repetidamente,
+
+```
+f(x),f(f(x)), f(f(f(x))), ...
+```
+
+hasta que el valor no cambie demasiado. Usando esta idea, podemos idear un procedimiento `punto-fijo` que tome como entradas una función y una estimación inicial y produzca una aproximación a un punto fijo de la función. Aplicaremos la función repetidamente hasta que encontremos dos valores sucesivos cuya diferencia sea inferior a alguna tolerancia preestablecida:
+
+```scheme
+(define tolerancia 0.00001)
+
+(define (punto-fijo f primera-estimacion)
+  (define (close-enough? v1 v2)
+    (< (abs (- v1 v2)) tolerancia))
+
+  (define (probar estimacion)
+    (let ((siguiente (f estimacion)))
+      (if (suficientemente-bueno? estimacion siguiente)
+          siguiente
+          (probar siguiente))))
+
+  (probar primera-estimacion))
+```
+
+Por ejemplo, podemos usar este método para aproximar el punto fijo de la función coseno, comenzando con 1 como una aproximación inicial: [^57]
+
+```scheme
+(punto-fijo cos 1.0)
+.7390822985224023
+```
+
+Similarmente, podemos encontrar una solución a la ecuación `y = sin y + cos y`:
+
+```scheme
+(punto-fijo (lambda (y) (+ (sin y) (cos y)))
+             1.0)
+1.2587315962971173
+```
+
+El proceso de punto fijo nos recuerda al proceso que usamos para encontrar raíces cuadradas en la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Ambos se basan en la idea de mejorar repetidamente una estimación hasta que el resultado satisfaga algún criterio. De hecho, podemos formular fácilmente el cálculo de `raíz-cuadrada` como una búsqueda de punto fijo. Calcular la raíz cuadrada de un número `x` requiere encontrar un `y` tal que `y² = x`. Poniendo esta ecuación en la forma equivalente `y = x/y`, reconocemos que estamos buscando un punto fijo de la función [^58] `y → x/y`, y por lo tanto podemos intentar calcular raíces cuadradas como
+
+```scheme
+(define (raiz-cuadrada x)
+  (punto-fijo (lambda (y) (/ x y))
+               1.0))
+```
+
+Desafortunadamente, esta búsqueda de punto fijo no converge. Considere una estimación inicial `y₁`. La siguiente estimación es `y₂ = x/y₁` y la siguiente es `y₃ = x/y₂ = x/(x/y₁) = y₁`. Esto resulta en un bucle infinito en el que las dos conjeturas `y₁` y `y₂` se repiten una y otra vez, oscilando sobre la respuesta.
+
+Una manera de controlar tales oscilaciones es evitar que las estimaciones cambien tanto. Puesto que la respuesta siempre estará entre `y` y `x/y`, podemos hacer una nueva estimación que no esté tan lejos de `y` como `x/y` promediando `y` con `x/y`, de modo que la siguiente estimación después de `y` sea `(1/2)(y + x/y)` en lugar de `x/y`. El proceso de hacer tal secuencia de estimaciones es simplemente el proceso de buscar un punto fijo de `y → (1/2)(y + x/y)`:
+
+```scheme
+(define (raiz-cuadrada x)
+  (punto-fijo (lambda (y) (promedio y (/ x y)))
+               1.0))
+```
+
+(nota que `y = (1/2)(y + x/y)` es una simple transformación de la ecuación `y = x/y`; para derivarla, sume `y` a ambos lados de la ecuación y divida por 2).
+
+Con esta modificación, el procedimiento de `raiz-cuadrada` funciona. De hecho, si desentrañamos las definiciones, podemos ver que la secuencia de aproximaciones a la raíz cuadrada generada en este caso es precisamente la misma que la generada por nuestro procedimiento original de raíz cuadrada de la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Este enfoque de promediar aproximaciones sucesivas a una solución, una técnica que llamamos *amortiguación promedio* (NdT: en inglés *average damping*), a menudo ayuda a la convergencia de las búsquedas de punto fijo.
+
 
 
 # ---Traducción pendiente---
