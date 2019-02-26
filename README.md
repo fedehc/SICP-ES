@@ -15,7 +15,8 @@ of Computer Programs" (SICP).
 
 El libro está licenciado bajo [licencia internacional Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.es) por el MIT Press.
 
-![Imagen CC](https://licensebuttons.net/l/by-sa/4.0/88x31.png)
+
+[![Imagen CC](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](./secciones/04-contenidos.md)
 
 
 ## Fuente
