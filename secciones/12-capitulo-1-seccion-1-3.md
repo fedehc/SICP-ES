@@ -487,7 +487,7 @@ Aquí hay otro ejemplo, usando el método de intervalo medio para buscar una ra�
 Un número `x` se denomina punto fijo de una función `f` si `x` satisface la ecuación `f(x) = x`. Para algunas funciones `f` podemos localizar un punto fijo comenzando con una suposición inicial y aplicando `f` repetidamente,
 
 ```
-f(x),f(f(x)), f(f(f(x))), ...
+f(x), f(f(x)), f(f(f(x))), ...
 ```
 
 hasta que el valor no cambie demasiado. Usando esta idea, podemos idear un procedimiento `punto-fijo` que tome como entradas una función y una estimación inicial y produzca una aproximación a un punto fijo de la función. Aplicaremos la función repetidamente hasta que encontremos dos valores sucesivos cuya diferencia sea inferior a alguna tolerancia preestablecida:
@@ -555,7 +555,7 @@ ___
 
 [^50]: Note que hemos usado la estructura de bloques ([sección 1.1.8](./10-capitulo-1-seccion-1-1.md#118-Procedimientos-como-Abstracciones-de-Caja-Negra)) para incrustar las definiciones de `pi-sig` y `pi-term` dentro de `pi-suma`, ya que es poco probable que estos procedimientos sean útiles para cualquier otro propósito. Veremos cómo deshacernos de ellos en la [sección 1.3.2](./12-capitulo-1-seccion-1-3.md#132-).
 
-[^51]: La intención de los ejercicios 1.31-1.33 es demostrar el poder expresivo que se logra usando una abstracción apropiada para consolidar muchas operaciones aparentemente dispares. Sin embargo, aunque la acumulación y el filtrado son ideas elegantes, nuestras manos están un poco atadas en su uso en este momento, ya que aún no disponemos de estructuras de datos para proporcionar los medios adecuados de combinación para estas abstracciones. Volveremos a estas ideas en la [sección 2.2.3](./15-capitulo-2-seccion-2-2.md#223-) cuando mostremos cómo usar secuencias como interfaces para combinar filtros y acumuladores para construir abstracciones aún más poderosas. Veremos allí cómo estos métodos realmente se imponen como un enfoque poderoso y elegante para el diseño de programas.
+[^51]: La intención de los ejercicios 1.31 - 1.33 es demostrar el poder expresivo que se logra usando una abstracción apropiada para consolidar muchas operaciones aparentemente dispares. Sin embargo, aunque la acumulación y el filtrado son ideas elegantes, nuestras manos están un poco atadas en su uso en este momento, ya que aún no disponemos de estructuras de datos para proporcionar los medios adecuados de combinación para estas abstracciones. Volveremos a estas ideas en la [sección 2.2.3](./15-capitulo-2-seccion-2-2.md#223-) cuando mostremos cómo usar secuencias como interfaces para combinar filtros y acumuladores para construir abstracciones aún más poderosas. Veremos allí cómo estos métodos realmente se imponen como un enfoque poderoso y elegante para el diseño de programas.
 
 [^52]: Esta fórmula fue descubierta por el matemático inglés del siglo XVII John Wallis.
 
