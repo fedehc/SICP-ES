@@ -566,3 +566,7 @@ ___
 [^55]: Hemos utilizado 0,001 como un número "pequeño" representativo para indicar una tolerancia de error aceptable en un cálculo. La tolerancia adecuada para un cálculo real depende del problema a resolver y de las limitaciones de la computadora y del algoritmo. Esta es a menudo una consideración muy sutil, que requiere de la ayuda de un analista numérico o de algún otro tipo de mago.
 
 [^56]: Esto se puede lograr usando `error,` que toma como argumentos un número de ítems que se imprimen como mensajes de error.
+
+[^57]: Pruebe esto durante una clase aburrida: Ponga su calculadora en modo radianes y luego presione repetidamente el botón `cos` hasta que obtenga el punto fijo.
+
+[^58]: `→` (se pronuncia "mapear a") es la forma en que los matemáticos escriben `lambda`. `y → x/y` significa `(lambda(y) (/ x y))`, es decir, la función cuyo valor en `y` es `x/y`.
