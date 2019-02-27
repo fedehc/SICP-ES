@@ -541,9 +541,65 @@ Una manera de controlar tales oscilaciones es evitar que las estimaciones cambie
                1.0))
 ```
 
-(nota que `y = (1/2)(y + x/y)` es una simple transformación de la ecuación `y = x/y`; para derivarla, sume `y` a ambos lados de la ecuación y divida por 2).
+(note que `y = (1/2)(y + x/y)` es una simple transformación de la ecuación `y = x/y`; para derivarla, sume `y` a ambos lados de la ecuación y divida por 2).
 
 Con esta modificación, el procedimiento de `raiz-cuadrada` funciona. De hecho, si desentrañamos las definiciones, podemos ver que la secuencia de aproximaciones a la raíz cuadrada generada en este caso es precisamente la misma que la generada por nuestro procedimiento original de raíz cuadrada de la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Este enfoque de promediar aproximaciones sucesivas a una solución, una técnica que llamamos *amortiguación promedio* (NdT: en inglés *average damping*), a menudo ayuda a la convergencia de las búsquedas de punto fijo.
+
+**Ejercicio 1.35.** Mostrar que la proporción áurea `Φ` (sección 1.2.2) es un punto fijo de la transformación `x → 1 + 1/x`, y usar este hecho para calcular `Φ` mediante el procedimiento de `punto-fijo`.
+
+**Ejercicio 1.36.** Modificar `punto-fijo` para que imprima la secuencia de aproximaciones que genera, usando la nueva línea y mostrar las primitivas mostradas en el ejercicio 1.22. A continuación, encuentre una solución para `xˣ = 1000` buscando un punto fijo de `x → log(1000)/log(x)` (utilice el procedimiento de logaritmo primitivo de Scheme, que calcula los logaritmos naturales). Compare el número de pasos que se dan con y sin amortiguación promedio (tenga en cuenta que no puede empezar `punto fijo` con una estimación de 1, ya que esto causaría división por `log(1) = 0`).
+
+**Ejercicio 1.37.** a. Una *fracción continuada* (NdT: en inglés *continued fraction*) infinita es una expresión de la forma
+
+```
+            N₁
+f = ―――――――――――――――――――
+     D₁ +      N₂
+          ―――――――――――――
+          D₂ +    N₃
+               ――――――――
+               D₃ + ...
+```
+
+Como ejemplo, se puede mostrar que la expansión de la fracción continuada infinita con la `Nᵢ` y la `Dᵢ` todas iguales a 1 produce `1/Φ`, donde `Φ` es la razón de oro (descrita en la sección 1.2.2). Una forma de aproximarse a una fracción continua infinita es truncar la expansión después de un número dado de términos. Tal truncamiento -el llamado *k-término de fracción continua finita*- tiene la forma
+
+```
+     N₁
+―――――――――――――
+  D₁ +   N₂
+       ――――――
+           Nₖ
+     ... + ――
+           Dₖ
+```
+
+Supongamos que `n` y `d` son procedimientos de un argumento (el índice del término `i`) que devuelven los términos de la fracción continua de `Nᵢ` y `Dᵢ`. Defina un procedimiento `frac-cont` de tal manera que al evaluar `(frac-cont n d k)` se calcule el valor de la fracción continua finita del k-término. Compruebe su procedimiento aproximándose a `1/Φ` utilizando
+
+```scheme
+(frac-cont (lambda (i) 1.0)
+           (lambda (i) 1.0)
+           k)
+```
+
+para valores sucesivos de `k`. ¿Qué tan grande debe hacer `k` para obtener una aproximación que sea exacta hasta 4 decimales?
+
+b. Si su procedimiento `frac-cont` genera un proceso recursivo, escriba uno que genere un proceso iterativo. Si genera un proceso iterativo, escriba uno que genere un proceso recursivo.
+
+**Ejercicio 1.38.** En 1737, el matemático suizo Leonhard Euler publicó una autobiografía *De Fractionibus Continuis*, que incluía una expansión continua de la fracción para `e - 2`, donde `e` es la base de los logaritmos naturales. En esta fracción, los `Nᵢ` son todos 1, y los `Dᵢ` son sucesivamente `1, 2, 1, 1, 1, 4, 1, 1, 1, 6, 1, 1, 8, ...`. Escriba un programa que utilice su procedimiento de `frac-cont` desde el ejercicio 1.37 hasta aproximarse a `e`, basado en la expansión de Euler.
+
+**Ejercicio 1.39.** El matemático alemán J.H. Lambert publicó una representación continua de la función tangente en 1770: 
+
+```
+              x
+tan x = ―――――――――――――――
+        1 -     x²
+            ―――――――――――
+            3 -    x²
+                ―――――――
+                5 - ...
+```
+
+donde `x` está en radianes. Defina un procedimiento `(tan-fc x k)` que calcule una aproximación a la función tangente basada en la fórmula de Lambert. `k` especifica el número de términos a calcular, como en el ejercicio 1.37.
 
 
 
