@@ -545,7 +545,7 @@ Una manera de controlar tales oscilaciones es evitar que las estimaciones cambie
 
 Con esta modificación, el procedimiento de `raiz-cuadrada` funciona. De hecho, si desentrañamos las definiciones, podemos ver que la secuencia de aproximaciones a la raíz cuadrada generada en este caso es precisamente la misma que la generada por nuestro procedimiento original de raíz cuadrada de la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Este enfoque de promediar aproximaciones sucesivas a una solución, una técnica que llamamos *amortiguación promedio* (NdT: en inglés *average damping*), a menudo ayuda a la convergencia de las búsquedas de punto fijo.
 
-**Ejercicio 1.35.** Mostrar que la proporción áurea `Φ` (sección 1.2.2) es un punto fijo de la transformación `x → 1 + 1/x`, y usar este hecho para calcular `Φ` mediante el procedimiento de `punto-fijo`.
+**Ejercicio 1.35.** Mostrar que la proporción áurea `Φ` ([sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión)) es un punto fijo de la transformación `x → 1 + 1/x`, y usar este hecho para calcular `Φ` mediante el procedimiento de `punto-fijo`.
 
 **Ejercicio 1.36.** Modificar `punto-fijo` para que imprima la secuencia de aproximaciones que genera, usando la nueva línea y mostrar las primitivas mostradas en el ejercicio 1.22. A continuación, encuentre una solución para `xˣ = 1000` buscando un punto fijo de `x → log(1000)/log(x)` (utilice el procedimiento de logaritmo primitivo de Scheme, que calcula los logaritmos naturales). Compare el número de pasos que se dan con y sin amortiguación promedio (tenga en cuenta que no puede empezar `punto fijo` con una estimación de 1, ya que esto causaría división por `log(1) = 0`).
 
@@ -561,7 +561,7 @@ f = ―――――――――――――――――――
                D₃ + ...
 ```
 
-Como ejemplo, se puede mostrar que la expansión de la fracción continuada infinita con la `Nᵢ` y la `Dᵢ` todas iguales a 1 produce `1/Φ`, donde `Φ` es la razón de oro (descrita en la sección 1.2.2). Una forma de aproximarse a una fracción continua infinita es truncar la expansión después de un número dado de términos. Tal truncamiento -el llamado *k-término de fracción continua finita*- tiene la forma
+Como ejemplo, se puede mostrar que la expansión de la fracción continuada infinita con la `Nᵢ` y la `Dᵢ` todas iguales a 1 produce `1/Φ`, donde `Φ` es la razón de oro (descrita en la [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión)). Una forma de aproximarse a una fracción continua infinita es truncar la expansión después de un número dado de términos. Tal truncamiento -el llamado *k-término de fracción continua finita*- tiene la forma
 
 ```
      N₁
