@@ -664,3 +664,7 @@ ___
 [^57]: Pruebe esto durante una clase aburrida: Ponga su calculadora en modo radianes y luego presione repetidamente el botón `cos` hasta que obtenga el punto fijo.
 
 [^58]: `→` (se pronuncia "mapear a") es la forma en que los matemáticos escriben `lambda`. `y → x/y` significa `(lambda(y) (/ x y))`, es decir, la función cuyo valor en `y` es `x/y`.
+
+[^59]: Observe que se trata de una combinación cuyo operador es a su vez una combinación. En el Ejercicio 1.4 ya se demostró la capacidad de formar tales combinaciones, pero eso sólo fue un ejemplo de juguete. Aquí empezamos a ver la necesidad real de tales combinaciones: al aplicar un procedimiento que se obtiene como el valor devuelto por un procedimiento de orden superior.
+
+[^60]: Véase el ejercicio 1.45 para una mayor generalización.
