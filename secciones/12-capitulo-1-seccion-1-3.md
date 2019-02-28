@@ -602,7 +602,7 @@ tan x = ―――――――――――――――
 donde `x` está en radianes. Defina un procedimiento `(tan-fc x k)` que calcule una aproximación a la función tangente basada en la fórmula de Lambert. `k` especifica el número de términos a calcular, como en el ejercicio 1.37.
 
 
-### 1.3.4 Procedimientos como valores devueltos
+### 1.3.4 Procedimientos como Valores Retornados
 
 Los ejemplos anteriores demuestran cómo la habilidad de pasar procedimientos como argumentos mejora significativamente el poder expresivo de nuestro lenguaje de programación. Podemos lograr un poder aún más expresivo creando procedimientos cuyos valores devueltos son en sí mismos procedimientos.
 
