@@ -33,7 +33,7 @@
     * [1.3.1. Procedimientos como Argumentos](./12-capitulo-1-seccion-1-3.md#131-Procedimientos-como-Argumentos)
     * [1.3.2. Construcción de Procedimientos usando Lambda](./12-capitulo-1-seccion-1-3.md#132-Construcción-de-Procedimientos-mediante-lambda)
     * [1.3.3. Procedimientos como Métodos Generales](./12-capitulo-1-seccion-1-3.md#133-Procedimientos-como-Métodos-Generales)
-    * [1.3.4. Procedimientos como Valores Retornados](./12-capitulo-1-seccion-1-3.md#134-Procedimientos-como-Valores-Devueltos)
+    * [1.3.4. Procedimientos como Valores Retornados](./12-capitulo-1-seccion-1-3.md#134-Procedimientos-como-Valores-Retornados)
 
 **[2. Construyendo Abstracciones con Datos](./13-capitulo-2-intro.md)**
   * [2.1. Introducción a la Abstracción de Datos](./14-capitulo-2-seccion-2-1.md)
