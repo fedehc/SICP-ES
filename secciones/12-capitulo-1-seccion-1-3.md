@@ -691,7 +691,7 @@ Con la ayuda de `derivada`, podemos expresar el método de Newton como un proces
   (punto-fijo (transf-newton  g) estimacion))
 ```
 
-El procedimiento `newton-transform` expresa la fórmula al principio de esta sección, y `newtons-método` es rápidamente definido en términos de esto. Toma como argumento un procedimiento que calcula la función para la que queremos encontrar un cero, junto con una conjetura inicial. Por ejemplo, para encontrar la raíz cuadrada de `x`, podemos usar el método de Newton para encontrar un cero de la función `y → y² - x` comenzando con una suposición inicial de 1.[^63] Esto proporciona otra forma del procedimiento de raíz cuadrada:
+El procedimiento `transf-newton` expresa la fórmula al principio de esta sección, y `metodo-newton` es rápidamente definido en términos de esto. Toma como argumento un procedimiento que calcula la función para la que queremos encontrar un cero, junto con una conjetura inicial. Por ejemplo, para encontrar la raíz cuadrada de `x`, podemos usar el método de Newton para encontrar un cero de la función `y → y² - x` comenzando con una suposición inicial de 1. [^63] Esto proporciona otra forma del procedimiento de raíz cuadrada:
 
 ```scheme
 (define (raiz-cuadrada x)
