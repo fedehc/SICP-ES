@@ -729,3 +729,9 @@ ___
 [^59]: Observe que se trata de una combinación cuyo operador es a su vez una combinación. En el Ejercicio 1.4 ya se demostró la capacidad de formar tales combinaciones, pero eso sólo fue un ejemplo de juguete. Aquí empezamos a ver la necesidad real de tales combinaciones: al aplicar un procedimiento que se obtiene como el valor devuelto por un procedimiento de orden superior.
 
 [^60]: Véase el ejercicio 1.45 para una mayor generalización.
+
+[^61]: Los libros de cálculo elemental generalmente describen el método de Newton en términos de una secuencia de aproximaciones `xₙ₊₁ = xₙ - g(xₙ)/Dg(xₙ)`. Disponer de un lenguaje para hablar de procesos y utilizar la idea de puntos fijos simplifica la descripción del método.
+
+[^62]: El método de Newton no siempre converge en una respuesta, pero se puede demostrar que, en los casos favorables, cada iteración duplica la precisión del número de dígitos de la aproximación a la solución. En tales casos, el método de Newton convergerá mucho más rápidamente que el método de intervalo medio.
+
+[^63]: Para encontrar raíces cuadradas, el método de Newton converge rápidamente a la solución correcta desde cualquier punto de partida. 
