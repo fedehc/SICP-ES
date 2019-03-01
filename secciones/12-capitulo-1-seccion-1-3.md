@@ -630,12 +630,73 @@ Usando `amort-prom`, podemos reformular el procedimiento de raíz cuadrada de la
                1.0))
 ```
 
-Observe cómo esta formulación hace explícitas las tres ideas en el método: la búsqueda de punto fijo, la amortiguación promedio y la función `y → x/y`. Es instructivo comparar esta formulación del método de raíz cuadrada con la versión original dada en [sección 1.1.7](). Tenga en cuenta que estos procedimientos expresan el mismo proceso, y observe cuán clara se vuelve la idea cuando expresamos el proceso en términos de estas abstracciones.  En general, hay muchas maneras de formular un proceso como un procedimiento. Los programadores experimentados saben cómo elegir formulaciones de procedimiento que son particularmente perspicaces, y en las que los elementos útiles del proceso se exponen como entidades separadas que pueden ser reutilizadas en otras aplicaciones. Como ejemplo simple de reutilización, note que la raíz cúbica de `x` es un punto fijo de la función `y → x/y²`, así que podemos generalizar inmediatamente nuestro procedimiento de raíz cuadrada a uno que extrae raíces cúbicas: [^60]
+Observe cómo esta formulación hace explícitas las tres ideas en el método: la búsqueda de punto fijo, la amortiguación promedio y la función `y → x/y`. Es instructivo comparar esta formulación del método de raíz cuadrada con la versión original dada en [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton). Tenga en cuenta que estos procedimientos expresan el mismo proceso, y observe cuán clara se vuelve la idea cuando expresamos el proceso en términos de estas abstracciones.  En general, hay muchas maneras de formular un proceso como un procedimiento. Los programadores experimentados saben cómo elegir formulaciones de procedimiento que son particularmente perspicaces, y en las que los elementos útiles del proceso se exponen como entidades separadas que pueden ser reutilizadas en otras aplicaciones. Como ejemplo simple de reutilización, note que la raíz cúbica de `x` es un punto fijo de la función `y → x/y²`, así que podemos generalizar inmediatamente nuestro procedimiento de raíz cuadrada a uno que extrae raíces cúbicas: [^60]
 
 ```scheme
 (define (raiz-cubica x)
   (punto-fijo (amort-prom (lambda (y) (/ x (al-cuadrado y))))
                1.0))
+```
+
+#### El método de Newton
+
+Cuando se introdujo por primera vez el procedimiento de raíz cuadrada, en la [sección 1.1.7](), mencionamos que se trataba de un caso especial del *método de Newton*. Si `x → g(x)` es una función diferenciable, entonces una solución de la ecuación `g(x) = 0` es un punto fijo de la función `x → f(x)` donde
+
+```
+            g(x)
+f(x) = x - ―――――――
+            Dg(x)    
+```
+
+y `Dg(x)` es la derivada de `g` evaluada en `x`. El método de Newton es el uso del método de punto fijo que vimos arriba para aproximar una solución de la ecuación encontrando un punto fijo de la función `f`. [^61] Para muchas funciones `g` y para suposiciones iniciales lo suficientemente buenas para `x`, el método de Newton converge muy rápidamente a una solución de `g(x) = 0`. [^62] 
+
+Para implementar el método de Newton como un procedimiento, primero debemos expresar la idea de la derivada. Nótese que la "derivada", al igual que la amortiguación promedio, es algo que transforma una función en otra función. Por ejemplo, el derivado de la función `x → x³` es la función `x → 3x²`. En general, si `g` es una función y `dx` es un número pequeño, entonces la derivada `Dg` de `g` es la función cuyo valor en cualquier número `x` es dado (en el límite de `dx`) por 
+
+```
+        g(x + dx) - g(x)
+Dg(x) = ――――――――――――――――
+              d(x)    
+```
+
+De este modo, podemos expresar la idea de la derivada (tomando `dx` para que sea, digamos, 0.00001) como el procedimiento
+
+```scheme
+(define (derivada g)
+  (lambda (x)
+    (/ (- (g (+ x dx)) (g x))
+       dx))
+```
+
+junto con la definición
+
+```scheme
+(define dx 0.00001)
+```
+
+Al igual que `amort-prom`, `derivada` es un procedimiento que toma un procedimiento como argumento y devuelve otro procedimiento como valor. Por ejemplo, para aproximar la derivada de `x → x³` a 5 (cuyo valor exacto es 75) podemos evaluar
+
+```scheme
+(define (al-cubo x) (* x x x))
+((derivada al-cubo) 5)
+75.00014999664018
+```
+
+Con la ayuda de `derivada`, podemos expresar el método de Newton como un proceso de punto fijo:
+
+```scheme
+(define (transf-newton g)
+  (lambda (x)
+    (- x (/ (g x) ((derivada g) x)))))
+(define (metodo-newton g estimacion)
+  (punto-fijo (transf-newton  g) estimacion))
+```
+
+El procedimiento `newton-transform` expresa la fórmula al principio de esta sección, y `newtons-método` es rápidamente definido en términos de esto. Toma como argumento un procedimiento que calcula la función para la que queremos encontrar un cero, junto con una conjetura inicial. Por ejemplo, para encontrar la raíz cuadrada de `x`, podemos usar el método de Newton para encontrar un cero de la función `y → y² - x` comenzando con una suposición inicial de 1.[^63] Esto proporciona otra forma del procedimiento de raíz cuadrada:
+
+```scheme
+(define (raiz-cuadrada x)
+  (newtons-method (lambda (y) (- (square y) x))
+                  1.0))
 ```
 
 
