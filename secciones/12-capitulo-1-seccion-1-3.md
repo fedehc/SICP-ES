@@ -695,7 +695,7 @@ El procedimiento `transf-newton` expresa la f√≥rmula al principio de esta secci√
 
 ```scheme
 (define (raiz-cuadrada x)
-  (newtons-method (lambda (y) (- (square y) x))
+  (metodo-newton (lambda (y) (- (al-cuadrado y) x))
                   1.0))
 ```
 
