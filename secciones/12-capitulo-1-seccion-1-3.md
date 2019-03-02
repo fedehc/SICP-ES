@@ -609,7 +609,7 @@ donde `x` está en radianes. Defina un procedimiento `(tan-fc x k)` que calcule 
 
 Los ejemplos anteriores demuestran cómo la habilidad de pasar procedimientos como argumentos mejora significativamente el poder expresivo de nuestro lenguaje de programación. Podemos lograr un poder aún más expresivo creando procedimientos cuyos valores devueltos son en sí mismos procedimientos.
 
-Podemos ilustrar esta idea mirando de nuevo el ejemplo de punto fijo descrito al final de la [sección 1.3.3](). Formulamos una nueva versión del procedimiento de raíz cuadrada como una búsqueda de punto fijo, comenzando con la observación de que `√x` es un punto fijo de la función `y → x/y`. Luego usamos amortiguación promedio (NdT: *average damping* en inglés) para hacer converger las aproximaciones. La amortiguación promedio es una técnica general muy útil en sí misma. Es decir, dada una función `f`, consideramos la función cuyo valor en `x` es igual al promedio de `x` y `f(x)`.
+Podemos ilustrar esta idea mirando de nuevo el ejemplo de punto fijo descrito al final de la [sección 1.3.3](#133). Formulamos una nueva versión del procedimiento de raíz cuadrada como una búsqueda de punto fijo, comenzando con la observación de que `√x` es un punto fijo de la función `y → x/y`. Luego usamos amortiguación promedio (NdT: *average damping* en inglés) para hacer converger las aproximaciones. La amortiguación promedio es una técnica general muy útil en sí misma. Es decir, dada una función `f`, consideramos la función cuyo valor en `x` es igual al promedio de `x` y `f(x)`.
 
 Podemos expresar la idea de amortiguación media mediante el siguiente procedimiento:
 
@@ -643,7 +643,7 @@ Observe cómo esta formulación hace explícitas las tres ideas en el método: l
 
 #### El método de Newton
 
-Cuando se introdujo por primera vez el procedimiento de raíz cuadrada, en la [sección 1.1.7](), mencionamos que se trataba de un caso especial del *método de Newton*. Si `x → g(x)` es una función diferenciable, entonces una solución de la ecuación `g(x) = 0` es un punto fijo de la función `x → f(x)` donde
+Cuando se introdujo por primera vez el procedimiento de raíz cuadrada, en la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton), mencionamos que se trataba de un caso especial del *método de Newton*. Si `x → g(x)` es una función diferenciable, entonces una solución de la ecuación `g(x) = 0` es un punto fijo de la función `x → f(x)` donde
 
 ```
             g(x)
@@ -783,6 +783,6 @@ ___
 
 [^64]: La noción de que los elementos del lenguaje de programación son de primera clase se debe al informático británico Christopher Strachey (1916-1975).
 
-[^65]: Veremos ejemplos de esto después de introducir las estructuras de datos en el [capítulo 2]().
+[^65]: Veremos ejemplos de esto después de introducir las estructuras de datos en el [capítulo 2](./13-capitulo-2-intro.md).
 
 [^66]: El mayor costo de implementación de los procedimientos de primera clase radica en que, al permitir que los procedimientos se devuelvan como valores, se requiere reservar el almacenamiento para las variables libres de un procedimiento, incluso cuando el procedimiento no se está ejecutando. En la implementación de Scheme que estudiaremos en la [sección 4.1](./26-capitulo-4-seccion-4.1.md), estas variables se almacenan en el entorno del procedimiento. 
