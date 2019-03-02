@@ -728,7 +728,7 @@ De manera similar, podemos expresar el segundo cálculo de raíz cuadrada desde 
                      1.0))
 ```
 
-Comenzamos la [sección 1.3] con la observación de que los procedimientos compuestos son un mecanismo de abstracción crucial, porque nos permiten expresar métodos generales de computación como elementos explícitos en nuestro lenguaje de programación. Ahora hemos visto cómo los procedimientos de orden superior nos permiten manipular estos métodos generales para crear más abstracciones.
+Comenzamos la [sección 1.3](#1.3) con la observación de que los procedimientos compuestos son un mecanismo de abstracción crucial, porque nos permiten expresar métodos generales de computación como elementos explícitos en nuestro lenguaje de programación. Ahora hemos visto cómo los procedimientos de orden superior nos permiten manipular estos métodos generales para crear más abstracciones.
 
 Como programadores, debemos estar atentos a las oportunidades para identificar las abstracciones subyacentes en nuestros programas y construir sobre ellas y generalizarlas para crear abstracciones más poderosas. Esto no quiere decir que uno siempre debe escribir programas de la manera más abstracta posible; los programadores expertos saben cómo elegir el nivel de abstracción apropiado para sus tareas. Pero es importante ser capaz de pensar en términos de estas abstracciones, para que podamos estar preparados para aplicarlas en nuevos contextos. La importancia de los procedimientos de orden superior es que nos permiten representar estas abstracciones explícitamente como elementos en nuestro lenguaje de programación, de modo que puedan ser manejados como otros elementos computacionales.
 
@@ -774,4 +774,10 @@ ___
 
 [^62]: El método de Newton no siempre converge en una respuesta, pero se puede demostrar que, en los casos favorables, cada iteración duplica la precisión del número de dígitos de la aproximación a la solución. En tales casos, el método de Newton convergerá mucho más rápidamente que el método de intervalo medio.
 
-[^63]: Para encontrar raíces cuadradas, el método de Newton converge rápidamente a la solución correcta desde cualquier punto de partida. 
+[^63]: Para encontrar raíces cuadradas, el método de Newton converge rápidamente a la solución correcta desde cualquier punto de partida.
+
+[^64]: La noción de que los elementos del lenguaje de programación son de primera clase se debe al informático británico Christopher Strachey (1916-1975).
+
+[^65]: Veremos ejemplos de esto después de introducir las estructuras de datos en el [capítulo 2]().
+
+[^66]: El mayor costo de implementación de los procedimientos de primera clase radica en que, al permitir que los procedimientos se devuelvan como valores, se requiere reservar el almacenamiento para las variables libres de un procedimiento, incluso cuando el procedimiento no se está ejecutando. En la implementación de Scheme que estudiaremos en la [sección 4.1](./26-capitulo-4-seccion-4.1.md), estas variables se almacenan en el entorno del procedimiento. 
