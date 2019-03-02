@@ -699,7 +699,47 @@ El procedimiento `transf-newton` expresa la fórmula al principio de esta secci�
                   1.0))
 ```
 
+#### Abstactos y procedimientos de primera clase
 
+Hemos visto dos maneras de expresar el cálculo de la raíz cuadrada como una instancia de un método más general, una como una búsqueda de punto fijo y otra utilizando el método de Newton. Como el método de Newton fue expresado como un proceso de punto fijo, en realidad vimos dos maneras de calcular las raíces cuadradas como puntos fijos. Cada método comienza con una función y encuentra un punto fijo de alguna transformación de la función. Podemos expresar esta idea general como un procedimiento:
+
+```scheme
+(define (punto-fijo-transf g transf estimacion)
+  (punto-fijo (transf g) estimacion))
+```
+
+Este procedimiento muy general toma como argumentos un procedimiento `g` que calcula alguna función, un procedimiento que transforma `g`, y una suposición inicial. El resultado devuelto es un punto fijo de la función transformada.
+
+Usando esta abstracción, podemos reformular el primer cálculo de raíz cuadrada de esta sección (donde buscábamos un punto fijo de la versión de amortiguación promedio de `y → x/y`) como una instancia de este método general:
+
+```scheme
+(define (sqrt x)
+  (punto-fijo-transf (lambda (y) (/ x y))
+                     amort-prom
+                     1.0))
+```
+
+De manera similar, podemos expresar el segundo cálculo de raíz cuadrada desde esta sección (un caso del método de Newton que encuentra un punto fijo de la transformada de Newton de `y → y² - x`) como
+
+```scheme
+(define (sqrt x)
+  (punto-fijo-transf (lambda (y) (- (al-cuadrado y) x))
+                     transf-newton
+                     1.0))
+```
+
+Comenzamos la [sección 1.3] con la observación de que los procedimientos compuestos son un mecanismo de abstracción crucial, porque nos permiten expresar métodos generales de computación como elementos explícitos en nuestro lenguaje de programación. Ahora hemos visto cómo los procedimientos de orden superior nos permiten manipular estos métodos generales para crear más abstracciones.
+
+Como programadores, debemos estar atentos a las oportunidades para identificar las abstracciones subyacentes en nuestros programas y construir sobre ellas y generalizarlas para crear abstracciones más poderosas. Esto no quiere decir que uno siempre debe escribir programas de la manera más abstracta posible; los programadores expertos saben cómo elegir el nivel de abstracción apropiado para sus tareas. Pero es importante ser capaz de pensar en términos de estas abstracciones, para que podamos estar preparados para aplicarlas en nuevos contextos. La importancia de los procedimientos de orden superior es que nos permiten representar estas abstracciones explícitamente como elementos en nuestro lenguaje de programación, de modo que puedan ser manejados como otros elementos computacionales.
+
+En general, los lenguajes de programación imponen restricciones a las formas en que se pueden manipular los elementos computacionales. Se dice que los elementos con menos restricciones tienen estatus de *primera clase*. Algunos de los "derechos y privilegios" de los elementos de primera clase son: [^64]
+
+* Pueden ser nombrados por variables.
+* Pueden pasar como argumentos a los procedimientos.
+* Pueden ser devueltos como resultado de los procedimientos.
+* Pueden incluirse en estructuras de datos. [^65]
+
+Lisp, a diferencia de otros lenguajes de programación conocidos, concede a los procedimientos un estatus de primera clase. Esto plantea desafíos para una implementación eficiente, pero la ganancia resultante en poder expresivo es enorme. [^66]
 
 
 # ---Traducción pendiente---
