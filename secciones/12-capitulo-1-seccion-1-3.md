@@ -231,9 +231,9 @@ Entonces nuestro procedimiento `pi-suma` puede ser expresado sin definir ningún
 ```scheme
 (define (pi-suma a b)
   (suma (lambda (x) (/ 1.0 (* x (+ x 2))))
-       a
-       (lambda (x) (+ x 4))
-       b))
+        a
+        (lambda (x) (+ x 4))
+        b))
 ```
 
 De nuevo, usando `lambda`, podemos escribir el procedimiento `integral` sin tener que definir el procedimiento auxiliar `agregar-dx`:
@@ -241,9 +241,9 @@ De nuevo, usando `lambda`, podemos escribir el procedimiento `integral` sin tene
 ```scheme
 (define (integral f a b dx)
   (* (suma f
-          (+ a (/ dx 2.0))
-          (lambda (x) (+ x dx))
-          b)
+           (+ a (/ dx 2.0))
+           (lambda (x) (+ x dx))
+           b)
      dx))
 ```
 
@@ -307,6 +307,7 @@ Al escribir un procedimiento para calcular `f`, nos gustaría incluir como varia
     (+ (* x (al-cuadrado a))
        (* y b)
        (* a b)))
+
   (f-auxiliar (+ 1 (* x y)) 
             (- 1 y)))
 ```
@@ -393,8 +394,10 @@ A veces podemos usar definiciones internas para obtener el mismo efecto que con 
 ```scheme
 (define (f x y)
   (define a (+ 1 (* x y)))
+
   (define b (- 1 y))
-  (+ (* x (al.cuadrado a))
+
+  (+ (* x (al-cuadrado a))
      (* y b)
      (* a b)))
 ```
@@ -477,8 +480,8 @@ Aquí hay otro ejemplo, usando el método de intervalo medio para buscar una ra�
 
 ```scheme
 (metodo-intervalo-medio (lambda (x) (- (* x x x) (* 2 x) 3))
-                      1.0
-                      2.0)
+                        1.0
+                        2.0)
 1.89306640625
 ```
 
@@ -496,7 +499,7 @@ hasta que el valor no cambie demasiado. Usando esta idea, podemos idear un proce
 (define tolerancia 0.00001)
 
 (define (punto-fijo f primera-estimacion)
-  (define (close-enough? v1 v2)
+  (define (suficientemente-bueno? v1 v2)
     (< (abs (- v1 v2)) tolerancia))
 
   (define (probar estimacion)
@@ -519,7 +522,7 @@ Similarmente, podemos encontrar una solución a la ecuación `y = sin y + cos y`
 
 ```scheme
 (punto-fijo (lambda (y) (+ (sin y) (cos y)))
-             1.0)
+            1.0)
 1.2587315962971173
 ```
 
@@ -528,7 +531,7 @@ El proceso de punto fijo nos recuerda al proceso que usamos para encontrar raíc
 ```scheme
 (define (raiz-cuadrada x)
   (punto-fijo (lambda (y) (/ x y))
-               1.0))
+              1.0))
 ```
 
 Desafortunadamente, esta búsqueda de punto fijo no converge. Considere una estimación inicial `y₁`. La siguiente estimación es `y₂ = x/y₁` y la siguiente es `y₃ = x/y₂ = x/(x/y₁) = y₁`. Esto resulta en un bucle infinito en el que las dos conjeturas `y₁` y `y₂` se repiten una y otra vez, oscilando sobre la respuesta.
@@ -538,7 +541,7 @@ Una manera de controlar tales oscilaciones es evitar que las estimaciones cambie
 ```scheme
 (define (raiz-cuadrada x)
   (punto-fijo (lambda (y) (promedio y (/ x y)))
-               1.0))
+              1.0))
 ```
 
 (note que `y = (1/2)(y + x/y)` es una simple transformación de la ecuación `y = x/y`; para derivarla, sume `y` a ambos lados de la ecuación y divida por 2).
@@ -627,7 +630,7 @@ Usando `amort-prom`, podemos reformular el procedimiento de raíz cuadrada de la
 ```scheme
 (define (raiz-cuadrada x)
   (punto-fijo (amort-prom (lambda (y) (/ x y)))
-               1.0))
+              1.0))
 ```
 
 Observe cómo esta formulación hace explícitas las tres ideas en el método: la búsqueda de punto fijo, la amortiguación promedio y la función `y → x/y`. Es instructivo comparar esta formulación del método de raíz cuadrada con la versión original dada en [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton). Tenga en cuenta que estos procedimientos expresan el mismo proceso, y observe cuán clara se vuelve la idea cuando expresamos el proceso en términos de estas abstracciones.  En general, hay muchas maneras de formular un proceso como un procedimiento. Los programadores experimentados saben cómo elegir formulaciones de procedimiento que son particularmente perspicaces, y en las que los elementos útiles del proceso se exponen como entidades separadas que pueden ser reutilizadas en otras aplicaciones. Como ejemplo simple de reutilización, note que la raíz cúbica de `x` es un punto fijo de la función `y → x/y²`, así que podemos generalizar inmediatamente nuestro procedimiento de raíz cuadrada a uno que extrae raíces cúbicas: [^60]
@@ -635,7 +638,7 @@ Observe cómo esta formulación hace explícitas las tres ideas en el método: l
 ```scheme
 (define (raiz-cubica x)
   (punto-fijo (amort-prom (lambda (y) (/ x (al-cuadrado y))))
-               1.0))
+              1.0))
 ```
 
 #### El método de Newton
@@ -677,6 +680,7 @@ Al igual que `amort-prom`, `derivada` es un procedimiento que toma un procedimie
 
 ```scheme
 (define (al-cubo x) (* x x x))
+
 ((derivada al-cubo) 5)
 75.00014999664018
 ```
@@ -687,6 +691,7 @@ Con la ayuda de `derivada`, podemos expresar el método de Newton como un proces
 (define (transf-newton g)
   (lambda (x)
     (- x (/ (g x) ((derivada g) x)))))
+
 (define (metodo-newton g estimacion)
   (punto-fijo (transf-newton  g) estimacion))
 ```
@@ -696,7 +701,7 @@ El procedimiento `transf-newton` expresa la fórmula al principio de esta secci�
 ```scheme
 (define (raiz-cuadrada x)
   (metodo-newton (lambda (y) (- (al-cuadrado y) x))
-                  1.0))
+                 1.0))
 ```
 
 #### Abstactos y procedimientos de primera clase
