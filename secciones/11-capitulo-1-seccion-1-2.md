@@ -271,7 +271,7 @@ Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
 
 Los números en el borde del triángulo son todos 1, y cada número dentro del triángulo es la suma de los dos números que están por encima de él.[^35] Escriba un procedimiento que calcule los elementos del triángulo de Pascal por medio de un proceso recursivo.
 
-**Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `Φⁿ/√5`, donde `Φ = (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver [sección 1.2.2](#122-Árbol-de-Recursión)) para probar que `Fib(n) = (Φⁿ - ⨚ⁿ)/5`. 
+**Ejercicio 1.13.** Demuestre que `Fib(n)` es el entero más cercano a `Φⁿ/√5`, donde `Φ = (1 + √5)/2`. Pista: Usar `⨚ = (1 - √5)/2`. Utilice la inducción y la definición de los números de Fibonacci (ver [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión)) para probar que `Fib(n) = (Φⁿ - ⨚ⁿ)/5`. 
 
 
 ### 1.2.3 Órdenes de crecimiento
@@ -290,12 +290,12 @@ para cualquier valor suficientemente grande de `n` (en otras palabras, para un g
 
 **\*** NdT: este concepto se lo conoce más actualmente como *Notación O*, o en inglés *Big O Notation* (o simplemente *Big O*).
 
-Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente con la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.[^36] El cálculo árbol-recursivo de Fibonacci requiere `Θ(n)` pasos y espacio `Θ(Φⁿ)`, donde `Φ` es la relación de oro descrita en la [sección 1.2.2](#122-Árbol-de-Recursión).
+Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente con la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.[^36] El cálculo árbol-recursivo de Fibonacci requiere `Θ(n)` pasos y espacio `Θ(Φⁿ)`, donde `Φ` es la relación de oro descrita en la [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión).
 
 Los órdenes de crecimiento sólo proporcionan una descripción aproximada del comportamiento de un proceso. Por ejemplo, un proceso que requiere `n²` pasos, otro proceso que requiere `1000n²` pasos y otro proceso que requiere `3n² + 10n + 17` pasos, todos estos tienen un orden de crecimiento `Θ(n²)`. Por otro lado, el orden de crecimiento nos proporciona una indicio útil de cómo podemos esperar a que el comportamiento del proceso cambie a medida de que cambiemos el tamaño del problema. Para un proceso `Θ(n)` (lineal), duplicar el tamaño duplicará aproximadamente la cantidad de recursos utilizados. Para un proceso exponencial, cada incremento en el tamaño del problema multiplicará la utilización de recursos por un factor constante. En el resto de la [sección 1.2](./11-capitulo-1-seccion-1-2.md) examinaremos dos algoritmos cuyos órdenes de crecimiento son logarítmicos, de modo que duplicar el tamaño del problema aumentará la necesidad de recursos en una cantidad constante.
 
 
-**Ejercicio 1.14.** Dibuje el árbol que ilustre el proceso generado por el procedimiento de `contar-cambio` de la [sección 1.2.2](#122-Árbol-de-Recursión) al hacer el cambio por 11 centavos. ¿Cómo será el orden de crecimiento en el espacio y en el número de pasos utilizados por este proceso a medida que la cantidad a cambiar se incremente? 
+**Ejercicio 1.14.** Dibuje el árbol que ilustre el proceso generado por el procedimiento de `contar-cambio` de la [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión) al hacer el cambio por 11 centavos. ¿Cómo será el orden de crecimiento en el espacio y en el número de pasos utilizados por este proceso a medida que la cantidad a cambiar se incremente? 
 
 **Ejercicio 1.15.** El seno de un ángulo (especificado en radianes) puede ser calculado haciendo uso de la aproximación `sen(x) ≈ x` si `x` es suficientemente pequeño, y la identidad trigonométrica
 
@@ -411,7 +411,7 @@ Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora suponga
 
 **Ejercicio 1.18.** Usando los resultados de los ejercicios 1.16 y 1.17, idear un procedimiento que genere un proceso iterativo para multiplicar dos números enteros en términos de sumar, duplicar y dividir a la mitad, y que use un número logarítmico de pasos.[^40].
 
-**Ejercicio 1.19.** Existe un algoritmo ingenioso para calcular los números de Fibonacci en una cantidad logarítmica de pasos. Recordemos la transformación de las variables de estado `a` y `b` en el proceso `fib-iter` de la [sección 1.2.2](#122-Árbol-de-Recursión): `a ← a + b` y `b ← a`. Llamemos a esta transformación `T`, y observemos que la aplicación de `T` una y otra vez `n` veces, comenzando con 1 y 0, produce el par `Fib(n + 1)` y `Fib(n)`. En otras palabras, los números de Fibonacci se producen aplicando `Tⁿ`, la enésima potencia de la transformación `T`, comenzando con la pareja `(1,0)`. Ahora consideremos el caso especial de `p = 0` y `q = 1` en una familia de transformaciones `Tₚᵩ`, donde `Tₚᵩ` transforma la pareja `(a,b)` según `a ← bq + aq + ap` y `b ← bp + aq`. Mostrar que si aplicamos tal transformación `Tₚᵩ` dos veces, el efecto es el mismo que si usáramos una sola transformación `Tᵖ'ᵠ'` de la misma forma, y calcular `p'` y `q'` en términos de `p` y `q`. Esto nos da una forma explícita de elevar al cuadrado estas transformaciones, y así podemos calcular `Tⁿ` usando cuadráticas sucesivas, como en el procedimiento `exp-rapido`. Reúna todo esto para completar el siguiente procedimiento, que corre en un número logarítmico de pasos: [^41]
+**Ejercicio 1.19.** Existe un algoritmo ingenioso para calcular los números de Fibonacci en una cantidad logarítmica de pasos. Recordemos la transformación de las variables de estado `a` y `b` en el proceso `fib-iter` de la [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión): `a ← a + b` y `b ← a`. Llamemos a esta transformación `T`, y observemos que la aplicación de `T` una y otra vez `n` veces, comenzando con 1 y 0, produce el par `Fib(n + 1)` y `Fib(n)`. En otras palabras, los números de Fibonacci se producen aplicando `Tⁿ`, la enésima potencia de la transformación `T`, comenzando con la pareja `(1,0)`. Ahora consideremos el caso especial de `p = 0` y `q = 1` en una familia de transformaciones `Tₚᵩ`, donde `Tₚᵩ` transforma la pareja `(a,b)` según `a ← bq + aq + ap` y `b ← bp + aq`. Mostrar que si aplicamos tal transformación `Tₚᵩ` dos veces, el efecto es el mismo que si usáramos una sola transformación `Tᵖ'ᵠ'` de la misma forma, y calcular `p'` y `q'` en términos de `p` y `q`. Esto nos da una forma explícita de elevar al cuadrado estas transformaciones, y así podemos calcular `Tⁿ` usando cuadráticas sucesivas, como en el procedimiento `exp-rapido`. Reúna todo esto para completar el siguiente procedimiento, que corre en un número logarítmico de pasos: [^41]
 
 ```scheme
 (define (fib n)
@@ -435,7 +435,7 @@ Este algoritmo realiza una serie de pasos que son lineales en `b`. Ahora suponga
 
 ### 1.2.5 Máximos Comunes Divisores
 
-El máximo común divisor (MCD) de dos enteros `a` y `b` se define como el mayor entero que divide tanto `a` como `b` sin dejar resto. Por ejemplo, el MCD de 16 y 28 es 4. En el capítulo 2, cuando investiguemos cómo implementar la aritmética de números racionales, necesitaremos ser capaces de calcular los MCD's para reducir los números racionales a sus términos más bajos (para reducir un número racional a los términos más bajos, debemos dividir tanto el numerador como el denominador por su MCD. Por ejemplo, `16/28` se reduce a `4/7`). Una manera de encontrar el MCD de dos enteros es factorizarlos y buscar factores comunes, pero hay un algoritmo famoso que es mucho más eficiente.
+El máximo común divisor (MCD) de dos enteros `a` y `b` se define como el mayor entero que divide tanto `a` como `b` sin dejar resto. Por ejemplo, el MCD de 16 y 28 es 4. En el [capítulo 2](./13-capitulo-2-intro.md), cuando investiguemos cómo implementar la aritmética de números racionales, necesitaremos ser capaces de calcular los MCD's para reducir los números racionales a sus términos más bajos (para reducir un número racional a los términos más bajos, debemos dividir tanto el numerador como el denominador por su MCD. Por ejemplo, `16/28` se reduce a `4/7`). Una manera de encontrar el MCD de dos enteros es factorizarlos y buscar factores comunes, pero hay un algoritmo famoso que es mucho más eficiente.
 
 La idea de este algoritmo se basa en la observación de que si `r` es el resto cuando `a` se divide por `b`, entonces los divisores comunes de `a` y `b` son precisamente los mismos que los divisores comunes de `b` y `r`. Por lo tanto, podemos usar la ecuación
 
@@ -637,7 +637,7 @@ Evitamos hacer esto aquí para minimizar el número de cosas en las que pensar a
 
 [^31]: La recursividad de la cola se conoce desde hace tiempo como un truco de optimización del compilador. Una base semántica coherente para la recursión de la cola fue proporcionada por Carl Hewitt (1977), quien la explicó en términos del modelo de computación de "pasar mensajes" que discutiremos en el [capítulo 3](./19-capitulo-3-intro.md). Inspirados por esto, Gerald Jay Sussman y Guy Lewis Steele Jr (ver Steele 1975) construyeron un intérprete de cola recurrente para Scheme. Más tarde Steele mostró cómo la recursividad de la cola es una consecuencia de la forma natural de compilar las llamadas de procedimiento (Steele 1977). El estándar IEEE para Scheme requiere que las implementaciones de Scheme sean recursivas. 
 
-[^32]: Un ejemplo de esto fue mencionado en la sección 1.1.3: El propio intérprete evalúa las expresiones usando un proceso árbol-recursivo.
+[^32]: Un ejemplo de esto fue mencionado en la [sección 1.1.3](./10-capitulo-1-seccion-1-1.md#113-Evaluando-Combinaciones): El propio intérprete evalúa las expresiones usando un proceso árbol-recursivo.
 
 [^33]: Por ejemplo, analice detalladamente cómo se aplica la regla de reducción al problema de hacer cambios de 10 centavos utilizando monedas de un centavo y de cinco centavos.
 
@@ -649,9 +649,9 @@ Evitamos hacer esto aquí para minimizar el número de cosas en las que pensar a
 
 [^37]: Más precisamente, el número de multiplicaciones requeridas es igual a 1 menos que la base logarítmica 2 de `n`, más el número de multiplicaciones en la representación binaria de `n`. Este total es siempre menos del doble de la base logarítmica 2 de `n`. Las constantes arbitrarias `k1` y `k2` en la definición de notación de orden implican que, para un proceso logarítmico, la base a la que se llevan los logaritmos no importa, así que todos esos procesos se describen como `Θ(log n)`.
 
-[^38]: Se preguntará por qué a alguien le importaría elevar los números a la 1000va potencia. Vea la [sección 1.2.6](#126-Ejemplo:-Evaluando-por-Primalidad).
+[^38]: Se preguntará por qué a alguien le importaría elevar los números a la 1000va potencia. Vea la [sección 1.2.6](./11-capitulo-1-seccion-1-2.md#126-Ejemplo-Evaluando-por-Primalidad).
 
-[^39]: Este algoritmo iterativo es antiguo.  Aparece en el *Chandah-sutra* de Áchárya Pingala, escrito antes del año 200 a.C. Ver Knuth 1981, [sección 4.6.3](), para una discusión completa y análisis de este y otros métodos de exponenciación.
+[^39]: Este algoritmo iterativo es antiguo.  Aparece en el *Chandah-sutra* de Áchárya Pingala, escrito antes del año 200 a.C. Ver Knuth 1981, sección 4.6.3, para una discusión completa y análisis de este y otros métodos de exponenciación.
 
 [^40]: Este algoritmo, que a veces se conoce como el "método ruso" (NdT: en inglés *Russian peasant method*) de multiplicación, es antiguo. Ejemplos de su uso se encuentran en el Papiro de Rhind, uno de los dos documentos matemáticos más antiguos que existen, escrito alrededor del año 1700 a.C. (y copiado a partir de un documento aún más antiguo) por un escriba egipcio llamado A'h-mose.
 
