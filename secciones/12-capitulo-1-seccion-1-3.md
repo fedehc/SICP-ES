@@ -546,11 +546,11 @@ Una manera de controlar tales oscilaciones es evitar que las estimaciones cambie
 
 (note que `y = (1/2)(y + x/y)` es una simple transformación de la ecuación `y = x/y`; para derivarla, sume `y` a ambos lados de la ecuación y divida por 2).
 
-Con esta modificación, el procedimiento de `raiz-cuadrada` funciona. De hecho, si desentrañamos las definiciones, podemos ver que la secuencia de aproximaciones a la raíz cuadrada generada en este caso es precisamente la misma que la generada por nuestro procedimiento original de raíz cuadrada de la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Este enfoque de promediar aproximaciones sucesivas a una solución, una técnica que llamamos *amortiguación promedio* (NdT: en inglés *average damping*), a menudo ayuda a la convergencia de las búsquedas de punto fijo.
+Con esta modificación, el procedimiento de `raiz-cuadrada` funciona. De hecho, si desentrañamos las definiciones, podemos ver que la secuencia de aproximaciones a la raíz cuadrada generada en este caso es precisamente la misma que la generada por nuestro procedimiento original de raíz cuadrada de la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Este enfoque de promediar aproximaciones sucesivas a una solución, una técnica que llamamos *atenuación media* (NdT: en inglés *average damping*), a menudo ayuda a la convergencia de las búsquedas de punto fijo.
 
 **Ejercicio 1.35.** Mostrar que la proporción áurea `Φ` ([sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión)) es un punto fijo de la transformación `x → 1 + 1/x`, y usar este hecho para calcular `Φ` mediante el procedimiento de `punto-fijo`.
 
-**Ejercicio 1.36.** Modificar `punto-fijo` para que imprima la secuencia de aproximaciones que genera, usando la nueva línea y mostrar las primitivas mostradas en el ejercicio 1.22. A continuación, encuentre una solución para `xˣ = 1000` buscando un punto fijo de `x → log(1000)/log(x)` (utilice el procedimiento de logaritmo primitivo de Scheme, que calcula los logaritmos naturales). Compare el número de pasos que se dan con y sin amortiguación promedio (tenga en cuenta que no puede empezar `punto fijo` con una estimación de 1, ya que esto causaría división por `log(1) = 0`).
+**Ejercicio 1.36.** Modificar `punto-fijo` para que imprima la secuencia de aproximaciones que genera, usando la nueva línea y mostrar las primitivas mostradas en el ejercicio 1.22. A continuación, encuentre una solución para `xˣ = 1000` buscando un punto fijo de `x → log(1000)/log(x)` (utilice el procedimiento de logaritmo primitivo de Scheme, que calcula los logaritmos naturales). Compare el número de pasos que se dan con y sin atenuación media (tenga en cuenta que no puede empezar `punto fijo` con una estimación de 1, ya que esto causaría división por `log(1) = 0`).
 
 **Ejercicio 1.37.** a. Una *fracción continuada* (NdT: en inglés *continued fraction*) infinita es una expresión de la forma
 
@@ -609,35 +609,35 @@ donde `x` está en radianes. Defina un procedimiento `(tan-fc x k)` que calcule 
 
 Los ejemplos anteriores demuestran cómo la habilidad de pasar procedimientos como argumentos mejora significativamente el poder expresivo de nuestro lenguaje de programación. Podemos lograr un poder aún más expresivo creando procedimientos cuyos valores devueltos son en sí mismos procedimientos.
 
-Podemos ilustrar esta idea mirando de nuevo el ejemplo de punto fijo descrito al final de la [sección 1.3.3](#133). Formulamos una nueva versión del procedimiento de raíz cuadrada como una búsqueda de punto fijo, comenzando con la observación de que `√x` es un punto fijo de la función `y → x/y`. Luego usamos amortiguación promedio (NdT: *average damping* en inglés) para hacer converger las aproximaciones. La amortiguación promedio es una técnica general muy útil en sí misma. Es decir, dada una función `f`, consideramos la función cuyo valor en `x` es igual al promedio de `x` y `f(x)`.
+Podemos ilustrar esta idea mirando de nuevo el ejemplo de punto fijo descrito al final de la [sección 1.3.3](./12-capitulo-1-seccion-1-3.md#133-Procedimientos-como-Métodos-Generales). Formulamos una nueva versión del procedimiento de raíz cuadrada como una búsqueda de punto fijo, comenzando con la observación de que `√x` es un punto fijo de la función `y → x/y`. Luego usamos atenuación media (NdT: *average damping* en inglés) para hacer converger las aproximaciones. La atenuación media es una técnica general muy útil en sí misma. Es decir, dada una función `f`, consideramos la función cuyo valor en `x` es igual al promedio de `x` y `f(x)`.
 
 Podemos expresar la idea de amortiguación media mediante el siguiente procedimiento:
 
 ```scheme
-(define (amort-prom f)
+(define (aten-media f)
   (lambda (x) (promedio x (f x))))
 ```
 
-La `amort-prom` es un procedimiento que toma como argumento un procedimiento `f` y devuelve como su valor un procedimiento (producido por el lambda) que, cuando se aplica a un número `x`, produce el promedio de `x` y `(f x)`. Por ejemplo, la aplicación de `amort-prom` al procedimiento `al-cuadrado` produce un procedimiento cuyo valor con un número `x` es el promedio de `x` y `x²`. Aplicando este procedimiento a 10 devuelve el promedio de 10 y 100, o 55: [^59]
+La `aten-media` es un procedimiento que toma como argumento un procedimiento `f` y devuelve como su valor un procedimiento (producido por el lambda) que, cuando se aplica a un número `x`, produce el promedio de `x` y `(f x)`. Por ejemplo, la aplicación de `aten-media` al procedimiento `al-cuadrado` produce un procedimiento cuyo valor con un número `x` es el promedio de `x` y `x²`. Aplicando este procedimiento a 10 devuelve el promedio de 10 y 100, o 55: [^59]
 
 ```scheme
-((amort-prom al-cuadrado) 10)
+((aten-media al-cuadrado) 10)
 55
 ```
 
-Usando `amort-prom`, podemos reformular el procedimiento de raíz cuadrada de la siguiente manera:
+Usando `aten-media`, podemos reformular el procedimiento de raíz cuadrada de la siguiente manera:
 
 ```scheme
 (define (raiz-cuadrada x)
-  (punto-fijo (amort-prom (lambda (y) (/ x y)))
+  (punto-fijo (aten-media (lambda (y) (/ x y)))
               1.0))
 ```
 
-Observe cómo esta formulación hace explícitas las tres ideas en el método: la búsqueda de punto fijo, la amortiguación promedio y la función `y → x/y`. Es instructivo comparar esta formulación del método de raíz cuadrada con la versión original dada en [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton). Tenga en cuenta que estos procedimientos expresan el mismo proceso, y observe cuán clara se vuelve la idea cuando expresamos el proceso en términos de estas abstracciones.  En general, hay muchas maneras de formular un proceso como un procedimiento. Los programadores experimentados saben cómo elegir formulaciones de procedimiento que son particularmente perspicaces, y en las que los elementos útiles del proceso se exponen como entidades separadas que pueden ser reutilizadas en otras aplicaciones. Como ejemplo simple de reutilización, note que la raíz cúbica de `x` es un punto fijo de la función `y → x/y²`, así que podemos generalizar inmediatamente nuestro procedimiento de raíz cuadrada a uno que extrae raíces cúbicas: [^60]
+Observe cómo esta formulación hace explícitas las tres ideas en el método: la búsqueda de punto fijo, la atenuación media y la función `y → x/y`. Es instructivo comparar esta formulación del método de raíz cuadrada con la versión original dada en [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton). Tenga en cuenta que estos procedimientos expresan el mismo proceso, y observe cuán clara se vuelve la idea cuando expresamos el proceso en términos de estas abstracciones.  En general, hay muchas maneras de formular un proceso como un procedimiento. Los programadores experimentados saben cómo elegir formulaciones de procedimiento que son particularmente perspicaces, y en las que los elementos útiles del proceso se exponen como entidades separadas que pueden ser reutilizadas en otras aplicaciones. Como ejemplo simple de reutilización, note que la raíz cúbica de `x` es un punto fijo de la función `y → x/y²`, así que podemos generalizar inmediatamente nuestro procedimiento de raíz cuadrada a uno que extrae raíces cúbicas: [^60]
 
 ```scheme
 (define (raiz-cubica x)
-  (punto-fijo (amort-prom (lambda (y) (/ x (al-cuadrado y))))
+  (punto-fijo (aten-media (lambda (y) (/ x (al-cuadrado y))))
               1.0))
 ```
 
@@ -653,7 +653,7 @@ f(x) = x - ―――――――
 
 y `Dg(x)` es la derivada de `g` evaluada en `x`. El método de Newton es el uso del método de punto fijo que vimos arriba para aproximar una solución de la ecuación encontrando un punto fijo de la función `f`. [^61] Para muchas funciones `g` y para suposiciones iniciales lo suficientemente buenas para `x`, el método de Newton converge muy rápidamente a una solución de `g(x) = 0`. [^62] 
 
-Para implementar el método de Newton como un procedimiento, primero debemos expresar la idea de la derivada. Nótese que la "derivada", al igual que la amortiguación promedio, es algo que transforma una función en otra función. Por ejemplo, el derivado de la función `x → x³` es la función `x → 3x²`. En general, si `g` es una función y `dx` es un número pequeño, entonces la derivada `Dg` de `g` es la función cuyo valor en cualquier número `x` es dado (en el límite de `dx`) por 
+Para implementar el método de Newton como un procedimiento, primero debemos expresar la idea de la derivada. Nótese que la "derivada", al igual que la atenuación media, es algo que transforma una función en otra función. Por ejemplo, el derivado de la función `x → x³` es la función `x → 3x²`. En general, si `g` es una función y `dx` es un número pequeño, entonces la derivada `Dg` de `g` es la función cuyo valor en cualquier número `x` es dado (en el límite de `dx`) por 
 
 ```
         g(x + dx) - g(x)
@@ -676,7 +676,7 @@ junto con la definición
 (define dx 0.00001)
 ```
 
-Al igual que `amort-prom`, `derivada` es un procedimiento que toma un procedimiento como argumento y devuelve otro procedimiento como valor. Por ejemplo, para aproximar la derivada de `x → x³` a 5 (cuyo valor exacto es 75) podemos evaluar
+Al igual que `aten-media`, `derivada` es un procedimiento que toma un procedimiento como argumento y devuelve otro procedimiento como valor. Por ejemplo, para aproximar la derivada de `x → x³` a 5 (cuyo valor exacto es 75) podemos evaluar
 
 ```scheme
 (define (al-cubo x) (* x x x))
@@ -715,12 +715,12 @@ Hemos visto dos maneras de expresar el cálculo de la raíz cuadrada como una in
 
 Este procedimiento muy general toma como argumentos un procedimiento `g` que calcula alguna función, un procedimiento que transforma `g`, y una suposición inicial. El resultado devuelto es un punto fijo de la función transformada.
 
-Usando esta abstracción, podemos reformular el primer cálculo de raíz cuadrada de esta sección (donde buscábamos un punto fijo de la versión de amortiguación promedio de `y → x/y`) como una instancia de este método general:
+Usando esta abstracción, podemos reformular el primer cálculo de raíz cuadrada de esta sección (donde buscábamos un punto fijo de la versión de atenuación media de `y → x/y`) como una instancia de este método general:
 
 ```scheme
 (define (sqrt x)
   (punto-fijo-transf (lambda (y) (/ x y))
-                     amort-prom
+                     aten-media
                      1.0))
 ```
 
@@ -733,7 +733,7 @@ De manera similar, podemos expresar el segundo cálculo de raíz cuadrada desde 
                      1.0))
 ```
 
-Comenzamos la [sección 1.3](#1.3) con la observación de que los procedimientos compuestos son un mecanismo de abstracción crucial, porque nos permiten expresar métodos generales de computación como elementos explícitos en nuestro lenguaje de programación. Ahora hemos visto cómo los procedimientos de orden superior nos permiten manipular estos métodos generales para crear más abstracciones.
+Comenzamos la [sección 1.3](./12-capitulo-1-seccion-1-3.md)) con la observación de que los procedimientos compuestos son un mecanismo de abstracción crucial, porque nos permiten expresar métodos generales de computación como elementos explícitos en nuestro lenguaje de programación. Ahora hemos visto cómo los procedimientos de orden superior nos permiten manipular estos métodos generales para crear más abstracciones.
 
 Como programadores, debemos estar atentos a las oportunidades para identificar las abstracciones subyacentes en nuestros programas y construir sobre ellas y generalizarlas para crear abstracciones más poderosas. Esto no quiere decir que uno siempre debe escribir programas de la manera más abstracta posible; los programadores expertos saben cómo elegir el nivel de abstracción apropiado para sus tareas. Pero es importante ser capaz de pensar en términos de estas abstracciones, para que podamos estar preparados para aplicarlas en nuevos contextos. La importancia de los procedimientos de orden superior es que nos permiten representar estas abstracciones explícitamente como elementos en nuestro lenguaje de programación, de modo que puedan ser manejados como otros elementos computacionales.
 
@@ -747,9 +747,44 @@ En general, los lenguajes de programación imponen restricciones a las formas en
 Lisp, a diferencia de otros lenguajes de programación conocidos, concede a los procedimientos un estatus de primera clase. Esto plantea desafíos para una implementación eficiente, pero la ganancia resultante en poder expresivo es enorme. [^66]
 
 
-# ---Traducción pendiente---
+**Ejercicio 1.40.** Definir un procedimiento `al-cubo` que puede ser usado junto con el procedimiento `metodo-newton` en expresiones de la forma
+
+```scheme
+(metodo-newton (al-cubo a b c) 1)
+```
+
+para aproximar los ceros de la cúbica `x3 + ax2 + bx + c`. 
+
+**Ejercicio 1.41.** Definir un procedimiento `duplicar` que tome un procedimiento de un argumento como argumento y que devuelva un procedimiento que aplique el procedimiento original dos veces. Por ejemplo, si `inc` es un procedimiento que añade 1 a su argumento, entonces `(duplicar inc)` debería ser un procedimiento que añade 2. ¿Qué valor es devuelto por
+
+```scheme
+(((duplicar (duplicar duplicar)) inc) 5)
+```
+
+**Ejercicio 1.42.** Sean `f` y `g` dos funciones de un solo argumento. La composición `f` después de `g` se define como la función `x → f(g(x))`. Defina un procedimiento que implemente la composición. Por ejemplo, si `inc` es un procedimiento que añade 1 a su argumento, 
+
+```scheme
+((componer al-cuadrado inc) 6)
+49
+```
+
+**Ejercicio 1.43.** Si `f` es una función numérica y `n` es un entero positivo, entonces podemos formar la enésima aplicación repetida de `f`, que se define como la función cuyo valor en `x` es `f(f(...(f(x)))...)`. Por ejemplo, si `f` es la función `x → x + 1`, entonces la enésima aplicación repetida de `f` es la función `x → x + n`. Si `f` es la operación de elevar al cuadrado un número, entonces la enésima aplicación repetida de `f` es la función que eleva su argumento a la potencia de 2ⁿ. Escribir un procedimiento que tome como entradas un procedimiento que calcule `f` y un entero positivo `n` y que devuelva el procedimiento que calcule la enésima aplicación repetida de `f`. Su procedimiento debería poder usarse de la siguiente manera:
+
+```scheme
+((repetir al-cuadrado 2) 5)
+625
+```
+
+Sugerencia: Puede ser conveniente usar `componer` a partir del ejercicio 1.42.
+
+**Ejercicio 1.44.** La idea de *suavizar* (NdT: *smoothing* en inglés) una función es un concepto importante en el procesamiento de señales. Si `f` es una función y `dx` es un número pequeño, entonces la versión suavizada de `f` es la función cuyo valor en un punto `x` es el promedio de `f(x - dx)`, `f(x)`, y `f(x + dx)`. Escriba un procedimiento `suave` que tome como entrada un procedimiento que calcule `f` y devuelva un procedimiento que calcule el `f` suavizado. A veces es valioso suavizar repetidamente una función (es decir, suavizar la función suavizada, etc.) para obtener la función n-veces suavizado.  Muestre cómo generar la *función suavizada n-veces* de cualquier función dada usando `suave` y `repetir` del ejercicio 1.43.
+
+**Ejercicio 1.45.** Hemos visto en la [sección 1.3.3](./12-capitulo-1-seccion-1-3.md#133-Procedimientos-como-Métodos-Generales) que intentar calcular raíces cuadradas encontrando ingenuamente un punto fijo de `y → x/y` no converge, y que esto puede ser arreglado con la atenuación media. El mismo método funciona para encontrar raíces cúbicas como puntos fijos de la atenuación media `y → x/y²`. Desafortunadamente, el proceso no funciona para las cuartas raíces: una sola atenuación media no es suficiente para hacer converger una búsqueda de punto fijo para `y → x/y³`. Por otro lado, si usamos la atenuación media dos veces (es decir, usamos la atenuación media de la atenuación media de `y → x/y³`), la búsqueda de punto fijo converge. Haga algunos experimentos para determinar cuántas atenuaciones medias se requieren para calcular las n-raíces como una búsqueda de punto fijo basada en la atenuación media repetida de `y → x/yⁿ-¹`. Úselo para implementar un procedimiento sencillo para calcular las n-raíces usando `punto-fijo`, `aten-media`, y el procedimiento `repetir` del ejercicio 1.43. Suponga que cualquier operación aritmética que necesite está disponible como primitiva.
+
+**Ejercicio 1.46.** Varios de los métodos numéricos descritos en este capítulo son ejemplos de una estrategia computacional extremadamente general conocida como *mejora iterativa*. La mejora iterativa dice que, para calcular algo, empezamos con una estimación inicial de la respuesta, probamos si la estimación es lo suficientemente buena y, de lo contrario, mejoramos la estimación y continuamos el proceso utilizando la estimación mejorada como la nueva estimación. Escribir un procedimiento `mejora-iterativa` que tome dos procedimientos como argumentos: un método para determinar si una estimación es lo suficientemente buena y un método para mejorar una estimación. `mejora-iterativa` debe devolver como valor un procedimiento que tome una estimación como argumento y siga mejorando la estimación hasta que sea lo suficientemente bueno. Reescribir el procedimiento `raiz-cuadrada` de la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton) y el procedimiento de `punto-fijo` de la [sección 1.3.3](./12-capitulo-1-seccion-1-3.md#133-Procedimientos-como-Métodos-Generales) en términos de `mejora iterativa`.
 
 ___
+
 
 [^49]: Esta serie, usualmente escrita en la forma equivalente `(π/4) = 1 - (1/3) + (1/5) - (1/7) + ...`, se debe a Leibniz. Veremos cómo usar esto como base para algunos trucos numéricos en la [sección 3.5.3](./24-capitulo-3-seccion-3-5.md#353-).
 
