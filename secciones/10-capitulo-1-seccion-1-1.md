@@ -1,6 +1,6 @@
 ## 1.1 Los Elementos de la Programación
 
-Un lenguaje de programación avanzado es más que un medio para instruir a una computadora para que realice tareas. El lenguaje también sirve como marco desde el cual organizamos nuestras ideas acerca de los procesos. Por lo tanto, cuando describimos un lenguaje, debemos prestar especial atención a los medios que el lenguaje proporciona para combinar ideas simples para formar ideas más complejas. Todo lenguaje avanzado tiene tres mecanismos para lograr esto:
+Un lenguaje de programación potente es más que un medio para instruir a una computadora para que realice tareas. El lenguaje también sirve como marco desde el cual organizamos nuestras ideas acerca de los procesos. Por lo tanto, cuando describimos un lenguaje, debemos prestar especial atención a los medios que el lenguaje proporciona para combinar ideas simples para formar ideas más complejas. Todo lenguaje potente tiene tres mecanismos para lograr esto:
 
 * **expresiones primitivas**, que representan las entidades más simples que conciernen al lenguaje,
 
@@ -8,7 +8,7 @@ Un lenguaje de programación avanzado es más que un medio para instruir a una c
 
 * **medios de abstracción**, por el cual los elementos compuestos pueden ser nombrados y manipulados como unidades.
 
-En programación, nos ocupamos de dos tipos de elementos: procedimientos y datos (más adelante descubriremos que realmente no son tan distintos). Informalmente, los datos son "cosas" que queremos manipular, y los procedimientos son descripciones de las reglas para manipular los datos. Por lo tanto, cualquier lenguaje de programación avanzado debería ser capaz de describir datos y procedimientos primitivos y debería tener métodos para combinar y abstraer procedimientos y datos.
+En programación, nos ocupamos de dos tipos de elementos: procedimientos y datos (más adelante descubriremos que realmente no son tan distintos). Informalmente, los datos son "cosas" que queremos manipular, y los procedimientos son descripciones de las reglas para manipular los datos. Por lo tanto, cualquier lenguaje de programación potente debería ser capaz de describir datos y procedimientos primitivos y debería tener métodos para combinar y abstraer procedimientos y datos.
 
 En este capítulo sólo trataremos con datos numéricos simples para que podamos concentrarnos en las reglas para la construcción de procedimientos.[^4] En capítulos posteriores veremos que estas mismas reglas nos permiten construir procedimientos para manipular también datos compuestos.
 
@@ -163,7 +163,7 @@ Estas excepciones a la regla general de evaluación son llamadas *formas especia
 
 ### 1.1.4 Procedimientos Compuestos
 
-Hemos identificado en Lisp algunos de los elementos que deben aparecer en cualquier lenguaje de programación avanzado:
+Hemos identificado en Lisp algunos de los elementos que deben aparecer en cualquier lenguaje de programación potente:
 
 * Los números y las operaciones aritméticas son datos y procedimientos primitivos.
 
@@ -747,7 +747,7 @@ Este anidamiento de definiciones, llamado *estructura de bloques*, es básicamen
     (raiz-iter 1.0))
 ```
 
-Usaremos ampliamente la estructura de bloques para ayudarnos a descomponer programas grandes en piezas más manejables.[^28] La idea de la estructura de bloques se originó con el lenguaje de programación Algol 60. Aparece en la mayoría de los lenguajes de programación más avanzados y es una herramienta importante para ayudar a organizar la construcción de programas grandes.
+Usaremos ampliamente la estructura de bloques para ayudarnos a descomponer programas grandes en piezas más manejables.[^28] La idea de la estructura de bloques se originó con el lenguaje de programación Algol 60. Aparece en la mayoría de los lenguajes de programación más potentes y es una herramienta importante para ayudar a organizar la construcción de programas grandes.
 
 ___
 

@@ -48,7 +48,7 @@ El tercero calcula la suma de una secuencia de términos de la serie
 1 . 3   5 . 7   9  . 11
 ```
 
-que converge en `π/8` (muy lentamente): [^49]
+que converge en `π/8` (muy lentamente):[^49]
 
 ```scheme
 (define (pi-suma a b)
@@ -119,7 +119,7 @@ Entonces podemos sumar los números enteros de 1 a 10:
 55
 ```
 
-También podemos definir `pi-suma` de la misma manera: [^50]
+También podemos definir `pi-suma` de la misma manera:[^50]
 
 ```scheme
 (define (pi-suma a b)
@@ -185,7 +185,7 @@ donde `h = (b - a)/n`, para algunos incluso enteros `n`, y `yₖ = f(a + kh)` (a
 ```
 
 **Ejercicio 1.31.**
-a.  El procedimiento `suma` es sólo el más simple de un vasto número de abstracciones similares que pueden ser tomadas como procedimientos de orden superior. [^51] Escriba un procedimiento análogo llamado `producto` que devuelva el producto de los valores de una función en puntos sobre un rango dado. Mostrar cómo definir `factorial` en términos de `producto`. También use `producto` para calcular aproximaciones al uso de la fórmula [^52].
+a.  El procedimiento `suma` es sólo el más simple de un vasto número de abstracciones similares que pueden ser tomadas como procedimientos de orden superior.[^51] Escriba un procedimiento análogo llamado `producto` que devuelva el producto de los valores de una función en puntos sobre un rango dado. Mostrar cómo definir `factorial` en términos de `producto`. También use `producto` para calcular aproximaciones al uso de la fórmula[^52].
 
 ```
 π   2 . 4 . 4 . 6 . 6 . 8 ...
@@ -280,7 +280,7 @@ Como cualquier expresión que tenga un procedimiento como su valor, una expresi�
 12
 ```
 
-o, más generalmente, en cualquier contexto en el que normalmente utilizaríamos un nombre de procedimiento. [^53]
+o, más generalmente, en cualquier contexto en el que normalmente utilizaríamos un nombre de procedimiento.[^53]
 
 
 #### Usando `let` para crear variables locales
@@ -402,7 +402,7 @@ A veces podemos usar definiciones internas para obtener el mismo efecto que con 
      (* a b)))
 ```
 
-Sin embargo, preferimos usar `let` en situaciones como ésta y usar `define` internos sólo para procedimientos internos. [^54]
+Sin embargo, preferimos usar `let` en situaciones como ésta y usar `define` internos sólo para procedimientos internos.[^54]
 
 
 **Ejercicio 1.34.** Supongamos que definimos el procedimiento
@@ -455,7 +455,7 @@ Asumimos que inicialmente se nos da la función `f` junto con puntos en los que 
   (< (abs (- x y)) 0.001))
 ```
 
-`buscar` es difícil de usar directamente, porque podemos accidentalmente darles puntos en los que los valores de `f` no tienen el signo requerido, en cuyo caso obtendríamos una respuesta errónea. En su lugar usaremos `buscar` a través del siguiente procedimiento, que comprueba cuál de los puntos finales tiene un valor de función negativo y cuál tiene un valor positivo, y llamará al procedimiento `buscar` de forma acorde. Si la función tiene el mismo signo en los dos puntos dados, el método de intervalo medio no se puede utilizar, en cuyo caso el procedimiento señala un error. [^56]
+`buscar` es difícil de usar directamente, porque podemos accidentalmente darles puntos en los que los valores de `f` no tienen el signo requerido, en cuyo caso obtendríamos una respuesta errónea. En su lugar usaremos `buscar` a través del siguiente procedimiento, que comprueba cuál de los puntos finales tiene un valor de función negativo y cuál tiene un valor positivo, y llamará al procedimiento `buscar` de forma acorde. Si la función tiene el mismo signo en los dos puntos dados, el método de intervalo medio no se puede utilizar, en cuyo caso el procedimiento señala un error.[^56]
 
 ```scheme
 (define (metodo-intervalo-medio f a b)
@@ -511,7 +511,7 @@ hasta que el valor no cambie demasiado. Usando esta idea, podemos idear un proce
   (probar primera-estimacion))
 ```
 
-Por ejemplo, podemos usar este método para aproximar el punto fijo de la función coseno, comenzando con 1 como una aproximación inicial: [^57]
+Por ejemplo, podemos usar este método para aproximar el punto fijo de la función coseno, comenzando con 1 como una aproximación inicial:[^57]
 
 ```scheme
 (punto-fijo cos 1.0)
@@ -526,7 +526,7 @@ Similarmente, podemos encontrar una solución a la ecuación `y = sin y + cos y`
 1.2587315962971173
 ```
 
-El proceso de punto fijo nos recuerda al proceso que usamos para encontrar raíces cuadradas en la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Ambos se basan en la idea de mejorar repetidamente una estimación hasta que el resultado satisfaga algún criterio. De hecho, podemos formular fácilmente el cálculo de `raíz-cuadrada` como una búsqueda de punto fijo. Calcular la raíz cuadrada de un número `x` requiere encontrar un `y` tal que `y² = x`. Poniendo esta ecuación en la forma equivalente `y = x/y`, reconocemos que estamos buscando un punto fijo de la función [^58] `y → x/y`, y por lo tanto podemos intentar calcular raíces cuadradas como
+El proceso de punto fijo nos recuerda al proceso que usamos para encontrar raíces cuadradas en la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Ambos se basan en la idea de mejorar repetidamente una estimación hasta que el resultado satisfaga algún criterio. De hecho, podemos formular fácilmente el cálculo de `raíz-cuadrada` como una búsqueda de punto fijo. Calcular la raíz cuadrada de un número `x` requiere encontrar un `y` tal que `y² = x`. Poniendo esta ecuación en la forma equivalente `y = x/y`, reconocemos que estamos buscando un punto fijo de la función[^58] `y → x/y`, y por lo tanto podemos intentar calcular raíces cuadradas como
 
 ```scheme
 (define (raiz-cuadrada x)
@@ -618,7 +618,7 @@ Podemos expresar la idea de amortiguación media mediante el siguiente procedimi
   (lambda (x) (promedio x (f x))))
 ```
 
-La `aten-media` es un procedimiento que toma como argumento un procedimiento `f` y devuelve como su valor un procedimiento (producido por el lambda) que, cuando se aplica a un número `x`, produce el promedio de `x` y `(f x)`. Por ejemplo, la aplicación de `aten-media` al procedimiento `al-cuadrado` produce un procedimiento cuyo valor con un número `x` es el promedio de `x` y `x²`. Aplicando este procedimiento a 10 devuelve el promedio de 10 y 100, o 55: [^59]
+La `aten-media` es un procedimiento que toma como argumento un procedimiento `f` y devuelve como su valor un procedimiento (producido por el lambda) que, cuando se aplica a un número `x`, produce el promedio de `x` y `(f x)`. Por ejemplo, la aplicación de `aten-media` al procedimiento `al-cuadrado` produce un procedimiento cuyo valor con un número `x` es el promedio de `x` y `x²`. Aplicando este procedimiento a 10 devuelve el promedio de 10 y 100, o 55:[^59]
 
 ```scheme
 ((aten-media al-cuadrado) 10)
@@ -633,7 +633,7 @@ Usando `aten-media`, podemos reformular el procedimiento de raíz cuadrada de la
               1.0))
 ```
 
-Observe cómo esta formulación hace explícitas las tres ideas en el método: la búsqueda de punto fijo, la atenuación media y la función `y → x/y`. Es instructivo comparar esta formulación del método de raíz cuadrada con la versión original dada en [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton). Tenga en cuenta que estos procedimientos expresan el mismo proceso, y observe cuán clara se vuelve la idea cuando expresamos el proceso en términos de estas abstracciones.  En general, hay muchas maneras de formular un proceso como un procedimiento. Los programadores experimentados saben cómo elegir formulaciones de procedimiento que son particularmente perspicaces, y en las que los elementos útiles del proceso se exponen como entidades separadas que pueden ser reutilizadas en otras aplicaciones. Como ejemplo simple de reutilización, note que la raíz cúbica de `x` es un punto fijo de la función `y → x/y²`, así que podemos generalizar inmediatamente nuestro procedimiento de raíz cuadrada a uno que extrae raíces cúbicas: [^60]
+Observe cómo esta formulación hace explícitas las tres ideas en el método: la búsqueda de punto fijo, la atenuación media y la función `y → x/y`. Es instructivo comparar esta formulación del método de raíz cuadrada con la versión original dada en [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton). Tenga en cuenta que estos procedimientos expresan el mismo proceso, y observe cuán clara se vuelve la idea cuando expresamos el proceso en términos de estas abstracciones.  En general, hay muchas maneras de formular un proceso como un procedimiento. Los programadores experimentados saben cómo elegir formulaciones de procedimiento que son particularmente perspicaces, y en las que los elementos útiles del proceso se exponen como entidades separadas que pueden ser reutilizadas en otras aplicaciones. Como ejemplo simple de reutilización, note que la raíz cúbica de `x` es un punto fijo de la función `y → x/y²`, así que podemos generalizar inmediatamente nuestro procedimiento de raíz cuadrada a uno que extrae raíces cúbicas:[^60]
 
 ```scheme
 (define (raiz-cubica x)
@@ -651,7 +651,7 @@ f(x) = x - ―――――――
             Dg(x)    
 ```
 
-y `Dg(x)` es la derivada de `g` evaluada en `x`. El método de Newton es el uso del método de punto fijo que vimos arriba para aproximar una solución de la ecuación encontrando un punto fijo de la función `f`. [^61] Para muchas funciones `g` y para suposiciones iniciales lo suficientemente buenas para `x`, el método de Newton converge muy rápidamente a una solución de `g(x) = 0`. [^62] 
+y `Dg(x)` es la derivada de `g` evaluada en `x`. El método de Newton es el uso del método de punto fijo que vimos arriba para aproximar una solución de la ecuación encontrando un punto fijo de la función `f`.[^61] Para muchas funciones `g` y para suposiciones iniciales lo suficientemente buenas para `x`, el método de Newton converge muy rápidamente a una solución de `g(x) = 0`.[^62] 
 
 Para implementar el método de Newton como un procedimiento, primero debemos expresar la idea de la derivada. Nótese que la "derivada", al igual que la atenuación media, es algo que transforma una función en otra función. Por ejemplo, el derivado de la función `x → x³` es la función `x → 3x²`. En general, si `g` es una función y `dx` es un número pequeño, entonces la derivada `Dg` de `g` es la función cuyo valor en cualquier número `x` es dado (en el límite de `dx`) por 
 
@@ -696,7 +696,7 @@ Con la ayuda de `derivada`, podemos expresar el método de Newton como un proces
   (punto-fijo (transf-newton  g) estimacion))
 ```
 
-El procedimiento `transf-newton` expresa la fórmula al principio de esta sección, y `metodo-newton` es rápidamente definido en términos de esto. Toma como argumento un procedimiento que calcula la función para la que queremos encontrar un cero, junto con una conjetura inicial. Por ejemplo, para encontrar la raíz cuadrada de `x`, podemos usar el método de Newton para encontrar un cero de la función `y → y² - x` comenzando con una suposición inicial de 1. [^63] Esto proporciona otra forma del procedimiento de raíz cuadrada:
+El procedimiento `transf-newton` expresa la fórmula al principio de esta sección, y `metodo-newton` es rápidamente definido en términos de esto. Toma como argumento un procedimiento que calcula la función para la que queremos encontrar un cero, junto con una conjetura inicial. Por ejemplo, para encontrar la raíz cuadrada de `x`, podemos usar el método de Newton para encontrar un cero de la función `y → y² - x` comenzando con una suposición inicial de 1.[^63] Esto proporciona otra forma del procedimiento de raíz cuadrada:
 
 ```scheme
 (define (raiz-cuadrada x)
@@ -737,14 +737,14 @@ Comenzamos la [sección 1.3](./12-capitulo-1-seccion-1-3.md)) con la observació
 
 Como programadores, debemos estar atentos a las oportunidades para identificar las abstracciones subyacentes en nuestros programas y construir sobre ellas y generalizarlas para crear abstracciones más poderosas. Esto no quiere decir que uno siempre debe escribir programas de la manera más abstracta posible; los programadores expertos saben cómo elegir el nivel de abstracción apropiado para sus tareas. Pero es importante ser capaz de pensar en términos de estas abstracciones, para que podamos estar preparados para aplicarlas en nuevos contextos. La importancia de los procedimientos de orden superior es que nos permiten representar estas abstracciones explícitamente como elementos en nuestro lenguaje de programación, de modo que puedan ser manejados como otros elementos computacionales.
 
-En general, los lenguajes de programación imponen restricciones a las formas en que se pueden manipular los elementos computacionales. Se dice que los elementos con menos restricciones tienen estatus de *primera clase*. Algunos de los "derechos y privilegios" de los elementos de primera clase son: [^64]
+En general, los lenguajes de programación imponen restricciones a las formas en que se pueden manipular los elementos computacionales. Se dice que los elementos con menos restricciones tienen estatus de *primera clase*. Algunos de los "derechos y privilegios" de los elementos de primera clase son:[^64]
 
 * Pueden ser nombrados por variables.
 * Pueden pasar como argumentos a los procedimientos.
 * Pueden ser devueltos como resultado de los procedimientos.
-* Pueden incluirse en estructuras de datos. [^65]
+* Pueden incluirse en estructuras de datos.[^65]
 
-Lisp, a diferencia de otros lenguajes de programación conocidos, concede a los procedimientos un estatus de primera clase. Esto plantea desafíos para una implementación eficiente, pero la ganancia resultante en poder expresivo es enorme. [^66]
+Lisp, a diferencia de otros lenguajes de programación conocidos, concede a los procedimientos un estatus de primera clase. Esto plantea desafíos para una implementación eficiente, pero la ganancia resultante en poder expresivo es enorme.[^66]
 
 
 **Ejercicio 1.40.** Definir un procedimiento `al-cubo` que puede ser usado junto con el procedimiento `metodo-newton` en expresiones de la forma
