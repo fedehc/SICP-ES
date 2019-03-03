@@ -3,6 +3,8 @@
 Traducción al español de la 2° edición del libro "Structure and Interpretation
 of Computer Programs" (SICP).
 
+Haga clic en la imágen para saltar a la sección de Contenidos y ver el avance de las traducción hasta el momento:
+
 [![Imagen](/secciones/imagenes/SICP-traducido-variante-1.png)](./secciones/04-contenidos.md)
 
 > Libro de Mago. Hal Abelson, Jerry Sussman y Julie Sussman's *Estructura e Interpretación de Programas Informáticos* (MIT Press, 1984; ISBN 0-262-01077-1), un excelente texto de ciencias de la computación usado en cursos introductorios del MIT. Llamado así por el mago de la cubierta. Una de las biblias del mundo LISP/Scheme. También, menos conocido como el *Libro Púrpura*.
@@ -39,7 +41,7 @@ Contemplo en un futuro no muy lejano recrear una versión interactiva online, ta
 
 Aclaro que no soy traductor profesional, o programador experimentado, o siquiera aún un escritor o redactor especializado. Tampoco soy el primero en intentar traducir esta obra al español **\***, pero al menos tengo la esperanza de ser uno de los primeros en lograr terminarlo. Hoy, gracias a la ayuda de traductores online de uso gratuito como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
 
-**\*** *Varias personas han intentado traducirlo, pero en todos los casos que he podido ver ninguno terminó completar los 5 capitulos (en realidad ni siquiera el 1° capítulo). Y en todos estos casos, la calidad de la traducción siempre dejaba mucho que desear porque resultaban ser traducciones automáticas sin corrección alguna.*
+**\*** *Varias personas han intentado traducirlo, pero en todos los casos que he podido ver ninguno que haya completado los 5 capitulos. Y en todos estos casos, la calidad de la traducción siempre dejaba mucho que desear porque resultaban ser traducciones automáticas sin corrección alguna.*
 
 
 ## Aclaraciones
@@ -59,3 +61,9 @@ Aclaro que no soy traductor profesional, o programador experimentado, o siquiera
 4) Cualquier corrección, aporte o sugerencias a esta traducción es más que bienvenido. Aunque desde ya me reservo el derecho de tomar aquellas correcciones, aportes o sugerencias que considere necesarios o convenientes. 
 
 5) Cualquiera es libre de hacer su propio fork de este repositorio o hacer sus propias traducciones a partir de la misma.
+
+6) De momento solo he terminado con la traducción del capitulo 1 del libro. Y aún queda pendiente una revisión completa de estilo y verificar el perfecto funcionamiento de todos los códigos que se encuentran en ejemplos y ejercicios, ya que también estos fueron traducidos.
+
+Pero esto será todo de mi parte hasta nuevo aviso. La traducción de este capítulo me ha llevado más tiempo de lo que hubiese imaginado: 2 meses de trabajo continuo para ser exactos, como puede verse [en mi profile](https://github.com/FedeHC). Creo que fui bastante ingenuo en suponer que podría hacerlo en menos tiempo y con menos esfuerzo. Como sea, creo que resulta lógico asumir que completar los otros 4 capítulos restantes me llevaría alrededor de unos 8 meses, siguiendo el mismo ritmo diario llevado hasta ahora. Y siendo franco, aunque aún dispongo de tiempo, tengo también otras tareas pendientes. También debo confesar que he perdido un poco el interés en continuar de esta manera, ya que leer cada sección, completar aunque sea algunos pocos ejercicios y proceder a traducirlo inmediatamente me insume un esfuerzo enorme.
+
+Así que de ahora en más, el plan será primero disponer de un tiempo para leer completo cada capítulo, hacer todos los ejercicios que desee, y ver después de terminado con uno de proceder a traducirlo cuando haya un poco de ganas. :)
