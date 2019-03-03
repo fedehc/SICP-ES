@@ -29,7 +29,7 @@ el intérprete responderá imprimiendo[^5]
 > 486
 ```
 
-(NdT: se usará de ahora en más el símbolo inicial `>` para señalar que a continuación viene el resultado de una expresión, aunque en el libro original este símbolo no se usa; en su lugar los autores solo ponen los resultados *en cursiva* y pero la versión de Markdown de Github usado en esta traducción no nos permite hacer esto en los códigos).
+(NdT: se usará de ahora en más el símbolo inicial `>` para señalar que a continuación viene el resultado de una expresión, aunque en el libro original este símbolo no se usa; en su lugar los autores solo ponen los resultados *en cursiva*, pero la versión de Markdown de Github usado en esta traducción no nos permite realizar este efecto en los códigos).
 
 Las expresiones que representan números pueden ser combinados en una expresión que represente un procedimiento primitivo (como `+` o `*`) para formar una expresión compuesta que represente la aplicación del procedimiento a esos números. Por ejemplo:
 
