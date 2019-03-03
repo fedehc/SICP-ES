@@ -108,10 +108,14 @@ Aquí hay más ejemplos del uso de `define`:
 
 ```scheme
 (define pi 3.14159)
+
 (define radio 10)
+
 (* pi (* radio radio))
 314.159
+
 (define circunferencia (* 2 pi radio))
+
 circunferencia
 62.8318
 ```
@@ -304,18 +308,21 @@ De acuerdo con la descripción de evaluación dada en la [sección 1.1.3](./10-c
 
 procedería de acuerdo a la secuencia de expansiones
 
-
 ```scheme
 (suma-de-cuadrados (+ 5 1) (* 5 2))
-(+  (al-cuadrado (+ 5 1))   (al-cuadrado (* 5 2))
-(+  (* (+ 5 1) (+ 5 1))  (* (* 5 2) (* 5 2)))
+
+(+  (al-cuadrado  (+ 5 1)) (al-cuadrado (* 5 2)))
+
+(+  (* (+ 5 1) (+ 5 1))    (* (* 5 2) (* 5 2)))
 ```
 
 seguido de las reducciones
 
 ```scheme
-(+  (* 6 6)              (* 10 10))
-(+   36                   100)
+(+  (* 6 6)                (* 10 10))
+
+(+  36                     100)
+
 136
 ```
 
@@ -468,8 +475,8 @@ o alternativamente como
 **Ejercicio 1.2.** Traduzca la siguiente expresión en forma de prefijo
 
 ```
-5 + 4 + (2 - (3 - (6 + 4/5) ) )
-―――――――――――――――――――――――――――――――
+5 + 4 + (2 - (3 - (6 + 4/5)))
+―――――――――――――――――――――――――――――
        3(6 - 2)(2 - 7)
 ```
 
@@ -750,6 +757,7 @@ Este anidamiento de definiciones, llamado *estructura de bloques*, es básicamen
 Usaremos ampliamente la estructura de bloques para ayudarnos a descomponer programas grandes en piezas más manejables.[^28] La idea de la estructura de bloques se originó con el lenguaje de programación Algol 60. Aparece en la mayoría de los lenguajes de programación más potentes y es una herramienta importante para ayudar a organizar la construcción de programas grandes.
 
 ___
+
 
 [^4]: La caracterización de los números como "datos simples" es un engaño descarado. De hecho, el tratamiento de los números es uno de los aspectos más difíciles y confusos de cualquier lenguaje de programación. Algunas cuestiones típicas implicadas son estas: Algunos sistemas informáticos distinguen los números enteros, como el 2, de los números reales, como el 2.71. ¿Es el número real 2.00 diferente del número entero 2? ¿Son las operaciones aritméticas utilizadas para los números enteros las mismas que las operaciones utilizadas para los números reales? ¿6 dividido por 2 produce 3, o 3.0? ¿Qué tan grande es el número que podemos representar? ¿Cuántos decimales de precisión podemos representar? ¿Es el rango de números enteros el mismo que el rango de números reales? Más allá de estas preguntas, por supuesto, subyace un conjunto de cuestiones relativas a los errores de redondeo y truncamiento, es decir, toda la ciencia del análisis numérico. Ya que nuestro enfoque en este libro está en el diseño de programas a gran escala en lugar de en técnicas numéricas, vamos a ignorar estos problemas. Los ejemplos numéricos de este capítulo mostrarán el comportamiento habitual de redondeo que se observa cuando se utilizan operaciones aritméticas que conservan un número limitado de decimales de precisión en operaciones no enteras.
 

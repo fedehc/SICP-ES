@@ -310,15 +310,15 @@ para reducir el tamaño del argumento de `sen` (para los propósitos de este eje
 
 (define (p x) (- (* 3 x) (* 4 (cubo x))))
 
-(define (seno angulo)
+(define (sen angulo)
    (if (not (> (abs angulo) 0.1))
        angulo
-       (p (seno (/ angulo 3.0)))))
+       (p (sen (/ angulo 3.0)))))
 ```
 
-a. ¿Cuántas veces se aplicará el procedimiento `p` cuando `seno(12.15)` es evaluado?
+a. ¿Cuántas veces se aplicará el procedimiento `p` cuando `sen(12.15)` es evaluado?
 
-b. ¿Cuál es el orden de crecimiento en espacio y en número de pasos (en función de `a`) utilizados por el proceso generado por el procedimiento `seno` cuando `(seno a)` es evaluado?
+b. ¿Cuál es el orden de crecimiento en espacio y en número de pasos (en función de `a`) utilizados por el proceso generado por el procedimiento `sen` cuando `(sen a)` es evaluado?
 
 
 ### 1.2.4 Exponenciación
@@ -618,6 +618,7 @@ Usando este procedimiento, escriba un procedimiento `buqueda-de-primos` que comp
 **Ejercicio 1.28.** Una variante del test Fermat que no se puede engañar se llama el test Miller-Rabin (Miller 1976; Rabin 1980). Este parte de una forma alternativa del Pequeño Teorema de Fermat, que establece que si `n` es un número primo y `a` es un número entero positivo menor que `n`, entonces `a` elevada a `(n - 1)` potencia es congruente con `1` módulo `n`. Para probar la primalidad de un número `n` por la prueba de Miller-Rabin, elegimos un número aleatorio `a < n` y elevamos `a` a la  `(n - 1)` potencia modulo `n` usando el procedimiento `exp-mod`. Sin embargo, siempre que realicemos el paso de elevar al cuadrado en `exp-mod`, comprobaremos si hemos descubierto una "raíz cuadrada no trivial de `1` módulo `n`", es decir, un número no igual a 1 o `n - 1` cuyo cuadrado es igual a `1` módulo `n`. Es posible probar que si existe tal raíz cuadrada no trivial de 1, entonces `n` no es primo. También es posible probar que si `n` es un número impar que no es primo, entonces, para al menos la mitad de los números `a < n`, el cálculo de `aⁿ⁻¹` de esta manera revelará una raíz cuadrada no trivial de `1` módulo `n` (esta es la razón por la que la prueba de Miller-Rabin no puede ser engañada). Modifique el procedimiento `exp-mod` para señalar si este descubre una raíz cuadrada no trivial de 1, y utilícelo para implementar la prueba de Miller-Rabin con un procedimiento análogo a `test-fermat`. Revise su procedimiento probando varios primos y no primos conocidos. Sugerencia: Una forma conveniente de señalar con `exp-mod` es que este devuelva 0.
 
 ___
+
 
 [^29]: En un programa real probablemente usaríamos la estructura de bloques introducida en la última sección para ocultar la definición de `fact-iter`:
 

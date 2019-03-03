@@ -469,10 +469,10 @@ Asumimos que inicialmente se nos da la función `f` junto con puntos en los que 
            (error "Los valores no son de signo opuesto" a b)))))
 ```
 
-El siguiente ejemplo utiliza el método de intervalo medio para aproximarse como la raíz entre 2 y 4 de `sin x = 0`:
+El siguiente ejemplo utiliza el método de intervalo medio para aproximarse como la raíz entre 2 y 4 de `sen x = 0`:
 
 ```scheme
-(metodo-intervalo-medio sin 2.0 4.0)
+(metodo-intervalo-medio sen 2.0 4.0)
 3.14111328125
 ```
 
@@ -518,10 +518,10 @@ Por ejemplo, podemos usar este método para aproximar el punto fijo de la funci�
 .7390822985224023
 ```
 
-Similarmente, podemos encontrar una solución a la ecuación `y = sin y + cos y`:
+Similarmente, podemos encontrar una solución a la ecuación `y = sen y + cos y`:
 
 ```scheme
-(punto-fijo (lambda (y) (+ (sin y) (cos y)))
+(punto-fijo (lambda (y) (+ (sen y) (cos y)))
             1.0)
 1.2587315962971173
 ```
