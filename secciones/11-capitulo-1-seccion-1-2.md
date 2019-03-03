@@ -252,7 +252,7 @@ Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
 
 ```scheme
 (contar-cambio 100)
-292
+> 292
 ```
 
 `contar-cambio` genera un proceso árbol-recursivo con redundancias similares a las de nuestra primera implementación de `fib` (tomará un tiempo para que ese 292 sea calculado). Por otro lado, no es tan obvio saber diseñar un mejor algoritmo para calcular el resultado, y dejaremos este problema como un reto.  La observación de que un proceso árbol-recursivo puede ser altamente ineficiente pero a la vez fácil de especificar y de entender ha llevado a la gente a proponer que uno podría obtener lo mejor de ambos mundos mediante el diseño de un "compilador inteligente" que podría transformar los procedimientos árbol-recursivos en procedimientos más eficientes que calculen el mismo resultado.[^34]
@@ -538,6 +538,7 @@ El test de Fermat se realiza eligiendo al azar un número `a` entre 1 y `n - 1` 
 (define (test-fermat n)
   (define (probar a)
     (= (exp-mod a n n) a))
+
   (probar (+ 1 (random (- n 1)))))
 ```
 
@@ -580,7 +581,7 @@ La existencia de tests para los que se puede probar que la posibilidad de error 
 
 (NdT 1: `newline` y `display` son también primitivos de Scheme: el primero permite hacer un salto de linea, y el segundo muestra el valor pasado como argumento en pantalla).
 
-(NdT 2: `runtime` podría no estar en otras implementaciones de Scheme, como por ejemplo Racket. Para este último caso, `current-milliseconds` cumple exactamente la misma función que `runtime`).
+(NdT 2: `runtime` podría no estar en otras implementaciones de Scheme, como por ejemplo Racket. Pero para este último caso, `current-milliseconds` cumpliría exactamente la misma función que `runtime`).
 
 Usando este procedimiento, escriba un procedimiento `buqueda-de-primos` que compruebe la primalidad de números enteros impares consecutivos dentro de un rango especificado. Use este procedimiento para encontrar los tres primos más pequeños mayores de 1000; mayores de 10,000; mayores de 100,000; mayores de 1,000,000. Anote el tiempo necesario para probar cada primo. Dado que el algoritmo de prueba tiene un orden de crecimiento de `Θ(√n)`, debe esperar que las pruebas para primos alrededor de 10,000 tarden alrededor de √10 veces más tiempo que las pruebas para primos de alrededor de 1000. ¿Sus datos de cronometraje lo confirman? ¿Qué tan bien los datos para 100.000 y 1.000.000 soportarían la predicción de `√n`? ¿Su resultado es compatible con la noción de que los programas de su computadora corren en un tiempo proporcional al número de pasos requeridos para dicho cálculo?
 

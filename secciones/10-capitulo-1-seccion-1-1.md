@@ -26,22 +26,28 @@ Una clase de expresión primitiva que uno puede escribir es un número (para ser
 el intérprete responderá imprimiendo[^5]
 
 ```scheme
-486
+> 486
 ```
+
+(NdT: se usará de ahora en más el símbolo inicial `>` para señalar que a continuación viene el resultado de una expresión, aunque en el libro original este símbolo no se usa; en su lugar los autores solo ponen los resultados *en cursiva* y pero la versión de Markdown de Github usado en esta traducción no nos permite hacer esto en los códigos).
 
 Las expresiones que representan números pueden ser combinados en una expresión que represente un procedimiento primitivo (como `+` o `*`) para formar una expresión compuesta que represente la aplicación del procedimiento a esos números. Por ejemplo:
 
 ```scheme
 (+ 137 349)
-486
+> 486
+
 (- 1000 334)
-666
+> 666
+
 (* 5 99)
-495
+> 495
+
 (/ 10 5)
-2
+> 2
+
 (+ 2.7 10)
-12.7
+> 12.7
 ```
 
 Expresiones como estas, formadas al delimitar una lista de expresiones entre paréntesis con el fin de indicar la aplicación del procedimiento, son llamadas *combinaciones*. El elemento más a la izquierda de la lista se llama el *operador*, y los otros elementos se llaman *operandos*. El valor de una combinación se obtiene aplicando el procedimiento especificado por el operador a los argumentos que corresponden a los valores de los operandos.
@@ -50,10 +56,10 @@ La convención de colocar el operador a la izquierda de los operandos se conoce 
 
 ```scheme
 (+ 21 35 12 7)
-75
+> 75
 
 (* 25 4 12)
-1200
+> 1200
 ```
 
 No puede surgir ninguna ambigüedad, ya que el operador es siempre el elemento más a la izquierda y toda la combinación está delimitada por los paréntesis.
@@ -62,7 +68,7 @@ Una segunda ventaja de la notación de prefijo es que se extiende de una manera 
 
 ```scheme
 (+ (* 3 5) (- 10 6))
-19
+> 19
 ```
 
 No hay límite (en principio) a la profundidad de este tipo de anidamiento y a la complejidad general de las expresiones que el intérprete de Lisp puede evaluar. Somos nosotros los humanos los que nos confundimos por expresiones relativamente simples como
@@ -100,9 +106,10 @@ hace que el intérprete asocie el valor 2 con el nombre `tamaño`.[^8] Una vez q
 
 ```scheme
 (tamaño)
-2
+> 2
+
 (* 5 tamaño)
-10
+> 10
 ```
 Aquí hay más ejemplos del uso de `define`:
 
@@ -112,12 +119,12 @@ Aquí hay más ejemplos del uso de `define`:
 (define radio 10)
 
 (* pi (* radio radio))
-314.159
+> 314.159
 
 (define circunferencia (* 2 pi radio))
 
 circunferencia
-62.8318
+> 62.8318
 ```
 
 `define` es el medio de abstracción más simple de nuestro lenguaje, ya que nos permite utilizar nombres sencillos para referirnos a los resultados de operaciones compuestas, como la `circunferencia` calculada anteriormente. En general, los objetos computacionales pueden tener estructuras muy complejas, y sería extremadamente incómodo tener que recordar y repetir sus detalles cada vez que queremos usarlos. En efecto, los programas complejos se elaboran construyendo, paso a paso, objetos computacionales de complejidad creciente. El intérprete hace que esta construcción paso a paso del programa sea muy conveniente porque las asociaciones nombre-objeto pueden ser creadas gradualmente en sucesivas interacciones. Esta característica fomenta el desarrollo incremental y el testeo de programas, y es en gran medida responsable del hecho de que un programa Lisp normalmente se componga de un gran número de procedimientos relativamente sencillos.
@@ -205,13 +212,13 @@ Habiendo definido `al-cuadrado`, ahora podemos usarlo:
 
 ```scheme
 (al-cuadrado 21)
-441
+> 441
 
 (al-cuadrado (+ 2 5))
-49
+> 49
 
 (al-cuadrado (al-cuadrado 3))
-81
+> 81
 ```
 También podemos usar `al-cuadrado` como un bloque de construcción en la definición de otros procedimientos. Por ejemplo, x² + y² puede expresarse como
 
@@ -225,7 +232,7 @@ Podemos definir fácilmente un procedimiento `suma-de-cuadrados` que, dados dos 
   (+ (al-cuadrado x) (al-cuadrado y)))
 
 (suma-de-cuadrados 3 4)
-25
+> 25
 ```
 
 Ahora podemos usar `suma-de-cuadrados` como un bloque de construcción en la construcción de otros procedimientos:
@@ -235,7 +242,7 @@ Ahora podemos usar `suma-de-cuadrados` como un bloque de construcción en la con
   (suma-de-cuadrados (+ a 1) (* a 2)))
 
 (f 5)
-136
+> 136
 ```
 
 Los procedimientos compuestos son usados exactamente de la misma manera que los procedimientos primitivos. De hecho, uno no podría decir al mirar la definición de `suma-de-cuadrados` dada arriba si `al-cuadrado` fue construido dentro del intérprete, como `+` y `*`, o definido como un procedimiento compuesto.
@@ -287,8 +294,9 @@ que se reduce por multiplicación a
 ```
 
 y finalmente a
+
 ```scheme
-136
+> 136
 ```
 
 El proceso que acabamos de describir se denomina *modelo de sustitución* para la aplicación de procedimientos. Puede tomarse como un modelo que determina el "significado" de la aplicación de procedimientos, en la medida en que concierne a los procedimientos de este capítulo. Sin embargo, hay dos puntos que deben ser remarcados:
@@ -323,7 +331,7 @@ seguido de las reducciones
 
 (+  36                     100)
 
-136
+> 136
 ```
 
 Esto da la misma respuesta que nuestro modelo de evaluación anterior, pero el proceso es diferente. En particular, las evaluaciones de `(+ 5 1)` y `(* 5 2)` se realizan aquí dos veces cada una, lo que corresponde a la reducción de la expresión
@@ -588,19 +596,19 @@ Si nosotros escribimos estas definiciones en el intérprete, podemos usar `raiz-
 
 ```scheme
 (raiz-cuadrada 9)
-3.00009155413138
+> 3.00009155413138
 ```
 ```scheme
 (raiz-cuadrada (+ 100 37))
-11.704699917758145
+> 11.704699917758145
 ```
 ```scheme
 (raiz-cuadrada (+ (raiz-cuadrada 2) (raiz-cuadrada 3)))
-1.7739279023207892
+> 1.7739279023207892
 ```
 ```scheme
 (al-cuadrado (raiz-cuadrada 1000))
-1000.000369924366
+> 1000.000369924366
 ```
 
 El programa `raiz-cuadrada` también ilustra que el simple lenguaje procedural que hemos introducido hasta ahora es suficiente como para escribir cualquier programa puramente numérico que se pueda escribir en, digamos, C o Pascal. Esto puede parecer sorprendente, ya que no hemos incluido en nuestro lenguaje ninguna construcción iterativa (ciclos - NdT: *looping* en inglés) que dirija a la computadora a hacer algo una y otra vez. `raiz-iter`, por otro lado, demuestra cómo se puede lograr la iteración sin utilizar ninguna construcción especial que no sea la capacidad ordinaria de llamar a un procedimiento.[^24]
@@ -617,11 +625,11 @@ Eva demuestra el programa para Alyssa:
 
 ```scheme
 (nuevo-if (= 2 3) 0 5)
-5
+> 5
 ```
 ```scheme
 (nuevo-if (= 1 1) 0 5)
-0
+> 0
 ```
 
 Entusiasmada, Alyssa usa el `nuevo-if` para reescribir el programa `raiz-cuadrada`:

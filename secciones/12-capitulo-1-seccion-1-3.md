@@ -21,7 +21,6 @@ Aún incluso en el procesamiento numérico estaremos severamente limitados en nu
 
 ### 1.3.1 Procedimientos como Argumentos
 
-
 Considere los siguientes tres procedimientos. El primero calcula la suma de los enteros de `a` hasta `b`:
 
 ```scheme
@@ -116,7 +115,7 @@ Entonces podemos sumar los números enteros de 1 a 10:
 
 ```scheme
 (suma-enteros 1 10)
-55
+> 55
 ```
 
 También podemos definir `pi-suma` de la misma manera:[^50]
@@ -136,7 +135,7 @@ Usando estos procedimientos, podemos calcular una aproximación a `π`:
 
 ```scheme
 (* 8 (pi-suma 1 1000))
-3.139592655589783
+> 3.139592655589783
 ```
 
 Una vez que tenemos `suma`, podemos usarla como un bloque de construcción en la formulación de otros conceptos. Por ejemplo, la integral definida de una función `f` entre los límites `a` y `b` puede ser aproximada numéricamente usando la fórmula
@@ -157,10 +156,10 @@ para valores pequeños de `dx`. Podemos expresarlo directamente como un procedim
      dx))
 
 (integral al-cubo 0 1 0.01)
-.24998750000000042
+> .24998750000000042
 
 (integral al-cubo 0 1 0.001)
-.249999875000001
+> .249999875000001
 ```
 
 (el valor exacto de la integral de `al-cubo` entre 0 y 1 es `1/4`).
@@ -277,7 +276,7 @@ Como cualquier expresión que tenga un procedimiento como su valor, una expresi�
 
 ```scheme
 ((lambda (x y z) (+ x y (al-cuadrado z))) 1 2 3)
-12
+> 12
 ```
 
 o, más generalmente, en cualquier contexto en el que normalmente utilizaríamos un nombre de procedimiento.[^53]
@@ -416,10 +415,10 @@ Entonces tenemos
 
 ```scheme
 (f al-cuadrado)
-4
+> 4
 
 (f (lambda (z) (* z (+ z 1))))
-6
+> 6
 ```
 
 ¿Qué sucede si le pedimos (perversamente) al intérprete que evalúe la combinación `(f f)`? Explicar.
@@ -473,7 +472,7 @@ El siguiente ejemplo utiliza el método de intervalo medio para aproximarse como
 
 ```scheme
 (metodo-intervalo-medio sen 2.0 4.0)
-3.14111328125
+> 3.14111328125
 ```
 
 Aquí hay otro ejemplo, usando el método de intervalo medio para buscar una raíz de la ecuación `x³ - 2x - 3 = 0` entre 1 y 2:
@@ -482,7 +481,7 @@ Aquí hay otro ejemplo, usando el método de intervalo medio para buscar una ra�
 (metodo-intervalo-medio (lambda (x) (- (* x x x) (* 2 x) 3))
                         1.0
                         2.0)
-1.89306640625
+> 1.89306640625
 ```
 
 #### Encontrar puntos fijos de funciones
@@ -515,7 +514,7 @@ Por ejemplo, podemos usar este método para aproximar el punto fijo de la funci�
 
 ```scheme
 (punto-fijo cos 1.0)
-.7390822985224023
+> .7390822985224023
 ```
 
 Similarmente, podemos encontrar una solución a la ecuación `y = sen y + cos y`:
@@ -523,7 +522,7 @@ Similarmente, podemos encontrar una solución a la ecuación `y = sen y + cos y`
 ```scheme
 (punto-fijo (lambda (y) (+ (sen y) (cos y)))
             1.0)
-1.2587315962971173
+> 1.2587315962971173
 ```
 
 El proceso de punto fijo nos recuerda al proceso que usamos para encontrar raíces cuadradas en la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Ambos se basan en la idea de mejorar repetidamente una estimación hasta que el resultado satisfaga algún criterio. De hecho, podemos formular fácilmente el cálculo de `raíz-cuadrada` como una búsqueda de punto fijo. Calcular la raíz cuadrada de un número `x` requiere encontrar un `y` tal que `y² = x`. Poniendo esta ecuación en la forma equivalente `y = x/y`, reconocemos que estamos buscando un punto fijo de la función[^58] `y → x/y`, y por lo tanto podemos intentar calcular raíces cuadradas como
@@ -622,7 +621,7 @@ La `aten-media` es un procedimiento que toma como argumento un procedimiento `f`
 
 ```scheme
 ((aten-media al-cuadrado) 10)
-55
+> 55
 ```
 
 Usando `aten-media`, podemos reformular el procedimiento de raíz cuadrada de la siguiente manera:
@@ -682,7 +681,7 @@ Al igual que `aten-media`, `derivada` es un procedimiento que toma un procedimie
 (define (al-cubo x) (* x x x))
 
 ((derivada al-cubo) 5)
-75.00014999664018
+> 75.00014999664018
 ```
 
 Con la ayuda de `derivada`, podemos expresar el método de Newton como un proceso de punto fijo:
@@ -765,14 +764,14 @@ para aproximar los ceros de la cúbica `x3 + ax2 + bx + c`.
 
 ```scheme
 ((componer al-cuadrado inc) 6)
-49
+> 49
 ```
 
 **Ejercicio 1.43.** Si `f` es una función numérica y `n` es un entero positivo, entonces podemos formar la enésima aplicación repetida de `f`, que se define como la función cuyo valor en `x` es `f(f(...(f(x)))...)`. Por ejemplo, si `f` es la función `x → x + 1`, entonces la enésima aplicación repetida de `f` es la función `x → x + n`. Si `f` es la operación de elevar al cuadrado un número, entonces la enésima aplicación repetida de `f` es la función que eleva su argumento a la potencia de 2ⁿ. Escribir un procedimiento que tome como entradas un procedimiento que calcule `f` y un entero positivo `n` y que devuelva el procedimiento que calcule la enésima aplicación repetida de `f`. Su procedimiento debería poder usarse de la siguiente manera:
 
 ```scheme
 ((repetir al-cuadrado 2) 5)
-625
+> 625
 ```
 
 Sugerencia: Puede ser conveniente usar `componer` a partir del ejercicio 1.42.
