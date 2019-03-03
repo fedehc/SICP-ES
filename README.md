@@ -41,7 +41,7 @@ Contemplo en un futuro no muy lejano recrear una versión interactiva online, ta
 
 Aclaro que no soy traductor profesional, o programador experimentado, o siquiera aún un escritor o redactor especializado. Tampoco soy el primero en intentar traducir esta obra al español **\***, pero al menos tengo la esperanza de ser uno de los primeros en lograr terminarlo. Hoy, gracias a la ayuda de traductores online de uso gratuito como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
 
-**\*** *Varias personas han intentado traducirlo, pero en todos los casos que he podido ver ninguno que haya completado los 5 capitulos. Y en todos estos casos, la calidad de la traducción siempre dejaba mucho que desear porque resultaban ser traducciones automáticas sin corrección alguna.*
+**\*** *Varias personas han intentado traducirlo, pero en todos los casos que he podido ver ninguno ha terminado siquiera el primer capítulo. Y en todos estos casos, la calidad de la traducción dejaba mucho que desear porque resultaban ser traducciones automáticas, sin mayores correcciones.*
 
 
 ## Aclaraciones
