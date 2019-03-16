@@ -5,7 +5,7 @@ of Computer Programs" (SICP).
 
 *Haga clic en la imágen para saltar a la sección de Contenidos:*
 
-[![Imagen](/secciones/imagenes/SICP-traducido-variante-1.png)](./secciones/04-contenidos.md)
+[![Imagen](/secciones/imagenes/SICP-traducido-reducido)](./secciones/04-contenidos.md)
 
 > Libro de Mago. Hal Abelson, Jerry Sussman y Julie Sussman's *Estructura e Interpretación de Programas de Computadora* (MIT Press, 1984; ISBN 0-262-01077-1), un excelente texto de ciencias de la computación usado en cursos introductorios del MIT. Llamado así por el mago de la cubierta. Una de las biblias del mundo LISP/Scheme. También, menos conocido como el *Libro Púrpura*.
 >
