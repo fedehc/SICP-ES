@@ -8,7 +8,7 @@ Un lenguaje de programación potente es más que un medio para instruir a una co
 
 * **medios de abstracción**, por el cual los elementos compuestos pueden ser nombrados y manipulados como unidades.
 
-En programación, nos ocupamos de dos tipos de elementos: procedimientos y datos (más adelante descubriremos que realmente no son tan distintos). Informalmente, los datos son "cosas" que queremos manipular, y los procedimientos son descripciones de las reglas para manipular los datos. Por lo tanto, cualquier lenguaje de programación potente debería ser capaz de describir datos y procedimientos primitivos y debería tener métodos para combinar y abstraer procedimientos y datos.
+En programación nos ocupamos de dos tipos de elementos: procedimientos y datos (más adelante descubriremos que realmente no son tan distintos). Informalmente, los datos son "cosas" que queremos manipular, y los procedimientos son descripciones de las reglas para manipular los datos. Por lo tanto, cualquier lenguaje de programación potente debería ser capaz de describir datos y procedimientos primitivos y debería tener métodos para combinar y abstraer procedimientos y datos.
 
 En este capítulo sólo trataremos con datos numéricos simples para que podamos concentrarnos en las reglas para la construcción de procedimientos.[^4] En capítulos posteriores veremos que estas mismas reglas nos permiten construir procedimientos para manipular también datos compuestos.
 
@@ -29,7 +29,7 @@ el intérprete responderá imprimiendo[^5]
 > 486
 ```
 
-(NdT: se usará de ahora en más el símbolo inicial `>` para señalar que a continuación viene el resultado de una expresión, aunque en el libro original este símbolo no se usa; en su lugar los autores solo ponen los resultados *en cursiva*, pero la versión de Markdown de Github usado en esta traducción no nos permite realizar este efecto en los códigos).
+(NdT: se usará de ahora en más el símbolo `>` para señalar que a continuación el resultado de la evaluación de una expresión, aunque en el libro original dicho símbolo no se usa. En su lugar, los autores ponen los resultados *en cursiva*, pero la versión de Markdown empleado en esta traducción no se puede hacer uso de la cursiva en los códigos).
 
 Las expresiones que representan números pueden ser combinados en una expresión que represente un procedimiento primitivo (como `+` o `*`) para formar una expresión compuesta que represente la aplicación del procedimiento a esos números. Por ejemplo:
 
@@ -105,7 +105,7 @@ En el dialecto Scheme de Lisp, nombramos las cosas con `define` (NtD: `define` -
 hace que el intérprete asocie el valor 2 con el nombre `tamaño`.[^8] Una vez que el nombre `tamaño` ha sido asociado con el número 2, podemos referirnos al valor 2 por este nombre:
 
 ```scheme
-(tamaño)
+tamaño
 > 2
 
 (* 5 tamaño)
