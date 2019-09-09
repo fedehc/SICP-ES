@@ -1,1 +1,1 @@
-![Tapa](/secciones/imagenes/SICP-traducido.png)
+![Tapa](/secciones/imagenes/SICP-traducido-reducido.png)
