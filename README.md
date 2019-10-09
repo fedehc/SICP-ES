@@ -48,20 +48,20 @@ Hoy, gracias a la ayuda de traductores online de uso gratuito como [DeepL](https
 
 * No me hago responsable bajo ningún concepto por cualquier uso que se haga de estas mismas traducciones y que violen de alguna manera los términos de la [licencia](#licencia).
 
-* A lo largo de los capítulos he agregado por mi parte entre paréntesis lo que llamo **NdT** (**N**otas **d**el **T**raductor). Sin ninguna intención de realizar modificación sustancial alguna en el contenido la obra (aunque la [licencia](#licencia) en principio lo permita), elijo agregar estas breves notas a lo largo de la misma por las siguientes razones:
+* A lo largo de los capítulos he agregado por mi parte entre paréntesis lo que llamo **NdT** (**N**otas **d**el **T**raductor). Sin ninguna intención de realizar modificación sustancial alguna en el contenido de la obra (aunque la [licencia](#licencia) en principio lo permita), elijo agregar estas breves notas a lo largo de la misma por las siguientes razones:
 
-  * Los autores introducen constantemente muchos conceptos y terminología del área de la informática que, hoy en día, se los conoce muchas veces mejor en inglés que en español. Solo por esta razón creo necesario mencionar siempre todo concepto o terminología introducida en ambos idiomas: primero en español y luego en inglés (estos últimos siempre entre paréntesis como **NdT**).
+  * Los autores introducen frecuentemente muchos conceptos y terminología del área de la informática que, hoy en día, se los conoce mejor a veces en inglés que en español. Por esto mismo creo necesario mencionar siempre toda terminología o concepto introducido en ambos idiomas: primero en español y luego en inglés (estos últimos siempre entre paréntesis como **NdT**).
 
-  * En algunos pocos casos suele no haber una traducción conocida al español, por lo que me veo obligado a mostrar al menos una traducción literal a modo informativo para continuar la idea anteriormente descripta.
+  * En algunos pocos casos suele no haber una traducción conocida al español, por lo que me veo obligado a mostrar al menos una traducción literal a modo informativo para seguir la idea anteriormente mencionada.
 
   * Por último: algunas veces veo la necesidad de aclarar algunas cuestiones que pueden resultar un poco confusas ante una primera lectura, o de comentar nuevos usos, novedades o alternativas en determinadas partes de la obra, dado que la misma tiene sus años. Un ejemplo obvio: aconsejar el uso de [Racket](https://racket-lang.org/) como variante de Scheme para la realización de los ejercicios.
     
-* Cualquier corrección, aporte o sugerencias a esta traducción es más que bienvenido. Aunque desde ya me reservo el derecho de tomarme mi tiempo y de incorporar solo aquello que considere necesario.
+* Cualquier corrección, aporte o sugerencias a esta traducción es más que bienvenido. Aunque desde ya me reservo el derecho de tomarme el tiempo necesario y de elegir incorporar solo aquello que considere necesario.
 
-* Cualquiera es libre de hacer su propio fork o sus propias traducciones en base a este repositorio.
+* Cualquiera es libre de hacer un fork o su propia traducción en base al contenido de este mismo repositorio.
 
 ## Novedades:
 
-* De momento solo he terminado con la traducción del capítulo 1. Quedaría entonces pendiente una revisión más minuciosa de todo el capítulo, incluyendo códigos en ejemplos y ejercicios dado que estos últimos también fueron traducidos.
+* De momento solo he terminado con la traducción del capítulo 1. Quedaría pendiente entonces una revisión más minuciosa de todo el capítulo, incluyendo los códigos en ejemplos y ejercicios, dado que estos últimos también fueron traducidos.
 
-* Creo que por un buen tiempo esto va a ser todo por mi parte. La traducción de este capítulo me llevó más tiempo de lo que hubiese imaginado. A grandes rasgos, estimo que terminar los otros 4 capítulos restantes me consumiría al menos unos 8 meses de trabajo, siguiendo el mismo ritmo diario. Además, he encontrado otras actividades más interesantes para hacer, incluyendo la lectura de [otro libro](https://www.amazon.com/Concepts-Techniques-Models-Computer-Programming/dp/0262220695) que trata las mismas problemáticas que SICP pero de un modo más pragmático (a mi gusto). Por último, también me vengo replanteando si la traducción de SICP (o cualquier otra obra relacionada) resulta necesaria o provechosa para alguien. Pienso que aquellos que estudian informática tarde o temprano van a estar forzados aprender algo de inglés en algún grado, guste o no. Asi que por estos motivos suspendo la continuación de estas traducciones hasta nuevo aviso.
+* Creo que por un buen tiempo esto va a ser todo por mi parte. La traducción de este capítulo me llevó más tiempo de lo que hubiese imaginado. A grandes rasgos, estimo que terminar los otros 4 capítulos restantes me consumiría al menos unos 8 meses de trabajo (siguiendo el mismo ritmo diario). Además, he encontrado otras actividades más interesantes para hacer, incluyendo la lectura de [otro libro](https://www.amazon.com/Concepts-Techniques-Models-Computer-Programming/dp/0262220695) que trata las misma problemática que SICP pero de un modo más pragmático (a mi gusto). Por último, también me vengo replanteando si la traducción de SICP (o cualquier otra obra semejante) resulta necesaria o provechosa para alguien. Pienso que aquellos que estudian informática tarde o temprano van a estar obligados a aprender algo de inglés en algún grado, guste o no. Por todo esto suspendo la traducción hasta nuevo aviso.
