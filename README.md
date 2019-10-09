@@ -30,36 +30,38 @@ Todo el material que iré traduciendo se realizará a partir de la versión onli
 
 Lograr traducir el libro completo para que pueda ser leído online y/o descargado en formato pdf, epub, mobi o cualquier otro formato conocido.
 
-Contemplo en un futuro no muy lejano recrear una versión interactiva online, tal como ha hecho por ejemplo [Li Xuanji en su sitio web](http://www.xuanji.li/isicp/index.html) con la versión inglesa del libro. Aunque de momento es solo una idea.
-
 
 ## Motivos para la traducción
 
-1) Tengo tiempo de sobra. ;)
-2) Deseaba poner en práctica mi inglés (que me hace mucha falta) y la traducción de esta obra me pareció un desafío interesante.
-3) Ganar un motivo extra para leer y releer cada sección del libro con mayor detenimiento.
+Suelo tener bastante tiempo de sobra. :)
 
-Aclaro que no soy traductor profesional, o programador experimentado, o siquiera aún un escritor o redactor especializado. Tampoco soy el primero en intentar traducir esta obra al español **\***, pero al menos tengo la esperanza de ser uno de los primeros en lograr terminarlo. Hoy, gracias a la ayuda de traductores online de uso gratuito como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, cualquiera con un poco de tiempo, esfuerzo y paciencia puede al menos intentarlo.
+No soy programador, ni traductor profesional, ni mucho menos el primero en intentar traducir esta obra al español. **\*** Solo puedo decir brevemente que sentí necesario hacer el intento porque creo que este libro contiene información muy valiosa para aquellos que se encuentran incursionando en profundidad en el área de las ciencias de la computación.
 
-**\*** *Varias personas han intentado traducirlo, pero en los casos con los que me encontrado ninguno ha terminado siquiera el primer capítulo. Y la calidad de traducción dejaba mucho que desear porque resultaban ser en su mayor parte traducciones automáticas, sin ninguna clase de corrección por parte de sus traductores.*
+Hoy, gracias a la ayuda de traductores online de uso gratuito como [DeepL](https://www.deepl.com/translator), que facilitan enormemente la tarea, considero que cualquiera con un poco de tiempo, esfuerzo y paciencia puede hacer el intento de hacer sus propias traducciones.
+
+**\*** *Varias personas lo han intentado, pero no encuentro ninguno que haya terminado siquiera el primer capítulo. Y en estos casos la calidad de estas traducciones suele ser muy mala porque no son más que traducciones automáticas, sin mayores correcciones.*
 
 
-## Aclaraciones/Comentarios
+## Aclaraciones:
 
-* No busco sacar ningún provecho comercial por la traducción parcial o total de la obra. Mis motivos para realizar este trabajo están aclarados en la [sección correspondiente](#Motivos-para-la-traducción).
+* Pese a que la [licencia](#licencia) lo permite, no busco sacar ningún provecho comercial por la traducción parcial o total de la obra.
 
-* No me hago responsable por cualquier uso indebido que cualquiera haga de las traducciones que se encuentren en este repositorio, asi como tampoco por cualquier libro -sean libros electrónicos o físicos- que se originen a raíz de estas mismas traducciones y que violen cualquiera de los términos de la [licencia](#licencia).
+* No me hago responsable bajo ningún concepto por cualquier uso que se haga de estas mismas traducciones y que violen de alguna manera los términos de la [licencia](#licencia).
 
-* A lo largo de los capítulos he agregado por mi parte, entre paréntesis, las **NdT** (**N**otas **d**el **T**raductor). Estas notas aparecen en su mayor parte cuando los autores introducen nuevos conceptos (en estos casos los mismos aparecen remarcados siempre *en cursiva*). Las razones por las cuales considero necesario agregar estas notas se debe a todo lo siguiente:
+* A lo largo de los capítulos he agregado por mi parte entre paréntesis lo que llamo **NdT** (**N**otas **d**el **T**raductor). Sin ninguna intención de realizar modificación sustancial alguna en el contenido la obra (aunque la [licencia](#licencia) en principio lo permite), elijo agregar estas breves notas a lo largo de la misma por las siguientes razones:
 
-  * Lamentablemente hoy en día muchos conceptos de informática se los conoce mejor en inglés que en español. Solo por esto considero necesario mencionar también la terminología en inglés para no dejar mayores dudas en los lectores acerca de los conceptos que se introducen.
+  * Los autores introducen constantemente muchos conceptos y terminología del área de la informática que, hoy en día, se los conoce muchas veces mejor en inglés que en español. Solo por esta razón creo necesario mencionar siempre todo concepto o terminología introducida en ambos idiomas: primero en español y luego en inglés (estos últimos siempre entre paréntesis como **NdT**).
 
-  * En algunos casos hay que reconocer que no existe una traducción conocida al español con determinados conceptos de informática. Cuando sucede esto, uso sin más la terminología original en inglés. Solo me limito a mostrar una traducción literal en español, a modo informativo, cuando los autores introducen por primera vez los conceptos.
+  * En algunos pocos casos suele no haber una traducción conocida al español, por lo que me veo obligado a mostrar al menos una traducción literal a modo informativo.
 
-  * Por último, dejando de lado ya las cuestiones de terminología, algunas veces veo la necesidad de aclarar algunas cuestiones que pueden resultar un poco confusas ante una primera lectura, o de comentar nuevos usos, novedades o alternativas en determinadas partes de la obra.
+  * Por último: algunas veces veo la necesidad de aclarar algunas cuestiones que pueden resultar un poco confusas ante una primera lectura, o de comentar nuevos usos, novedades o alternativas en determinadas partes de la obra, dado que la misma tiene sus años. Un ejemplo obvio: aconsejar el uso de [Racket](https://racket-lang.org/) como variante de Scheme para la realización de los ejercicios.
     
-* Cualquier corrección, aporte o sugerencias a esta traducción es más que bienvenido. Aunque desde ya me reservo el derecho de tomar aquellas correcciones, aportes o sugerencias que considere necesarios o convenientes. 
+* Cualquier corrección, aporte o sugerencias a esta traducción es más que bienvenido. Aunque desde ya me reservo el derecho de tomarme mi tiempo y de elegir aquellas correcciones, aportes o sugerencias que considere necesarias o convenientes. 
 
-* Cualquiera es libre de hacer su propio fork de este repositorio o hacer sus propias traducciones a partir de la misma.
+* Cualquiera es libre de hacer su propio fork o derivado de este repositorio, o hacer sus propias traducciones a partir de estas mismas.
 
-* De momento solo he terminado con la traducción del capítulo 1. Quedaría pendiente una revisión completa de todos los códigos en ejemplos y ejercicios (que también por supuesto fueron traducidos), pero esto va a ser todo por mi parte hasta nuevo aviso. La traducción de este capítulo me llevó más tiempo de lo que hubiese imaginado (pueden ver [mi profile](https://github.com/FedeHC) a principios de 2019 para darse una idea). Está claro ahora que fui bastante ingenuo en creer que podría completarlo en menos tiempo y con menos esfuerzo (para terminar los otros 4 capítulos restantes, al mismo ritmo de trabajo diario, me consumiría alrededor de unos 8 meses como mínimo). Leer cada sección, completar aunque sea algunos pocos ejercicios y proceder a traducirlo inmediatamente me insume demasiado tiempo y esfuerzo. Así que de ahora en más solo continuaré con los capítulos restantes si encuentro algún motivo de peso para continuar con la traducción.
+## Novedades:
+
+* De momento solo he terminado con la traducción del capítulo 1. Quedaría entonces pendiente una revisión más minuciosa de todo el capítulo, incluyendo códigos en ejemplos y ejercicios dado que estos también fueron traducidos.
+
+* Creo que por un buen tiempo esto va a ser todo de mi parte. La traducción de este capítulo me llevó más tiempo de lo que hubiese imaginado. Y terminar los otros 4 capítulos restantes me requeriría al menos unos 8 meses al mismo ritmo de trabajo. Además he encontrado otras actividades más interesantes, asi que hasta nuevo aviso esto será todo.
