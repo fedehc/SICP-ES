@@ -1,23 +1,23 @@
 ## 1.1 Los Elementos de la Programación
 
-Un lenguaje de programación potente es más que un medio para instruir a una computadora para que realice tareas. El lenguaje también sirve como marco desde el cual organizamos nuestras ideas acerca de los procesos. Por lo tanto, cuando describimos un lenguaje, debemos prestar especial atención a los medios que el lenguaje proporciona para combinar ideas simples para formar ideas más complejas. Todo lenguaje potente tiene tres mecanismos para lograr esto:
+Un lenguaje de programación eficaz es más que un medio para instruir a una computadora para que realice tareas. El lenguaje también sirve como marco desde el cual organizamos nuestras ideas acerca de los procesos. Por lo tanto, cuando describimos un lenguaje, debemos prestar especial atención a los medios que el lenguaje proporciona para combinar ideas simples hasta formar ideas más complejas. Todo lenguaje eficaz tiene tres mecanismos para lograr esto:
 
 * **expresiones primitivas**, que representan las entidades más simples que conciernen al lenguaje,
 
-* **modos de combinación**, mediante los cuales los elementos compuestos se construyen a partir de los más simples, y
+* **medios de combinación**, mediante los cuales los elementos compuestos se construyen a partir de los elementos más simples, y
 
 * **medios de abstracción**, por el cual los elementos compuestos pueden ser nombrados y manipulados como unidades.
 
-En programación nos ocupamos de dos tipos de elementos: procedimientos y datos (más adelante descubriremos que realmente no son tan distintos). Informalmente, los datos son "cosas" que queremos manipular, y los procedimientos son descripciones de las reglas para manipular los datos. Por lo tanto, cualquier lenguaje de programación potente debería ser capaz de describir datos y procedimientos primitivos y debería tener métodos para combinar y abstraer procedimientos y datos.
+En programación nos ocupamos de dos tipos de elementos: procedimientos y datos (más adelante descubriremos que realmente no son tan distintos). Informalmente, los datos son "cosas" que queremos manipular, y los procedimientos son descripciones de las reglas para manipular los datos. Por lo tanto, cualquier lenguaje de programación eficaz debería ser capaz de describir datos y procedimientos primitivos y debería tener métodos para combinar y abstraer procedimientos y datos.
 
-En este capítulo sólo trataremos con datos numéricos simples para que podamos concentrarnos en las reglas para la construcción de procedimientos.[^4] En capítulos posteriores veremos que estas mismas reglas nos permiten construir procedimientos para manipular también datos compuestos.
+En este capítulo sólo trataremos con datos numéricos simples para que podamos concentrarnos en las reglas de construcción de procedimientos.[^4] En capítulos posteriores veremos que estas mismas reglas nos permiten construir procedimientos para manipular también datos compuestos.
 
 
 ### 1.1.1 Expresiones
 
-Una manera fácil de empezar a programar es analizando algunas interacciones típicas con el intérprete del dialecto Scheme de Lisp. Imagine que se encuentra sentado frente a una terminal de computadora. Se escribe una *expresión*, y el intérprete responde mostrando el resultado de la *evaluación* de esa expresión.
+Una manera fácil de empezar a programar es analizando algunas interacciones típicas con el intérprete del dialecto Scheme de Lisp. Imagine que se encuentra sentado frente a una terminal de computadora. Ud. escribe una *expresión*, y el intérprete responde mostrando el resultado de la *evaluación* de esa expresión.
 
-Una clase de expresión primitiva que uno puede escribir es un número (para ser más precisos, la expresión que uno escribe consiste en las cifras que representan al número en base 10). Si se le presenta a Lisp con el número
+Una clase de expresión primitiva que uno puede escribir es un número (para ser más precisos, la expresión que uno escribe consiste en las cifras que representan al número en base 10). Si usted le presenta a Lisp un número
 
 ```scheme
 486
@@ -29,7 +29,7 @@ el intérprete responderá imprimiendo[^5]
 > 486
 ```
 
-(NdT: se usará de ahora en más el símbolo `>` para señalar con claridad el resultado de la evaluación de una expresión, aunque en el libro original los autores simplemente ponen los resultados de las evaluaciones *en cursiva*).
+`(NdT: por cuestiones de edición, se usará el símbolo > de ahora en más para señalar el resultado de la evaluación de una expresión. En la obra original los autores simplemente muestran los resultados en cursiva)`.
 
 Las expresiones que representan números pueden ser combinados en una expresión que represente un procedimiento primitivo (como `+` o `*`) para formar una expresión compuesta que represente la aplicación del procedimiento a esos números. Por ejemplo:
 
@@ -50,9 +50,9 @@ Las expresiones que representan números pueden ser combinados en una expresión
 > 12.7
 ```
 
-Expresiones como estas, formadas al delimitar una lista de expresiones entre paréntesis con el fin de indicar la aplicación del procedimiento, son llamadas *combinaciones*. El elemento más a la izquierda de la lista se llama el *operador*, y los otros elementos se llaman *operandos*. El valor de una combinación se obtiene aplicando el procedimiento especificado por el operador a los argumentos que corresponden a los valores de los operandos.
+Expresiones como estas, formadas al delimitar una lista de expresiones entre paréntesis con el fin de indicar la aplicación del procedimiento, son llamadas *combinaciones*. El elemento situado en el extremo izquierdo de la lista se llama el *operador*, y los otros elementos se llaman *operandos*. El valor de una combinación se obtiene aplicando el procedimiento especificado por el operador a los argumentos, que corresponden a los valores de los operandos.
 
-La convención de colocar el operador a la izquierda de los operandos se conoce como *notación de prefijo* (NdT: también conocido como *notación polaca*), y puede ser algo confuso al principio porque se aparta significativamente de la convención matemática habitual. Sin embargo, la notación de prefijo tiene varias ventajas. Una de ellas es que puede acomodar procedimientos que pueden tomar un número arbitrario de argumentos, como en los siguientes ejemplos:
+La convención de colocar el operador a la izquierda de los operandos se conoce como *notación prefija* `(NdT: también conocido en español como "notación polaca")`, y puede ser algo confuso al principio porque se aparta significativamente de la convención matemática habitual. Sin embargo, la notación prefija tiene varias ventajas. Una de ellas es que puede acomodar procedimientos que pueden tomar un número arbitrario de argumentos, como en los siguientes ejemplos:
 
 ```scheme
 (+ 21 35 12 7)
@@ -62,9 +62,9 @@ La convención de colocar el operador a la izquierda de los operandos se conoce 
 > 1200
 ```
 
-No puede surgir ninguna ambigüedad, ya que el operador es siempre el elemento más a la izquierda y toda la combinación está delimitada por los paréntesis.
+No puede surgir ninguna ambigüedad, ya que el operador es siempre el elemento que está en el extremo izquierdo y toda la combinación está delimitada por los paréntesis.
 
-Una segunda ventaja de la notación de prefijo es que se extiende de una manera directa para permitir que las combinaciones sean *anidadas*, es decir, que tengan combinaciones cuyos elementos son en sí mismos combinaciones:
+Una segunda ventaja de la notación prefija es que se extiende de forma sencilla para permitir que las combinaciones sean *anidadas*, es decir, que tengan combinaciones cuyos elementos son en sí mismos combinaciones:
 
 ```scheme
 (+ (* 3 5) (- 10 6))
@@ -87,16 +87,16 @@ que el intérprete evaluaría fácilmente como 57. Podemos ayudarnos a nosotros 
       6))
 ```
 
-siguiendo la convención de formato conocida como *pretty-printing* (NdT: traducido libremente sería *impresión-bonita*), en la que cada combinación larga se escribe de forma tal que los operandos queden alineados verticalmente. Las indentaciones resultantes muestran claramente la estructura de la expresión.[^6]
+siguiendo la convención de formato conocida como *pretty-printing* `(NdT: una traducción aceptable al español sería "formato mejorado" o "formato legible")`, en la que cada combinación larga se escribe de forma tal que los operandos queden alineados verticalmente. Las indentaciones resultantes muestran claramente la estructura de la expresión.[^6]
 
-Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión (NdT: en inglés *read-eval-print loop*, o más conocido en este idioma como *REPL*). Observe en particular que no es necesario indicarle explícitamente al intérprete de que imprima el valor de la expresión.[^7]
+Incluso con expresiones complejas, el intérprete siempre opera en el mismo ciclo básico: lee una expresión de la terminal, evalúa la expresión e imprime el resultado. Este modo de funcionamiento se expresa a menudo diciendo que el intérprete funciona en un bucle de lectura-evaluación-impresión `(NdT: en inglés "read-eval-print loop", o más conocido por su sigla "REPL")`. Observe en particular que no es necesario indicarle explícitamente al intérprete de que imprima el valor de la expresión.[^7]
 
 
 ### 1.1.2 Los Nombres y el Entorno
 
 Un aspecto crucial de un lenguaje de programación es el medio que proporciona para el uso de nombres que hacen referencia a objetos computacionales. Decimos que el nombre identifica a una *variable* cuyo valor es el objeto.
 
-En el dialecto Scheme de Lisp, nombramos las cosas con `define` (NtD: `define` -como todas las expresiones nativas de Lisp de ahora en más- está expresado en inglés, aunque en este caso se escriba igual que en español). Escribiendo
+En el dialecto Scheme de Lisp, nombramos las cosas con `define` (NtD: está expresado en inglés, aunque se escriba igual en español). Escribiendo
 
 ```scheme
 (define tamaño 2)
@@ -134,13 +134,13 @@ Debe quedar claro que la posibilidad de asociar valores con símbolos y luego ll
 
 ### 1.1.3 Evaluando Combinaciones
 
-Uno de nuestros objetivos en este capítulo es el de aislar cuestiones pensando en términos de procesos. Como caso concreto, consideremos que, al evaluar las combinaciones, el propio intérprete está siguiendo un procedimiento.
+Uno de nuestros objetivos en este capítulo es el de aislar cuestiones acerca del pensamiento procedural. Como caso concreto, consideremos que al evaluar las combinaciones, el propio intérprete está siguiendo un procedimiento.
 
 * Para evaluar una combinación, hacer lo siguiente:
 
-1) Evaluar las subexpresiones de la combinación.
+  1) Evaluar las subexpresiones de la combinación.
 
-2) Aplicar el procedimiento, que es el valor de la subexpresión más a la izquierda (el operador), a los argumentos que son los valores de las otras subexpresiones (los operandos). 
+  2) Aplicar el procedimiento, que es el valor del elemento situado en el extremo izquierdo  (el operador), a los argumentos que son los valores de las otras subexpresiones (los operandos).
 
 Incluso esta simple regla demuestra algunos puntos importantes sobre los procesos en general. Primero, observe que el primer paso dicta que, para llevar a cabo el proceso de evaluación de una combinación, debemos primero realizar el proceso de evaluación de cada elemento de la combinación. Por lo tanto, la regla de evaluación es de naturaleza *recursiva*; es decir, incluye en una de sus etapas la necesidad de invocar la propia regla.[^10]
 
@@ -151,7 +151,7 @@ Observe cuán sucintamente se puede utilizar la idea de recursión para expresar
    (+ 3 5 7))
 ```
 
-requiere que la regla de evaluación se aplique a cuatro combinaciones diferentes. Podemos obtener una imagen de este proceso representando la combinación en forma de árbol, como se muestra en la figura 1.1. Cada combinación está representada por un nodo con ramas que corresponden al operador y a los operandos de la combinación que se derivan de él. Los nodos terminales (es decir, nodos sin ramas que provengan de ellos) representan operadores o números. Viendo la evaluación en términos del árbol, podemos imaginar que los valores de los operandos se filtran hacia arriba, empezando por los nodos terminales y luego combinándose a niveles cada vez más altos y altos. En general, veremos que la recursividad es una técnica muy poderosa para tratar con objetos jerárquicos en forma de árbol. De hecho, la forma "filtrar valores hacia arriba" de la regla de evaluación es un ejemplo de un tipo general de proceso conocido como *acumulación de árbol* (NtD: *tree accumulation* en inglés).
+requiere que la regla de evaluación se aplique a cuatro combinaciones diferentes. Podemos obtener una imagen de este proceso representando la combinación en forma de árbol, como se muestra en la figura 1.1. Cada combinación está representada por un nodo con ramas que corresponden al operador y a los operandos de la combinación que se derivan de él. Los nodos terminales (es decir, nodos sin ramas que provengan de ellos) representan operadores o números. Viendo la evaluación en términos del árbol, podemos imaginar que los valores de los operandos se filtran hacia arriba, empezando por los nodos terminales y luego combinándose a niveles cada vez más altos y altos. En general, veremos que la recursividad es una técnica muy poderosa para tratar con objetos jerárquicos en forma de árbol. De hecho, la forma "filtrar valores hacia arriba" de la regla de evaluación es un ejemplo de un tipo general de proceso conocido como *acumulación de árbol* (NtD: traducción literal *tree accumulation*).
 
 ![Figura 1.1](./imagenes/capitulo-1/figura-1-1.png)
 
@@ -174,7 +174,7 @@ Estas excepciones a la regla general de evaluación son llamadas *formas especia
 
 ### 1.1.4 Procedimientos Compuestos
 
-Hemos identificado en Lisp algunos de los elementos que deben aparecer en cualquier lenguaje de programación potente:
+Hemos identificado en Lisp algunos de los elementos que deben aparecer en cualquier lenguaje de programación eficaz:
 
 * Los números y las operaciones aritméticas son datos y procedimientos primitivos.
 
@@ -342,7 +342,7 @@ Esto da la misma respuesta que nuestro modelo de evaluación anterior, pero el p
 
 con x reemplazado respectivamente por `(+ 5 1)` y `(* 5 2)`.
 
-Este método alternativo de evaluación de "expandir completamente y reducir después" se conoce como *evaluación de orden normal* (NdT: *normal-order evaluation* en inglés), en contraste con el método de "evaluar los argumentos y luego aplicar" que el intérprete actualmente utiliza, que se denomina *evaluación de orden aplicativo* (NdT: *applicative-order evaluation* en inglés). Puede demostrarse que, para las aplicaciones de procedimientos que pueden modelarse utilizando la sustitución (incluyendo todos los procedimientos en los dos primeros capítulos de este libro) y que producen valores legítimos, la evaluación de orden normal y la de orden aplicativo producen el mismo valor (ver ejercicio 1.5 para un ejemplo de un valor "ilegítimo" donde la evaluación de orden normal y la de orden aplicativo no dan el mismo resultado).
+Este método alternativo de evaluación de "expandir completamente y reducir después" se conoce como *evaluación de orden normal*, en contraste con el método de "evaluar los argumentos y luego aplicar" que el intérprete actualmente utiliza, que se denomina *evaluación de orden aplicable*. Puede demostrarse que, para las aplicaciones de procedimientos que pueden modelarse utilizando la sustitución (incluyendo todos los procedimientos en los dos primeros capítulos de este libro) y que producen valores legítimos, la evaluación de orden normal y la de orden aplicativo producen el mismo valor (ver ejercicio 1.5 para un ejemplo de un valor "ilegítimo" donde la evaluación de orden normal y la de orden aplicativo no dan el mismo resultado).
 
 Lisp utiliza la evaluación de orden aplicativo, en parte debido a la eficiencia adicional obtenida al evitar evaluaciones múltiples de expresiones como la que demostramos anteriormente con (+ 5 1) y (* 5 2) y, más importante aún, porque la evaluación de orden normal se vuelve mucho más complicada cuando abandonamos el ámbito de los procedimientos que pueden ser modelados por sustitución. Por otro lado, la evaluación de orden normal puede ser una herramienta extremadamente valiosa, y vamos a investigar algunas de sus implicaciones en los capítulos [3](./19-capitulo-3-intro.md) y [4](./25-capitulo-4-intro.md).[^16]
 
@@ -357,7 +357,7 @@ El poder expresivo de la clase de procedimientos que podemos definir hasta ahora
       ⎩ -x  si x < 0
 ```
 
-Esta construcción se denomina *análisis de casos* (NdT: *case analysis* en inglés), y existe una forma especial en Lisp para anotar dichos análisis de casos. Se llama `cond` (que viene de "condicional"), y se usa de la siguiente manera:
+Esta construcción se denomina *análisis de caso*, y existe una forma especial en Lisp para anotar dichos análisis de casos. Se llama `cond` (que viene de "condicional"), y se usa de la siguiente manera:
 
 ```scheme
 (define (abs x)
@@ -611,7 +611,7 @@ Si nosotros escribimos estas definiciones en el intérprete, podemos usar `raiz-
 > 1000.000369924366
 ```
 
-El programa `raiz-cuadrada` también ilustra que el simple lenguaje procedural que hemos introducido hasta ahora es suficiente como para escribir cualquier programa puramente numérico que se pueda escribir en, digamos, C o Pascal. Esto puede parecer sorprendente, ya que no hemos incluido en nuestro lenguaje ninguna construcción iterativa (ciclos - NdT: *looping* en inglés) que dirija a la computadora a hacer algo una y otra vez. `raiz-iter`, por otro lado, demuestra cómo se puede lograr la iteración sin utilizar ninguna construcción especial que no sea la capacidad ordinaria de llamar a un procedimiento.[^24]
+El programa `raiz-cuadrada` también ilustra que el simple lenguaje procedural que hemos introducido hasta ahora es suficiente como para escribir cualquier programa puramente numérico que se pueda escribir en, digamos, C o Pascal. Esto puede parecer sorprendente, ya que no hemos incluido en nuestro lenguaje ninguna construcción iterativa (looping - `NdT: en español "bucles" o "ciclos"`) que dirija a la computadora a hacer algo una y otra vez. `raiz-iter`, por otro lado, demuestra cómo se puede lograr la iteración sin utilizar ninguna construcción especial que no sea la capacidad ordinaria de llamar a un procedimiento.[^24]
 
 **Ejercicio 1.6.** Alyssa P. Hacker no ve por qué `if` necesita ser provisto como una forma especial. "¿Por qué no puedo simplemente definirlo como un procedimiento ordinario en términos de `cond`?", pregunta ella. La amiga de Alyssa, Eva Lu Ator, asegura que esto se puede hacer, y define una nueva versión de `if`:
 
@@ -664,7 +664,7 @@ Observe que el problema de computar las raíces cuadradas se divide naturalmente
 
 **Figura 1.2:** Descomposición procedural del programa `raiz-cuadrada`.
 
-La importancia de esta estrategia de descomposición no radica simplemente en que uno esté dividiendo el programa en partes. Después de todo, podríamos tomar cualquier programa grande y dividirlo en secciones: las primeras diez líneas, las próximas diez líneas, las siguientes diez líneas, y así sucesivamente. Más bien, es crucial que cada procedimiento lleve a cabo una tarea identificable que pueda ser utilizada como un módulo para definir otros procedimientos. Por ejemplo, cuando definimos el procedimiento `suficientemente-bueno?` en términos de `al-cuadrado`, podemos considerar el procedimiento `al-cuadrado` como una "caja negra". En estos momentos no nos preocupa el modo en que el procedimiento calcula su resultado, sino el hecho de que calcule el cuadrado del número. Los detalles de cómo se calcula el cuadrado pueden ser omitidos, para ser considerados en otro momento. De hecho, en lo que respecta al procedimiento `suficientemente-bueno?`, `al-cuadrado` no es un procedimiento, sino más bien lo que se denomina *abstracción procedural* (NdT: *procedural abstraction* en inglés). En este nivel de abstracción, cualquier procedimiento que calcule el cuadrado es igualmente bueno.
+La importancia de esta estrategia de descomposición no radica simplemente en que uno esté dividiendo el programa en partes. Después de todo, podríamos tomar cualquier programa grande y dividirlo en secciones: las primeras diez líneas, las próximas diez líneas, las siguientes diez líneas, y así sucesivamente. Más bien, es crucial que cada procedimiento lleve a cabo una tarea identificable que pueda ser utilizada como un módulo para definir otros procedimientos. Por ejemplo, cuando definimos el procedimiento `suficientemente-bueno?` en términos de `al-cuadrado`, podemos considerar el procedimiento `al-cuadrado` como una "caja negra". En estos momentos no nos preocupa el modo en que el procedimiento calcula su resultado, sino el hecho de que calcule el cuadrado del número. Los detalles de cómo se calcula el cuadrado pueden ser omitidos, para ser considerados en otro momento. De hecho, en lo que respecta al procedimiento `suficientemente-bueno?`, `al-cuadrado` no es un procedimiento, sino más bien lo que se denomina *abstracción procedural*. En este nivel de abstracción, cualquier procedimiento que calcule el cuadrado es igualmente bueno.
 
 Por lo tanto, considerando sólo los valores que se devuelven, los dos procedimientos siguientes para obtener el cuadrado de un número deben ser indistinguibles. Cada uno toma un argumento numérico y produce el cuadrado de ese número como valor.[^25]
 
@@ -701,7 +701,7 @@ La intención del creador de `suficientemente-bueno?` es determinar si el cuadra
 
 Si los parámetros no fueran locales a los cuerpos de sus respectivos procedimientos, entonces el parámetro `x` en `al-cuadrado` podría confundirse con el parámetro `x` en `suficientemente-bueno?`, y el comportamiento de `suficientemente-bueno?` dependería de la versión de `al-cuadrado` que utilicemos. Por lo tanto, `al-cuadrado` no sería la caja negra que deseábamos.
 
-Un parámetro formal de un procedimiento tiene un rol muy especial en la definición del procedimiento, en el sentido de que no importa el nombre que tenga el parámetro formal. Tal nombre se llama *variable vinculada* (NdT: *bound variable* en inglés), y decimos que la definición del procedimiento *vincula* sus parámetros formales. El significado de la definición de un procedimiento no cambia si una variable vinculada es renombrada consistentemente a lo largo de la definición.[^26] Si una variable no está vinculada, decimos que es *libre*. El conjunto de expresiones para los que un vínculo define un nombre se llama el *ámbito* de ese nombre (NdT: *scope* en inglés). En una definición de procedimiento, las variables vinculadas que son declaradas como parámetros formales del procedimiento tienen como ámbito de aplicación el cuerpo mismo del procedimiento.
+Un parámetro formal de un procedimiento tiene un rol muy especial en la definición del procedimiento, en el sentido de que no importa el nombre que tenga el parámetro formal. Tal nombre se llama *variable vinculada*, y decimos que la definición del procedimiento *vincula* sus parámetros formales. El significado de la definición de un procedimiento no cambia si una variable vinculada es renombrada consistentemente a lo largo de la definición.[^26] Si una variable no está vinculada, decimos que es *libre*. El conjunto de expresiones para los que un vínculo define un nombre se llama el *ámbito* de ese nombre `(NdT: "scope" en inglés)`. En una definición de procedimiento, las variables vinculadas que son declaradas como parámetros formales del procedimiento tienen como ámbito de aplicación el cuerpo mismo del procedimiento.
 
 En la definición de `suficientemente-bueno?` mencionada arriba, `estimacion` y `x` son variables vinculadas pero `<`, `-`, `abs`, y `al-cuadrado` son libres. El significado de `suficientemente-bueno?` debe ser independiente de los nombres que elijamos para `estimacion` y `x`, siempre y cuando sean distintos y diferentes de `<`, `-`, `abs`, y `al-cuadrado` (si cambiásemos el nombre de `estimacion` por el de `abs`, hubiésemos introducido un error al *capturar* la variable `abs`). Habría pasado de libre a vinculada. Sin embargo, el significado de `suficientemente-bueno?` no es independiente de los nombres de sus variables libres. Depende seguramente del hecho (externo a esta definición) de que el símbolo `abs` nombre a un procedimiento para calcular el valor absoluto de un número. `Suficientemente bueno?` computará una función diferente si sustituimos `cos` por `abs` en su definición.
 
@@ -726,7 +726,7 @@ Tenemos disponible un tipo de aislamiento de nombre hasta ahora: Los parámetros
   (promedio estimacion (/ x estimacion)))
 ```
 
-El problema con este programa es que el único procedimiento que es importante para los usuarios de `raiz-cuadrada` es justamente `raiz-cuadrada`. Los otros procedimientos (`raiz-iter`, `suficientemente-bueno?`, y `mejorar`) sólo confunden sus mentes. Es posible que no definan ningún otro procedimiento llamado `suficientemente-bueno?` como parte de otro programa para trabajar junto con el programa de raíz cuadrada, simplemente porque `raiz-cuadrada` lo necesita. El problema es especialmente grave en la construcción de grandes sistemas por parte de muchos programadores independientes. Por ejemplo, en la construcción de una gran librería (NdT: *library* en inglés, cuya traducción correcta debería ser ["biblioteca"](https://es.wikipedia.org/wiki/Biblioteca_(inform%C3%A1tica), pero usaré "librería" por ser un término más empleado) de procedimientos numéricos, muchas funciones numéricas se calculan como aproximaciones sucesivas y, por lo tanto, pueden tener procedimientos denominados `suficientemente-bueno?` y `mejorar` como procedimientos auxiliares. Desearíamos ubicar los subprocedimientos, escondiéndolos dentro de `raiz-cuadrada` para que este último pueda coexistir con otras aproximaciones sucesivas, cada una de ellas con su propio procedimiento privado `suficientemente-bueno`. Para hacer esto posible, permitiremos que un procedimiento tenga definiciones internas que le sean locales a ese procedimiento. Por ejemplo, en el problema de raíz cuadrada podemos escribir
+El problema con este programa es que el único procedimiento que es importante para los usuarios de `raiz-cuadrada` es justamente `raiz-cuadrada`. Los otros procedimientos (`raiz-iter`, `suficientemente-bueno?`, y `mejorar`) sólo confunden sus mentes. Es posible que no definan ningún otro procedimiento llamado `suficientemente-bueno?` como parte de otro programa para trabajar junto con el programa de raíz cuadrada, simplemente porque `raiz-cuadrada` lo necesita. El problema es especialmente grave en la construcción de grandes sistemas por parte de muchos programadores independientes. Por ejemplo, en la construcción de una gran librería `(NdT: del inglés "library", cuya traducción correcta es en realidad "biblioteca")`, pero usaré "librería" por ser un término más empleado) de procedimientos numéricos, muchas funciones numéricas se calculan como aproximaciones sucesivas y, por lo tanto, pueden tener procedimientos denominados `suficientemente-bueno?` y `mejorar` como procedimientos auxiliares. Desearíamos ubicar los subprocedimientos, escondiéndolos dentro de `raiz-cuadrada` para que este último pueda coexistir con otras aproximaciones sucesivas, cada una de ellas con su propio procedimiento privado `suficientemente-bueno`. Para hacer esto posible, permitiremos que un procedimiento tenga definiciones internas que le sean locales a ese procedimiento. Por ejemplo, en el problema de raíz cuadrada podemos escribir
 
 ```scheme
 (define (raiz-cuadrada x)
@@ -744,7 +744,7 @@ El problema con este programa es que el único procedimiento que es importante p
     (raiz-iter 1.0 x))
 ```
 
-Este anidamiento de definiciones, llamado *estructura de bloques*, es básicamente la solución correcta para el problema más común del empaquetamiento de nombres. Pero hay una mejor idea merodeando aquí. Además de internalizar las definiciones de los procedimientos auxiliares, podemos también simplificarlos. Desde que `x` está vinculado en la definición de `raiz-cuadrada`, los procedimientos `suficientemente-bueno`, `mejorar`, y `raiz-iter`, que se definen internamente a `raiz-cuadrada`, están en el ámbito de `x`. Por lo tanto, no es necesario pasar `x` explícitamente a cada uno de estos procedimientos. En vez de eso, permitiremos que `x` sea una variable libre en las definiciones internas, como se muestra abajo. Entonces `x` obtiene su valor del argumento con el que se llama al procedimiento envolvente `raiz-cuadrada`. Esta modalidad se llama *alcance léxico* (NdT: en inglés *lexical scoping*).[^27]
+Este anidamiento de definiciones, llamado *estructura de bloques*, es básicamente la solución correcta para el problema más común del empaquetamiento de nombres. Pero hay una mejor idea merodeando aquí. Además de internalizar las definiciones de los procedimientos auxiliares, podemos también simplificarlos. Desde que `x` está vinculado en la definición de `raiz-cuadrada`, los procedimientos `suficientemente-bueno`, `mejorar`, y `raiz-iter`, que se definen internamente a `raiz-cuadrada`, están en el ámbito de `x`. Por lo tanto, no es necesario pasar `x` explícitamente a cada uno de estos procedimientos. En vez de eso, permitiremos que `x` sea una variable libre en las definiciones internas, como se muestra abajo. Entonces `x` obtiene su valor del argumento con el que se llama al procedimiento envolvente `raiz-cuadrada`. Esta modalidad se llama *alcance léxico*.[^27]
 
 ```scheme
 (define (raiz-cuadrada x)
@@ -762,14 +762,14 @@ Este anidamiento de definiciones, llamado *estructura de bloques*, es básicamen
     (raiz-iter 1.0))
 ```
 
-Usaremos ampliamente la estructura de bloques para ayudarnos a descomponer programas grandes en piezas más manejables.[^28] La idea de la estructura de bloques se originó con el lenguaje de programación Algol 60. Aparece en la mayoría de los lenguajes de programación más potentes y es una herramienta importante para ayudar a organizar la construcción de programas grandes.
+Usaremos ampliamente la estructura de bloques para ayudarnos a descomponer programas grandes en piezas más manejables.[^28] La idea de la estructura de bloques se originó con el lenguaje de programación Algol 60. Aparece en la mayoría de los lenguajes de programación más avanzados y es una herramienta importante para ayudar a organizar la construcción de programas grandes.
 
 ___
 
 
 [^4]: La caracterización de los números como "datos simples" es un engaño descarado. De hecho, el tratamiento de los números es uno de los aspectos más difíciles y confusos de cualquier lenguaje de programación. Algunas cuestiones típicas implicadas son estas: Algunos sistemas informáticos distinguen los números enteros, como el 2, de los números reales, como el 2.71. ¿Es el número real 2.00 diferente del número entero 2? ¿Son las operaciones aritméticas utilizadas para los números enteros las mismas que las operaciones utilizadas para los números reales? ¿6 dividido por 2 produce 3, o 3.0? ¿Qué tan grande es el número que podemos representar? ¿Cuántos decimales de precisión podemos representar? ¿Es el rango de números enteros el mismo que el rango de números reales? Más allá de estas preguntas, por supuesto, subyace un conjunto de cuestiones relativas a los errores de redondeo y truncamiento, es decir, toda la ciencia del análisis numérico. Ya que nuestro enfoque en este libro está en el diseño de programas a gran escala en lugar de en técnicas numéricas, vamos a ignorar estos problemas. Los ejemplos numéricos de este capítulo mostrarán el comportamiento habitual de redondeo que se observa cuando se utilizan operaciones aritméticas que conservan un número limitado de decimales de precisión en operaciones no enteras.
 
-[^5]: A lo largo de este libro, cuando queramos resaltar la distinción entre la entrada introducida por el usuario y la respuesta mostrada por el intérprete, mostraremos estas últimas en letras cursivas (NdT: por cuestiones de formato, lamentablemente las cursivas no se muestran tal como en el libro original; pero esto no deberia resultar problemático ya que las entradas que hagan uso de paréntesis están resaltadas en color).
+[^5]: A lo largo de este libro, cuando queramos resaltar la distinción entre la entrada introducida por el usuario y la respuesta mostrada por el intérprete, mostraremos estas últimas en letras cursivas `(NdT: repitiendo nuevamente: por cuestiones de edición, los resultados se muestran a partir del símbolo > en lugar de mostrar en cursiva, tal como los autores mencionan)`.
 
 [^6]: Los sistemas Lisp típicamente proveen características para ayudar al usuario en el formateo de expresiones. Dos funciones especialmente útiles son: una que automáticamente indenta a la posición correcta a modo pretty-print cada vez que se inicia una nueva línea, y otra que resalta el paréntesis izquierdo correspondiente cada vez que se escribe un paréntesis derecho.
 
@@ -781,17 +781,17 @@ ___
 
 [^10]: Puede parecer extraño que la regla de evaluación diga, como parte del primer paso, que debamos evaluar el elemento que esté más a la izquierda de una combinación, ya que en este punto sólo puede ser un operador como `+` o `*` que represente un procedimiento primitivo incorporado como la suma o la multiplicación. Más adelante veremos que es útil poder trabajar con combinaciones cuyos operadores son a su vez expresiones compuestas.
 
-[^11]: Formas sintácticas especiales, que son una alternativa conveniente para estructuras superficiales de cosas que pueden ser escritas de manera más uniforme, son a veces llamadas *azúcar sintáctico* (NdT: *syntactic sugar* en inglés), para usar una frase acuñada por Peter Landin. En comparación con los usuarios de otros lenguajes, los programadores de Lisp, por regla general, están menos preocupados por las cuestiones de sintaxis (por contraste, examine cualquier manual de Pascal y observe cuánto de él está dedicado a las descripciones de la sintaxis). Este desdén por la sintaxis se debe en parte a la flexibilidad de Lisp, que hace que sea fácil cambiar la sintaxis superficial, y en parte a la observación de que muchas construcciones sintácticas "convenientes", que hacen que el lenguaje sea menos uniforme, terminan causando más problemas de los que valen la pena cuando los programas se vuelven grandes y complejos. En palabras de Alan Perlis, *"El azúcar sintáctico causa cáncer de punto y coma"*.
+[^11]: Formas sintácticas especiales, que son una alternativa conveniente para estructuras superficiales de cosas que pueden ser escritas de manera más uniforme, son a veces llamadas *azúcar sintáctico* `(NdT: "syntactic sugar" en inglés)`, para usar una frase acuñada por Peter Landin. En comparación con los usuarios de otros lenguajes, los programadores de Lisp, por regla general, están menos preocupados por las cuestiones de sintaxis (por contraste, examine cualquier manual de Pascal y observe cuánto de él está dedicado a las descripciones de la sintaxis). Este desdén por la sintaxis se debe en parte a la flexibilidad de Lisp, que hace que sea fácil cambiar la sintaxis superficial, y en parte a la observación de que muchas construcciones sintácticas "convenientes", que hacen que el lenguaje sea menos uniforme, terminan causando más problemas de los que valen la pena cuando los programas se vuelven grandes y complejos. En palabras de Alan Perlis, *"El azúcar sintáctico causa cáncer de punto y coma"*.
 
 [^12]: Observe que hay dos operaciones diferentes siendo combinadas aquí: estamos creando el procedimiento, y le estamos dando el nombre `al-cuadrado`. Es posible, de hecho importante, poder separar estas dos nociones: crear procedimientos sin nombrarlos, y dar nombres a procedimientos que ya han sido creados. Veremos cómo hacerlo en la [sección 1.3.2](./12-capitulo-1-seccion-1-3.md#132-Construcción-de-Procedimientos-mediante-lambda).
 
-[^13]: A lo largo de este libro, describiremos la sintaxis general de las expresiones usando símbolos en cursiva delimitados por corchetes angulares -por ejemplo, *`<nombre>`*- para denotar las "posiciones" en la expresión a ser llenada cuando tal expresión es actualmente usada (NdT: por cuestiones de formato, las cursivas no aparecerán, pero si los corchetes angulares y el resalte a modo de "código").
+[^13]: A lo largo de este libro, describiremos la sintaxis general de las expresiones usando símbolos en cursiva delimitados por corchetes angulares -por ejemplo, *`<nombre>`*- para denotar las "posiciones" en la expresión a ser llenada cuando tal expresión es actualmente usada `(NdT: por cuestiones de edición, las cursivas no se mostrarán, pero si los corchetes angulares y el resaltado del texto a modo de código)`.
 
 [^14]: En términos más generales, el cuerpo del procedimiento puede ser una secuencia de expresiones. En este caso, el intérprete evalúa cada expresión de la secuencia y devuelve el valor de la expresión final como el valor de la aplicación del procedimiento.
 
 [^15]: A pesar de la simplicidad de la idea de sustitución, resulta sorprendentemente complicado dar una definición matemática rigurosa del proceso mismo. El problema surge de la posibilidad de confusión entre los nombres utilizados para los parámetros formales de un procedimiento y los nombres (posiblemente idénticos) usados en las expresiones a los cuales el procedimiento puede ser aplicado. De hecho, hay una larga historia de definiciones erróneas de sustitución en la literatura de la lógica y la semántica de programación. Ver Stoy 1977 para una discusión detallada de la sustitución.
 
-[^16]: En el [capítulo 3](./19-capitulo-3-intro.md) introduciremos *stream processing* (NdT: una traducción libre al español sería "procesamiento de flujos"), que es una forma de manejar estructuras de datos aparentemente "infinitas" al incorporar una forma limitada de evaluación de orden normal. En la [sección 4.2](./27-capitulo-4-seccion-4-2.md) modificaremos el intérprete del Scheme para producir una variante de orden normal de este dialecto.
+[^16]: En el [capítulo 3](./19-capitulo-3-intro.md) introduciremos *procesamiento de secuencias* `(NdT: del inglés "stream processing")`, que es una forma de manejar estructuras de datos aparentemente "infinitas" al incorporar una forma limitada de evaluación de orden normal. En la [sección 4.2](./27-capitulo-4-seccion-4-2.md) modificaremos el intérprete del Scheme para producir una variante de orden normal de este dialecto.
 
 [^17]: "Interpretado como verdadero o falso" significa esto: En Scheme, hay dos valores destacados que son denotados por las constantes `#t` y `#f`. Cuando el intérprete comprueba el valor de un predicado, interpreta `#f` como falso. Cualquier otro valor es tratado como verdadero (así, proporcionando `#t` es lógicamente innecesario, aunque es conveniente). En este libro usaremos los nombres verdadero y falso, que están asociados con los valores `#t` y `#f` respectivamente.
 
@@ -807,7 +807,7 @@ ___
 
 [^23]: Observe que expresamos nuestra estimación inicial como 1.0 en lugar de 1.  Esto no supondría ninguna diferencia en muchas implementaciones de Lisp. En el Scheme del MIT, sin embargo, se distingue entre números enteros exactos y valores decimales, y dividir dos números enteros produce un número racional en lugar de un decimal. Por ejemplo, dividir 10 por 6 produce 5/3, mientras que dividir 10.0 por 6.0 produce 1.666666666666666666666667 (aprenderemos a cómo implementar la aritmética sobre números racionales en la [sección 2.1.1](./14-capitulo-2-seccion-2-1.md#211-)). Si comenzamos con una estimación inicial de 1 en nuestro programa de raíz cuadrada, y `x` es un número entero exacto, todos los valores siguientes producidos por el cálculo de la raíz cuadrada serán números racionales en lugar de decimales. Las operaciones mixtas de números racionales y decimales siempre producen decimales, así que si se empieza con una estimación inicial de 1.0 fuerza a que todos los valores subsecuentes sean decimales.
 
-[^24]: Los lectores que estén preocupados por los problemas de eficiencia involucrados en el uso de llamadas de procedimiento para implementar la iteración deben tener en cuenta las observaciones sobre "tail recursion" (NdT: traducido libremente al español sería *recursividad de cola*) en la [sección 1.2.1](./11-capitulo-1-seccion-1-2.md#121-Recursión-e-Iteración-Lineales).
+[^24]: Los lectores que estén preocupados por los problemas de eficiencia involucrados en el uso de llamadas de procedimiento para implementar la iteración deben tener en cuenta las observaciones sobre "recursividad terminal" `(NdT: "tail recursion" en inglés)` en la [sección 1.2.1](./11-capitulo-1-seccion-1-2.md#121-Recursión-e-Iteración-Lineales).
 
 [^25]: Ni siquiera está claro cuál de estos procedimientos es una implementación más eficiente. Esto depende del hardware disponible. Hay máquinas para las que la implementación "obvia" es la menos eficiente. Considere una máquina que tiene extensas tablas de logaritmos y antilogaritmos almacenados de una manera muy eficiente.
 
