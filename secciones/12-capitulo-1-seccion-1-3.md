@@ -47,7 +47,7 @@ El tercero calcula la suma de una secuencia de términos de la serie
 1 . 3   5 . 7   9  . 11
 ```
 
-que converge en `π/8` (muy lentamente):[^49]
+que converge en `π/8` (muy lentamente):<sup>[**49**](#nota-49)</sup>
 
 ```scheme
 (define (pi-suma a b)
@@ -118,7 +118,7 @@ Entonces podemos sumar los números enteros de 1 a 10:
 > 55
 ```
 
-También podemos definir `pi-suma` de la misma manera:[^50]
+También podemos definir `pi-suma` de la misma manera:<sup>[**50**](#nota-50)</sup>
 
 ```scheme
 (define (pi-suma a b)
@@ -184,7 +184,7 @@ donde `h = (b - a)/n`, para algunos incluso enteros `n`, y `yₖ = f(a + kh)` (a
 ```
 
 **Ejercicio 1.31.**
-a.  El procedimiento `suma` es sólo el más simple de un vasto número de abstracciones similares que pueden ser tomadas como procedimientos de orden superior.[^51] Escriba un procedimiento análogo llamado `producto` que devuelva el producto de los valores de una función en puntos sobre un rango dado. Mostrar cómo definir `factorial` en términos de `producto`. También use `producto` para calcular aproximaciones al uso de la fórmula[^52].
+a.  El procedimiento `suma` es sólo el más simple de un vasto número de abstracciones similares que pueden ser tomadas como procedimientos de orden superior.<sup>[**51**](#nota-51)</sup> Escriba un procedimiento análogo llamado `producto` que devuelva el producto de los valores de una función en puntos sobre un rango dado. Mostrar cómo definir `factorial` en términos de `producto`. También use `producto` para calcular aproximaciones al uso de la fórmula<sup>[**52**](#nota-52)</sup>.
 
 ```
 π   2 . 4 . 4 . 6 . 6 . 8 ...
@@ -279,7 +279,7 @@ Como cualquier expresión que tenga un procedimiento como su valor, una expresi�
 > 12
 ```
 
-o, más generalmente, en cualquier contexto en el que normalmente utilizaríamos un nombre de procedimiento.[^53]
+o, más generalmente, en cualquier contexto en el que normalmente utilizaríamos un nombre de procedimiento.<sup>[**53**](#nota-53)</sup>
 
 
 #### Usando `let` para crear variables locales
@@ -401,7 +401,7 @@ A veces podemos usar definiciones internas para obtener el mismo efecto que con 
      (* a b)))
 ```
 
-Sin embargo, preferimos usar `let` en situaciones como ésta y usar `define` internos sólo para procedimientos internos.[^54]
+Sin embargo, preferimos usar `let` en situaciones como ésta y usar `define` internos sólo para procedimientos internos.<sup>[**54**](#nota-54)</sup>
 
 
 **Ejercicio 1.34.** Supongamos que definimos el procedimiento
@@ -449,12 +449,14 @@ El método *intervalo medio* es una técnica simple pero poderosa para encontrar
 
 Asumimos que inicialmente se nos da la función `f` junto con puntos en los que sus valores son negativos y positivos. Primero calculamos el punto medio de los dos puntos dados. A continuación comprobamos si el intervalo dado es lo suficientemente pequeño, y si es así, simplemente devolvemos el punto medio como respuesta. De lo contrario, calculamos como valor de prueba el valor de `f` en el punto medio. Si el valor de la prueba es positivo, entonces continuamos el proceso con un nuevo intervalo que va desde el punto negativo original hasta el punto medio. Si el valor de la prueba es negativo, continuamos con el intervalo desde el punto medio hasta el punto positivo. Finalmente, existe la posibilidad de que el valor de la prueba sea 0, en cuyo caso el punto medio es en sí mismo la raíz que estamos buscando.
 
+Para probar si los puntos finales son "suficientemente cercanos" podemos usar un procedimiento similar al utilizado en la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton) para calcular las raíces cuadradas:<sup>[**55**](#nota-55)</sup>
+
 ```scheme
 (define (suficientemente-bueno? x y)
   (< (abs (- x y)) 0.001))
 ```
 
-`buscar` es difícil de usar directamente, porque podemos accidentalmente darles puntos en los que los valores de `f` no tienen el signo requerido, en cuyo caso obtendríamos una respuesta errónea. En su lugar usaremos `buscar` a través del siguiente procedimiento, que comprueba cuál de los puntos finales tiene un valor de función negativo y cuál tiene un valor positivo, y llamará al procedimiento `buscar` de forma acorde. Si la función tiene el mismo signo en los dos puntos dados, el método de intervalo medio no se puede utilizar, en cuyo caso el procedimiento señala un error.[^56]
+`buscar` es difícil de usar directamente, porque podemos accidentalmente darles puntos en los que los valores de `f` no tienen el signo requerido, en cuyo caso obtendríamos una respuesta errónea. En su lugar usaremos `buscar` a través del siguiente procedimiento, que comprueba cuál de los puntos finales tiene un valor de función negativo y cuál tiene un valor positivo, y llamará al procedimiento `buscar` de forma acorde. Si la función tiene el mismo signo en los dos puntos dados, el método de intervalo medio no se puede utilizar, en cuyo caso el procedimiento señala un error.<sup>[**56**](#nota-56)</sup>
 
 ```scheme
 (define (metodo-intervalo-medio f a b)
@@ -510,7 +512,7 @@ hasta que el valor no cambie demasiado. Usando esta idea, podemos idear un proce
   (probar primera-estimacion))
 ```
 
-Por ejemplo, podemos usar este método para aproximar el punto fijo de la función coseno, comenzando con 1 como una aproximación inicial:[^57]
+Por ejemplo, podemos usar este método para aproximar el punto fijo de la función coseno, comenzando con 1 como una aproximación inicial:<sup>[**57**](#nota-57)</sup>
 
 ```scheme
 (punto-fijo cos 1.0)
@@ -525,7 +527,7 @@ Similarmente, podemos encontrar una solución a la ecuación `y = sen y + cos y`
 > 1.2587315962971173
 ```
 
-El proceso de punto fijo nos recuerda al proceso que usamos para encontrar raíces cuadradas en la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton)). Ambos se basan en la idea de mejorar repetidamente una estimación hasta que el resultado satisfaga algún criterio. De hecho, podemos formular fácilmente el cálculo de `raíz-cuadrada` como una búsqueda de punto fijo. Calcular la raíz cuadrada de un número `x` requiere encontrar un `y` tal que `y² = x`. Poniendo esta ecuación en la forma equivalente `y = x/y`, reconocemos que estamos buscando un punto fijo de la función[^58] `y → x/y`, y por lo tanto podemos intentar calcular raíces cuadradas como
+El proceso de punto fijo nos recuerda al proceso que usamos para encontrar raíces cuadradas en la [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton). Ambos se basan en la idea de mejorar repetidamente una estimación hasta que el resultado satisfaga algún criterio. De hecho, podemos formular fácilmente el cálculo de `raíz-cuadrada` como una búsqueda de punto fijo. Calcular la raíz cuadrada de un número `x` requiere encontrar un `y` tal que `y² = x`. Poniendo esta ecuación en la forma equivalente `y = x/y`, reconocemos que estamos buscando un punto fijo de la función<sup>[**58**](#nota-58)</sup> `y → x/y`, y por lo tanto podemos intentar calcular raíces cuadradas como
 
 ```scheme
 (define (raiz-cuadrada x)
@@ -617,7 +619,7 @@ Podemos expresar la idea de amortiguación media mediante el siguiente procedimi
   (lambda (x) (promedio x (f x))))
 ```
 
-La `aten-media` es un procedimiento que toma como argumento un procedimiento `f` y devuelve como su valor un procedimiento (producido por el lambda) que, cuando se aplica a un número `x`, produce el promedio de `x` y `(f x)`. Por ejemplo, la aplicación de `aten-media` al procedimiento `al-cuadrado` produce un procedimiento cuyo valor con un número `x` es el promedio de `x` y `x²`. Aplicando este procedimiento a 10 devuelve el promedio de 10 y 100, o 55:[^59]
+La `aten-media` es un procedimiento que toma como argumento un procedimiento `f` y devuelve como su valor un procedimiento (producido por el lambda) que, cuando se aplica a un número `x`, produce el promedio de `x` y `(f x)`. Por ejemplo, la aplicación de `aten-media` al procedimiento `al-cuadrado` produce un procedimiento cuyo valor con un número `x` es el promedio de `x` y `x²`. Aplicando este procedimiento a 10 devuelve el promedio de 10 y 100, o 55:<sup>[**59**](#nota-59)</sup>
 
 ```scheme
 ((aten-media al-cuadrado) 10)
@@ -632,7 +634,7 @@ Usando `aten-media`, podemos reformular el procedimiento de raíz cuadrada de la
               1.0))
 ```
 
-Observe cómo esta formulación hace explícitas las tres ideas en el método: la búsqueda de punto fijo, la atenuación media y la función `y → x/y`. Es instructivo comparar esta formulación del método de raíz cuadrada con la versión original dada en [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton). Tenga en cuenta que estos procedimientos expresan el mismo proceso, y observe cuán clara se vuelve la idea cuando expresamos el proceso en términos de estas abstracciones.  En general, hay muchas maneras de formular un proceso como un procedimiento. Los programadores experimentados saben cómo elegir formulaciones de procedimiento que son particularmente perspicaces, y en las que los elementos útiles del proceso se exponen como entidades separadas que pueden ser reutilizadas en otras aplicaciones. Como ejemplo simple de reutilización, note que la raíz cúbica de `x` es un punto fijo de la función `y → x/y²`, así que podemos generalizar inmediatamente nuestro procedimiento de raíz cuadrada a uno que extrae raíces cúbicas:[^60]
+Observe cómo esta formulación hace explícitas las tres ideas en el método: la búsqueda de punto fijo, la atenuación media y la función `y → x/y`. Es instructivo comparar esta formulación del método de raíz cuadrada con la versión original dada en [sección 1.1.7](./10-capitulo-1-seccion-1-1.md#117-Ejemplo-Raíces-Cuadradas-por-el-Método-de-Newton). Tenga en cuenta que estos procedimientos expresan el mismo proceso, y observe cuán clara se vuelve la idea cuando expresamos el proceso en términos de estas abstracciones.  En general, hay muchas maneras de formular un proceso como un procedimiento. Los programadores experimentados saben cómo elegir formulaciones de procedimiento que son particularmente perspicaces, y en las que los elementos útiles del proceso se exponen como entidades separadas que pueden ser reutilizadas en otras aplicaciones. Como ejemplo simple de reutilización, note que la raíz cúbica de `x` es un punto fijo de la función `y → x/y²`, así que podemos generalizar inmediatamente nuestro procedimiento de raíz cuadrada a uno que extrae raíces cúbicas:<sup>[**60**](#nota-60</sup>
 
 ```scheme
 (define (raiz-cubica x)
@@ -650,7 +652,7 @@ f(x) = x - ―――――――
             Dg(x)    
 ```
 
-y `Dg(x)` es la derivada de `g` evaluada en `x`. El método de Newton es el uso del método de punto fijo que vimos arriba para aproximar una solución de la ecuación encontrando un punto fijo de la función `f`.[^61] Para muchas funciones `g` y para suposiciones iniciales lo suficientemente buenas para `x`, el método de Newton converge muy rápidamente a una solución de `g(x) = 0`.[^62] 
+y `Dg(x)` es la derivada de `g` evaluada en `x`. El método de Newton es el uso del método de punto fijo que vimos arriba para aproximar una solución de la ecuación encontrando un punto fijo de la función `f`.<sup>[**61**](#nota-61)</sup> Para muchas funciones `g` y para suposiciones iniciales lo suficientemente buenas para `x`, el método de Newton converge muy rápidamente a una solución de `g(x) = 0`.<sup>[**62**](#nota-62)</sup>
 
 Para implementar el método de Newton como un procedimiento, primero debemos expresar la idea de la derivada. Nótese que la "derivada", al igual que la atenuación media, es algo que transforma una función en otra función. Por ejemplo, el derivado de la función `x → x³` es la función `x → 3x²`. En general, si `g` es una función y `dx` es un número pequeño, entonces la derivada `Dg` de `g` es la función cuyo valor en cualquier número `x` es dado (en el límite de `dx`) por 
 
@@ -695,7 +697,7 @@ Con la ayuda de `derivada`, podemos expresar el método de Newton como un proces
   (punto-fijo (transf-newton  g) estimacion))
 ```
 
-El procedimiento `transf-newton` expresa la fórmula al principio de esta sección, y `metodo-newton` es rápidamente definido en términos de esto. Toma como argumento un procedimiento que calcula la función para la que queremos encontrar un cero, junto con una conjetura inicial. Por ejemplo, para encontrar la raíz cuadrada de `x`, podemos usar el método de Newton para encontrar un cero de la función `y → y² - x` comenzando con una suposición inicial de 1.[^63] Esto proporciona otra forma del procedimiento de raíz cuadrada:
+El procedimiento `transf-newton` expresa la fórmula al principio de esta sección, y `metodo-newton` es rápidamente definido en términos de esto. Toma como argumento un procedimiento que calcula la función para la que queremos encontrar un cero, junto con una conjetura inicial. Por ejemplo, para encontrar la raíz cuadrada de `x`, podemos usar el método de Newton para encontrar un cero de la función `y → y² - x` comenzando con una suposición inicial de 1.<sup>[**63**](#nota-63)</sup> Esto proporciona otra forma del procedimiento de raíz cuadrada:
 
 ```scheme
 (define (raiz-cuadrada x)
@@ -736,14 +738,14 @@ Comenzamos la [sección 1.3](./12-capitulo-1-seccion-1-3.md)) con la observació
 
 Como programadores, debemos estar atentos a las oportunidades para identificar las abstracciones subyacentes en nuestros programas y construir sobre ellas y generalizarlas para crear abstracciones más poderosas. Esto no quiere decir que uno siempre debe escribir programas de la manera más abstracta posible; los programadores expertos saben cómo elegir el nivel de abstracción apropiado para sus tareas. Pero es importante ser capaz de pensar en términos de estas abstracciones, para que podamos estar preparados para aplicarlas en nuevos contextos. La importancia de los procedimientos de orden superior es que nos permiten representar estas abstracciones explícitamente como elementos en nuestro lenguaje de programación, de modo que puedan ser manejados como otros elementos computacionales.
 
-En general, los lenguajes de programación imponen restricciones a las formas en que se pueden manipular los elementos computacionales. Se dice que los elementos con menos restricciones tienen estatus de *primera clase*. Algunos de los "derechos y privilegios" de los elementos de primera clase son:[^64]
+En general, los lenguajes de programación imponen restricciones a las formas en que se pueden manipular los elementos computacionales. Se dice que los elementos con menos restricciones tienen estatus de *primera clase*. Algunos de los "derechos y privilegios" de los elementos de primera clase son:<sup>[**64**](#nota-64)</sup>
 
 * Pueden ser nombrados por variables.
 * Pueden pasar como argumentos a los procedimientos.
 * Pueden ser devueltos como resultado de los procedimientos.
-* Pueden incluirse en estructuras de datos.[^65]
+* Pueden incluirse en estructuras de datos.<sup>[**65**](#nota-65)</sup>
 
-Lisp, a diferencia de otros lenguajes de programación conocidos, concede a los procedimientos un estatus de primera clase. Esto plantea desafíos para una implementación eficiente, pero la ganancia resultante en poder expresivo es enorme.[^66]
+Lisp, a diferencia de otros lenguajes de programación conocidos, concede a los procedimientos un estatus de primera clase. Esto plantea desafíos para una implementación eficiente, pero la ganancia resultante en poder expresivo es enorme.<sup>[**66*](#nota-66)</sup>
 
 
 **Ejercicio 1.40.** Definir un procedimiento `al-cubo` que puede ser usado junto con el procedimiento `metodo-newton` en expresiones de la forma
@@ -785,38 +787,38 @@ Sugerencia: Puede ser conveniente usar `componer` a partir del ejercicio 1.42.
 ___
 
 
-[^49]: Esta serie, usualmente escrita en la forma equivalente `(π/4) = 1 - (1/3) + (1/5) - (1/7) + ...`, se debe a Leibniz. Veremos cómo usar esto como base para algunos trucos numéricos en la [sección 3.5.3](./24-capitulo-3-seccion-3-5.md#353-).
+<a name="nota-49">**49**</a>: Esta serie, usualmente escrita en la forma equivalente `(π/4) = 1 - (1/3) + (1/5) - (1/7) + ...`, se debe a Leibniz. Veremos cómo usar esto como base para algunos trucos numéricos en la [sección 3.5.3](./24-capitulo-3-seccion-3-5.md#353-).
 
-[^50]: Note que hemos usado la estructura de bloques ([sección 1.1.8](./10-capitulo-1-seccion-1-1.md#118-Procedimientos-como-Abstracciones-de-Caja-Negra)) para incrustar las definiciones de `pi-sig` y `pi-term` dentro de `pi-suma`, ya que es poco probable que estos procedimientos sean útiles para cualquier otro propósito. Veremos cómo deshacernos de ellos en la [sección 1.3.2](./12-capitulo-1-seccion-1-3.md#132-Construcción-de-procedimientos-mediante-lambda).
+<a name="nota-50">**50**</a>: Note que hemos usado la estructura de bloques ([sección 1.1.8](./10-capitulo-1-seccion-1-1.md#118-Procedimientos-como-Abstracciones-de-Caja-Negra)) para incrustar las definiciones de `pi-sig` y `pi-term` dentro de `pi-suma`, ya que es poco probable que estos procedimientos sean útiles para cualquier otro propósito. Veremos cómo deshacernos de ellos en la [sección 1.3.2](./12-capitulo-1-seccion-1-3.md#132-Construcción-de-procedimientos-mediante-lambda).
 
-[^51]: La intención de los ejercicios 1.31 - 1.33 es demostrar el poder expresivo que se logra usando una abstracción apropiada para consolidar muchas operaciones aparentemente dispares. Sin embargo, aunque la acumulación y el filtrado son ideas elegantes, nuestras manos están un poco atadas en su uso en este momento, ya que aún no disponemos de estructuras de datos para proporcionar los medios adecuados de combinación para estas abstracciones. Volveremos a estas ideas en la [sección 2.2.3](./15-capitulo-2-seccion-2-2.md#223-) cuando mostremos cómo usar secuencias como interfaces para combinar filtros y acumuladores para construir abstracciones aún más poderosas. Veremos allí cómo estos métodos realmente se imponen como un enfoque poderoso y elegante para el diseño de programas.
+<a name="nota-51">**51**</a>: La intención de los ejercicios 1.31 - 1.33 es demostrar el poder expresivo que se logra usando una abstracción apropiada para consolidar muchas operaciones aparentemente dispares. Sin embargo, aunque la acumulación y el filtrado son ideas elegantes, nuestras manos están un poco atadas en su uso en este momento, ya que aún no disponemos de estructuras de datos para proporcionar los medios adecuados de combinación para estas abstracciones. Volveremos a estas ideas en la [sección 2.2.3](./15-capitulo-2-seccion-2-2.md#223-) cuando mostremos cómo usar secuencias como interfaces para combinar filtros y acumuladores para construir abstracciones aún más poderosas. Veremos allí cómo estos métodos realmente se imponen como un enfoque poderoso y elegante para el diseño de programas.
 
-[^52]: Esta fórmula fue descubierta por el matemático inglés del siglo XVII John Wallis.
+<a name="nota-52">**52**</a>: Esta fórmula fue descubierta por el matemático inglés del siglo XVII John Wallis.
 
-[^53]: Sería más claro y menos intimidante para la gente que esta aprendiendo Lisp si se usara un nombre más obvio que `lambda`, como `hacer-procedimiento`. Pero la convención está firmemente arraigada. La notación se adopta del cálculo λ, un formalismo matemático introducido por el lógico matemático Alonzo Church (1941). Church desarrolló el cálculo λ para proporcionar una base rigurosa para el estudio de las nociones de función y aplicación de la función. El cálculo λ se ha convertido en una herramienta básica para la investigación matemática de la semántica de los lenguajes de programación.
+<a name="nota-53">**53**</a>: Sería más claro y menos intimidante para la gente que esta aprendiendo Lisp si se usara un nombre más obvio que `lambda`, como `hacer-procedimiento`. Pero la convención está firmemente arraigada. La notación se adopta del cálculo λ, un formalismo matemático introducido por el lógico matemático Alonzo Church (1941). Church desarrolló el cálculo λ para proporcionar una base rigurosa para el estudio de las nociones de función y aplicación de la función. El cálculo λ se ha convertido en una herramienta básica para la investigación matemática de la semántica de los lenguajes de programación.
 
-[^54]: Entender las definiciones internas lo suficientemente bien como para asegurarnos de que un programa significa lo que pretendemos que signifique requiere un modelo más elaborado del proceso de evaluación que el que hemos presentado en este capítulo. Sin embargo, las sutilezas no surgen con las definiciones internas de los procedimientos. Volveremos sobre este tema en la [sección 4.1.6](./26-capitulo-4-seccion-4.1.md#416-), después de aprender más sobre la evaluación.
+<a name="nota-54">**54**</a>: Entender las definiciones internas lo suficientemente bien como para asegurarnos de que un programa significa lo que pretendemos que signifique requiere un modelo más elaborado del proceso de evaluación que el que hemos presentado en este capítulo. Sin embargo, las sutilezas no surgen con las definiciones internas de los procedimientos. Volveremos sobre este tema en la [sección 4.1.6](./26-capitulo-4-seccion-4.1.md#416-), después de aprender más sobre la evaluación.
 
-[^55]: Hemos utilizado 0,001 como un número "pequeño" representativo para indicar una tolerancia de error aceptable en un cálculo. La tolerancia adecuada para un cálculo real depende del problema a resolver y de las limitaciones de la computadora y del algoritmo. Esta es a menudo una consideración muy sutil, que requiere de la ayuda de un analista numérico o de algún otro tipo de mago.
+<a name="nota-55">**55**</a>: Hemos utilizado 0,001 como un número "pequeño" representativo para indicar una tolerancia de error aceptable en un cálculo. La tolerancia adecuada para un cálculo real depende del problema a resolver y de las limitaciones de la computadora y del algoritmo. Esta es a menudo una consideración muy sutil, que requiere de la ayuda de un analista numérico o de algún otro tipo de mago.
 
-[^56]: Esto se puede lograr usando `error,` que toma como argumentos un número de ítems que se imprimen como mensajes de error.
+<a name="nota-56">**56**</a>: Esto se puede lograr usando `error,` que toma como argumentos un número de ítems que se imprimen como mensajes de error.
 
-[^57]: Pruebe esto durante una clase aburrida: Ponga su calculadora en modo radianes y luego presione repetidamente el botón `cos` hasta que obtenga el punto fijo.
+<a name="nota-57">**57**</a>: Pruebe esto durante una clase aburrida: Ponga su calculadora en modo radianes y luego presione repetidamente el botón `cos` hasta que obtenga el punto fijo.
 
-[^58]: `→` (se pronuncia "mapear a") es la forma en que los matemáticos escriben `lambda`. `y → x/y` significa `(lambda(y) (/ x y))`, es decir, la función cuyo valor en `y` es `x/y`.
+<a name="nota-58">**58**</a>: `→` (se pronuncia "mapear a") es la forma en que los matemáticos escriben `lambda`. `y → x/y` significa `(lambda(y) (/ x y))`, es decir, la función cuyo valor en `y` es `x/y`.
 
-[^59]: Observe que se trata de una combinación cuyo operador es a su vez una combinación. En el Ejercicio 1.4 ya se demostró la capacidad de formar tales combinaciones, pero eso sólo fue un ejemplo de juguete. Aquí empezamos a ver la necesidad real de tales combinaciones: al aplicar un procedimiento que se obtiene como el valor devuelto por un procedimiento de orden superior.
+<a name="nota-59">**59**</a>: Observe que se trata de una combinación cuyo operador es a su vez una combinación. En el Ejercicio 1.4 ya se demostró la capacidad de formar tales combinaciones, pero eso sólo fue un ejemplo de juguete. Aquí empezamos a ver la necesidad real de tales combinaciones: al aplicar un procedimiento que se obtiene como el valor devuelto por un procedimiento de orden superior.
 
-[^60]: Véase el ejercicio 1.45 para una mayor generalización.
+<a name="nota-60">**60**</a>: Véase el ejercicio 1.45 para una mayor generalización.
 
-[^61]: Los libros de cálculo elemental generalmente describen el método de Newton en términos de una secuencia de aproximaciones `xₙ₊₁ = xₙ - g(xₙ)/Dg(xₙ)`. Disponer de un lenguaje para hablar de procesos y utilizar la idea de puntos fijos simplifica la descripción del método.
+<a name="nota-61">**61**</a>: Los libros de cálculo elemental generalmente describen el método de Newton en términos de una secuencia de aproximaciones `xₙ₊₁ = xₙ - g(xₙ)/Dg(xₙ)`. Disponer de un lenguaje para hablar de procesos y utilizar la idea de puntos fijos simplifica la descripción del método.
 
-[^62]: El método de Newton no siempre converge en una respuesta, pero se puede demostrar que, en los casos favorables, cada iteración duplica la precisión del número de dígitos de la aproximación a la solución. En tales casos, el método de Newton convergerá mucho más rápidamente que el método de intervalo medio.
+<a name="nota-62">**62**</a>: El método de Newton no siempre converge en una respuesta, pero se puede demostrar que, en los casos favorables, cada iteración duplica la precisión del número de dígitos de la aproximación a la solución. En tales casos, el método de Newton convergerá mucho más rápidamente que el método de intervalo medio.
 
-[^63]: Para encontrar raíces cuadradas, el método de Newton converge rápidamente a la solución correcta desde cualquier punto de partida.
+<a name="nota-63">**63**</a>: Para encontrar raíces cuadradas, el método de Newton converge rápidamente a la solución correcta desde cualquier punto de partida.
 
-[^64]: La noción de que los elementos del lenguaje de programación son de primera clase se debe al informático británico Christopher Strachey (1916-1975).
+<a name="nota-64">**64**</a>: La noción de que los elementos del lenguaje de programación son de primera clase se debe al informático británico Christopher Strachey (1916-1975).
 
-[^65]: Veremos ejemplos de esto después de introducir las estructuras de datos en el [capítulo 2](./13-capitulo-2-intro.md).
+<a name="nota-65">**65**</a>: Veremos ejemplos de esto después de introducir las estructuras de datos en el [capítulo 2](./13-capitulo-2-intro.md).
 
-[^66]: El mayor costo de implementación de los procedimientos de primera clase radica en que, al permitir que los procedimientos se devuelvan como valores, se requiere reservar el almacenamiento para las variables libres de un procedimiento, incluso cuando el procedimiento no se está ejecutando. En la implementación de Scheme que estudiaremos en la [sección 4.1](./26-capitulo-4-seccion-4.1.md), estas variables se almacenan en el entorno del procedimiento. 
+<a name="nota-66">**66**</a>: El mayor costo de implementación de los procedimientos de primera clase radica en que, al permitir que los procedimientos se devuelvan como valores, se requiere reservar el almacenamiento para las variables libres de un procedimiento, incluso cuando el procedimiento no se está ejecutando. En la implementación de Scheme que estudiaremos en la [sección 4.1](./26-capitulo-4-seccion-4.1.md), estas variables se almacenan en el entorno del procedimiento. 
