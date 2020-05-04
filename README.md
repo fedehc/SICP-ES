@@ -35,7 +35,7 @@ Traducir la obra completamente por mi mismo, para que pueda ser leído online o 
 
 ## Motivos:
 
-No soy programador ni traductor profesional, ni el primero en hacer el intento de traducción al español de este libro<sup>[**\***](#nota-0)</sup>. No soy más que un amateur que busca aprender. Y el presente repositorio no es más que mi intento por  y de acercar esta obra a aquellos hispanohablantes que busquen adentrarse al mundo del desarrollo de software; más específicamente, al diseño y construcción de sistemas de software complejos.
+No soy programador, ni traductor profesional, ni el primero en hacer el intento de traducción al español de esta obra<sup>[**\***](#nota-0)</sup>. No soy más que un amateur que busca aprender. Y el presente repositorio no solo es mi intento por aprender sino también de acercar esta obra a todos aquellos hispanohablantes que busquen adentrarse al mundo del desarrollo de software; o más específicamente, al diseño y construcción de sistemas de software complejos.
 
 ###### <a name="nota-0">**\*** </a>Navegando por la web, muchos parecen haber hecho el intento pero nadie parece haberlo completado, ni siquiera el primer capítulo. Y la calidad de las pocas traducciones que se pueden ver en español dejan mucho que desear porque no son más que traducciones automáticas, sin ninguna clase de corrección posterior.
 
