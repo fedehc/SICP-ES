@@ -248,7 +248,7 @@ Ahora podemos usar `suma-de-cuadrados` como un bloque de construcción en la con
 > 136
 ```
 
-Los procedimientos compuestos son usados exactamente de la misma manera que los procedimientos primitivos. De hecho, uno no podría decir al mirar la definición de `suma-de-cuadrados` dada arriba si `al-cuadrado` fue construido dentro del intérprete, como `+` y `*`, o definido como un procedimiento compuesto.
+Los procedimientos compuestos son usados exactamente de la misma manera que los procedimientos primitivos. De hecho, uno no podría decir con solo mirar la definición de `suma-de-cuadrados` dada arriba si `al-cuadrado` fue construido dentro del intérprete, como `+` y `*`, o definido como un procedimiento compuesto.
 
 
 ### 1.1.5 El Modelo de Sustitución para la Aplicación de Procedimientos
@@ -345,7 +345,7 @@ Esto da la misma respuesta que nuestro modelo de evaluación anterior, pero el p
 
 con x reemplazado respectivamente por `(+ 5 1)` y `(* 5 2)`.
 
-Este método alternativo de evaluación de "expandir completamente y reducir después" se conoce como *evaluación de orden normal*, en contraste con el método de "evaluar los argumentos y luego aplicar" que el intérprete actualmente utiliza, que se denomina *evaluación de orden aplicable*. Puede demostrarse que, para las aplicaciones de procedimientos que pueden modelarse utilizando la sustitución (incluyendo todos los procedimientos en los dos primeros capítulos de este libro) y que producen valores legítimos, la evaluación de orden normal y la de orden aplicativo producen el mismo valor (ver ejercicio 1.5 para un ejemplo de un valor "ilegítimo" donde la evaluación de orden normal y la de orden aplicativo no dan el mismo resultado).
+Este método alternativo de evaluación de "expandir completamente y reducir después" se conoce como *evaluación de orden normal*, en contraste con el método de "evaluar los argumentos y luego aplicar" que el intérprete actualmente utiliza, que se denomina *evaluación de orden aplicativo*. Puede demostrarse que, para las aplicaciones de procedimientos que pueden modelarse utilizando la sustitución (incluyendo todos los procedimientos en los dos primeros capítulos de este libro) y que producen valores legítimos, la evaluación de orden normal y la de orden aplicativo producen el mismo valor (ver ejercicio 1.5 para un ejemplo de un valor "ilegítimo" donde la evaluación de orden normal y la de orden aplicativo no dan el mismo resultado).
 
 Lisp utiliza la evaluación de orden aplicativo, en parte debido a la eficiencia adicional obtenida al evitar evaluaciones múltiples de expresiones como la que demostramos anteriormente con (+ 5 1) y (* 5 2) y, más importante aún, porque la evaluación de orden normal se vuelve mucho más complicada cuando abandonamos el ámbito de los procedimientos que pueden ser modelados por sustitución. Por otro lado, la evaluación de orden normal puede ser una herramienta extremadamente valiosa, y vamos a investigar algunas de sus implicaciones en los capítulos [3](./19-capitulo-3-intro.md) y [4](./25-capitulo-4-intro.md).<sup>[**16**](#nota-16)</sup>
 
@@ -392,7 +392,7 @@ Otra forma de escribir el procedimiento de valor absoluto es
         (else x)))
 ```
 
-que podría expresarse en inglés como "Si x es menor que cero, devolver -x; en caso contrario, devolver x". `Else` es un símbolo especial que puede ser usado en lugar de `<p>` en la cláusula final de un `cond`. Esto hace que el `cond` devuelva como su valor el valor del `<e>` correspondiente cuando todas las cláusulas anteriores han sido pasadas. De hecho, cualquier expresión que evalúe siempre a un valor verdadero podría ser usado como `<p>` aquí.
+que podría expresarse en inglés como "Si x es menor que cero, devolver -x; en caso contrario, devolver x". `Else` es un símbolo especial que puede ser usado en lugar de `<p>` en la cláusula final de un `cond`. Esto hace que el `cond` devuelva como su valor el valor de la `<e>` correspondiente cuando todas las cláusulas anteriores han sido pasadas. De hecho, cualquier expresión que evalúe siempre a un valor verdadero podría ser usado como `<p>` aquí.
 
 Aquí hay otra manera de escribir el procedimiento de valor absoluto:
 
@@ -404,7 +404,7 @@ Aquí hay otra manera de escribir el procedimiento de valor absoluto:
 ```
 
 Esto usa la forma especial `if`, un tipo restringido de condicional que puede ser usado cuando solo exista precisamente dos casos en el análisis de casos. La forma general de una expresión `if` es
-
+és
 ```scheme
 (if <predicado> <consecuente> <alternativa>)
 ```
@@ -526,7 +526,7 @@ Los procedimientos, como se han explicado anteriormente, son muy parecidos a las
 Como ejemplo concreto, consideremos el problema de computar las raíces cuadradas. Podemos definir la función de raíz cuadrada como
 
 ```
-√x = de y tal que y >= 0 e y² = x
+√x = el y tal que y >= 0 e y² = x
 ```
 
 Esto describe una función matemática perfectamente legítima. Podríamos usarlo para reconocer si un número es la raíz cuadrada de otro, o para derivar hechos sobre las raíces cuadradas en general. Por otra parte, la definición no describe un procedimiento. De hecho, no nos dice casi nada sobre cómo encontrar realmente la raíz cuadrada de un número dado. No ayudaría mucho reformular esta definición en pseudo-Lisp:
@@ -537,7 +537,7 @@ Esto describe una función matemática perfectamente legítima. Podríamos usarl
               (= (elevar al cuadrado y) x))))
 ```
 
-Esto sólo nos plantea la pregunta.
+Esto sólo plantea la cuestión.
 
 El contraste entre función y procedimiento es un reflejo de la distinción general entre describir las propiedades de las cosas y describir cómo hacerlas o, como a veces se le llama, la distinción entre el conocimiento declarativo y el conocimiento imperativo. En matemáticas por lo general nos ocupamos de las descripciones declarativas (lo que es), mientras que en informática nos ocupamos de las descripciones imperativas (cómo hacerlo).<sup>[**20**](#nota-20)</sup>
 
@@ -561,10 +561,9 @@ Ahora formalicemos el proceso en términos de procedimientos. Comenzamos con un 
 
 ```scheme
 (define (raiz-iter estimacion x)
-  (if (suficientemente-bueno? estimacion x)
+  (if (suficiente? estimacion x)
       estimacion
-      (raiz-iter (mejorar estimacion x)
-                 x)))
+      (raiz-iter (mejorar estimacion x) x)))
 ```
 
 Una estimación se mejora al promediarla con el cociente del radicando y la anterior estimación:
@@ -584,7 +583,7 @@ donde
 También tenemos que explicar lo que entendemos por "suficientemente bueno". Lo siguiente servirá para ilustrar, pero no es realmente un buen test (ver ejercicio 1.7). La idea es mejorar la respuesta hasta que esté lo suficientemente cerca como para que su cuadrado difiera del radicando por debajo de una tolerancia predeterminada (en este caso 0.001):<sup>[**22**](#nota-22)</sup>
 
 ```scheme
-(define (suficientemente-bueno? estimacion x)
+(define (suficiente? estimacion x)
   (< (abs (- (al-cuadrado estimacion) x)) 0.001))
 ```
 
@@ -614,14 +613,14 @@ Si nosotros escribimos estas definiciones en el intérprete, podemos usar `raiz-
 > 1000.000369924366
 ```
 
-El programa `raiz-cuadrada` también ilustra que el simple lenguaje procedural que hemos introducido hasta ahora es suficiente como para escribir cualquier programa puramente numérico que se pueda escribir en, digamos, C o Pascal. Esto puede parecer sorprendente, ya que no hemos incluido en nuestro lenguaje ninguna construcción iterativa (looping - `NdT: al español se traduce como "iteración"`) que dirija a la computadora a hacer algo una y otra vez. `raiz-iter`, por otro lado, demuestra cómo se puede lograr la iteración sin utilizar ninguna construcción especial que no sea la capacidad ordinaria de llamar a un procedimiento.<sup>[**24**](#nota-24)</sup>
+El programa `raiz-cuadrada` también ilustra que el simple lenguaje procedural que hemos introducido hasta ahora es suficiente como para escribir cualquier programa puramente numérico que se pueda escribir en, digamos, C o Pascal. Esto puede parecer sorprendente, ya que no hemos incluido en nuestro lenguaje ninguna construcción iterativa (looping - `NdT: looping al español se traduce como "iteración"`) que dirija a la computadora a hacer algo una y otra vez. `raiz-iter`, por otro lado, demuestra cómo se puede lograr la iteración sin utilizar ninguna construcción especial que no sea la capacidad ordinaria de llamar a un procedimiento.<sup>[**24**](#nota-24)</sup>
 
 **Ejercicio 1.6.** Alyssa P. Hacker no ve por qué `if` necesita ser provisto como una forma especial. "¿Por qué no puedo simplemente definirlo como un procedimiento ordinario en términos de `cond`?", pregunta ella. La amiga de Alyssa, Eva Lu Ator, asegura que esto se puede hacer, y define una nueva versión de `if`:
 
 ```scheme
-(define (nuevo-if predicado entonces-clausula caso-contrario-clausula)
-  (cond (predicado entonces-clausula)
-        (else caso-contrario-clausula)))
+(define (nuevo-if predicado clausula sino-clausula)
+  (cond (predicado clausula)
+        (else sino-clausula)))
 ```
 
 Eva demuestra el programa para Alyssa:
@@ -639,15 +638,14 @@ Entusiasmada, Alyssa usa el `nuevo-if` para reescribir el programa `raiz-cuadrad
 
 ```scheme
 (define (raiz-iter estimacion x)
-  (nuevo-if (suficientemente-bueno? estimacion x)
+  (nuevo-if (suficiente? estimacion x)
           estimacion
-          (raiz-iter (mejorar estimacion x)
-                     x)))
+          (raiz-iter (mejorar estimacion x) x)))
 ```
 
 ¿Qué sucederá cuando Alyssa intente usar esto para calcular raíces cuadradas? Explicar.
 
-**Ejercicio 1.7.** El test `suficientemente-bueno?` utilizado en el cálculo de raíces cuadradas no resulta muy efectivo para encontrar las raíces cuadradas de números muy pequeños. Además, en computadoras reales, las operaciones aritméticas casi siempre se realizan con una precisión limitada. Esto hace que nuestro test sea inadecuado para números muy grandes. Explique estas afirmaciones, con ejemplos que muestren cómo el test falla para números pequeños y grandes. Una estrategia alternativa para implementar `suficientemente-bueno?` sería estudiar cómo cambia `estimacion` de una iteración a la otra y detenerse cuando el cambio sea una fracción muy pequeña de la estimación. Diseñe un procedimiento de raíz cuadrada que utilice este tipo de prueba final. ¿Funciona mejor para pequeños y grandes números?
+**Ejercicio 1.7.** El test `suficiente?` utilizado en el cálculo de raíces cuadradas no resulta muy efectivo para encontrar las raíces cuadradas de números muy pequeños. Además, en computadoras reales, las operaciones aritméticas casi siempre se realizan con una precisión limitada. Esto hace que nuestro test sea inadecuado para números muy grandes. Explique estas afirmaciones, con ejemplos que muestren cómo el test falla para números pequeños y grandes. Una estrategia alternativa para implementar `suficiente?` sería estudiar cómo cambia `estimacion` de una iteración a la otra y detenerse cuando el cambio sea una fracción muy pequeña de la estimación. Diseñe un procedimiento de raíz cuadrada que utilice este tipo de prueba final. ¿Funciona mejor para pequeños y grandes números?
 
 **Ejercicio 1.8.** El método de Newton para raíces cúbicas se basa en el hecho de que si `y` es una aproximación a la raíz cúbica de `x`, entonces una mejor aproximación es dada por el valor 
 
@@ -659,7 +657,7 @@ x/y² + 2y
 
 ### 1.1.8 Procedimientos como Abstracciones de Caja Negra
 
-La `raiz-cuadrada` es nuestro primer ejemplo de un proceso definido por un conjunto de procedimientos mutualmente definidos. Note que la definición de `raiz-iter` es recursiva; es decir, el procedimiento se define en términos de sí mismo. La idea de poder definir un procedimiento en términos de sí mismo puede resultar perturbadora; parece poco claro cómo podría tener sentido una definición tan "circular", y mucho menos aún especificar un proceso bien definido que debe ser llevado a cabo por una computadora. Esto se abordará con más detenimiento en la [sección 1.2](./11-capitulo-1-seccion-1-2.md). Pero primero consideremos algunos otros puntos importantes ilustrados por este caso `raiz-cuadrada`.
+La `raiz-cuadrada` es nuestro primer ejemplo de un proceso definido por un conjunto de procedimientos mutualmente definidos. Note que la definición de `raiz-iter` es recursiva; es decir, el procedimiento se define en términos de sí mismo. La idea de poder definir un procedimiento en términos de sí mismo puede resultar perturbadora; parece poco claro cómo podría tener sentido una definición tan "circular", y mucho menos aún especificar un proceso bien definido que debe ser llevado a cabo por una computadora. Esto se abordará con más detenimiento en la [sección 1.2](./11-capitulo-1-seccion-1-2.md). Pero primero consideremos algunos otros puntos importantes ilustrados por el ejemplo de `raiz-cuadrada`.
 
 Observe que el problema de computar las raíces cuadradas se divide naturalmente en una serie de subproblemas: cómo decir si una estimación es lo suficientemente buena, cómo mejorar una estimación, y así sucesivamente. Cada una de estas tareas se lleva a cabo mediante un procedimiento independiente. Todo el programa `raiz-cuadrada` puede ser visto como un conjunto de procedimientos (mostrado en la figura 1.2) que refleja la descomposición del problema en subproblemas.
 
@@ -667,7 +665,7 @@ Observe que el problema de computar las raíces cuadradas se divide naturalmente
 
 **Figura 1.2:** Descomposición procedural del programa `raiz-cuadrada`.
 
-La importancia de esta estrategia de descomposición no radica simplemente en que uno esté dividiendo el programa en partes. Después de todo, podríamos tomar cualquier programa grande y dividirlo en secciones: las primeras diez líneas, las próximas diez líneas, las siguientes diez líneas, y así sucesivamente. Más bien, es crucial que cada procedimiento lleve a cabo una tarea identificable que pueda ser utilizada como un módulo para definir otros procedimientos. Por ejemplo, cuando definimos el procedimiento `suficientemente-bueno?` en términos de `al-cuadrado`, podemos considerar el procedimiento `al-cuadrado` como una "caja negra". En estos momentos no nos preocupa el modo en que el procedimiento calcula su resultado, sino el hecho de que calcule el cuadrado del número. Los detalles de cómo se calcula el cuadrado pueden ser omitidos, para ser considerados en otro momento. De hecho, en lo que respecta al procedimiento `suficientemente-bueno?`, `al-cuadrado` no es un procedimiento, sino más bien lo que se denomina *abstracción procedural*. En este nivel de abstracción, cualquier procedimiento que calcule el cuadrado es igualmente bueno.
+La importancia de esta estrategia de descomposición no radica simplemente en que uno esté dividiendo el programa en partes. Después de todo, podríamos tomar cualquier programa grande y dividirlo en secciones: las primeras diez líneas, las próximas diez líneas, las siguientes diez líneas, y así sucesivamente. Más bien, es crucial que cada procedimiento lleve a cabo una tarea identificable que pueda ser utilizada como un módulo para definir otros procedimientos. Por ejemplo, cuando definimos el procedimiento `suficiente?` en términos de `al-cuadrado`, podemos considerar el procedimiento `al-cuadrado` como una "caja negra". En estos momentos no nos preocupa el modo en que el procedimiento calcula su resultado, sino el hecho de que calcule el cuadrado del número. Los detalles de cómo se calcula el cuadrado pueden ser omitidos, para ser considerados en otro momento. De hecho, en lo que respecta al procedimiento `suficiente?`, `al-cuadrado` no es un procedimiento, sino más bien lo que se denomina *abstracción procedural*. En este nivel de abstracción, cualquier procedimiento que calcule el cuadrado es igualmente bueno.
 
 Por lo tanto, considerando sólo los valores que se devuelven, los dos procedimientos siguientes para obtener el cuadrado de un número deben ser indistinguibles. Cada uno toma un argumento numérico y produce el cuadrado de ese número como valor.<sup>[**25**](#nota-25)</sup>
 
@@ -693,72 +691,72 @@ Un detalle de la implementación de un procedimiento que no debería importar al
 (define (al-cuadrado y) (* y y))
 ```
 
-Este principio -que el significado de un procedimiento debe ser independiente de los nombres de los parámetros utilizados por su autor- parece evidente en la superficie, pero sus consecuencias son profundas. La consecuencia más simple es que los nombres de los parámetros de un procedimiento deben ser locales para el cuerpo del procedimiento. Por ejemplo, usamos `al-cuadrado` en la definición de `suficientemente-bueno?` en nuestro procedimiento de elevar al cuadrado:
+Este principio -que el significado de un procedimiento debe ser independiente de los nombres de los parámetros utilizados por su autor- parece evidente en la superficie, pero sus consecuencias son profundas. La consecuencia más simple es que los nombres de los parámetros de un procedimiento deben ser locales para el cuerpo del procedimiento. Por ejemplo, usamos `al-cuadrado` en la definición de `suficiente?` en nuestro procedimiento de elevar al cuadrado:
 
 ```scheme
-(define (suficientemente-bueno? estimacion x)
+(define (suficiente? estimacion x)
   (< (abs (- (al-cuadrado estimacion) x)) 0.001))
 ```
 
-La intención del creador de `suficientemente-bueno?` es determinar si el cuadrado del primer argumento está dentro de una tolerancia dada del segundo argumento. Vemos que el autor de `suficientemente-bueno?` usó el nombre `estimacion` para referirse al primer argumento y `x` para referirse al segundo. El argumento de `al-cuadrado` es `estimacion`. Si el autor de `al-cuadrado` usó `x` (como figura más arriba) para referirse a ese argumento, vemos que el `x` en `suficientemente-bueno?` debe ser un `x` diferente que el de `al-cuadrado`. Ejecutar el procedimiento `al-cuadrado` no debe afectar el valor de `x` que es usado por `suficientemente-bueno?`, porque ese valor de `x` puede ser necesitado por `suficientemente-bueno?` después de que `al-cuadrado` se termine de computar.
+La intención del creador de `suficiente?` es el de determinar si el cuadrado del primer argumento está dentro de una tolerancia dada del segundo argumento. Vemos que el autor de `suficiente?` usó el nombre `estimacion` para referirse al primer argumento y `x` para referirse al segundo. El argumento de `al-cuadrado` es `estimacion`. Si el autor de `al-cuadrado` usó `x` (como figura arriba) para referirse a ese argumento, vemos que el `x` en `suficiente?` debe ser un `x` diferente que el de `al-cuadrado`. Ejecutar el procedimiento `al-cuadrado` no tiene que afectar al valor de `x` que es usado por `suficiente?`, porque ese valor de `x` puede ser necesitado por `suficiente?` después de que `al-cuadrado` se termine de computar.
 
-Si los parámetros no fueran locales a los cuerpos de sus respectivos procedimientos, entonces el parámetro `x` en `al-cuadrado` podría confundirse con el parámetro `x` en `suficientemente-bueno?`, y el comportamiento de `suficientemente-bueno?` dependería de la versión de `al-cuadrado` que utilicemos. Por lo tanto, `al-cuadrado` no sería la caja negra que deseábamos.
+Si los parámetros no fueran locales a los cuerpos de sus respectivos procedimientos, entonces el parámetro `x` en `al-cuadrado` podría confundirse con el parámetro `x` en `suficiente?`, y el comportamiento de `suficiente?` dependería de la versión de `al-cuadrado` que utilicemos. Por lo tanto, `al-cuadrado` no sería la caja negra que deseábamos.
 
-Un parámetro formal de un procedimiento tiene un rol muy especial en la definición del procedimiento, en el sentido de que no importa el nombre que tenga el parámetro formal. Tal nombre se llama *variable vinculada*, y decimos que la definición del procedimiento *vincula* sus parámetros formales. El significado de la definición de un procedimiento no cambia si una variable vinculada es renombrada consistentemente a lo largo de la definición.<sup>[**26**](#nota-26)</sup> Si una variable no está vinculada, decimos que es *libre*. El conjunto de expresiones para los que un vínculo define un nombre se llama el *ámbito* de ese nombre `(NdT: "scope" en inglés)`. En una definición de procedimiento, las variables vinculadas que son declaradas como parámetros formales del procedimiento tienen como ámbito de aplicación el cuerpo mismo del procedimiento.
+Un parámetro formal de un procedimiento tiene un rol muy especial en la definición del procedimiento, en el sentido de que no importa el nombre que tenga el parámetro formal. Tal nombre se llama *variable vinculada*, y decimos que la definición del procedimiento *vincula* sus parámetros formales. El significado de la definición de un procedimiento no se modifica si una variable vinculada es renombrada consistentemente a lo largo de la definición.<sup>[**26**](#nota-26)</sup> Si una variable no está vinculada, decimos que es *libre*. El conjunto de expresiones que definen un vínculo con un nombre se denomina *ámbito* de ese nombre `(NdT: "scope" en inglés)`. En una definición de procedimiento, las variables vinculadas que son declaradas como parámetros formales del procedimiento tienen como ámbito de aplicación el cuerpo mismo del procedimiento.
 
-En la definición de `suficientemente-bueno?` mencionada arriba, `estimacion` y `x` son variables vinculadas pero `<`, `-`, `abs`, y `al-cuadrado` son libres. El significado de `suficientemente-bueno?` debe ser independiente de los nombres que elijamos para `estimacion` y `x`, siempre y cuando sean distintos y diferentes de `<`, `-`, `abs`, y `al-cuadrado` (si cambiásemos el nombre de `estimacion` por el de `abs`, hubiésemos introducido un error al *capturar* la variable `abs`). Habría pasado de libre a vinculada. Sin embargo, el significado de `suficientemente-bueno?` no es independiente de los nombres de sus variables libres. Depende seguramente del hecho (externo a esta definición) de que el símbolo `abs` nombre a un procedimiento para calcular el valor absoluto de un número. `Suficientemente bueno?` computará una función diferente si sustituimos `cos` por `abs` en su definición.
+En la definición de `suficiente?` mencionada arriba, `estimacion` y `x` son variables vinculadas pero `<`, `-`, `abs`, y `al-cuadrado` son libres. El significado de `suficiente?` debe ser independiente de los nombres que elijamos para `estimacion` y `x`, siempre y cuando sean separados y diferentes de `<`, `-`, `abs`, y `al-cuadrado` (si cambiásemos el nombre de `estimacion` por el de `abs`, hubiésemos introducido un error al *capturar* la variable `abs`). Habría pasado de libre a vinculada. Sin embargo, el significado de `suficiente?` no es independiente de los nombres de sus variables libres. Depende seguramente del hecho (externo a esta definición) de que el símbolo `abs` nombre a un procedimiento para calcular el valor absoluto de un número. `suficiente?` computará una función diferente si sustituimos `cos` por `abs` en su definición.
 
 
 #### Definiciones internas y estructura de bloques
 
-Tenemos disponible un tipo de aislamiento de nombre hasta ahora: Los parámetros formales de un procedimiento son locales al cuerpo del procedimiento. El programa de raiz cuadrada ilustra otra manera en la que nos gustaría controlar el uso de los nombres. El programa hasta ahora consiste de procedimientos separados:
+Tenemos disponible un tipo de aislamiento de nombre hasta ahora: los parámetros formales de un procedimiento son locales al cuerpo del procedimiento. El programa de raíz cuadrada ilustra otra manera en la que nos gustaría controlar el uso de los nombres. El programa hasta ahora consiste de procedimientos separados:
 
 ```scheme
 (define (raiz-cuadrada x)
   (raiz-iter 1.0 x))
 
 (define (raiz-iter estimacion x)
-  (if (suficientemente-bueno? estimacion x)
+  (if (suficiente? estimacion x)
       estimacion
       (raiz-iter (mejorar estimacion x) x)))
 
-(define (suficientemente-bueno? estimacion x)
+(define (suficiente? estimacion x)
   (< (abs (- (al-cuadrado estimacion) x)) 0.001))
 
 (define (mejorar estimacion x)
   (promedio estimacion (/ x estimacion)))
 ```
 
-El problema con este programa es que el único procedimiento que es importante para los usuarios de `raiz-cuadrada` es justamente `raiz-cuadrada`. Los otros procedimientos (`raiz-iter`, `suficientemente-bueno?`, y `mejorar`) sólo confunden sus mentes. Es posible que no definan ningún otro procedimiento llamado `suficientemente-bueno?` como parte de otro programa para trabajar junto con el programa de raíz cuadrada, simplemente porque `raiz-cuadrada` lo necesita. El problema es especialmente grave en la construcción de grandes sistemas por parte de muchos programadores independientes. Por ejemplo, en la construcción de una gran librería `(NdT: del inglés "library", aunque su traducción correcta es "biblioteca")`, pero usaré "librería" por ser un término más empleado) de procedimientos numéricos, muchas funciones numéricas se calculan como aproximaciones sucesivas y, por lo tanto, pueden tener procedimientos denominados `suficientemente-bueno?` y `mejorar` como procedimientos auxiliares. Desearíamos ubicar los subprocedimientos, escondiéndolos dentro de `raiz-cuadrada` para que este último pueda coexistir con otras aproximaciones sucesivas, cada una de ellas con su propio procedimiento privado `suficientemente-bueno`. Para hacer esto posible, permitiremos que un procedimiento tenga definiciones internas que le sean locales a ese procedimiento. Por ejemplo, en el problema de raíz cuadrada podemos escribir
+El problema con este programa es que el único procedimiento que es importante para los usuarios de `raiz-cuadrada` es justamente `raiz-cuadrada`. Los otros procedimientos (`raiz-iter`, `suficiente?` y `mejorar`) sólo abarrotan sus mentes. No podrán definir ningún otro procedimiento llamado `suficiente?` como parte de otro programa para trabajar junto con el programa de raíz cuadrada, porque `raiz-cuadrada` lo necesita. El problema es especialmente grave en la construcción de grandes sistemas por parte de muchos programadores independientes. Por ejemplo, en la construcción de una gran librería `(NdT: del inglés "library", aunque la traducción correcta al español es "biblioteca")` de procedimientos numéricos, muchas funciones numéricas se calculan como aproximaciones sucesivas y, por lo tanto, pueden tener procedimientos denominados `suficiente?` y `mejorar` como procedimientos auxiliares. Desearíamos ubicar los subprocedimientos, escondiéndolos dentro de `raiz-cuadrada` para que este último pueda coexistir con otras aproximaciones sucesivas, cada una de ellas con su propio procedimiento privado `suficiente?`. Para hacer esto posible, permitiremos que un procedimiento tenga definiciones internas que le sean locales a ese procedimiento. Por ejemplo, en el problema de raíz cuadrada podemos escribir
 
 ```scheme
 (define (raiz-cuadrada x)
-    (define (suficientemente-bueno? estimacion x)
+    (define (suficiente? estimacion x)
       (< (abs (- (al-cuadrado estimacion) x)) 0.001))
 
     (define (mejorar estimacion x)
       (promedio estimacion (/ x estimacion)))
 
     (define (raiz-iter estimacion x)
-      (if (suficientemente-bueno? estimacion x)
+      (if (suficiente? estimacion x)
           estimacion
           (raiz-iter (mejorar estimacion x) x)))
 
     (raiz-iter 1.0 x))
 ```
 
-Este anidamiento de definiciones, llamado *estructura de bloques*, es básicamente la solución correcta para el problema más común del empaquetamiento de nombres. Pero hay una mejor idea merodeando aquí. Además de internalizar las definiciones de los procedimientos auxiliares, podemos también simplificarlos. Desde que `x` está vinculado en la definición de `raiz-cuadrada`, los procedimientos `suficientemente-bueno`, `mejorar`, y `raiz-iter`, que se definen internamente a `raiz-cuadrada`, están en el ámbito de `x`. Por lo tanto, no es necesario pasar `x` explícitamente a cada uno de estos procedimientos. En vez de eso, permitiremos que `x` sea una variable libre en las definiciones internas, como se muestra abajo. Entonces `x` obtiene su valor del argumento con el que se llama al procedimiento envolvente `raiz-cuadrada`. Esta modalidad se llama *alcance léxico*.<sup>[**27**](#nota-27)</sup>
+Tal anidación de definiciones, llamada *estructura de bloques*, es básicamente la solución correcta al problema más simple del agrupamiento de nombres. Pero hay una mejor idea escondida detrás de todo esto. Además de internalizar las definiciones de los procedimientos auxiliares, podemos también simplificarlos. Dado que `x` está vinculada en la definición de `raiz-cuadrada`, los procedimientos `suficiente?`, `mejorar`, y `raiz-iter`, que se definen internamente a `raiz-cuadrada`, están en el ámbito de `x`. Por lo tanto, no es necesario pasar `x` explícitamente a cada uno de estos procedimientos. En vez de eso, permitiremos que `x` sea una variable libre en las definiciones internas, como se muestra abajo. Entonces `x` obtiene su valor del argumento con el que se llama al procedimiento envolvente `raiz-cuadrada`. Esta modalidad se llama *ámbito léxico* <sup>[**27**](#nota-27)</sup> `(NdT: en inglés "lexical scoping")`.
 
 ```scheme
 (define (raiz-cuadrada x)
-    (define (suficientemente-bueno? estimacion)
+    (define (suficiente? estimacion)
       (< (abs (- (al-cuadrado estimacion) x)) 0.001))
 
     (define (mejorar estimacion)
       (promedio estimacion (/ x estimacion)))
 
     (define (raiz-iter estimacion)
-      (if (suficientemente-bueno? estimacion)
+      (if (suficiente? estimacion)
           estimacion
           (raiz-iter (mejorar estimacion))))
 
