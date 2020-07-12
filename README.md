@@ -35,7 +35,7 @@ Traducir la obra completamente del inglés al español para que pueda ser leído
 
 ## Motivos:
 
-No soy programador, ni traductor profesional, ni el primero en hacer el intento de traducción al español de esta obra. No soy más que un aficionado que busca aprender. Y el presente repositorio no solo es mi intento por aprender sino también de acercar esta obra a todos aquellos hispanohablantes que busquen adentrarse al mundo del desarrollo de software. O más específicamente, al diseño y construcción de sistemas de software complejos.
+No soy programador ni traductor profesional, ni el primero en hacer el intento de traducir este libro al español. No soy más que un simple aficionado que busca aprender. Y el presente repositorio no solo es mi intento por aprender sino también de acercar esta obra a todos aquellos hispanohablantes que busquen adentrarse al mundo del desarrollo de software. O más específicamente, al diseño y construcción de sistemas de software complejos.
 
 ## Aclaraciones:
 
