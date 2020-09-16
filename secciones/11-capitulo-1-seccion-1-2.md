@@ -4,7 +4,7 @@ Ya hemos considerado los elementos de la programación: hemos usado operaciones 
 
 La capacidad de visualizar las consecuencias de las acciones en cuestión es crucial para convertirse en un programador experto, como lo es en cualquier actividad sintética y creativa. Para ser un fotógrafo experto, por ejemplo, uno debe aprender a mirar una escena y saber cuán oscura aparecerá cada región en una impresión para cada posible elección de condiciones de exposición y revelado. Sólo entonces uno puede razonar hacia atrás, planificando el encuadre, la iluminación, la exposición y el desarrollo para obtener los efectos deseados. Así es también con la programación, donde planificamos el curso de acción a tomar por un proceso y donde controlamos el proceso por medio de un programa. Para convertirnos en expertos, debemos aprender a visualizar los procesos generados por varios tipos de procedimientos. Sólo después de que hayamos desarrollado tal habilidad podemos aprender a construir de forma fiable programas que exhiban el comportamiento deseado.
 
-Un procedimiento es un patrón para la *evolución local* de un proceso computacional. En él se especifica cómo se construye cada etapa del proceso a partir de la etapa previa. Nos gustaría poder hacer declaraciones sobre el comportamiento general, o  *global*, de un proceso cuya evolución local ha sido especificada por un procedimiento. Esto es muy difícil de hacer en general, pero al menos podemos intentar describir algunos patrones típicos de la evolución de los procesos.
+Un procedimiento es un patrón para la *evolución local* de un proceso computacional. En él se especifica cómo se construye cada etapa del proceso a partir de la etapa previa. Nos gustaría poder hacer afirmaciones sobre el comportamiento general, o  *global*, de un proceso cuya evolución local ha sido especificada por un procedimiento. Esto es muy difícil de hacer en general, pero al menos podemos intentar describir algunos patrones típicos de la evolución de los procesos.
 
 En esta sección examinaremos algunas "formas" comunes de procesos generados por procedimientos simples. También investigaremos el ritmo con el que estos procesos consumen valiosos recursos computacionales de tiempo y espacio. Los procedimientos que consideraremos son muy sencillos. Su papel es como el que desempeñan las pruebas de patrones en fotografía: como patrones prototípicos sobresimplificados, más que como ejemplos prácticos en sí mismos.
 
@@ -78,7 +78,7 @@ El contraste entre los dos procesos puede verse de otra manera. En el caso itera
 
 Al contrastar la iteración y la recursividad, debemos tener cuidado de no confundir la noción de un *proceso* recursivo con la noción de un *procedimiento* recursivo. Cuando describimos un procedimiento como recursivo, nos referimos al hecho sintáctico de que la definición del procedimiento se refiere (sea directa o indirectamente) al procedimiento mismo. Pero cuando describimos un proceso que sigue un patrón que es, digamos, linealmente recursivo, estamos hablando de cómo evoluciona el proceso, no acerca de la sintaxis de cómo un procedimiento es escrito. Puede parecer desconcertante que nos refiramos a un procedimiento recursivo como `fact-iter` como generador de un proceso iterativo. Sin embargo, el proceso es realmente iterativo: su estado es capturado completamente por sus tres variables de estado, y un intérprete sólo tiene que llevar la cuenta de las tres variables para ejecutar el proceso.
 
-Una razón por la que la distinción entre proceso y procedimiento puede resultar confusa es que la mayoría de las implementaciones de los lenguajes habituales (incluyendo Ada, Pascal y C) están diseñadas de manera tal que la interpretación de cualquier procedimiento recursivo consume una cantidad de memoria que crece con el número de llamadas de procedimiento, incluso cuando el proceso descripto es, en principio, iterativo. Como consecuencia, estos lenguajes pueden describir procesos iterativos sólo recurriendo a "constructos de bucles" de propósito especial tales como `do`, `repeat`, `until`, `for` y `while`. La implementación de Scheme que examinaremos en el [capítulo 5](./30-capitulo-5-intro.md) no comparte este defecto. Este ejecutará un proceso iterativo en espacio constante, aún cuando el proceso iterativo sea descripto por un procedimiento recursivo.  Una implementación con esta propiedad se la llama *tail-recursive* (NdT: traducido libremente sería algo así como *recursividad de cola* o *cola-recursivo*). Con una implementación tail-recursive, la iteración puede expresarse utilizando el mecanismo habitual de llamada de procedimiento, de manera que las construcciones de iteración especiales son sólo útiles como azúcar sintáctico.<sup>[**31**](#nota-31)</sup>
+Una razón por la que la distinción entre proceso y procedimiento puede resultar confusa es que la mayoría de las implementaciones de los lenguajes habituales (incluyendo Ada, Pascal y C) están diseñadas de manera tal que la interpretación de cualquier procedimiento recursivo consume una cantidad de memoria que crece con el número de llamadas de procedimiento, incluso cuando el proceso descripto es, en principio, iterativo. Como consecuencia, estos lenguajes pueden describir procesos iterativos sólo recurriendo a "constructos de bucles" de propósito especial tales como `do`, `repeat`, `until`, `for` y `while`. La implementación de Scheme que examinaremos en el [capítulo 5](./30-capitulo-5-intro.md) no comparte este defecto. Este ejecutará un proceso iterativo en espacio constante, aún cuando el proceso iterativo sea descripto por un procedimiento recursivo.  Una implementación con esta propiedad se la llama *recursión de cola* `(NdT: traducción libre de "tail-recursive")`. Con una implementación de recursión de cola, la iteración puede expresarse utilizando el mecanismo habitual de llamada de procedimiento, de manera que las construcciones de iteración especiales son sólo útiles como azúcar sintáctico.<sup>[**31**](#nota-31)</sup>
 
 **Ejercicio 1.9.** Cada uno de los dos procedimientos siguientes define un método para añadir dos números enteros positivos en términos de los procedimientos `inc`, que incrementa su argumento en 1, y `dec`, que disminuye su argumento en 1.
 
@@ -132,9 +132,9 @@ Considere los siguientes procedimientos, donde `A` es el procedimiento definido 
 Dé definiciones matemáticas concisas para las funciones calculadas por los procedimientos `f`, `g`, y `h` para valores enteros positivos de `n`. Por ejemplo, `(k n)` calcula `5n²`.
 
 
-### 1.2.2 Árbol de Recursión
+### 1.2.2 Recursión de Árbol
 
-Otro patrón común de cálculo se llama *Árbol de Recursión* (NdT: *Tree Recursion* en inglés). A modo de ejemplo, consideremos el cálculo de la secuencia de números de Fibonacci, en la que cada número es la suma de los dos anteriores:
+Otro patrón común de cálculo es la *Recursión de Árbol* `(NdT: "Tree Recursion" en inglés)`. A modo de ejemplo, consideremos el cálculo de la secuencia de números de Fibonacci, en la que cada número es la suma de los dos anteriores:
 
 ```
 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
@@ -145,7 +145,7 @@ En general, los números de Fibonacci pueden ser definidos por la regla
 ```
          ⎧  0                    si n = 0
 Fib(n) = ⎨  1                    si n = 1
-         ⎩  Fib(n-1) + Fib(n-2)  en caso contrario
+         ⎩  Fib(n-1) + Fib(n-2)  en cualquier otro caso
 ```
 
 Podemos traducir inmediatamente esta definición en un procedimiento recursivo para calcular los números de Fibonacci:
@@ -160,11 +160,11 @@ Podemos traducir inmediatamente esta definición en un procedimiento recursivo p
 
 ![Figura 1.5](./imagenes/capitulo-1/figura-1-5.png)
 
-**Figura 1.5:** El proceso árbol-recursivo generado en el cálculo de `(fib 5)`.
+**Figura 1.5:** El proceso árbol-recursivo generado durante el cálculo de `(fib 5)`.
 
 Considere el patrón de este cálculo. Para calcular `(fib 5)`, calculamos `(fib 4)` y `(fib 3)`. Para calcular `(fib 4)`, calculamos `(fib 3)` y `(fib 2)`. En general, el proceso desarrollado se parece a un árbol, como se muestra en la figura 1.5. Note que las ramas se dividen en dos en cada nivel (excepto en la parte inferior); esto refleja el hecho de que el procedimiento `fib` se llama a sí mismo dos veces cada vez que es invocado.
 
-Este procedimiento es instructivo como un caso prototípico de árbol de recursión, aunque resulte una forma pésima de calcular los números de Fibonacci, ya que realiza una gran cantidad de cálculos redundantes. Note en la figura 1.5 que todo el cálculo de `(fib 3)` -casi la mitad del trabajo- está duplicado. De hecho, no es difícil mostrar que el número de veces que el procedimiento computará `(fib 1)` o `(fib 0)` (el número de hojas en el árbol anterior, en general) es precisamente `Fib(n + 1)`. Para tener una idea de lo malo que es esto, uno puede mostrar que el valor de `Fib(n)` crece exponencialmente con `n`. Más precisamente (ver ejercicio 1.13), `Fib(n)` es el entero más cercano a `Φⁿ/√5`, donde
+Este procedimiento es instructivo como caso prototípico de un árbol de recursión, pero es una forma pésima de calcular los números de Fibonacci debido a que realiza demasiados cálculos redundantes. Note en la figura 1.5 que todo el cálculo de `(fib 3)` -casi la mitad del trabajo- está duplicado. De hecho, no es difícil mostrar que el número de veces que el procedimiento computará `(fib 1)` o `(fib 0)` (el número de hojas del árbol anterior, en general) es precisamente `Fib(n + 1)`. Para tener una idea de lo malo que es esto, uno puede demostrar que el valor de `Fib(n)` crece exponencialmente con `n`. Más precisamente (ver ejercicio 1.13), `Fib(n)` es el entero más cercano a `Φⁿ/√5`, donde
 
 ```
 Φ = (1 + √5)/2 = 1,6810...
@@ -176,7 +176,7 @@ es el número áureo, que satisface la ecuación
 Φ² = Φ + 1
 ```
 
-Por lo tanto, el proceso utiliza una serie de pasos que crecen exponencialmente con la entrada. Por otra parte, el espacio requerido crece sólo linealmente con la entrada, ya que sólo tenemos que hacer un seguimiento de los nodos que están por encima de nosotros en el árbol en cualquier punto del cálculo. En general, el número de pasos requeridos por un proceso árbol-recursivo será proporcional al número de nodos en el árbol, mientras que el espacio requerido será proporcional a la profundidad máxima del árbol.
+Por lo tanto, el proceso utiliza una serie de pasos que crecen exponencialmente con la entrada. Por otra parte, el espacio requerido solo crece linealmente con la entrada, ya que sólo necesitamos llevar la cuenta de aquellos nodos que están por encima de nosotros dentro del árbol en cualquier punto del cálculo. En general, el número de pasos requeridos por un proceso de recursión de árbol será proporcional al número de nodos en el árbol, mientras que el espacio requerido será proporcional a la profundidad máxima del árbol.
 
 También podemos formular un proceso iterativo para calcular los números de Fibonacci. La idea es usar un par de enteros `a` y `b`, inicializados a `Fib(1) = 1` y `Fib(0) = 0`, y aplicar repetidamente las transformaciones simultáneas 
 
@@ -186,7 +186,7 @@ a ← a + b
 b ← a
 ```
 
-No es difícil demostrar que, después de aplicar esta transformación `n` veces, `a` y `b` serán iguales, respectivamente, a `Fib(n + 1)` y `Fib(n)`. Así, podemos calcular los números de Fibonacci de forma iterativa utilizando el procedimiento
+No es difícil demostrar que, después de aplicar esta transformación `n` veces, `a` y `b` serán iguales respectivamente a `Fib(n + 1)` y `Fib(n)`. Por lo tanto, podemos calcular los números de Fibonacci de forma iterativa utilizando el procedimiento
 
 ```scheme
 (define (fib n)
@@ -200,7 +200,7 @@ No es difícil demostrar que, después de aplicar esta transformación `n` veces
 
 Este segundo método para calcular `Fib(n)` es una iteración lineal. La diferencia en el número de pasos requeridos por los dos métodos -uno lineal en `n`, el otro creciendo tan rápido como `Fib(n)` mismo- es enorme, incluso para entradas pequeñas.
 
-De esto no se debe concluir de que los procesos árbol-recursivos son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que el árbol de recursión es una herramienta natural y poderosa.<sup>[**32**](#nota-32)</sup> Incluso en operaciones numéricas, los procesos árbol-recursivos pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, este es más sencillo, siendo poco más que una traducción a Lisp de la definición de la secuencia de Fibonacci. Para formular el algoritmo iterativo fue necesario tener en cuenta que el cálculo podía ser reformulado como una iteración con tres variables de estado.
+Uno no debería concluir de esto que los procesos de recursión de árbol son inútiles. Cuando consideramos procesos que operan sobre datos estructurados jerárquicamente en lugar de números, encontraremos que estos son una herramienta natural y poderosa.<sup>[**32**](#nota-32)</sup> Incluso en operaciones numéricas, los procesos de recursión de árbol pueden ser útiles para ayudarnos a entender y diseñar programas. Por ejemplo, aunque el primer procedimiento `fib` es mucho menos eficiente que el segundo, es más sencillo, siendo poco más que una traducción a Lisp de la definición de la serie de Fibonacci. Para formular el algoritmo iterativo era necesario observar que el cálculo podía ser reformulado como una iteración con tres variables de estado.
 
 
 #### Ejemplo: Contando el cambio
@@ -248,7 +248,7 @@ Podemos traducir fácilmente esta descripción en un procedimiento recursivo:
         ((= clases-de-monedas 5) 50)))
 ```
 
-(El procedimiento `primera-denominacion` toma como entrada el número de clases de monedas disponibles y devuelve la primera denominación de monedas. En este caso estamos pensando en las monedas en orden desde el más grande hasta el más pequeño, pero con cualquier orden también funcionaría). Ahora podemos responder a nuestra pregunta inicial sobre el cambio de $1.00 (NdT: tener en cuenta que $1.00 = 100 centavos):
+(El procedimiento `primera-denominacion` toma como entrada el número de clases de monedas disponibles y devuelve la primera denominación de monedas. En este caso estamos pensando en las monedas en orden desde el más grande hasta el más pequeño, pero con cualquier orden también funcionaría). Ahora podemos responder a nuestra pregunta inicial sobre el cambio de $1.00 `(NdT: tener en cuenta que $1.00 = 100 centavos)`:
 
 ```scheme
 (contar-cambio 100)
@@ -288,7 +288,7 @@ k₁ f(n) < R(n) < k₂ f(n)
 
 para cualquier valor suficientemente grande de `n` (en otras palabras, para un gran `n`, el valor `R(n)` está entre `k₁ f(n)` y `k₂ f(n)`).
 
-**\*** NdT: este concepto se lo conoce más actualmente como *Notación O*, o en inglés *Big O Notation* (o simplemente *Big O*).
+**\*** `NdT: este concepto se lo conoce más actualmente como "Notación O"; en inglés "Big O Notation" o simplemente "Big O".`
 
 Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente con la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.<sup>[**36**](#nota-36)</sup> El cálculo árbol-recursivo de Fibonacci requiere `Θ(n)` pasos y espacio `Θ(Φⁿ)`, donde `Φ` es la relación de oro descrita en la [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión).
 
@@ -385,7 +385,7 @@ Podemos expresar este método como un procedimiento:
         (else (* b (exp-rapido b (- n 1))))))
 ```
 
-donde el predicado para determinar si un número entero es par se define en términos del procedimiento primitivo `remainder` (NdT: *remanente* o *resto* en español) de la siguiente manera
+donde el predicado para determinar si un número entero es par se define en términos del procedimiento primitivo `remainder` `(NdT: *remanente* o *resto* en español)` de la siguiente manera
 
 ```scheme
 (define (par? n)
@@ -513,7 +513,10 @@ El test de primalidad de `Θ(log n)` se basa en un resultado de la teoría de n�
 
 ***El pequeño teorema de Fermat:** Si `n` es un número primo y `a` es un número entero positivo menor que `n`, entonces `a` elevado a la enésima potencia es congruente con `a` módulo `n`.*
 
-(se dice que dos números son de *congruencia modulo* `n` -NdT: traducción del inglés de *congruent modulo*- si ambos tienen el mismo resto cuando son divididos por `n`. El resto de un número `a` cuando es dividido por `n` también es referido como el *remanente de `a` modulo `n`*, o simplemente como `a` modulo `n`).
+(se dice que dos números son de *congruencia modulo\** `n` si ambos tienen el mismo resto cuando son divididos por `n`. El resto de un número `a` cuando es dividido por `n` también es referido como el *remanente de `a` modulo `n`*, o simplemente como `a` modulo `n`).
+
+**\*** `NdT: "congruent modulo" en inglés.`
+
 
 Si `n` no es primo, entonces en general la mayoría de los números `a < n` no cumplirán la relación mencionada arriba. Esto nos lleva al siguiente algoritmo para probar la primalidad: Dado un número `n`, se elige un número aleatorio `a < n` y se calcula el resto de un módulo `n`. Si el resultado no es igual a `a`, entonces `n` no es ciertamente el primo. Si es `a`, entonces hay buenas chances de que `n` sea primo. Ahora elija otro número aleatorio `a` y pruebe con el mismo método. Si también satisface la ecuación, entonces podemos estar aún más seguros de que `n` es el primo. Probando más y más valores de `a`, podemos aumentar nuestra confianza en el resultado. Este algoritmo se conoce como el test de Fermat.
 
@@ -655,7 +658,7 @@ Evitamos hacer esto aquí para minimizar el número de cosas en las que pensar a
 
 <a name="nota-39">**39**</a>: Este algoritmo iterativo es antiguo.  Aparece en el *Chandah-sutra* de Áchárya Pingala, escrito antes del año 200 a.C. Ver Knuth 1981, sección 4.6.3, para una discusión completa y análisis de este y otros métodos de exponenciación.
 
-<a name="nota-40">**40**</a>: Este algoritmo, que a veces se conoce como el "método ruso" (NdT: en inglés *Russian peasant method*) de multiplicación, es antiguo. Ejemplos de su uso se encuentran en el Papiro de Rhind, uno de los dos documentos matemáticos más antiguos que existen, escrito alrededor del año 1700 a.C. (y copiado a partir de un documento aún más antiguo) por un escriba egipcio llamado A'h-mose.
+<a name="nota-40">**40**</a>: Este algoritmo, que a veces se conoce como el "método ruso" `(NdT: en inglés "Russian peasant method")` de multiplicación, es antiguo. Ejemplos de su uso se encuentran en el Papiro de Rhind, uno de los dos documentos matemáticos más antiguos que existen, escrito alrededor del año 1700 a.C. (y copiado a partir de un documento aún más antiguo) por un escriba egipcio llamado A'h-mose.
 
 <a name="nota-41">**41**</a>: Este ejercicio nos fue sugerido por Joe Stoy, basado en un ejemplo de Kaldewaij 1990. 
 

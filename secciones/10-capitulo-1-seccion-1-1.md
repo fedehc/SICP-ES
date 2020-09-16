@@ -29,6 +29,8 @@ el intérprete responderá imprimiendo<sup>[**5**](#nota-5)</sup>
 > 486
 ```
 
+`(NdT: En la obra original, los autores no hacen uso de símbolo '>' para mostrar resultados del intérprete: estos simplemente elijen mostrarlos en cursiva. Pero dado que esto último no es posible dentro de códigos en formato Markdown de Github, me veo obligado a hacer uso de este símbolo para no dar lugar a confusiones.")`
+
 Las expresiones que representan números pueden ser combinados en una expresión que represente un procedimiento primitivo (como `+` o `*`) para formar una expresión compuesta que represente la aplicación del procedimiento a esos números. Por ejemplo:
 
 ```scheme
