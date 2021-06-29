@@ -276,11 +276,13 @@ Los números en los bordes del triángulo son todos 1, y cada número dentro del
 
 ### 1.2.3 Órdenes de Crecimiento
 
-Los ejemplos anteriores ilustran que los procesos pueden diferir considerablemente en la velocidad con la que consumen recursos computacionales. Una forma conveniente de describir esta diferencia es utilizar la noción de *orden de crecimiento* para obtener una medida en bruto de los recursos requeridos por un proceso a medida de que las entradas se hacen cada vez más grandes.
+Los ejemplos anteriores ilustran que los procesos pueden diferir considerablemente en los ritmos con los que consumen recursos computacionales. Una forma conveniente de describir esta diferencia es utilizando la noción de *orden de crecimiento* **\*** para obtener una medida en bruto de los recursos requeridos por un proceso a medida de que las entradas se hacen cada vez más grandes.
 
-Supongamos que `n` es un parámetro que mide el tamaño del problema y que `R(n)` es la cantidad de recursos que el proceso requiere para un problema de tamaño `n`. En nuestros ejemplos anteriores tomábamos a `n` como el número con el que debe calcularse una función dada, pero hay otras posibilidades. Por ejemplo, si nuestra meta es calcular una aproximación a la raíz cuadrada de un número, podríamos tomar a `n` como el número de dígitos de precisión que requerimos. Para la multiplicación de matrices podríamos tomar a `n` como el número de filas en las matrices. En general, hay una serie de propiedades del problema con respecto a las cuales será deseable analizar un proceso determinado. De manera similar, `R(n)` podría medir el número de registros internos de almacenamiento usados, el número de operaciones elementales de máquina realizadas, y así sucesivamente. En computadoras donde sólo se realizan un número fijo de operaciones a la vez, el tiempo requerido será proporcional al número de operaciones elementales efectuadas por la máquina.
+**\*** `NdT: Este concepto se lo conoce mejor como "Notación O"; en inglés "Big O Notation" o simplemente "Big O".`
 
-Decimos que `R(n)` tiene orden de crecimiento `Θ(f(n))`, escrito `R(n) = Θ(f(n))` (pronunciado "theta de f(n)")**\***, si hay constantes positivas `k₁` y `k₂` independientes de `n` tales que 
+Supongamos que `n` es un parámetro que mide el tamaño del problema y que `R(n)` es la cantidad de recursos que el proceso requiere para un problema de tamaño `n`. En nuestros ejemplos anteriores tomamos `n` como el número para el cual una función dada debe ser calculada, pero hay otras posibilidades. Por ejemplo, si nuestra meta es calcular una aproximación a la raíz cuadrada de un número, podríamos tomar a `n` como el número de dígitos de precisión que requerimos. Para la multiplicación de matrices podríamos tomar a `n` como el número de filas en las matrices. En general, hay una serie de propiedades del problema con respecto a las cuales será deseable analizar un proceso determinado. De manera similar, `R(n)` podría medir el número de registros internos de almacenamiento usados, el número de operaciones elementales de máquina realizadas, y así sucesivamente. En computadoras donde sólo se realizan un número fijo de operaciones a la vez, el tiempo requerido será proporcional al número de operaciones elementales efectuadas por la máquina.
+
+Decimos que `R(n)` tiene orden de crecimiento `Θ(f(n))`, escrito `R(n) = Θ(f(n))` (pronunciado "theta de f(n)"), si hay constantes positivas `k₁` y `k₂` independientes de `n` tales que 
 
 ```
 k₁ f(n) < R(n) < k₂ f(n)
@@ -288,16 +290,14 @@ k₁ f(n) < R(n) < k₂ f(n)
 
 para cualquier valor suficientemente grande de `n` (en otras palabras, para un gran `n`, el valor `R(n)` está entre `k₁ f(n)` y `k₂ f(n)`).
 
-**\*** `NdT: este concepto se lo conoce más actualmente como "Notación O"; en inglés "Big O Notation" o simplemente "Big O".`
+Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente a la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.<sup>[**36**](#nota-36)</sup> El cálculo árbol-recursivo de Fibonacci requiere `Θ(n)` pasos y espacio `Θ(Φⁿ)`, donde `Φ` es la proporción áurea descrita en la [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión).
 
-Por ejemplo, con el proceso recursivo lineal para calcular el factorial detallado en la [sección 1.2.1](#121-Recursión-e-Iteración-Lineales) el número de pasos crece proporcionalmente con la entrada `n`. Así, los pasos requeridos para este proceso crecen como `Θ(n)`. También vimos que el espacio requerido crece como `Θ(n)`. Para el factorial iterativo, el número de pasos sigue siendo `Θ(n)` pero el espacio es `Θ(1)`, es decir, constante.<sup>[**36**](#nota-36)</sup> El cálculo árbol-recursivo de Fibonacci requiere `Θ(n)` pasos y espacio `Θ(Φⁿ)`, donde `Φ` es la relación de oro descrita en la [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión).
-
-Los órdenes de crecimiento sólo proporcionan una descripción aproximada del comportamiento de un proceso. Por ejemplo, un proceso que requiere `n²` pasos, otro proceso que requiere `1000n²` pasos y otro proceso que requiere `3n² + 10n + 17` pasos, todos estos tienen un orden de crecimiento `Θ(n²)`. Por otro lado, el orden de crecimiento nos proporciona una indicio útil de cómo podemos esperar a que el comportamiento del proceso cambie a medida de que cambiemos el tamaño del problema. Para un proceso `Θ(n)` (lineal), duplicar el tamaño duplicará aproximadamente la cantidad de recursos utilizados. Para un proceso exponencial, cada incremento en el tamaño del problema multiplicará la utilización de recursos por un factor constante. En el resto de la [sección 1.2](./11-capitulo-1-seccion-1-2.md) examinaremos dos algoritmos cuyos órdenes de crecimiento son logarítmicos, de modo que duplicar el tamaño del problema aumentará la necesidad de recursos en una cantidad constante.
+Los órdenes de crecimiento sólo proporcionan una descripción aproximada del comportamiento de un proceso. Por ejemplo, un proceso que requiere `n²` pasos, otro proceso que requiere `1000n²` pasos y otro proceso que requiere `3n² + 10n + 17` pasos, todos estos tienen un orden de crecimiento `Θ(n²)`. Por otro lado, el orden de crecimiento nos proporciona una indicación útil de cómo podemos esperar a que el comportamiento del proceso cambie a medida de que cambiemos el tamaño del problema. Para un proceso `Θ(n)` (lineal), duplicar el tamaño duplicará aproximadamente la cantidad de recursos utilizados. Para un proceso exponencial, cada incremento en el tamaño del problema multiplicará la utilización de recursos por un factor constante. En el resto de la [sección 1.2](./11-capitulo-1-seccion-1-2.md) examinaremos dos algoritmos cuyos órdenes de crecimiento son logarítmicos, de modo que duplicar el tamaño del problema aumentará la necesidad de recursos en una cantidad constante.
 
 
-**Ejercicio 1.14.** Dibuje el árbol que ilustre el proceso generado por el procedimiento de `contar-cambio` de la [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión) al hacer el cambio por 11 centavos. ¿Cómo será el orden de crecimiento en el espacio y en el número de pasos utilizados por este proceso a medida que la cantidad a cambiar se incremente? 
+**Ejercicio 1.14.** Dibuje el árbol que ilustre el proceso generado por el procedimiento de `contar-cambio` de la [sección 1.2.2](./11-capitulo-1-seccion-1-2.md#122-Árbol-de-Recursión) al hacer el cambio por 11 centavos. ¿Cuáles son los órdenes de crecimiento en espacio y del número de pasos utilizados por este proceso a medida que aumenta la cantidad a cambiar?  
 
-**Ejercicio 1.15.** El seno de un ángulo (especificado en radianes) puede ser calculado haciendo uso de la aproximación `sen(x) ≈ x` si `x` es suficientemente pequeño, y la identidad trigonométrica
+**Ejercicio 1.15.** El seno de un ángulo (especificado en radianes) puede calcularse haciendo uso de la aproximación `sen(x) ≈ x` si `x` es suficientemente pequeño, y la identidad trigonométrica
 
 ```
 sen(x) = 3 sen(x/3) - 4 sen³(x/3)
@@ -318,7 +318,7 @@ para reducir el tamaño del argumento de `sen` (para los propósitos de este eje
 
 a. ¿Cuántas veces se aplicará el procedimiento `p` cuando `sen(12.15)` es evaluado?
 
-b. ¿Cuál es el orden de crecimiento en espacio y en número de pasos (en función de `a`) utilizados por el proceso generado por el procedimiento `sen` cuando `(sen a)` es evaluado?
+b. ¿Cuál es el orden de crecimiento en espacio y el número de pasos (en función de `a`) utilizados por el proceso generado por el procedimiento `sen` cuando `(sen a)` es evaluado?
 
 
 ### 1.2.4 Exponenciación

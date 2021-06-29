@@ -37,15 +37,13 @@ Traducir la obra completamente del inglés al español para que pueda ser leído
 
 ## Motivos:
 
-No soy programador profesional ni tampoco traductor; ni siquiera el primero de hacer el intento de traducir esta obra al español. No soy más que un mero aficionado que busca aprender a desarrollar.
+No soy programador profesional ni tampoco traductor; ni siquiera el primero de hacer el intento de traducir esta obra al español. No soy más que un simple aficionado más que busca aprender a desarrollar.
 
-SICP es uno esos clásicos más conocidos para la introducción al desarrollo de sistemas de software. Con alrededor de 25 años desde la publicación de su 2° edición, aún no se cuenta todavía con una traducción completa al español. 
+SICP es uno esos clásicos más conocidos para la introducción al desarrollo de sistemas de software. Con alrededor de 25 años desde la publicación de su 2° edición, aún no se cuenta todavía con una traducción completa al español. Y el presente repositorio es mi intento personal por lograr completar dicha traducción. O de lograr al menos la traducción de algún capítulo con un mínimo de rigurosidad.
 
-El presente repositorio es mi intento personal por lograr completar dicha traducción. O de lograr al menos la traducción de algún capítulo con un mínimo de rigurosidad.
+El libro es algo largo y denso de leer, con varios ejercicios y ejemplos de gusto "matemático" que no suelen precisamente gustar a todo el mundo. Pero quienes tengan interés en este campo probablemente encuentren interesante los temas tratados y el enfoque con que los autores lo tratan.
 
-El libro es algo largo y denso de leer, con varios ejercicios y ejemplos de gusto "matemático" que no suele precisamente gustar a todo el mundo. Pero quienes tengan interés en este campo probablemente encuentren interesante los temas tratados y el enfoque con que los autores lo tratan.
-
-Doy por descontando que hoy en día muchos interesados sepan ya inglés y puedan ir directamente a la obra original, lo cual hace poco atractivo (y necesario) el esfuerzo de traducción. Como sea, en tanto haya deseos por seguir traduciendo, espero que presente repositorio resulte de utilidad a cualquier interesado.
+Espero que presente repositorio resulte de utilidad a cualquier interesado.
 
 ## Aclaraciones:
 
@@ -57,13 +55,13 @@ Doy por descontando que hoy en día muchos interesados sepan ya inglés y puedan
 
 4) A lo largo de los capítulos he agregado por mi parte entre paréntesis lo que llamo "NdT" (**N**otas **d**el **T**raductor) con el fin de traducir muchos conceptos introducidos por los autores. Sin mayores intenciones de realizar cambios sustanciales en la obra, decido agregar estas notas a lo largo de la misma por los siguientes motivos:
 
-    * Los autores introducen frecuentemente mucha terminología del área de la informática que, paradójicamente, se los conoce muchas veces mejor en inglés que en español para la mayoría de los hispanohablantes. Esto en cierta medida condiciona a la tarea de traducción y a mi criterio obliga a mencionar toda terminología en ambos idiomas para mejor reconocimiento. Estas notas son siempre resaltadas en gris, iniciando con la sigla "NdT" y puestas entre paréntesis.
+    * Los autores introducen frecuentemente mucha terminología del área de la informática que paradójicamente se los conoce muchas veces mejor en inglés que en español. Esto en cierta medida hace necesario mencionar dicha terminología en ambos idiomas para mejor reconocimiento. Estas notas a lo largo de la obra son siempre resaltadas en color, iniciando con la sigla "NdT" y puestas entre paréntesis.
 
-    * En ocasiones me veo forzado a mostrar ciertas traducciónes a modo "literal" porque se hace difícil encontrar una traducción conocida al español, sea porque que no existen traducción alguna o porque solo se destila usar los mismos en inglés. Pese a esto, se opta de todas maneras por mostrar siempre una traducción equivalente al español. La mayoría de las veces estas se obtienen luego de una pequeña investigación por internet, teniendo siempre como parámetro buscar y seleccionar aquellos términos que sean dentro de los más usados o los más conocidos, y que coincidan con lo que se busca traducir.
+    * En ocasiones me veo forzado a mostrar ciertas traducciónes literales con determinada terminología porque sencillamente no existe traducción alguna (o de haber alguna, se destila usar la del idioma inglés). En cualquier caso, se opta siempre por mostrar una traducción equivalente al español. La mayoría de las veces estas se deciden luego de una pequeña investigación, teniendo siempre como parámetro seleccionar aquellos términos que sean de los más conocidos o usados.
 
-    * Por último, en otras contadas ocasiones se hace necesario comentar algunas pocas novedades y alternativas que faciliten la lectura o la práctica de los ejercicios (como se mencionó en la sección de [motivos](#Motivos), la 2° edición de este libro tiene sus años y muchos cambios han surgido desde entonces).
+    * Por último, en otras contadas ocasiones se hace necesario comentar algunas pocas novedades y alternativas que faciliten la lectura o la práctica de los ejercicios (como se mencionó en la sección de [motivos](#Motivos), la 2° edición de este libro tiene sus años y muchos cambios y novedades han surgido desde entonces).
     
-5) **De no estar conforme** con alguno de los puntos anteriores, **cualquiera es libre de hacer su propia traducción de la obra, o de crear un fork** a partir del presente repositorio y realizar todos los cambios que consideren pertinentes. Bastaría nomás con hacer mención de los autores originales, a la editorial y la correspondiente referencia a la [licencia](#Licencia) (y en el caso de hacer un fork, una mención extra al autor del presente repositorio resultaría bienvenido).
+5) **De no estar conforme** con alguno de los puntos anteriores, **cualquiera es libre de hacer su propia traducción de la obra, o de crear un fork** a partir del presente repositorio y realizar todos los cambios que consideren pertinentes. Bastaría nomás con hacer mención de los autores originales, a la editorial y la correspondiente referencia a la [licencia](#Licencia).
 
 ## Novedades/comentarios:
 
