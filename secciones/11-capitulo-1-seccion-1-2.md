@@ -276,9 +276,9 @@ Los números en los bordes del triángulo son todos 1, y cada número dentro del
 
 ### 1.2.3 Órdenes de Crecimiento
 
-Los ejemplos anteriores ilustran que los procesos pueden diferir considerablemente en los ritmos con los que consumen recursos computacionales. Una forma conveniente de describir esta diferencia es utilizando la noción de *orden de crecimiento* **\*** para obtener una medida en bruto de los recursos requeridos por un proceso a medida de que las entradas se hacen cada vez más grandes.
+Los ejemplos anteriores ilustran que los procesos pueden diferir considerablemente en los ritmos con los que consumen recursos computacionales. Una forma conveniente de describir esta diferencia es usar la noción de *orden de crecimiento* **\*** para obtener una medida en bruto de los recursos requeridos por un proceso a medida de que las entradas se hacen cada vez más grandes.
 
-**\*** `NdT: Este concepto se lo conoce mejor como "Notación O"; en inglés "Big O Notation" o simplemente "Big O".`
+**\*** `NdT: Este concepto se lo conoce mejor como "Notación O"; del inglés "Big O Notation" o simplemente "Big O".`
 
 Supongamos que `n` es un parámetro que mide el tamaño del problema y que `R(n)` es la cantidad de recursos que el proceso requiere para un problema de tamaño `n`. En nuestros ejemplos anteriores tomamos `n` como el número para el cual una función dada debe ser calculada, pero hay otras posibilidades. Por ejemplo, si nuestra meta es calcular una aproximación a la raíz cuadrada de un número, podríamos tomar a `n` como el número de dígitos de precisión que requerimos. Para la multiplicación de matrices podríamos tomar a `n` como el número de filas en las matrices. En general, hay una serie de propiedades del problema con respecto a las cuales será deseable analizar un proceso determinado. De manera similar, `R(n)` podría medir el número de registros internos de almacenamiento usados, el número de operaciones elementales de máquina realizadas, y así sucesivamente. En computadoras donde sólo se realizan un número fijo de operaciones a la vez, el tiempo requerido será proporcional al número de operaciones elementales efectuadas por la máquina.
 
