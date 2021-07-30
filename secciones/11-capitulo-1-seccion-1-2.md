@@ -435,7 +435,7 @@ Este algoritmo realiza una serie de pasos que es lineal en `b`. Ahora supongamos
 
 ### 1.2.5 Máximos Comunes Divisores
 
-El máximo común divisor (MCD) de dos enteros `a` y `b` se define como el mayor entero que divide tanto `a` como `b` sin dejar resto. Por ejemplo, el MCD de 16 y 28 es 4. En el [capítulo 2](./13-capitulo-2-intro.md), cuando investiguemos cómo implementar la aritmética de números racionales, necesitaremos ser capaces de calcular los MCD's para reducir los números racionales a sus términos más bajos (para reducir un número racional a los términos más bajos, debemos dividir tanto el numerador como el denominador por su MCD. Por ejemplo, `16/28` se reduce a `4/7`). Una manera de encontrar el MCD de dos enteros es factorizarlos y buscar factores comunes, pero hay un algoritmo famoso que es mucho más eficiente.
+El máximo común divisor (MCD) de dos enteros `a` y `b` se define como el mayor entero que divide tanto `a` como `b` sin que quede ningún resto. Por ejemplo, el MCD de 16 y 28 es 4. En el [capítulo 2](./13-capitulo-2-intro.md), cuando investiguemos cómo implementar la aritmética de números racionales, necesitaremos ser capaces de calcular los MCD's para reducir los números racionales a sus términos más bajos (para reducir un número racional a los términos más bajos, debemos dividir tanto el numerador como el denominador por su MCD. Por ejemplo, `16/28` se reduce a `4/7`). Una forma de encontrar el MCD de dos enteros es factorizarlos y buscar los factores comunes, pero hay un famoso algoritmo que es mucho más eficiente.
 
 La idea de este algoritmo se basa en la observación de que si `r` es el resto cuando `a` se divide por `b`, entonces los divisores comunes de `a` y `b` son precisamente los mismos que los divisores comunes de `b` y `r`. Por lo tanto, podemos usar la ecuación
 
@@ -443,7 +443,7 @@ La idea de este algoritmo se basa en la observación de que si `r` es el resto c
 MCD(a,b) = MCD(b,r)
 ```
 
-para reducir sucesivamente el problema de calcular un MCD al problema de calcular el MCD de pares cada vez más pequeños de enteros. Por ejemplo
+para reducir sucesivamente el problema de calcular un MCD al problema de calcular el MCD de pares de enteros cada vez más pequeños. Por ejemplo
 
 ```
 MCD(206,40) = MCD(40,6)
@@ -453,7 +453,7 @@ MCD(206,40) = MCD(40,6)
             = 2
 ```
 
-reduce MCD(206,40) a MCD(2,0), que es 2. Es posible mostrar que comenzando con dos números enteros positivos cualesquiera y realizando reducciones repetidas siempre se producirá eventualmente un par donde el segundo número es 0. Entonces el MCD es el otro número del par. Este método para calcular el MCD se conoce como el *Algoritmo de Euclides*.<sup>[**42**](#nota-42)</sup>
+reduce MCD(206,40) a MCD(2,0), que es 2. Es posible demostrar que comenzando con dos números enteros positivos cualesquiera y realizando reducciones repetidas, siempre se obtendrá un par en el que el segundo número es 0. Entonces el MCD es el otro número del par. Este método para calcular el MCD se conoce como el *Algoritmo de Euclides*.<sup>[**42**](#nota-42)</sup>
 
 Es fácil expresar el Algoritmo de Euclides como un procedimiento:
 
@@ -464,15 +464,15 @@ Es fácil expresar el Algoritmo de Euclides como un procedimiento:
       (mcd b (remainder a b))))
 ```
 
-Esto genera un proceso iterativo, cuyo número de pasos crece como el logaritmo de los números implicados.
+Esto genera un proceso iterativo, cuyo número de pasos crece como el logaritmo de los números involucrados.
 
 El hecho de que el número de pasos requeridos por el Algoritmo de Euclides tenga crecimiento logarítmico conlleva una relación interesante con los números de Fibonacci:
 
-***Teorema de Lamé:** Si el Algoritmo de Euclides requiere `k` pasos para calcular el MCD de algún par, entonces el número más pequeño en el par debe ser mayor o igual al k-ésimo número de Fibonacci.*<sup>[**43**](#nota-43)</sup>
+***Teorema de Lamé:** Si el Algoritmo de Euclides requiere `k` pasos para calcular el MCD de algún par, entonces el número más pequeño del par debe ser mayor o igual al k-ésimo número de Fibonacci.*<sup>[**43**](#nota-43)</sup>
 
-Podemos usar este teorema para obtener una estimación del orden de crecimiento del Algoritmo de Euclides. Sea `n` la más pequeña de las dos entradas del procedimiento. Si el proceso toma `k` pasos, entonces debemos tener `n >= Fib(k) ≈ Φᵏ/√5`. Por lo tanto, el número de pasos `k` crece como el logaritmo (a la base `Φ`) de `n`. Por lo tanto, el orden de crecimiento es `Θ(log n)`.
+Podemos usar este teorema para obtener una estimación del orden de crecimiento del Algoritmo de Euclides. Sea `n` la menor de las dos entradas del procedimiento. Si el proceso requiere de `k` pasos, entonces debemos tener `n >= Fib(k) ≈ Φᵏ/√5`. Por lo tanto, el número de pasos `k` crece como el logaritmo (a la base `Φ`) de `n`. Por lo tanto, el orden de crecimiento es `Θ(log n)`.
 
-**Ejercicio 1.20.** El proceso que un procedimiento genera es, por supuesto, dependiente de las reglas utilizadas por el intérprete. Como ejemplo, considere el procedimiento iterativo de `mcd` dado arriba. Supongamos que interpretamos este procedimiento usando la evaluación de orden normal, como se discutió en la [sección 1.1.5]((./10-capitulo-1-seccion-1-1.md#115-El-Modelo-de-Sustitución-para-la-Aplicación-de-Procedimientos) (la regla de evaluación de orden normal para `if` se describe en el ejercicio 1.5.). Utilizando el método de sustitución (para el orden normal), ilustre el proceso generado en la evaluación `(mcd 206 40)` e indique las operaciones `remainder` que se efectúan realmente. ¿Cuántas operaciones `remainder` se realizan realmente en la evaluación de orden normal de `(mcd 206 40)`? ¿Y en la evaluación del orden aplicativo? 
+**Ejercicio 1.20.** El proceso que genera un procedimiento depende, por supuesto, de las reglas utilizadas por el intérprete. Como ejemplo, considere el procedimiento iterativo `mcd` dado anteriormente. Supongamos que interpretamos este procedimiento usando la evaluación de orden normal, como discutimos en la [sección 1.1.5](./10-capitulo-1-seccion-1-1.md#115-El-Modelo-de-Sustitución-para-la-Aplicación-de-Procedimientos) (la regla de evaluación de orden normal para `if` se describe en el ejercicio 1.5.). Utilizando el método de sustitución (para el orden normal), ilustre el proceso generado en la evaluación `(mcd 206 40)` e indique las operaciones `remainder` que se efectúan realmente. ¿Cuántas operaciones `remainder` se realizan realmente en la evaluación de orden normal de `(mcd 206 40)`? ¿Y en la evaluación del orden aplicativo? 
 
 
 ### 1.2.6 Ejemplo: Evaluando por Primalidad
