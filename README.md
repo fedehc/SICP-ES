@@ -63,11 +63,11 @@ Espero que presente repositorio resulte de utilidad a cualquier interesado.
     
 5) **De no estar conforme** con alguno de los puntos anteriores, **cualquiera es libre de hacer su propia traducción de la obra, o de crear un fork** a partir del presente repositorio y realizar todos los cambios que consideren pertinentes. Bastaría nomás con hacer mención de los autores originales, a la editorial y la correspondiente referencia a la [licencia](#Licencia).
 
-## Novedades/comentarios:
+## Novedades:
 
-* Sección 1.1 revisada. Continuando ahora con la sección 1.2.
+* **[7/2020]** Sección 1.1 revisada. Continuando desde ahora con la sección 1.2.
 
-* ¡Primer capítulo traducido! 😃
+* **[9/2019]** ¡Primer capítulo traducido! 😃
 
     * Queda pendiente una revisión minuciosa de lo ya traducido antes de pasar al siguiente capítulo. Esta tarea de revisión -aún en proceso- incluye desde ya no solo el texto traducido sino también todo código fuente en ejemplos y ejercicios (con la obvia excepción de las palabras reservadas de Scheme), además de las notas que se encuentran al final de cada sección.
 
