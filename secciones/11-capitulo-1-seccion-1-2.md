@@ -477,12 +477,12 @@ Podemos usar este teorema para obtener una estimación del orden de crecimiento 
 
 ### 1.2.6 Ejemplo: Evaluando por Primalidad
 
-Esta sección describe dos métodos para comprobar la primalidad de un entero `n`, uno con orden de crecimiento `Θ(√n)`, y un algoritmo "probabilístico" con orden de crecimiento `Θ(log n)`. Los ejercicios al final de esta sección sugieren proyectos de programación basados en estos algoritmos.
+En esta sección se describen dos métodos para comprobar la primalidad de un entero `n`, uno con orden de crecimiento `Θ(√n)`, y un algoritmo "probabilístico" con orden de crecimiento `Θ(log n)`. Los ejercicios al final de esta sección sugieren proyectos de programación basados en estos algoritmos.
 
 
 #### Búsqueda de divisores
 
-Desde la antigüedad, los matemáticos han estado fascinados por los problemas relacionados con los números primos, y muchas personas han trabajado en el problema de determinar maneras de comprobar si los números son tales. Una manera de chequear que un número es primo es encontrar los divisores del mismo. El siguiente programa busca el divisor integral más pequeño (mayor que 1) de un número `n` dado. Esto se hace de forma directa, al probar la divisibilidad de `n` mediante números enteros sucesivos que empiecen a partir de 2.
+Desde la antigüedad, los matemáticos han estado fascinados por los problemas relacionados con los números primos, y muchas personas han trabajado en el problema de determinar maneras de comprobar si los números son tales. Una manera de chequear que un número es primo es encontrar los divisores del mismo. El siguiente programa busca el divisor integral más pequeño (mayor que 1) de un número `n` dado. Esto se hace de forma directa, al probar la divisibilidad de `n` mediante números enteros sucesivos empezando por 2.
 
 ```scheme
 (define (menor-divisor n)
@@ -504,7 +504,7 @@ Podemos probar si un número es primo de la siguiente manera: `n` es primo si y 
   (= n (menor-divisor n)))
 ```
 
-La prueba final de `encontrar-divisor` se basa en el hecho de que si `n` no es primo debe tener un divisor menor o igual a `√n`.<sup>[**44**](#nota-44)</sup> Esto significa que el algoritmo sólo necesita probar divisores entre 1 y `√n`. Consecuentemente, el número de pasos necesarios para identificar a `n` como primo tendrá un orden de crecimiento `Θ(√n)`.
+La prueba final de `encontrar-divisor` se basa en el hecho de que si `n` no es primo debe tener un divisor menor o igual a `√n`.<sup>[**44**](#nota-44)</sup> Esto significa que el algoritmo sólo necesita probar divisores entre 1 y `√n`. En consecuencia, el número de pasos necesarios para identificar a `n` como primo tendrá un orden de crecimiento `Θ(√n)`.
 
 
 #### El test de Fermat
