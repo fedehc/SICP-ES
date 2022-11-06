@@ -27,8 +27,7 @@ El libro está licenciado bajo [licencia internacional Creative Commons Atribuci
 
 ## Fuente:
 
-Todo el material que iré traduciendo se realizará a partir de la versión online del [sitio web oficial](https://mitpress.mit.edu/sites/default/files/sicp/index.html), dispuesto voluntariamente por el MIT y los autores de la obra.
-
+Todo el material que iré traduciendo se realizará a partir de la [web de SICP](https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html), dispuesto voluntariamente por el MIT y los autores de la obra.
 
 ## Objetivo:
 
